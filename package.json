@@ -1,0 +1,29 @@
+{
+	"name": "@internetx/js-domainrobot-sdk",
+	"version": "0.0.1",
+	"description": "A (node)js package for easy integration of the domainrobot API powered by InterNetX GmbH.",
+	"main": "index.js",
+	"author": "InterNetX GmbH <entwicklung@internetx.com>",
+	"license": "MIT",
+	"scripts": {
+		"docs:dev": "vuepress dev docs",
+		"docs:build": "vuepress build docs",
+		"dev": "npm run development",
+		"development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=webpack.config.js",
+		"test": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --watch --hide-modules --config=webpack.config.js",
+		"prod": "yarn run production",
+		"prod-watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --watch --hide-modules --config=webpack.config.js",
+		"production": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=webpack.config.js"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.7.7",
+		"@babel/preset-env": "^7.7.7",
+		"babel-loader": "^8.0.6",
+		"cross-env": "^6.0.3",
+		"webpack": "^4.41.4",
+		"webpack-cli": "^3.3.10"
+	},
+	"dependencies": {
+		"axios": "^0.19.0"
+	}
+}
