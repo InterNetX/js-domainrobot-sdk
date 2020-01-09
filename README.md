@@ -15,6 +15,7 @@ A node/js package for easy integration of the **Domainrobot API** powered by [In
       - [DomainRobotException](#domainrobotexception)
       - [DomainRobotResult](#domainrobotresult)
       - [Certificate tasks](#certificate-tasks)
+      - [DomainStudio](#domainstudio)
   - [(Custom) Headers](#custom-headers)
     - [Require](#require)
     - [Available Headers](#available-headers)
@@ -111,6 +112,28 @@ try{
   let result = await domainRobot
     .certificate(certficateModel)
     .createRealtime();
+} catch (DomainRobotException) {
+
+}
+```
+
+#### DomainStudio
+
+```javascript
+let domainEnvelopeSearchRequest = new DomainRobotModels.DomainEnvelopeSearchRequest();
+let domainStudioSources = new DomainRobotModels.DomainStudioSources();
+
+domainStudioSources.suggestion = new DomainRobotModels.DomainStudioSourceSuggestion(
+    { max: 5 }
+);
+domainEnvelopeSearchRequest.sources = domainStudioSources;
+domainEnvelopeSearchRequest.searchToken = "google";
+domainEnvelopeSearchRequest.currency = "USD";
+
+try{
+    let result = await domainRobot
+        .domainStudio(domainEnvelopeSearchRequest)
+        .search();
 } catch (DomainRobotException) {
 
 }

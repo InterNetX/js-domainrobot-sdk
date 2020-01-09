@@ -2,6 +2,7 @@
 let axios = require("axios");
 const Headers = require("../lib/Headers");
 const config = require("../lib/config");
+const packageJson = require("../../package.json");
 
 class AbstractService {
   /**
@@ -20,7 +21,10 @@ class AbstractService {
     this.domainRobotConfig = domainRobotConfig;
 
     // define headers
-    axios.defaults.headers.common["Content-Type"] = "application/json";
+    axios.defaults.headers.common[Headers.DOMAINROBOT_CONTENT_TYPE] =
+      "application/json";
+    axios.defaults.headers.common[Headers.DOMAINROBOT_USER_AGENT] =
+      "JSDomainrobotSdk/" + packageJson.version;
     axios.defaults.headers.common[Headers.DOMAINROBOT_HEADER_CONTEXT] =
       domainRobotConfig.auth.context;
 

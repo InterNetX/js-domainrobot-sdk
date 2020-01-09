@@ -2,6 +2,7 @@
 // services
 let Contact = require("./services/Contact");
 let Certificate = require("./services/Certificate");
+let DomainStudio = require("./services/DomainStudio");
 
 class Domainrobot {
   /**
@@ -21,6 +22,13 @@ class Domainrobot {
   // certificate stuff
   certificate(certificateModel) {
     return new Certificate(certificateModel, this.domainRobotConfig);
+  }
+
+  domainStudio(domainStudioEnvelopeSearchRequest) {
+    return new DomainStudio(
+      domainStudioEnvelopeSearchRequest,
+      this.domainRobotConfig
+    );
   }
 }
 
