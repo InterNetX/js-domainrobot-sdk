@@ -22,7 +22,6 @@ class Contact extends AbstractService {
 
   async createRealtime() {
     this.prepareCsr();
-    this.checkTypeSecurity(this.model);
 
     try {
       let result = await this.axios(
@@ -46,7 +45,6 @@ class Contact extends AbstractService {
 
   async prepareOrder() {
     this.prepareCsr();
-    this.checkTypeSecurity(this.model);
 
     this.model.plain = this.model.csr;
     this.model.csr = null;

@@ -33,7 +33,6 @@ class AbstractService {
     };
 
     this.axios = axios;
-    this.shouldBeTypeSecure = false;
   }
 
   /**
@@ -43,63 +42,6 @@ class AbstractService {
   headers(headers) {
     this.axiosconfig.headers = headers;
     return this;
-  }
-
-  /**
-   * Call to set type security flag to true and check every
-   * value of a given model if it has the corrext expected type
-   */
-  typeSecure() {
-    this.shouldBeTypeSecure = true;
-    return this;
-  }
-
-  /**
-   * check every value of a given model if it has the corrext expected type
-   * throw TypeError on invalid types
-   */
-  checkTypeSecurity(model, modelDefinition = null, modelName = "") {
-    if (!this.shouldBeTypeSecure) {
-      return;
-    }
-
-    if (modelDefinition === null) {
-      modelDefinition = model.modelDefinition();
-      modelName = model.constructor.name;
-    }
-
-    for (let property in model) {
-      if (typeof modelDefinition[property].type === "function") {
-        if (
-          new modelDefinition[
-            property
-          ].type().constructor.name.toLowerCase() !== typeof model[property]
-        ) {
-          throw new TypeError(
-            "Expected type " +
-              new modelDefinition[
-                property
-              ].type().constructor.name.toLowerCase() +
-              " for property " +
-              property +
-              " in model " +
-              modelName +
-              " got " +
-              typeof model[property] +
-              " instead!"
-          );
-        }
-        continue;
-      }
-
-      if (modelDefinition[property].type === JSON) {
-        this.checkTypeSecurity(
-          model[property],
-          modelDefinition[property],
-          modelName
-        );
-      }
-    }
   }
 }
 

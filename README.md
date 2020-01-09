@@ -19,7 +19,6 @@ A node/js package for easy integration of the **Domainrobot API** powered by [In
     - [Require](#require)
     - [Available Headers](#available-headers)
     - [Setting Headers](#setting-headers)
-  - [Type Security](#type-security)
   - [Changelog](#changelog)
   - [Copyright and license](#copyright-and-license)
 
@@ -36,8 +35,9 @@ npm install @internetx/js-domainrobot-sdk
 ### Requires
 
 ```javascript
-let Domainrobot = require("@internetx/js-domainrobot-sdk").DomainRobot;
-let DomainrobotHeaders = require("@internetx/js-domainrobot-sdk").Headers;
+let DomainRobot = require("@internetx/js-domainrobot-sdk").DomainRobot;
+let DomainRobotHeaders = require("@internetx/js-domainrobot-sdk").DomainRobotHeaders;
+let DomainRobotModels = require("@internetx/js-domainrobot-sdk").DomainRobotModels;
 ```
 
 ## Usage
@@ -47,9 +47,9 @@ Detailed examples can be found under src/examples!
 Before you can interact with the API you need to specify your authenticatio credentials and if you have a "Personal AutoDNS" account your url and context.
 
 ```javascript
-let Domainrobot = require("@internetx/js-domainrobot-sdk").DomainRobot;
+let DomainRobot = require("@internetx/js-domainrobot-sdk").DomainRobot;
 
-let domainRobot = new Domainrobot({
+let domainRobot = new DomainRobot({
     url: "http://dev-proxy-lab.intern.autodns-lab.com:10025",
     auth: {
         user: "user",
@@ -68,9 +68,14 @@ let domainRobot = new Domainrobot({
 
 ### Available Models
 
+Modles are instantiated by using the DomainRobotModels module.
+See an example below:
+
 ```javascript
-let certficateModel = domainRobot.certificateModel();
+let certficateModel = new DomainRobotModels.Certificate();
 ```
+
+All available Models and properties can be seen under the Section 'Models' in detail here: [https://help.internetx.com/display/APIJSONEN/Technical+Documentation](https://help.internetx.com/display/APIJSONEN/Technical+Documentation)
 
 ### Supported API calls
 
@@ -100,6 +105,8 @@ DomainRobotResult {
 #### Certificate tasks
 
 ```javascript
+let certficateModel = new DomainRobotModels.Certificate();
+
 try{
   let result = await domainRobot
     .certificate(certficateModel)
@@ -114,7 +121,7 @@ try{
 ### Require
 
 ```javascript
-let DomainrobotHeaders = require("@internetx/js-domainrobot-sdk").Headers;
+let DomainRobotHeaders = require("@internetx/js-domainrobot-sdk").DomainRobotHeaders;
 ```
 
 ### Available Headers
@@ -148,7 +155,7 @@ Custom Headers (see available headers in [Available Headers](#available-headers)
 See example below.
 
 ```javascript
-let DomainrobotHeaders = require("js-domainrobot-sdk").Headers;
+let DomainRobotHeaders = require("js-domainrobot-sdk").DomainRobotHeaders;
 
 let result = await domainRobot
     .certificate(certficateModel)
@@ -158,22 +165,6 @@ let result = await domainRobot
     })
     .prepareOrder();
 ```
-
-## Type Security
-
-This package offers a basic type security option which is avaiable for all API calls.
-The provided data will be compared with the expected types of a specific model used for a certain API call.
-
-You can activate the type security feature by calling **.typeSecure()** before calling the actual task you want to send.
-
-```javascript
-let result = await domainRobot
-    .certificate(certficateModel)
-    .typeSecure()
-    .createRealtime();
-```
-
-If types are not what they are expete to be
 
 ## Changelog
 
