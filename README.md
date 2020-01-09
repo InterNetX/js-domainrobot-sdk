@@ -10,12 +10,19 @@ A node/js package for easy integration of the **Domainrobot API** powered by [In
     - [Installation](#installation)
     - [Requires](#requires)
   - [Usage](#usage)
-    - [Available Models](#available-models)
+    - [Models](#models)
+      - [Instantiating](#instantiating)
+      - [How to set properties](#how-to-set-properties)
+      - [Stacking Models](#stacking-models)
+      - [Available Models](#available-models)
+    - [DomainRobotException](#domainrobotexception)
+    - [DomainRobotResult](#domainrobotresult)
     - [Supported API calls](#supported-api-calls)
-      - [DomainRobotException](#domainrobotexception)
-      - [DomainRobotResult](#domainrobotresult)
       - [Certificate tasks](#certificate-tasks)
+        - [Prepare Order](#prepare-order)
+        - [Create Realtime](#create-realtime)
       - [DomainStudio](#domainstudio)
+        - [Search](#search)
   - [(Custom) Headers](#custom-headers)
     - [Require](#require)
     - [Available Headers](#available-headers)
@@ -67,7 +74,11 @@ let domainRobot = new DomainRobot({
     ** password (mandatory)
     ** context (mandatory for "Personal AutoDNS" accounts)
 
-### Available Models
+### Models
+
+Specific examples for certain models can be found in the section [Supported API calls](#supported-api-calls)
+
+#### Instantiating
 
 Modles are instantiated by using the DomainRobotModels module.
 See an example below:
@@ -76,16 +87,63 @@ See an example below:
 let certficateModel = new DomainRobotModels.Certificate();
 ```
 
+#### How to set properties
+
+Properties can be set while creating a new model or a after a model has been created. 
+
+All of the following examples are valid:
+
+```javascript
+let certficateModel = new DomainRobotModels.Certificate({
+    product: "BASIC_SSL",
+    lifetime: {
+        unit: "MONTH",
+        period: 12
+    }
+});
+```
+
+```javascript
+let certficateModel = new DomainRobotModels.Certificate();
+certficateModel.product = "BASIC_SSL";
+certficateModel.lifetime = {
+    unit: "MONTH",
+    period: 12
+};
+```
+
+```javascript
+let timePeriod = new DomainRobotModels.TimePeriod({
+    unit: "MONTH",
+    period: 12
+});
+let certficateModel = new DomainRobotModels.Certificate({
+    product: "BASIC_SSL",
+    lifetime: timePeriod
+});
+```
+
+#### Stacking Models
+
+Every property that is an object itself can either be set directly via JSON or through the corresponding model provided by this package. See also the examples in [How to set properties](#how-to-set-properties)
+
+```javascript
+let timePeriod = new DomainRobotModels.TimePeriod({
+    unit: "MONTH",
+    period: 12
+});
+
+timePeriod ===  {
+    unit: "MONTH",
+    period: 12
+}
+```
+
+#### Available Models
+
 All available Models and properties can be seen under the Section 'Models' in detail here: [https://help.internetx.com/display/APIJSONEN/Technical+Documentation](https://help.internetx.com/display/APIJSONEN/Technical+Documentation)
 
-### Supported API calls
-
-Some API calls are asynchronous. Asynchronous calls should always be wrapped in a try-catch block to catch
-possible exceptions.
-All API calls return a **DomainRobotException** if an error occurs.
-All API calls return a **DomainRobotResult** if the task was successful.
-
-#### DomainRobotException
+### DomainRobotException
 
 ```javascript
 DomainRobotException {
@@ -94,7 +152,25 @@ DomainRobotException {
 }
 ```
 
-#### DomainRobotResult
+Example of an exception
+
+```javascript
+DomainRobotException {
+  error: {
+    stid: '20200109-app2-dev-24718',
+    messages: [ [Object] ],
+    status: {
+      code: 'E400110',
+      text: 'CSR key could not be checked successfully.',
+      type: 'ERROR'
+    },
+    ctid: 'ctid-test-12323'
+  },
+  status: 400
+}
+```
+
+### DomainRobotResult
 
 ```javascript
 DomainRobotResult {
@@ -103,10 +179,75 @@ DomainRobotResult {
 }
 ```
 
+Example of a success result
+
+```javascript
+DomainRobotResult {
+  result: {
+    stid: '20200109-app2-dev-24759',
+    status: {
+      code: 'S400110',
+      text: 'CSR key was checked successfully.',
+      type: 'SUCCESS'
+    },
+    data: [ [Object] ],
+    ctid: 'ctid-test-12323'
+  },
+  status: 200
+}
+```
+
+### Supported API calls
+
+Some API calls are asynchronous. Asynchronous calls should always be wrapped in a try-catch block to catch
+possible exceptions.
+All API calls return a [DomainRobotException](#domainrobotexception) if an error occurs.
+All API calls return a [DomainRobotResult](#domainrobotresult) if the task was successful.
+
 #### Certificate tasks
+
+##### Prepare Order
 
 ```javascript
 let certficateModel = new DomainRobotModels.Certificate();
+
+certficateModel.csr =
+    "-----BEGIN CERTIFICATE REQUEST-----" +
+    "MIICozCCAYsCAQAwXjELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUx" +
+    ...
+    "adX6zVC8Uw==" +
+    "-----END CERTIFICATE REQUEST-----";
+
+try{
+  let result = await domainRobot
+    .certificate(certficateModel)
+    .prepareOrder();
+} catch (DomainRobotException) {
+
+}
+```
+
+##### Create Realtime
+
+```javascript
+let certficateModel = new DomainRobotModels.Certificate({
+    product: "BASIC_SSL",
+    lifetime: {
+        unit: "MONTH",
+        period: 12
+    }
+});
+
+certficateModel.name = "example.com";
+certficateModel.authentication = {
+    method: "FILE"
+};
+certficateModel.csr =
+    "-----BEGIN CERTIFICATE REQUEST-----" +
+    "MIICozCCAYsCAQAwXjELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUx" +
+    ...
+    "adX6zVC8Uw==" +
+    "-----END CERTIFICATE REQUEST-----";
 
 try{
   let result = await domainRobot
@@ -118,6 +259,8 @@ try{
 ```
 
 #### DomainStudio
+
+##### Search
 
 ```javascript
 let domainEnvelopeSearchRequest = new DomainRobotModels.DomainEnvelopeSearchRequest();

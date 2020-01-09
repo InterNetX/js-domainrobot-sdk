@@ -1,6 +1,6 @@
 {
 	"name": "@internetx/js-domainrobot-sdk",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"description": "A (node)js package for easy integration of the domainrobot API powered by InterNetX GmbH.",
 	"main": "index.js",
 	"author": "InterNetX GmbH <entwicklung@internetx.com>",
