@@ -35,17 +35,17 @@ A node/js package for easy integration of the **Domainrobot API** powered by [In
 ### Installation
 
 ```javascript
-yarn add @internetx/js-domainrobot-sdk
+yarn add js-domainrobot-sdk
 
-npm install @internetx/js-domainrobot-sdk
+npm install js-domainrobot-sdk
 ```
 
 ### Requires
 
 ```javascript
-let DomainRobot = require("@internetx/js-domainrobot-sdk").DomainRobot;
-let DomainRobotHeaders = require("@internetx/js-domainrobot-sdk").DomainRobotHeaders;
-let DomainRobotModels = require("@internetx/js-domainrobot-sdk").DomainRobotModels;
+let DomainRobot = require("js-domainrobot-sdk").DomainRobot;
+let DomainRobotHeaders = require("js-domainrobot-sdk").DomainRobotHeaders;
+let DomainRobotModels = require("js-domainrobot-sdk").DomainRobotModels;
 ```
 
 ## Usage
@@ -55,7 +55,7 @@ Detailed examples can be found under src/examples!
 Before you can interact with the API you need to specify your authenticatio credentials and if you have a "Personal AutoDNS" account your url and context.
 
 ```javascript
-let DomainRobot = require("@internetx/js-domainrobot-sdk").DomainRobot;
+let DomainRobot = require("js-domainrobot-sdk").DomainRobot;
 
 let domainRobot = new DomainRobot({
     url: "http://dev-proxy-lab.intern.autodns-lab.com:10025",
@@ -287,7 +287,7 @@ try{
 ### Require
 
 ```javascript
-let DomainRobotHeaders = require("@internetx/js-domainrobot-sdk").DomainRobotHeaders;
+let DomainRobotHeaders = require("js-domainrobot-sdk").DomainRobotHeaders;
 ```
 
 ### Available Headers
