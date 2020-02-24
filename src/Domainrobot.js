@@ -1,10 +1,10 @@
 /* global require,module */
 // services
-let Contact = require("./services/Contact");
-let Certificate = require("./services/Certificate");
+let ContactService = require("./services/ContactService");
+let certificateService = require("./services/CertificateService");
 let DomainStudio = require("./services/DomainStudio");
 
-class Domainrobot {
+class DomainRobot {
   /**
    *
    * @param {string} user
@@ -16,12 +16,12 @@ class Domainrobot {
 
   // contact stuff
   contact(contactModel) {
-    return new Contact(contactModel, this.domainRobotConfig);
+    return new ContactService(contactModel, this.domainRobotConfig);
   }
 
   // certificate stuff
-  certificate(certificateModel) {
-    return new Certificate(certificateModel, this.domainRobotConfig);
+  certificate(certificateModel = null) {
+    return new certificateService(certificateModel, this.domainRobotConfig);
   }
 
   domainStudio(domainStudioEnvelopeSearchRequest) {
@@ -32,4 +32,4 @@ class Domainrobot {
   }
 }
 
-module.exports = Domainrobot;
+module.exports = DomainRobot;

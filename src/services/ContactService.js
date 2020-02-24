@@ -1,6 +1,6 @@
-let AbstractService = require("./AbstractService");
+let DomainRobotService = require("./DomainRobotService");
 
-class Contact extends AbstractService {
+class Contact extends DomainRobotService {
   constructor(contactModel, domainRobotConfig) {
     super(domainRobotConfig);
     this.model = contactModel;

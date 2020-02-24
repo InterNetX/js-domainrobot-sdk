@@ -4,12 +4,20 @@ const Headers = require("../lib/Headers");
 const config = require("../lib/config");
 const packageJson = require("../../package.json");
 
-class AbstractService {
+const DomainRobotException = require("../lib/DomainRobotException");
+const DomainRobotResult = require("../lib/DomainRobotResult");
+
+let specs = require("../lib/specs.json");
+let ApiFactory = require("../lib/Factory");
+
+class DomainRobotService {
   /**
    *
    * @param {object} domainRobotConfig
    */
   constructor(domainRobotConfig) {
+    this.modelFactory = null;
+
     // set default values if nothing has been specified
     if (!domainRobotConfig.url) {
       domainRobotConfig.url = config.API_URL;
@@ -47,6 +55,41 @@ class AbstractService {
     this.axiosconfig.headers = headers;
     return this;
   }
+
+  async sendPostRequest(url, data) {
+    try {
+      let result = await this.axios(
+        Object.assign(
+          {
+            method: "POST",
+            url,
+            data
+          },
+          this.axiosconfig
+        )
+      );
+      let domainRobotResult = new DomainRobotResult(result.data, result.status);
+
+      if (!domainRobotResult.isValid()) {
+        throw new DomainRobotException({}, 500);
+      }
+
+      return domainRobotResult;
+    } catch (error) {
+      throw new DomainRobotException(
+        error.response.data,
+        error.response.status
+      );
+    }
+  }
+
+  models() {
+    const Backend = new ApiFactory(specs);
+    if (this.modelFactory === null) {
+      this.modelFactory = Backend.models;
+    }
+    return this.modelFactory;
+  }
 }
 
-module.exports = AbstractService;
+module.exports = DomainRobotService;

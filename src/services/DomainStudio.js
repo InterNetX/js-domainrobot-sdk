@@ -1,8 +1,8 @@
-let AbstractService = require("./AbstractService");
+let DomainRobotService = require("./DomainRobotService");
 const DomainRobotException = require("../lib/DomainRobotException");
 const DomainRobotResult = require("../lib/DomainRobotResult");
 
-class DomainStudio extends AbstractService {
+class DomainStudio extends DomainRobotService {
   constructor(domainStudioEnvelopeSearchRequest, domainRobotConfig) {
     super(domainRobotConfig);
     this.model = domainStudioEnvelopeSearchRequest;

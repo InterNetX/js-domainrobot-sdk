@@ -52,7 +52,7 @@ let DomainRobotModels = require("js-domainrobot-sdk").DomainRobotModels;
 
 Detailed examples can be found under src/examples!
 
-Before you can interact with the API you need to specify your authenticatio credentials and if you have a "Personal AutoDNS" account your url and context.
+Before you can interact with the API you need to specify your authentication credentials and if you have a "Personal AutoDNS" account your url and context.
 
 ```javascript
 let DomainRobot = require("js-domainrobot-sdk").DomainRobot;
@@ -334,7 +334,7 @@ let result = await domainRobot
 
 ## Changelog
 
-For a detailed changelog, see the [CHANGELOG.md](CHANGELOG.md) file
+For a detailed changelog, see the [CHANGELOG.md](CHANGELOG.md) file.
 
 ## Copyright and license
 
