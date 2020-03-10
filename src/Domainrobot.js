@@ -1,8 +1,14 @@
 /* global require,module */
 // services
 let ContactService = require("./services/ContactService");
-let certificateService = require("./services/CertificateService");
+let CertificateService = require("./services/CertificateService");
 let DomainStudio = require("./services/DomainStudio");
+let DomainService = require("./services/DomainService");
+let SslContactService = require("./services/SslContactService");
+let ZoneService = require("./services/ZoneService");
+let TrustedAppService = require("./services/TrustedAppService");
+let PollService = require("./services/PollService");
+let TransferOutService = require("./services/TransferOutService");
 
 class DomainRobot {
   /**
@@ -15,13 +21,29 @@ class DomainRobot {
   }
 
   // contact stuff
-  contact(contactModel) {
+  contact(contactModel = null) {
     return new ContactService(contactModel, this.domainRobotConfig);
   }
 
   // certificate stuff
   certificate(certificateModel = null) {
-    return new certificateService(certificateModel, this.domainRobotConfig);
+    return new CertificateService(certificateModel, this.domainRobotConfig);
+  }
+
+  domain(domainModel = null) {
+    return new DomainService(domainModel, this.domainRobotConfig);
+  }
+
+  sslcontact(sslcontactModel = null) {
+    return new SslContactService(sslcontactModel, this.domainRobotConfig);
+  }
+
+  zone(zoneModel = null) {
+    return new ZoneService(zoneModel, this.domainRobotConfig);
+  }
+
+  trustedapp(trustedAppModel = null) {
+    return new TrustedAppService(trustedAppModel, this.domainRobotConfig);
   }
 
   domainStudio(domainStudioEnvelopeSearchRequest) {
@@ -29,6 +51,14 @@ class DomainRobot {
       domainStudioEnvelopeSearchRequest,
       this.domainRobotConfig
     );
+  }
+
+  poll() {
+      return new PollService(this.domainRobotConfig);
+  }
+
+  transferout(){
+      return new TransferOutService(this.domainRobotConfig);
   }
 }
 

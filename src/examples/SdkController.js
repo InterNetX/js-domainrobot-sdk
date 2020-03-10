@@ -59,7 +59,15 @@ class SdkController {
       let domainRobotResult = await domainRobot
         .certificate(certficateModel)
         .createRealtime();
+        
       Logger.transport("file").error("Request success", domainRobotResult);
+
+      let domainRobotResult2 = await domainRobot
+        .certificate(certficateModel)
+        .renew(certficateModel.id);
+    
+      Logger.transport("file").error("Request success", domainRobotResult2);
+
     } catch (DomainRobotException) {
       // if the request produces an error the returned object
       // will be of the Type DomainRobotException

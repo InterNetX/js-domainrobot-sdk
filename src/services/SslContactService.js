@@ -1,48 +1,47 @@
 let DomainRobotService = require("./DomainRobotService");
 
-class Contact extends DomainRobotService {
-  constructor(contactModel, domainRobotConfig) {
+class SslContact extends DomainRobotService {
+  constructor(sslContactModel, domainRobotConfig) {
     super(domainRobotConfig);
-    this.model = contactModel;
+    this.model = sslContactModel;
   }
 
   async create() {
     return await this.sendPostRequest(
-        this.domainRobotConfig.url + "/contact",
+        this.domainRobotConfig.url + "/sslcontact",
         this.model
     );
   }
 
   async update(id) {
     return await this.sendPutRequest(
-        this.domainRobotConfig.url + "/contact/" + id,
+        this.domainRobotConfig.url + "/sslcontact/" + id,
         this.model
     );
   }
 
   async delete(id) {
     return await this.sendDeleteRequest(
-        this.domainRobotConfig.url + "/contact/" + id
+        this.domainRobotConfig.url + "/sslcontact/"+ id
     );
   }
 
   async info(id) {
     return await this.sendGetRequest(
-        this.domainRobotConfig.url + "/contact/" + id
+        this.domainRobotConfig.url + "/sslcontact/" + id
     );
   }
 
   async list(keys = []) {
     let keysString = keys.join('&keys=');
-
     return await this.sendPostRequest(
-         this.domainRobotConfig.url + "/contact/_search?keys=" + keysString,
-         this.model
+        this.domainRobotConfig.url + "/sslcontact/_search?keys=" + keysString,
+        this.model
     );
   }
 
-  
+
 
 }
 
-module.exports = Contact;
+module.exports = SslContact;
