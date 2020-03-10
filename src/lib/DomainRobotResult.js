@@ -15,6 +15,14 @@ class DomainRobotResult {
 
     return true;
   }
+
+  isValidResponse() {
+      if (this.result === undefined || this.result === null) {
+          return false;
+      }
+
+      return true;
+  }
 }
 
 module.exports = DomainRobotResult;
