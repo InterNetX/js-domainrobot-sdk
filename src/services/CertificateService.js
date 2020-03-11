@@ -23,14 +23,14 @@ class certificateService extends DomainRobotService {
       this.model.csr = [matches[1], matches[2], matches[3]].join("\n");
     }
   }
-  
-  async create() {
-      this.prepareCsr();
 
-      return await this.sendPostRequest(
-          this.domainRobotConfig.url + "/certificate",
-          this.model
-      );
+  async create() {
+    this.prepareCsr();
+
+    return await this.sendPostRequest(
+      this.domainRobotConfig.url + "/certificate",
+      this.model
+    );
   }
 
   async createRealtime() {
@@ -60,54 +60,54 @@ class certificateService extends DomainRobotService {
   }
 
   async list(keys = []) {
-     let keysString = keys.join('&keys=');
+    let keysString = keys.join("&keys=");
 
-     return await this.sendPostRequest(
-         this.domainRobotConfig.url + "/certificate/_search/?keys=" + keysString,
-         this.model
-     );
+    return await this.sendPostRequest(
+      this.domainRobotConfig.url + "/certificate/_search/?keys=" + keysString,
+      this.model
+    );
   }
 
   async info(certificateId) {
     return await this.sendGetRequest(
-        this.domainRobotConfig.url + "/certificate" + certificateId
+      this.domainRobotConfig.url + "/certificate" + certificateId
     );
   }
 
   async reissue(certificateId) {
-      this.prepareCsr();
+    this.prepareCsr();
 
-      return await this.sendPutRequest(
-          this.domainRobotConfig.url + "/certificate" + certificateId,
-          this.model
-      );
+    return await this.sendPutRequest(
+      this.domainRobotConfig.url + "/certificate" + certificateId,
+      this.model
+    );
   }
 
   async delete(certificateId) {
-      this.prepareCsr();
+    this.prepareCsr();
 
-      return await this.sendDeleteRequest(
-          this.domainRobotConfig.url + "/certificate" + certificateId,
-          this.model
-      );
+    return await this.sendDeleteRequest(
+      this.domainRobotConfig.url + "/certificate" + certificateId,
+      this.model
+    );
   }
 
   async renew(certificateId) {
-      this.prepareCsr();
+    this.prepareCsr();
 
-      return await this.sendPutRequest(
-        this.domainRobotConfig.url + "/certificate/" + certificateId + "/_renew",
-        this.model
-      );
+    return await this.sendPutRequest(
+      this.domainRobotConfig.url + "/certificate/" + certificateId + "/_renew",
+      this.model
+    );
   }
-  
-  async comment(certificateId) {
-      this.prepareCsr();
 
-      return await this.sendPutRequest(
-          this.domainRobotConfig.url + "/certificate" + certificateId + "/_comment",
-          this.model
-      )
+  async comment(certificateId) {
+    this.prepareCsr();
+
+    return await this.sendPutRequest(
+      this.domainRobotConfig.url + "/certificate" + certificateId + "/_comment",
+      this.model
+    );
   }
 }
 

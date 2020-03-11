@@ -1,15 +1,20 @@
 /* global require, module, __dirname*/
 var path = require("path");
+var glob = require("glob");
 
 module.exports = {
   mode: "production",
-  entry: {
-    build: "./index.js"
-  },
+  //   entry: {
+  //     build: glob.sync("./tests/Specs/*.js")
+  //   },
+  entry: glob.sync("./tests/Specs/*.js").reduce(function(obj, el) {
+    obj[path.parse(el).name] = el;
+    return obj;
+  }, {}),
   output: {
-    path: path.resolve(__dirname, "dist"),
-    publicPath: "dist",
-    filename: "build.js"
+    path: path.resolve(__dirname, "tests/Tests"),
+    publicPath: "tests/Tests",
+    filename: "[name].js"
   },
   resolveLoader: {
     modules: ["node_modules"]

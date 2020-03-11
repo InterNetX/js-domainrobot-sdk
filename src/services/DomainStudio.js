@@ -9,24 +9,10 @@ class DomainStudio extends DomainRobotService {
   }
 
   async search() {
-    try {
-      let result = await this.axios(
-        Object.assign(
-          {
-            method: "POST",
-            url: this.domainRobotConfig.url + "/domainstudio",
-            data: this.model
-          },
-          this.axiosconfig
-        )
-      );
-      return new DomainRobotResult(result.data, result.status);
-    } catch (error) {
-      throw new DomainRobotException(
-        error.response.data,
-        error.response.status
-      );
-    }
+    return await this.sendPostRequest(
+      this.domainRobotConfig.url + "/domainstudio",
+      this.model
+    );
   }
 }
 

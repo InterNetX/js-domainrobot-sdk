@@ -23,6 +23,7 @@
 	"devDependencies": {
 		"@babel/core": "^7.7.7",
 		"@babel/preset-env": "^7.7.7",
+		"axios-mock-adapter": "^1.17.0",
 		"babel-loader": "^8.0.6",
 		"cross-env": "^6.0.3",
 		"jasmine": "^3.5.0",

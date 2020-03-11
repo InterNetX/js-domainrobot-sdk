@@ -17,11 +17,11 @@ class DomainRobotResult {
   }
 
   isValidResponse() {
-      if (this.result === undefined || this.result === null) {
-          return false;
-      }
+    if (this.result === undefined || this.result === null) {
+      return false;
+    }
 
-      return true;
+    return true;
   }
 }
 

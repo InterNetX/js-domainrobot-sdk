@@ -56,49 +56,22 @@ class DomainRobotService {
     return this;
   }
 
-  async sendGetRequest(url){
-      try {
-          let result = await this.axios(
-              Object.assign(
-                  {
-                      method: "GET",
-                      url
-                  },
-                  this.axiosconfig
-              )
-          );
-          console.log(result.data);
-          let domainRobotResult = new DomainRobotResult(result.data, result.status);
-          if(!domainRobotResult.isValidResponse()) {
-              throw new DomainRobotException({}, 500);
-          }
-
-          return domainRobotResult;
-      } catch (error) {
-          throw new DomainRobotException(
-              error.response.data,
-              error.response.status
-          );
-      }
-  }
-
-  async sendPostRequest(url, data) {
+  async sendRequest(method, url, data = null) {
     try {
       let result = await this.axios(
         Object.assign(
           {
-            method: "POST",
+            method,
             url,
             data
           },
           this.axiosconfig
         )
       );
-      console.log(result);
+
       let domainRobotResult = new DomainRobotResult(result.data, result.status);
-      
+
       if (!domainRobotResult.isValid()) {
-        
         throw new DomainRobotException({}, 500);
       }
 
@@ -111,58 +84,21 @@ class DomainRobotService {
     }
   }
 
+  async sendGetRequest(url) {
+    return this.sendRequest("GET", url);
+  }
+
+  async sendPostRequest(url, data) {
+    return this.sendRequest("POST", url, data);
+  }
+
   async sendPutRequest(url, data) {
-      try {
-          let result = await this.axios(
-              Object.assign(
-                  {
-                      method: "PUT",
-                      url,
-                      data
-                  },
-                  this.axiosconfig
-              )
-          );
-
-          let domainRobotResult = new DomainRobotResult(result.data, result.status);
-          if(!domainRobotResult.isValidResponse()) {
-              throw new DomainRobotException({}, 500);
-          }
-
-          return domainRobotResult;
-      } catch (error) {
-          throw new DomainRobotException(
-              error.response.data,
-              error.response.status
-          );
-      }
+    return this.sendRequest("PUT", url, data);
   }
 
   async sendDeleteRequest(url, data) {
-    try {
-        let result = await this.axios(
-            Object.assign(
-                {
-                    method: "DELETE",
-                    url,
-                    data
-                },
-                this.axiosconfig
-            )
-        );
-        let domainRobotResult = new DomainRobotResult(result.data, result.status);
-        if(!domainRobotResult.isValid()) {
-            throw new DomainRobotException({}, 500);
-        }
-
-        return domainRobotResult;
-    } catch (error) {
-        throw new DomainRobotException(
-            error.response.data,
-            error.response.status
-        );
-    }
-}
+    return this.sendRequest("DELETE", url, data);
+  }
 
   models() {
     const Backend = new ApiFactory(specs);

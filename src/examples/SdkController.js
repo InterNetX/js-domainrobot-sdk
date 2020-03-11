@@ -3,7 +3,12 @@
  */
 
 "use strict";
-let Domainrobot = require("js-domainrobot-sdk");
+let DomainRobot = require("@internetx/js-domainrobot-sdk").DomainRobot;
+let DomainRobotHeaders = require("@internetx/js-domainrobot-sdk")
+  .DomainRobotHeaders;
+let DomainRobotModels = require("@internetx/js-domainrobot-sdk")
+  .DomainRobotModels;
+
 const Logger = use("Logger");
 
 class SdkController {
@@ -12,17 +17,24 @@ class SdkController {
     // and provide your (AutoDNS) authentication data
     // url and auth.context is optional for non personal AutoDNS users
     // but mandatory for personal AutoDNS users
-    let domainRobot = new Domainrobot({
+    let domainRobot = new DomainRobot({
       url: "http://dev-proxy-lab.intern.autodns-lab.com:10025",
       auth: {
-        user: "dlinsenmeier",
-        password: "test12%",
+        user: "user",
+        password: "password",
         context: "9"
       }
     });
 
     // next create and fill the DomainRobot certificate model
-    let certficateModel = domainRobot.certificateModel();
+    let certficateModel = new DomainRobotModels.Certificate({
+      product: "BASIC_SSL",
+      lifetime: {
+        unit: "MONTH",
+        period: 12
+      }
+    });
+
     certficateModel.csr =
       "-----BEGIN CERTIFICATE REQUEST-----" +
       "MIICozCCAYsCAQAwXjELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUx" +
@@ -59,15 +71,14 @@ class SdkController {
       let domainRobotResult = await domainRobot
         .certificate(certficateModel)
         .createRealtime();
-        
+
       Logger.transport("file").error("Request success", domainRobotResult);
 
       let domainRobotResult2 = await domainRobot
         .certificate(certficateModel)
         .renew(certficateModel.id);
-    
-      Logger.transport("file").error("Request success", domainRobotResult2);
 
+      Logger.transport("file").error("Request success", domainRobotResult2);
     } catch (DomainRobotException) {
       // if the request produces an error the returned object
       // will be of the Type DomainRobotException
