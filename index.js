@@ -1,5 +1,4 @@
-//const Domainrobot = require("./src/Domainrobot");
-let DomainRobot = require("./src/DomainRobot");
+let DomainRobot = require("./src/Domainrobot");
 const DomainRobotHeaders = require("./src/lib/Headers");
 
 let specs = require("./src/lib/specs.json");
