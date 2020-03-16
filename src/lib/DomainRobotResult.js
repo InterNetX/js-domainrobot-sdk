@@ -9,10 +9,6 @@ class DomainRobotResult {
       return false;
     }
 
-    if (this.result.data === undefined || this.result.data[0] === undefined) {
-      return false;
-    }
-
     return true;
   }
 
