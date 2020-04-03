@@ -1,7 +1,7 @@
 /* global require,module */
 let DomainRobotService = require("./DomainRobotService");
 
-class certificateService extends DomainRobotService {
+class CertificateService extends DomainRobotService {
   constructor(certificateModel, domainRobotConfig) {
     super(domainRobotConfig);
 
@@ -111,4 +111,4 @@ class certificateService extends DomainRobotService {
   }
 }
 
-module.exports = certificateService;
+module.exports = CertificateService;

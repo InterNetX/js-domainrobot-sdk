@@ -9,6 +9,7 @@ let ZoneService = require("./services/ZoneService");
 let TrustedAppService = require("./services/TrustedAppService");
 let PollService = require("./services/PollService");
 let TransferOutService = require("./services/TransferOutService");
+let AccountingService = require ("./services/AccountingService");
 
 class DomainRobot {
   /**
@@ -59,6 +60,10 @@ class DomainRobot {
 
   transferout(){
       return new TransferOutService(this.domainRobotConfig);
+  }
+
+  accounting(subjectProductModel){
+      return new AccountingService(subjectProductModel, this.domainRobotConfig);
   }
 }
 
