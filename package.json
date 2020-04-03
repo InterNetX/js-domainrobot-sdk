@@ -1,22 +1,41 @@
 {
-  "name": "domainrobot_json_api",
-  "version": "1.0.0",
-  "description": "Domainrobot_JSON_API_for_managing_Domains_SSLCertificates_DNS_andmuch_more_",
-  "license": "Unlicense",
-  "main": "src/IXDomainRobot/index.js",
-  "scripts": {
-    "test": "mocha --recursive"
-  },
-  "browser": {
-    "fs": false
-  },
-  "dependencies": {
-    "superagent": "3.7.0",
-    "querystring": "0.2.0"
-  },
-  "devDependencies": {
-    "mocha": "~2.3.4",
-    "sinon": "1.17.3",
-    "expect.js": "~0.3.1"
-  }
+	"name": "js-domainrobot-sdk",
+	"version": "1.0.0",
+	"description": "A (node)js package for easy integration of the domainrobot API powered by InterNetX GmbH.",
+	"main": "index.js",
+	"author": "InterNetX GmbH <entwicklung@internetx.com>",
+	"homepage": "https://www.internetx.com",
+	"repository": "https://github.com/InterNetX/js-domainrobot-sdk.git",
+	"license": "MIT",
+	"scripts": {
+		"docs:dev": "vuepress dev docs",
+		"docs:build": "vuepress build docs",
+		"dev": "npm run development",
+		"development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=webpack.config.js",
+		"test": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --watch --hide-modules --config=webpack.config.js",
+		"prod": "yarn run production",
+		"prod-watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --watch --hide-modules --config=webpack.config.js",
+		"production": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=webpack.config.js"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.7.7",
+		"@babel/preset-env": "^7.7.7",
+		"axios-mock-adapter": "^1.17.0",
+		"babel-loader": "^8.0.6",
+		"cross-env": "^6.0.3",
+		"jasmine": "^3.5.0",
+		"karma": "^4.4.1",
+		"karma-chrome-launcher": "^3.1.0",
+		"karma-jasmine": "^3.1.0",
+		"karma-junit-reporter": "^2.0.1",
+		"karma-webpack": "^4.0.2",
+		"webpack": "^4.41.4",
+		"webpack-cli": "^3.3.10"
+	},
+	"dependencies": {
+		"axios": "^0.19.0"
+	}
 }
