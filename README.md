@@ -40,12 +40,26 @@ yarn add js-domainrobot-sdk
 npm install js-domainrobot-sdk
 ```
 
-### Requires
+### Javascript/Node Requires
 
 ```javascript
 let DomainRobot = require("js-domainrobot-sdk").DomainRobot;
 let DomainRobotHeaders = require("js-domainrobot-sdk").DomainRobotHeaders;
 let DomainRobotModels = require("js-domainrobot-sdk").DomainRobotModels;
+```
+
+### Typescript import and configuration
+
+```typescript
+import { DomainRobot, DomainRobotModels, DomainRobotHeaders } from "js-domainrobot-sdk";
+```
+
+In tsconfig.json add this to *compilerOptions*
+
+```typescript
+"compilerOptions": {
+    "allowSyntheticDefaultImports": true
+},
 ```
 
 ## Usage
