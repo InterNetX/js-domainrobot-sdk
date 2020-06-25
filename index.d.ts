@@ -74,14 +74,43 @@ export declare class DomainStudio {
     search(): DomainRobotResult;
 } 
 
-export declare class DomainRobotResult{
-    constructor(result: object, status: object);
+export declare class DomainRobotResult {
+    constructor(result: resultObject, status: String);
     isValid(): Boolean;
     isValidResponse(): Boolean;
 }
-export interface DomainRobotResult{
-    result: object;
-    status: object;
+
+export interface DomainRobotException {
+	error: {
+        stid: String;
+        // messages can vary depending on the task, so this is the closest
+        // defintion we can provide here
+		messages: Array<object>;
+		status: {
+			code: String;
+			text: String;
+			type: String;
+		};
+		ctid: String;
+	};
+	status: Number;
+}
+
+export type resultObject = {
+    stid: String;
+    status: {
+        code: String;
+        text: String;
+        type: String;
+    };
+    // data will vary depending on the task, so this is the closest
+    // defintion we can provide here
+    data: Array<object>;
+    ctid: String;
+};
+export interface DomainRobotResult {
+	result: resultObject;
+	status: Number;
 }
 
 export type domainRobotConfig = {
@@ -92,8 +121,6 @@ export type domainRobotConfig = {
         context?: Number;
     }
 }
-// export declare type DomainRobotModels = any;
-// export declare type Certificate = any;
 
 export class DomainRobot {
     constructor(domainRobotConfig: domainRobotConfig);
@@ -184,7 +211,7 @@ export namespace DomainRobotModels {
         created?: String;
         updated?: String;
         name?: String;
-        functionCodes?: [String];
+        functionCodes?: String[];
     }
     // TODO: declare constants
     export class AuEligibilityIdTypeConstants{constructor()}
@@ -219,22 +246,22 @@ export namespace DomainRobotModels {
         vatNumber?: String;
         gender?: string;
         title?: String;
-        addressLines?: [String];
+        addressLines?: String[];
         city?: String;
         state?: String;
         country?: String;
         phone?: Phone;
         fax?: Phone;
-        emails?: [String];
-        billingEmails?: [String];
+        emails?: String[];
+        billingEmails?: String[];
         payment?: String;
         paymentMode?: String;
         paymentCurrency?: Currency;
         invoiceLanguage?: String;
         taxable?: Boolean;
         card?: Card;
-        contracts?: [CustomerContract];
-        billingUsers?: [BasicUser];
+        contracts?: CustomerContract[];
+        billingUsers?: BasicUser[];
         account?: Account;
         clearAccount?: ClearAccountPeriod;
         fname?: String;
@@ -283,110 +310,110 @@ export namespace DomainRobotModels {
 
     export class BulkBackupMxDeleteRequest{constructor(config?: BulkBackupMxDeleteRequest)}
     export interface BulkBackupMxDeleteRequest{
-        objects?: [BackupMx];
+        objects?: BackupMx[];
         query?: Query
     }
 
     export class BulkBackupMxPostRequest{constructor(config?: BulkBackupMxPostRequest)}
     export interface BulkBackupMxPostRequest{
-        objects?: [BackupMx];
+        objects?: BackupMx[];
         template?: BackupMx
     }
 
     export class BulkDomainCancelationDeleteRequest{constructor(config?: BulkDomainCancelationDeleteRequest)}
     export interface BulkDomainCancelationDeleteRequest{
-        objects?: [DomainCancelation];
+        objects?: DomainCancelation[];
         query?: Query
     }
 
     export class BulkDomainCancelationPatchRequest{constructor(config?: BulkDomainCancelationPatchRequest)}
     export interface BulkDomainCancelationPatchRequest{
-        objects?: [DomainCancelation];
+        objects?: DomainCancelation[];
         template?: DomainCancelation;
         query?:Query
     }
 
     export class BulkDomainCancelationPostRequest{constructor(config?: BulkDomainCancelationPostRequest)}
     export interface BulkDomainCancelationPostRequest{
-        objects?: [DomainCancelation];
+        objects?: DomainCancelation[];
         template?: DomainCancelation;
     }
 
     export class BulkDomainCommentRequest{constructor(config?: BulkDomainCommentRequest)}
     export interface BulkDomainCommentRequest{
-        objects?: [Domain];
+        objects?: Domain[];
         template?: Domain;
         query?: Query
     }
 
     export class BulkDomainDeleteRequest{constructor(config?: BulkDomainDeleteRequest)}
     export interface BulkDomainDeleteRequest{
-        objects?: [Domain];
+        objects?: Domain[];
         query?: Query;
     }
 
     export class BulkDomainPatchRequest{constructor(config?: BulkDomainPatchRequest)}
     export interface BulkDomainPatchRequest{
-        objects?: [Domain];
+        objects?: Domain[];
         template?: Domain;
         query?: Query;
-        modifiers: [Modifier]
+        modifiers: Modifier[]
     }
 
     export class BulkDomainPostRequest{constructor(config?: BulkDomainPostRequest)}
     export interface BulkDomainPostRequest{
-        objects?: [Domain];
+        objects?: Domain[];
         template?: Domain;
     }
 
     export class BulkMailProxyDeleteRequest{constructor(config?: BulkMailProxyDeleteRequest)}
     export interface BulkMailProxyDeleteRequest{
-        objects?: [MailProxy];
+        objects?: MailProxy[];
         query?: Query;
     }
 
     export class BulkMailProxyPatchRequest{constructor(config?: BulkMailProxyPatchRequest)}
     export interface BulkMailProxyPatchRequest{
-        objects?: [MailProxy];
+        objects?: MailProxy[];
         template?: MailProxy;
         query?: Query
     }
 
     export class BulkMailProxyPostRequest{constructor(config?: BulkMailProxyPostRequest)}
     export interface BulkMailProxyPostRequest{
-        objects?: [MailProxy];
+        objects?: MailProxy[];
         template?: MailProxy;
     }
 
     export class BulkRedirectDeleteRequest{constructor(config?: BulkRedirectDeleteRequest)}
     export interface BulkRedirectDeleteRequest{
-        objects?: [Redirect];
+        objects?: Redirect[];
         query?: Query;
     }
 
     export class BulkRedirectPatchRequest{constructor(config?: BulkRedirectPatchRequest)}
     export interface BulkRedirectPatchRequest{
-        objects?: [Redirect];
+        objects?: Redirect[];
         template?: Redirect;
         query?: Query
     }
 
     export class BulkRedirectPostRequest{constructor(config?: BulkRedirectPostRequest)}
     export interface BulkRedirectPostRequest{
-        objects?: [Redirect];
+        objects?: Redirect[];
         template?: Redirect;
     }
 
     export class BulkZoneCommentRequest{constructor(config?: BulkZoneCommentRequest)}
     export interface BulkZoneCommentRequest{
-        objects?: [Zone];
+        objects?: Zone[];
         template?: Zone;
         query?: Query
     }
 
     export class BulkZoneDeleteRequest{constructor(config?: BulkZoneDeleteRequest)}
     export interface BulkRedirectBulkZoneDeleteRequestDeleteRequest{
-        objects?: [Zone];
+        objects?: Zone[];
         query?: Query;
     }
 
@@ -395,12 +422,12 @@ export namespace DomainRobotModels {
         objects?: [ZoneBasePatchRequest];
         template?: ZoneBasePatchRequest;
         query?: Query;
-        modifiers: [Modifier]
+        modifiers: Modifier[]
     }
 
     export class BulkZonePostRequest{constructor(config?: BulkZonePostRequest)}
     export interface BulkZonePostRequest{
-        objects?: [Zone];
+        objects?: Zone[];
         template?: Zone;
     }
     // TODO: declare constants
@@ -437,7 +464,7 @@ export namespace DomainRobotModels {
         dns?: String;
         fileName?: String;
         fileContent?: String;
-        approverEmails?: [String];
+        approverEmails?: String[];
         provisioning?: Boolean
     }
 
@@ -484,7 +511,7 @@ export namespace DomainRobotModels {
     export interface CertificateData{
         plain?: String;
         name?: String;
-        san?: [String];
+        san?: String[];
         histories?: [CertificateHistory];
         keySize?:Number;
         countryCode?: String;
@@ -539,14 +566,14 @@ export namespace DomainRobotModels {
         email?: String;
         protection?: ContactProtectionConstants;
         sip?: String;
-        remarks?: [String];
+        remarks?: String[];
         domainsafe?: Boolean;
         confirmOwnerConsent?: Boolean;
         comment?: String;
         verification?: String; //GenericStatusConstants
         fname?: String;
         lname?: String;
-        address?: [String];
+        address?: String[];
         pcod?: String;
         phone?: String;
         fax?: String;
@@ -799,22 +826,22 @@ export namespace DomainRobotModels {
         vatNumber?: String;
         gender?: String; //GenderConstants
         title?: String;
-        addressLines?: [String];
+        addressLines?: String[];
         city?: String;
         state?: String;
         country?: String;
         phone?: Phone;
         fax?: Phone;
         emails?: String;
-        billingEmails?: [String];
+        billingEmails?: String[];
         payment?: String; //PaymentConstants
         paymentMode?: String;
         paymentCurrency?: Currency;
         invoiceLanguage?: String;
         taxable?: Boolean;
         card?: Card;
-        contracts?: [CustomerContract];
-        billingUsers?: [BasicUser],
+        contracts?: CustomerContract[];
+        billingUsers?: BasicUser[],
         accoun?: Account,
         clearAccount?: String; //PClearAccountPeriod;
         fname?: String;
@@ -868,8 +895,8 @@ export namespace DomainRobotModels {
         idn?: String;
         nicMemberLabel?: String;
         registryStatus?: String; //RegistryStatusConstants
-        nameServers?: [NameServer];
-        nameServerEntries?: [String];
+        nameServers?: NameServer[];
+        nameServerEntries?: String[];
         period?: TimePeriod;
         trustee?: Boolean;
         privacy?: Boolean;
@@ -911,7 +938,7 @@ export namespace DomainRobotModels {
         validCertificate?: Boolean;
         cancelationStatus?: String; //CancelationStatusConstants
         autoRenewStatus?: String; //AutoRenewStatusConstants
-        dnssecData?: [DNSSec];
+        dnssecData?: DNSSec[];
         zone?: Zone;
     }
 
@@ -970,12 +997,12 @@ export namespace DomainRobotModels {
         updater?: BasicUser;
         name?: String;
         idn?: String;
-        notificationMobiles?: [Phone],
+        notificationMobiles?: Phone[],
         ocval?: Boolean;
         cancelation?: Boolean;
         removed?: Boolean;
-        monitoringSetups?: [DomainMonitoringSetup],
-        notificationEmails?: [String];
+        monitoringSetups?: DomainMonitoringSetup[],
+        notificationEmails?: String[];
     }
 
     export class DomainMonitoringSetup{constructor(config?: DomainMonitoringSetup)}
@@ -1007,8 +1034,8 @@ export namespace DomainRobotModels {
         idn?: String;
         nicMemberLabel?: String;
         registryStatus?: String; //RegistryStatusConstants
-        nameServers?: [NameServer];
-        nameServerEntries?: [String];
+        nameServers?: NameServer[];
+        nameServerEntries?: String[];
         period?: TimePeriod;
         trustee?: Boolean;
         privacy?: Boolean;
@@ -1052,21 +1079,21 @@ export namespace DomainRobotModels {
         validCertificate?: Boolean;
         cancelationStatus?: String; //CancelationStatusConstants
         autoRenewStatus?: String; //AutoRenewStatusConstants
-        dnssecData?: [DNSSec];
+        dnssecData?: DNSSec[];
         zone?: Zone;
     }
 
     export class DomainServices{constructor(config?: DomainServices)}
     export interface DomainServices{
-        backupMx?: [BackupMx];
-        mailProxy?: [MailProxy];
-        redirect?: [Redirect];
-        domainMonitoring?: [DomainMonitoring];
+        backupMx?: BackupMx[];
+        mailProxy?: MailProxy[];
+        redirect?: Redirect[];
+        domainMonitoring?: DomainMonitoring[];
     }
 
     export class DomainServicesUpdate{constructor(config?: DomainServicesUpdate)}
     export interface DomainServicesUpdate{
-        domains?: [Domain];
+        domains?: Domain[];
         servicesAdd?: DomainServices;
         servicesRem?: DomainServices;
     }
@@ -1086,40 +1113,40 @@ export namespace DomainRobotModels {
 
     export class DomainStudioSourceGeo{constructor(config?: DomainStudioSourceGeo)}
     export interface DomainStudioSourceGeo{
-        services?: [DomainEnvelopeSearchService];
+        services?: DomainEnvelopeSearchService[];
         max?: Number;
     }
 
     export class DomainStudioSourceInitial{constructor(config?: DomainStudioSourceInitial)}
     export interface DomainStudioSourceInitial{
-        services?: [String]; //[DomainEnvelopeSearchService];
-        tlds?: [String];
+        services?: String[]; //DomainEnvelopeSearchService[];
+        tlds?: String[];
     }
 
     export class DomainStudioSourcePremium{constructor(config?: DomainStudioSourcePremium)}
     export interface DomainStudioSourcePremium{
-        services?: [String]; //[DomainEnvelopeSearchService];
-        promoTld?: [String];
-        topTlds?: [String];
+        services?: String[]; //DomainEnvelopeSearchService[];
+        promoTld?: String[];
+        topTlds?: String[];
         max?: Number;
     }
 
     export class DomainStudioSourceSimilar{constructor(config?: DomainStudioSourceSimilar)}
     export interface DomainStudioSourceSimilar{
-        services?: [String]; //[DomainEnvelopeSearchService];
+        services?: String[]; //DomainEnvelopeSearchService[];
         max?: Number;
     }
 
     export class DomainStudioSourceSuggestion{constructor(config?: DomainStudioSourceSuggestion)}
     export interface DomainStudioSourceSuggestion{
-        services?: [String]; //[DomainEnvelopeSearchService];
-        language?: [String];
+        services?: String[]; //DomainEnvelopeSearchService[];
+        language?: String[];
         max?: Number;
         maxSldLength?: Number;
         useDash?: Boolean;
         useNumber?: Boolean;
         useIdn?: Boolean;
-        tlds?: [String];
+        tlds?: String[];
     }
 
     export class DomainStudioSources{constructor(config?: DomainStudioSources)}
@@ -1169,7 +1196,7 @@ export namespace DomainRobotModels {
         discountable?: Boolean;
         logId?: Number;
         refund?: Number;
-        priceCondition?: [PriceServiceEntity];
+        priceCondition?: PriceServiceEntity[];
         comment?: String;
         normalPrice?: ExchangedPrice;
         valid?: String;
@@ -1229,8 +1256,8 @@ export namespace DomainRobotModels {
         confirmed?: String;
         confirmIp?: InetAddress;
         failed?: String;
-        domain?: [ContactVerificationDomain];
-        verificationMail?: [ContactVerificationMessage];
+        domain?: ContactVerificationDomain[];
+        verificationMail?: ContactVerificationMessage[];
         comment?: String;
         action?: String;
         handle?: Contact;
@@ -1251,7 +1278,7 @@ export namespace DomainRobotModels {
         layoutAddon?: Configuration;
         name?: String;
         status?: String; //Id4MeAgentStatus
-        records?: [String];
+        records?: String[];
     }
     //TODO: define constants
     export class Id4MeAgentStatus{constructor()}
@@ -1273,7 +1300,7 @@ export namespace DomainRobotModels {
         name?: String;
         status?: String; //IdentityStatus',
         language?: String;
-        record?: [String];
+        record?: String[];
     }
 
     //TODO: define constants
@@ -1333,7 +1360,7 @@ export namespace DomainRobotModels {
         status?: String;//JobStatusConstants;
         subStatus?: String;
         execution?: String;
-        events?: [WorkflowEvent];
+        events?: WorkflowEvent[];
         subType?: String;
         action?: String;
         id?: Number;
@@ -1346,350 +1373,350 @@ export namespace DomainRobotModels {
     export class JsonResponseData{constructor(config?: JsonResponseData)}
     export interface JsonResponseData{
         stid?: String;
-        messages?: [Message];
+        messages?: Message[];
         status?: ResponseStatus;
         object?: ResponseObject;
-        data?: [object],
+        data?: object[],
         ctid?: String;
     }
 
     export class JsonResponseDataBackupMx{constructor(config?: JsonResponseDataBackupMx)}
     export interface JsonResponseDataBackupMx{
         stid?: String;
-        messages?: [Message];
+        messages?: Message[];
         status?: ResponseStatus;
         object?: ResponseObject;
-        data?: [BackupMx];
+        data?: BackupMx[];
         ctid?: String;
     }
 
     export class JsonResponseDataBasicDocument{constructor(config?: JsonResponseDataBasicDocument)}
     export interface JsonResponseDataBasicDocument{
         stid?: String;
-        messages?: [Message];
+        messages?: Message[];
         status?: ResponseStatus;
         object?: ResponseObject;
-        data?: [BasicDocument];
+        data?: BasicDocument[];
         ctid?: String;
     }
 
     export class JsonResponseDataCertificate{constructor(config?: JsonResponseDataCertificate)}
     export interface JsonResponseDataCertificate{
         stid?: String;
-        messages?: [Message];
+        messages?: Message[];
         status?: ResponseStatus;
         object?: ResponseObject;
-        data?: [Certificate];
+        data?: Certificate[];
         ctid?: String;
     }
 
     export class JsonResponseDataCertificateData{constructor(config?: JsonResponseDataCertificateData)}
     export interface JsonResponseDataCertificateData{
         stid?: String;
-        messages?: [Message];
+        messages?: Message[];
         status?: ResponseStatus;
         object?: ResponseObject;
-        data?: [CertificateData];
+        data?: CertificateData[];
         ctid?: String;
     }
 
     export class JsonResponseDataContact{constructor(config?: JsonResponseDataContact)}
     export interface JsonResponseDataContact{
         stid?: String;
-        messages?: [Message];
+        messages?: Message[];
         status?: ResponseStatus;
         object?: ResponseObject;
-        data?: [Contact];
+        data?: Contact[];
         ctid?: String;
     }
 
     export class JsonResponseDataDomain{constructor(config?: JsonResponseDataDomain)}
     export interface JsonResponseDataDomain{
         stid?: String;
-        messages?: [Message];
+        messages?: Message[];
         status?: ResponseStatus;
         object?: ResponseObject;
-        data?: [Domain];
+        data?: Domain[];
         ctid?: String;
     }
 
     export class JsonResponseDataDomainCancelation{constructor(config?: JsonResponseDataDomainCancelation)}
     export interface JsonResponseDataDomainCancelation{
         stid?: String;
-        messages?: [Message];
+        messages?: Message[];
         status?: ResponseStatus;
         object?: ResponseObject;
-        data?: [DomainCancelation];
+        data?: DomainCancelation[];
         ctid?: String;
     }
 
     export class JsonResponseDataDomainEnvelope{constructor(config?: JsonResponseDataDomainEnvelope)}
     export interface JsonResponseDataDomainEnvelope{
         stid?: String;
-        messages?: [Message];
+        messages?: Message[];
         status?: ResponseStatus;
         object?: ResponseObject;
-        data?: [DomainEnvelope];
+        data?: DomainEnvelope[];
         ctid?: String;
     }
 
     export class JsonResponseDataDomainRestore{constructor(config?: JsonResponseDataDomainRestore)}
     export interface JsonResponseDataDomainRestore{
         stid?: String;
-        messages?: [Message];
+        messages?: Message[];
         status?: ResponseStatus;
         object?: ResponseObject;
-        data?: [DomainRestore];
+        data?: DomainRestore[];
         ctid?: String;
     }
 
     export class JsonResponseDataHandleVerification{constructor(config?: JsonResponseDataHandleVerification)}
     export interface JsonResponseDataHandleVerification{
         stid?: String;
-        messages?: [Message];
+        messages?: Message[];
         status?: ResponseStatus;
         object?: ResponseObject;
-        data?: [HandleVerification];
+        data?: HandleVerification[];
         ctid?: String;
     }
 
     export class JsonResponseDataId4MeAgent{constructor(config?: JsonResponseDataId4MeAgent)}
     export interface JsonResponseDataId4MeAgent{
         stid?: String;
-        messages?: [Message];
+        messages?: Message[];
         status?: ResponseStatus;
         object?: ResponseObject;
-        data?: [Id4MeAgent];
+        data?: Id4MeAgent[];
         ctid?: String;
     }
 
     export class JsonResponseDataId4meIdentity{constructor(config?: JsonResponseDataId4meIdentity)}
     export interface JsonResponseDataId4meIdentity{
         stid?: String;
-        messages?: [Message];
+        messages?: Message[];
         status?: ResponseStatus;
         object?: ResponseObject;
-        data?: [Id4meIdentity];
+        data?: Id4meIdentity[];
         ctid?: String;
     }
 
     export class JsonResponseDataInvoice{constructor(config?: JsonResponseDataInvoice)}
     export interface JsonResponseDataInvoice{
         stid?: String;
-        messages?: [Message];
+        messages?: Message[];
         status?: ResponseStatus;
         object?: ResponseObject;
-        data?: [Invoice];
+        data?: Invoice[];
         ctid?: String;
     }
 
     export class JsonResponseDataJsonNoData{constructor(config?: JsonResponseDataJsonNoData)}
     export interface JsonResponseDataJsonNoData{
         stid?: String;
-        messages?: [Message];
+        messages?: Message[];
         status?: ResponseStatus;
         object?: ResponseObject;
-        data?: [JsonNoData];
+        data?: JsonNoData[];
         ctid?: String;
     }
 
     export class JsonResponseDataListJsonResponseDataBackupMx{constructor(config?: JsonResponseDataListJsonResponseDataBackupMx)}
     export interface JsonResponseDataListJsonResponseDataBackupMx{
         stid?: String;
-        messages?: [Message];
+        messages?: Message[];
         status?: ResponseStatus;
         object?: ResponseObject;
-        data?: [JsonResponseDataBackupMx];
+        data?: JsonResponseDataBackupMx[];
         ctid?: String;
     }
 
     export class JsonResponseDataListJsonResponseDataDomain{constructor(config?: JsonResponseDataListJsonResponseDataDomain)}
     export interface JsonResponseDataListJsonResponseDataDomain{
         stid?: String;
-        messages?: [Message];
+        messages?: Message[];
         status?: ResponseStatus;
         object?: ResponseObject;
-        data?: [JsonResponseDataDomain];
+        data?: JsonResponseDataDomain[];
         ctid?: String;
     }
 
     export class JsonResponseDataListJsonResponseDataDomainCancelation{constructor(config?: JsonResponseDataListJsonResponseDataDomainCancelation)}
     export interface JsonResponseDataListJsonResponseDataDomainCancelation{
         stid?: String;
-        messages?: [Message];
+        messages?: Message[];
         status?: ResponseStatus;
         object?: ResponseObject;
-        data?: [JsonResponseDataDomainCancelation];
+        data?: JsonResponseDataDomainCancelation[];
         ctid?: String;
     }
 
     export class JsonResponseDataListJsonResponseDataMailProxy{constructor(config?: JsonResponseDataListJsonResponseDataMailProxy)}
     export interface JsonResponseDataListJsonResponseDataMailProxy{
         stid?: String;
-        messages?: [Message];
+        messages?: Message[];
         status?: ResponseStatus;
         object?: ResponseObject;
-        data?: [JsonResponseDataMailProxy];
+        data?: JsonResponseDataMailProxy[];
         ctid?: String;
     }
 
     export class JsonResponseDataListJsonResponseDataRedirect{constructor(config?: JsonResponseDataListJsonResponseDataRedirect)}
     export interface JsonResponseDataListJsonResponseDataRedirect{
         stid?: String;
-        messages?: [Message];
+        messages?: Message[];
         status?: ResponseStatus;
         object?: ResponseObject;
-        data?: [JsonResponseDataRedirect];
+        data?: JsonResponseDataRedirect[];
         ctid?: String;
     }
 
     export class JsonResponseDataListJsonResponseDataZone{constructor(config?: JsonResponseDataListJsonResponseDataZone)}
     export interface JsonResponseDataListJsonResponseDataZone{
         stid?: String;
-        messages?: [Message];
+        messages?: Message[];
         status?: ResponseStatus;
         object?: ResponseObject;
-        data?: [JsonResponseDataZone];
+        data?: JsonResponseDataZone[];
         ctid?: String;
     }
 
     export class JsonResponseDataMailProxy{constructor(config?: JsonResponseDataMailProxy)}
     export interface JsonResponseDataMailProxy{
         stid?: String;
-        messages?: [Message];
+        messages?: Message[];
         status?: ResponseStatus;
         object?: ResponseObject;
-        data?: [MailProxy];
+        data?: MailProxy[];
         ctid?: String;
     }
 
     export class JsonResponseDataOTPAuth{constructor(config?: JsonResponseDataOTPAuth)}
     export interface JsonResponseDataOTPAuth{
         stid?: String;
-        messages?: [Message];
+        messages?: Message[];
         status?: ResponseStatus;
         object?: ResponseObject;
-        data?: [OTPAuth];
+        data?: OTPAuth[];
         ctid?: String;
     }
 
     export class JsonResponseDataObjectJob{constructor(config?: JsonResponseDataObjectJob)}
     export interface JsonResponseDataObjectJob{
         stid?: String;
-        messages?: [Message];
+        messages?: Message[];
         status?: ResponseStatus;
         object?: ResponseObject;
-        data?: [ObjectJob];
+        data?: ObjectJob[];
         ctid?: String;
     }
 
     export class JsonResponseDataPeriodicBilling{constructor(config?: JsonResponseDataPeriodicBilling)}
     export interface JsonResponseDataPeriodicBilling{
         stid?: String;
-        messages?: [Message];
+        messages?: Message[];
         status?: ResponseStatus;
         object?: ResponseObject;
-        data?: [PeriodicBilling];
+        data?: PeriodicBilling[];
         ctid?: String;
     }
 
     export class JsonResponseDataPollMessage{constructor(config?: JsonResponseDataPollMessage)}
     export interface JsonResponseDataPollMessage{
         stid?: String;
-        messages?: [Message];
+        messages?: Message[];
         status?: ResponseStatus;
         object?: ResponseObject;
-        data?: [PollMessage];
+        data?: PollMessage[];
         ctid?: String;
     }
 
     export class JsonResponseDataRedirect{constructor(config?: JsonResponseDataRedirect)}
     export interface JsonResponseDataRedirect{
         stid?: String;
-        messages?: [Message];
+        messages?: Message[];
         status?: ResponseStatus;
         object?: ResponseObject;
-        data?: [Redirect];
+        data?: Redirect[];
         ctid?: String;
     }
 
     export class JsonResponseDataSslContact{constructor(config?: JsonResponseDataSslContact)}
     export interface JsonResponseDataSslContact{
         stid?: String;
-        messages?: [Message];
+        messages?: Message[];
         status?: ResponseStatus;
         object?: ResponseObject;
-        data?: [SslContact];
+        data?: SslContact[];
         ctid?: String;
     }
 
     export class JsonResponseDataString{constructor(config?: JsonResponseDataString)}
     export interface JsonResponseDataString{
         stid?: String;
-        messages?: [Message];
+        messages?: Message[];
         status?: ResponseStatus;
         object?: ResponseObject;
-        data?: [string];
+        data?: String[];
         ctid?: String;
     }
 
     export class JsonResponseDataTransfer{constructor(config?: JsonResponseDataTransfer)}
     export interface JsonResponseDataTransfer{
         stid?: String;
-        messages?: [Message];
+        messages?: Message[];
         status?: ResponseStatus;
         object?: ResponseObject;
-        data?: [Transfer];
+        data?: Transfer[];
         ctid?: String;
     }
 
     export class JsonResponseDataTransferOut{constructor(config?: JsonResponseDataTransferOut)}
     export interface JsonResponseDataTransferOut{
         stid?: String;
-        messages?: [Message];
+        messages?: Message[];
         status?: ResponseStatus;
         object?: ResponseObject;
-        data?: [TransferOut];
+        data?: TransferOut[];
         ctid?: String;
     }
 
     export class JsonResponseDataTrustedApplication{constructor(config?: JsonResponseDataTrustedApplication)}
     export interface JsonResponseDataTrustedApplication{
         stid?: String;
-        messages?: [Message];
+        messages?: Message[];
         status?: ResponseStatus;
         object?: ResponseObject;
-        data?: [TrustedApplication];
+        data?: TrustedApplication[];
         ctid?: String;
     }
 
     export class JsonResponseDataUser{constructor(config?: JsonResponseDataUser)}
     export interface JsonResponseDataUser{
         stid?: String;
-        messages?: [Message];
+        messages?: Message[];
         status?: ResponseStatus;
         object?: ResponseObject;
-        data?: [User];
+        data?: User[];
         ctid?: String;
     }
 
     export class JsonResponseDataVoid{constructor(config?: JsonResponseDataVoid)}
     export interface JsonResponseDataVoid{
         stid?: String;
-        messages?: [Message];
+        messages?: Message[];
         status?: ResponseStatus;
         object?: ResponseObject;
-        data?: [Void];
+        data?: Void[];
         ctid?: String;
     }
 
     export class JsonResponseDataZone{constructor(config?: JsonResponseDataZone)}
     export interface JsonResponseDataZone{
         stid?: String;
-        messages?: [Message];
+        messages?: Message[];
         status?: ResponseStatus;
         object?: ResponseObject;
-        data?: [Zone];
+        data?: Zone[];
         ctid?: String;
     }
 
@@ -1703,7 +1730,7 @@ export namespace DomainRobotModels {
 
     export class MailList{constructor(config?: MailList)}
     export interface MailList{
-        emails?: [String];
+        emails?: String[];
     }
 
     export class MailProxy{constructor(config?: object)}
@@ -1736,8 +1763,8 @@ export namespace DomainRobotModels {
     export class Message{constructor(config?: Message)}
     export interface Message{
         text?: String;
-        messages?: [Message];
-        objects?: [GenericObject];
+        messages?: Message[];
+        objects?: GenericObject[];
         code?: String;
         status?: String; //StatusType
     }
@@ -1758,7 +1785,7 @@ export namespace DomainRobotModels {
     export interface NameServer{
         name?: String;
         ttl?: Number;
-        ipAddresses?: [String];
+        ipAddresses?: String[];
     }
     //TODO: define constants
     export class NameserverActionConstants{constructor()}
@@ -1785,7 +1812,7 @@ export namespace DomainRobotModels {
         timeout?: Number;
         digits?: Number;
         secret?: String;
-        tokens?: [String];
+        tokens?: String[];
         qrCode?: BasicDocument;
     }
 
@@ -1817,7 +1844,7 @@ export namespace DomainRobotModels {
         period?: TimePeriod;
         articleTypeLabel?: String;
         articleLabe?: String;
-        item?: [PeriodicBilling];
+        item?: PeriodicBilling[];
         businessCase?: String;
     }
 
@@ -1841,7 +1868,7 @@ export namespace DomainRobotModels {
         notify?: NotifyMessage;
         stid?: String;
         ctid?: String;
-        messages?: [Message];
+        messages?: Message[];
         flags?: String;
         created?: String;
         object?: ResponseObject;
@@ -1876,9 +1903,9 @@ export namespace DomainRobotModels {
 
     export class Query{constructor(config?: Query)}
     export interface Query{
-        filters?: [QueryFilter];
+        filters?: QueryFilter[];
         view?: QueryView;
-        orders?: [QueryOrder];
+        orders?: QueryOrder[];
     }
 
     export class QueryFilter{constructor(config?: QueryFilter)}
@@ -1887,13 +1914,13 @@ export namespace DomainRobotModels {
         value?: String;
         operator?: String; //Operator
         link?: String; //ConditionType
-        filters?: [QueryFilter];
+        filters?: QueryFilter[];
     }
 
     export class QueryOrder{constructor(config?: QueryOrder)}
     export interface QueryOrder{
         key?: String;
-        ins?: [String];
+        ins?: String[];
         type?: String; //OrderType
     }
 
@@ -1920,7 +1947,7 @@ export namespace DomainRobotModels {
         mode?: String; //RedirectModeConstants
         domain?: String;
         title?: String;
-        backups?: [String];
+        backups?: String[];
         sourceIdn?: String;
         targetIdn?: String;
         lastSeen?: String;
@@ -1968,7 +1995,7 @@ export namespace DomainRobotModels {
         confirmUseragent?: String;
         confirmChecked?: Boolean;
         expire?: String;
-        histories?: [SEPAMandate];
+        histories?: SEPAMandate[];
         accountHolder?: String;
         iban?: String;
         bic?: String;
@@ -2021,7 +2048,7 @@ export namespace DomainRobotModels {
         email?: String;
         title?: String;
         organization?: String;
-        address?: [String];
+        address?: String[];
         pcode?: String;
         city?: String;
         country?: String;
@@ -2052,9 +2079,9 @@ export namespace DomainRobotModels {
         period?: TimePeriod;
         articleTypeLabel?: String;
         articleLabel?: String;
-        item?: [PeriodicBilling];
-        limits?: [BillingObjectLimit];
-        acls?: [UserAcl];
+        item?: PeriodicBilling[];
+        limits?: BillingObjectLimit[];
+        acls?: UserAcl[];
         variant?: String;
         businessCase?: String;
     }
@@ -2156,11 +2183,11 @@ export namespace DomainRobotModels {
         lock?: String; //UserLock
         acls?: UserAcls;
         profiles?: UserProfileViews
-        ancestors?: [BasicUser];
+        ancestors?: BasicUser[];
         customer?: BasicCustomer;
-        nameServerGroup?: [VirtualNameServerGroup];
-        subscriptions?: [Subscription];
-        applications?: [TrustedApplication];
+        nameServerGroup?: VirtualNameServerGroup[];
+        subscriptions?: Subscription[];
+        applications?: TrustedApplication[];
         user?: String;
         languag?: String;
         parent?: User;
@@ -2169,19 +2196,19 @@ export namespace DomainRobotModels {
     export class UserAcl{constructor(config?: UserAcl)}
     export interface UserAcl{
         functionCode?: String;
-        children?: [BasicUser];
+        children?: BasicUser[];
         childrenLocked?: Boolean;
         userLocked?: Boolean;
         effective?: Boolean;
-        childrenRem?: [BasicUser];
-        childrenAdd?: [BasicUser];
+        childrenRem?: BasicUser[];
+        childrenAdd?: BasicUser[];
         restriction?: String;
     }
 
     export class UserAcls{constructor(config?: UserAcls)}
     export interface UserAcls{
         user?: BasicUser;
-        acls?:[UserAcl]; 
+        acls?:UserAcl[]; 
     }
 
     export class UserDetails{constructor(config?: UserDetails)}
@@ -2208,7 +2235,7 @@ export namespace DomainRobotModels {
 
     export class UserProfileViews{constructor(config?: UserProfileViews)}
     export interface UserProfileViews{
-        profiles?:[UserProfile]; 
+        profiles?:UserProfile[]; 
     }
 
     export class VhostCertificate{constructor(config?: VhostCertificate)}
@@ -2228,7 +2255,7 @@ export namespace DomainRobotModels {
         active?: Boolean;
         name?: String; //Name
         mainAddres?: String; //InetAddress
-        ipAddresse?: [String];
+        ipAddresse?: String[];
     }
 
     export class VirtualNameServerGroup{constructor(config?: VirtualNameServerGroup)}
@@ -2239,7 +2266,7 @@ export namespace DomainRobotModels {
         updater?: BasicUser;
         name?: String;
         useDefaultIps?: Number;
-        nameServers?: [VirtualNameServer];
+        nameServers?: VirtualNameServer[];
         systemNameServerGroup?: PhysicalNameServerGroup;
     }
 
@@ -2293,14 +2320,14 @@ export namespace DomainRobotModels {
         domainsafe?: Boolean;
         source?: String;
         sourceVirtualHostname?: String;
-        nameServers?: [NameServer];
+        nameServers?: NameServer[];
         main?: String; //MainIp
         wwwInclude?: Boolean;
         virtualNameServer?: String;
-        freeTex?: [String];
+        freeTex?: String[];
         action?: String; //NameserverActionConstants
-        grants?: [String];
-        resourceRecords?: [ResourceRecord];
+        grants?: String[];
+        resourceRecords?: ResourceRecord[];
         roid?: Number;
     }
 
@@ -2321,25 +2348,25 @@ export namespace DomainRobotModels {
         domainsafe?: Boolean;
         source?: String; 
         sourceVirtualHostname?: String; 
-        zoneGrantsAdd?: [String]; 
-        zoneGrantsRem?: [String]; 
-        nameServers?: [NameServer];
+        zoneGrantsAdd?: String[]; 
+        zoneGrantsRem?: String[]; 
+        nameServers?: NameServer[];
         main?: String; //MainIp'
         wwwInclude?: Boolean;
         virtualNameServer?: String; 
-        freeText?: [String]; 
+        freeText?: String[]; 
         action?: String; //NameserverActionConstants
-        grants?: [String]; 
-        resourceRecords?: [ResourceRecord];
+        grants?: String[]; 
+        resourceRecords?: ResourceRecord[];
         roid: Number;
-        resourceRecordsAdd?: [ResourceRecord];
-        resourceRecordsRem?: [ResourceRecord];
+        resourceRecordsAdd?: ResourceRecord[];
+        resourceRecordsRem?: ResourceRecord[];
     }
 
     export class ZoneStream{constructor(config?: ZoneStream)}
     export interface ZoneStream{
-        adds?: [ResourceRecord];
-        rems?: [ResourceRecord];
+        adds?: ResourceRecord[];
+        rems?: ResourceRecord[];
     }
 
     export class address_claim{constructor()}
