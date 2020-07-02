@@ -48,6 +48,35 @@ class Domain extends DomainRobotService {
     );
   }
 
+   /** The following keys can be used for filtering, ordering or fetching additional
+     * data via query parameter:<br>
+     *
+     * * parking
+     * * certificate
+     * * adminc
+     * * cancelation
+     * * action
+     * * zonec
+     * * nserver
+     * * techc
+     * * nsentry
+     * * dnssec
+     * * period
+     * * created
+     * * sld
+     * * tld
+     * * subtld
+     * * deleted
+     * * autorenew
+     * * expire
+     * * domainsafe
+     * * comment
+     * * ownerc
+     * * updated
+     * * remarks
+     * * authinfo
+     * * status
+     */
   async restoreList(keys = []) {
     let keysString = keys.join('&keys=');
     return await this.sendPostRequest(
@@ -62,6 +91,26 @@ class Domain extends DomainRobotService {
     );
   }
 
+   /** The following keys can be used for filtering, ordering or fetching additional
+    * data via query parameter:
+    *
+    * * sld
+    * * subtld
+    * * tld
+    * * status
+    * * authinfo
+    * * expire
+    * * comment
+    * * ownerc
+    * * updated
+    * * zonec
+    * * nserver
+    * * techc
+    * * adminc
+    * * certificate
+    * * created
+    * * autorenew
+    */
   async list(keys = []) {
     let keysString = keys.join('&keys=');
     return await this.sendPostRequest(
