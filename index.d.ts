@@ -66,7 +66,7 @@ export declare class TrustedAppService {
     create(model: DomainRobotModels.TrustedApplication): DomainRobotResult<JsonResponseDataTrustedApplication, Number>;
     update(model: DomainRobotModels.TrustedApplication): DomainRobotResult<JsonResponseDataTrustedApplication, Number>;
     delete(id: Number): DomainRobotResult<JsonResponseDataJsonNoData, Number>;
-    info(id: Numbe): DomainRobotResult<JsonResponseDataTrustedApplication, Number>;
+    info(id: Number): DomainRobotResult<JsonResponseDataTrustedApplication, Number>;
     list(model: DomainRobotModels.Query, keys?: String[]): DomainRobotResult<JsonResponseDataTrustedApplication, Number>;
 }
 export declare class DomainStudio {

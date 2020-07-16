@@ -21,7 +21,7 @@ class Zone extends DomainRobotService {
 
     async delete(name, systemNameServer) {
         return await this.sendDeleteRequest(
-            this.domainRobotConfig.url + "/zone/" + .name + '/' + systemNameServer
+            this.domainRobotConfig.url + "/zone/" + name + '/' + systemNameServer
         );
     }
 
