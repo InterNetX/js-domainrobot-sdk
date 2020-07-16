@@ -2,6 +2,10 @@
 
 ## [1.3.1] - 2020-07-16
 
+* syntax and error fixes
+
+## [1.3.1] - 2020-07-16
+
 * removed accounting service
 * added yarn-error.log to gitignore
 
