@@ -234,8 +234,8 @@ certficateModel.csr =
 
 try{
   let result = await domainRobot
-    .certificate(certficateModel)
-    .prepareOrder();
+    .certificate()
+    .prepareOrder(certficateModel);
 } catch (DomainRobotException) {
 
 }
@@ -265,8 +265,8 @@ certficateModel.csr =
 
 try{
   let result = await domainRobot
-    .certificate(certficateModel)
-    .createRealtime();
+    .certificate()
+    .createRealtime(certficateModel);
 } catch (DomainRobotException) {
 
 }
@@ -289,8 +289,8 @@ domainEnvelopeSearchRequest.currency = "USD";
 
 try{
     let result = await domainRobot
-        .domainStudio(domainEnvelopeSearchRequest)
-        .search();
+        .domainStudio()
+        .search(domainEnvelopeSearchRequest);
 } catch (DomainRobotException) {
 
 }
@@ -338,12 +338,12 @@ See example below.
 let DomainRobotHeaders = require("js-domainrobot-sdk").DomainRobotHeaders;
 
 let result = await domainRobot
-    .certificate(certficateModel)
+    .certificate()
     .headers({
         [DomainrobotHeaders.DOMAINROBOT_HEADER_CTID]:
             "ctid-test-12323"
     })
-    .prepareOrder();
+    .prepareOrder(certficateModel);
 ```
 
 ## Changelog
