@@ -5,11 +5,15 @@ class TransferOut extends DomainRobotService {
     super(domainRobotConfig);
   }
 
-  async list(keys = []) {
-    let keysString = keys.join('&keys=');
+  async list(model, keys = []) {
+      let keysString = '';
+      if (keys.length > 0) {
+          keysString = "?keys[]=" + keys.join('&keys[]=');
+      }
+
     return await this.sendPostRequest(
-        this.domainRobotConfig.url + "/transferout/_search?keys=" + keysString,
-        this.model
+        this.domainRobotConfig.url + "/transferout/_search" + keysString,
+        model
     );
   }
 

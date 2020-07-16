@@ -3,20 +3,19 @@ let DomainRobotService = require("./DomainRobotService");
 class Contact extends DomainRobotService {
   constructor(contactModel, domainRobotConfig) {
     super(domainRobotConfig);
-    this.model = contactModel;
   }
 
-  async create() {
+  async create(model) {
     return await this.sendPostRequest(
         this.domainRobotConfig.url + "/contact",
-        this.model
+        model
     );
   }
 
-  async update(id) {
+  async update(model) {
     return await this.sendPutRequest(
-        this.domainRobotConfig.url + "/contact/" + id,
-        this.model
+        this.domainRobotConfig.url + "/contact/" + model.id,
+        model
     );
   }
 

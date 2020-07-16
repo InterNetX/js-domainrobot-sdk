@@ -2,15 +2,14 @@
 let DomainRobotService = require("./DomainRobotService");
 
 class Accounting extends DomainRobotService {
-    constructor(productModel, domainRobotConfig) {
+    constructor(domainRobotConfig) {
         super(domainRobotConfig);
-        this.model = productModel;
       }
 
-    async calculate(){
+    async calculate(model){
         return await this.sendPostRequest(
             this.domainRobotConfig.url + "/accounting/calculate",
-            this.model
+            model
         );
     }
 }

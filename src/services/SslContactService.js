@@ -1,44 +1,47 @@
 let DomainRobotService = require("./DomainRobotService");
 
 class SslContact extends DomainRobotService {
-  constructor(sslContactModel, domainRobotConfig) {
-    super(domainRobotConfig);
-    this.model = sslContactModel;
-  }
+    constructor(domainRobotConfig) {
+        super(domainRobotConfig);
+    }
 
-  async create() {
-    return await this.sendPostRequest(
-        this.domainRobotConfig.url + "/sslcontact",
-        this.model
-    );
-  }
+    async create(model) {
+        return await this.sendPostRequest(
+            this.domainRobotConfig.url + "/sslcontact",
+            model
+        );
+    }
 
-  async update(id) {
-    return await this.sendPutRequest(
-        this.domainRobotConfig.url + "/sslcontact/" + id,
-        this.model
-    );
-  }
+    async update(model) {
+        return await this.sendPutRequest(
+            this.domainRobotConfig.url + "/sslcontact/" + model.id,
+            model
+        );
+    }
 
-  async delete(id) {
-    return await this.sendDeleteRequest(
-        this.domainRobotConfig.url + "/sslcontact/"+ id
-    );
-  }
+    async delete(id) {
+        return await this.sendDeleteRequest(
+            this.domainRobotConfig.url + "/sslcontact/" + id
+        );
+    }
 
-  async info(id) {
-    return await this.sendGetRequest(
-        this.domainRobotConfig.url + "/sslcontact/" + id
-    );
-  }
+    async info(id) {
+        return await this.sendGetRequest(
+            this.domainRobotConfig.url + "/sslcontact/" + id
+        );
+    }
 
-  async list(keys = []) {
-    let keysString = keys.join('&keys=');
-    return await this.sendPostRequest(
-        this.domainRobotConfig.url + "/sslcontact/_search?keys=" + keysString,
-        this.model
-    );
-  }
+    async list(model, keys = []) {
+        let keysString = '';
+        if (keys.length > 0) {
+            keysString = "?keys[]=" + keys.join('&keys[]=');
+        }
+
+        return await this.sendPostRequest(
+            this.domainRobotConfig.url + "/sslcontact/_search" + keysString,
+            model
+        );
+    }
 
 
 

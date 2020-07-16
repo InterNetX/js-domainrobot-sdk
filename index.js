@@ -1,6 +1,5 @@
 let DomainRobot = require("./src/Domainrobot");
 const DomainRobotHeaders = require("./src/lib/Headers");
-const DomainRobotConstants = require("./src/lib/Constants");
 
 let specs = require("./src/lib/specs.json");
 let ApiFactory = require("./src/lib/Factory");
@@ -11,6 +10,5 @@ const DomainRobotModels = Backend.models;
 module.exports = {
 	DomainRobot,
 	DomainRobotHeaders,
-	DomainRobotModels,
-	DomainRobotConstants,
+	DomainRobotModels
 };

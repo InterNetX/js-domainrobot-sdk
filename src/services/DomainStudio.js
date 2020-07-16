@@ -3,15 +3,14 @@ const DomainRobotException = require("../lib/DomainRobotException");
 const DomainRobotResult = require("../lib/DomainRobotResult");
 
 class DomainStudio extends DomainRobotService {
-  constructor(domainStudioEnvelopeSearchRequest, domainRobotConfig) {
+  constructor(domainRobotConfig) {
     super(domainRobotConfig);
-    this.model = domainStudioEnvelopeSearchRequest;
   }
 
-  async search() {
+  async search(model) {
     return await this.sendPostRequest(
       this.domainRobotConfig.url + "/domainstudio",
-      this.model
+      model
     );
   }
 }

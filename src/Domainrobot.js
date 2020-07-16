@@ -9,62 +9,59 @@ let ZoneService = require("./services/ZoneService");
 let TrustedAppService = require("./services/TrustedAppService");
 let PollService = require("./services/PollService");
 let TransferOutService = require("./services/TransferOutService");
-let AccountingService = require ("./services/AccountingService");
+let AccountingService = require("./services/AccountingService");
 
 class DomainRobot {
-  /**
-   *
-   * @param {string} user
-   * @param {string} password
-   */
-  constructor(domainRobotConfig) {
-    this.domainRobotConfig = domainRobotConfig;
-  }
+    /**
+     *
+     * @param {string} user
+     * @param {string} password
+     */
+    constructor(domainRobotConfig) {
+        this.domainRobotConfig = domainRobotConfig;
+    }
 
-  // contact stuff
-  contact(contactModel = null) {
-    return new ContactService(contactModel, this.domainRobotConfig);
-  }
+    // contact stuff
+    contact() {
+        return new ContactService(this.domainRobotConfig);
+    }
 
-  // certificate stuff
-  certificate(certificateModel = null) {
-    return new CertificateService(certificateModel, this.domainRobotConfig);
-  }
+    // certificate stuff
+    certificate() {
+        return new CertificateService(this.domainRobotConfig);
+    }
 
-  domain(domainModel = null) {
-    return new DomainService(domainModel, this.domainRobotConfig);
-  }
+    domain() {
+        return new DomainService(this.domainRobotConfig);
+    }
 
-  sslcontact(sslcontactModel = null) {
-    return new SslContactService(sslcontactModel, this.domainRobotConfig);
-  }
+    sslcontact() {
+        return new SslContactService(this.domainRobotConfig);
+    }
 
-  zone(zoneModel = null) {
-    return new ZoneService(zoneModel, this.domainRobotConfig);
-  }
+    zone() {
+        return new ZoneService(this.domainRobotConfig);
+    }
 
-  trustedapp(trustedAppModel = null) {
-    return new TrustedAppService(trustedAppModel, this.domainRobotConfig);
-  }
+    trustedapp() {
+        return new TrustedAppService(this.domainRobotConfig);
+    }
 
-  domainStudio(domainStudioEnvelopeSearchRequest) {
-    return new DomainStudio(
-      domainStudioEnvelopeSearchRequest,
-      this.domainRobotConfig
-    );
-  }
+    domainStudio() {
+        return new DomainStudio(this.domainRobotConfig);
+    }
 
-  poll() {
-      return new PollService(this.domainRobotConfig);
-  }
+    poll() {
+        return new PollService(this.domainRobotConfig);
+    }
 
-  transferout(){
-      return new TransferOutService(this.domainRobotConfig);
-  }
+    transferout() {
+        return new TransferOutService(this.domainRobotConfig);
+    }
 
-  accounting(subjectProductModel){
-      return new AccountingService(subjectProductModel, this.domainRobotConfig);
-  }
+    //   accounting(){
+    //       return new AccountingService(this.domainRobotConfig);
+    //   }
 }
 
 module.exports = DomainRobot;

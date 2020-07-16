@@ -2,113 +2,109 @@
 let DomainRobotService = require("./DomainRobotService");
 
 class CertificateService extends DomainRobotService {
-  constructor(certificateModel, domainRobotConfig) {
-    super(domainRobotConfig);
-
-    let CertificateData = this.models().Certificate;
-    if (certificateModel === null || certificateModel === undefined) {
-      certificateModel = new CertificateData();
+    constructor(domainRobotConfig) {
+        super(domainRobotConfig);
     }
 
-    this.model = certificateModel;
-  }
-
-  prepareCsr() {
-    let matches = this.model.csr
-      .trim()
-      .match(
-        /^(-----BEGIN CERTIFICATE REQUEST-----)(.*)(-----END CERTIFICATE REQUEST-----)$/
-      );
-    if (matches !== null) {
-      this.model.csr = [matches[1], matches[2], matches[3]].join("\n");
+    prepareCsr(model) {
+        let matches = model.csr
+            .trim()
+            .match(
+                /^(-----BEGIN CERTIFICATE REQUEST-----)(.*)(-----END CERTIFICATE REQUEST-----)$/
+            );
+        if (matches !== null) {
+            model.csr = [matches[1], matches[2], matches[3]].join("\n");
+        }
+        return model;
     }
-  }
 
-  async create() {
-    this.prepareCsr();
+    async create(model) {
+        model = this.prepareCsr(model);
 
-    return await this.sendPostRequest(
-      this.domainRobotConfig.url + "/certificate",
-      this.model
-    );
-  }
+        return await this.sendPostRequest(
+            this.domainRobotConfig.url + "/certificate",
+            model
+        );
+    }
 
-  async createRealtime() {
-    this.prepareCsr();
+    async createRealtime(model) {
+        model = this.prepareCsr(model);
 
-    return await this.sendPostRequest(
-      this.domainRobotConfig.url + "/certificate/_realtime",
-      this.model
-    );
-  }
+        return await this.sendPostRequest(
+            this.domainRobotConfig.url + "/certificate/_realtime",
+            model
+        );
+    }
 
-  /**
-   * @return CertificateData
-   */
-  async prepareOrder() {
-    this.prepareCsr();
-    this.model.plain = this.model.csr;
-    this.model.csr = null;
-    this.model.lifetime = null;
-    this.model.name = null;
-    this.model.authentication = null;
+    /**
+     * @return CertificateData
+     */
+    async prepareOrder(model) {
+        model = this.prepareCsr(model);
+        model.plain = model.csr;
+        model.csr = null;
+        model.lifetime = null;
+        model.name = null;
+        model.authentication = null;
 
-    return await this.sendPostRequest(
-      this.domainRobotConfig.url + "/certificate/_prepareOrder",
-      this.model
-    );
-  }
+        return await this.sendPostRequest(
+            this.domainRobotConfig.url + "/certificate/_prepareOrder",
+            model
+        );
+    }
 
-  async list(keys = []) {
-    let keysString = keys.join("&keys=");
+    async list(model, keys = []) {
+        let keysString = '';
+        if (keys.length > 0) {
+            keysString = "?keys[]=" + keys.join('&keys[]=');
+        }
 
-    return await this.sendPostRequest(
-      this.domainRobotConfig.url + "/certificate/_search/?keys=" + keysString,
-      this.model
-    );
-  }
+        return await this.sendPostRequest(
+            this.domainRobotConfig.url + "/certificate/_search" + keysString,
+            model
+        );
+    }
 
-  async info(certificateId) {
-    return await this.sendGetRequest(
-      this.domainRobotConfig.url + "/certificate" + certificateId
-    );
-  }
+    async info(certificateId) {
+        return await this.sendGetRequest(
+            this.domainRobotConfig.url + "/certificate/" + certificateId
+        );
+    }
 
-  async reissue(certificateId) {
-    this.prepareCsr();
+    async reissue(model) {
+        model = this.prepareCsr(model);
 
-    return await this.sendPutRequest(
-      this.domainRobotConfig.url + "/certificate" + certificateId,
-      this.model
-    );
-  }
+        return await this.sendPutRequest(
+            this.domainRobotConfig.url + "/certificate/" + model.id,
+            model
+        );
+    }
 
-  async delete(certificateId) {
-    this.prepareCsr();
+    async delete(certificateId) {
+        model = this.prepareCsr(model);
 
-    return await this.sendDeleteRequest(
-      this.domainRobotConfig.url + "/certificate" + certificateId,
-      this.model
-    );
-  }
+        return await this.sendDeleteRequest(
+            this.domainRobotConfig.url + "/certificate/" + certificateId
+        );
+    }
 
-  async renew(certificateId) {
-    this.prepareCsr();
+    async renew(model) {
+        model = this.prepareCsr(model);
 
-    return await this.sendPutRequest(
-      this.domainRobotConfig.url + "/certificate/" + certificateId + "/_renew",
-      this.model
-    );
-  }
+        return await this.sendPutRequest(
+            this.domainRobotConfig.url + "/certificate/" + model.id + "/_renew",
+            model
+        );
+    }
 
-  async comment(certificateId) {
-    this.prepareCsr();
+    async comment(model) {
+        model = this.prepareCsr(model);
 
-    return await this.sendPutRequest(
-      this.domainRobotConfig.url + "/certificate" + certificateId + "/_comment",
-      this.model
-    );
-  }
+        return await this.sendPutRequest(
+            this.domainRobotConfig.url + "/certificate/" + model.certificateId + "/_comment",
+            model
+        );
+    }
 }
 
 module.exports = CertificateService;

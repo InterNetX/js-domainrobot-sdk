@@ -1,50 +1,49 @@
 let DomainRobotService = require("./DomainRobotService");
 
 class Domain extends DomainRobotService {
-  constructor(domainModel, domainRobotConfig) {
+  constructor(domainRobotConfig) {
     super(domainRobotConfig);
-    this.model = domainModel;
   }
 
-  async create() {
+  async create(model) {
     return await this.sendPostRequest(
         this.domainRobotConfig.url + "/domain",
-        this.model
+        model
     );
   }
 
-  async update() {
+  async update(model) {
     return await this.sendPutRequest(
-        this.domainRobotConfig.url + "/domain",
-        this.model
+        this.domainRobotConfig.url + "/domain/"+model.name,
+        model
     );
   }
 
-  async transfer() {
+  async transfer(model) {
     return await this.sendPostRequest(
         this.domainRobotConfig.url + "/domain/_transfer",
-        this.model
+        model
     );
   }
 
-  async updateStatus(name){
+  async updateStatus(model){
     return await this.sendPutRequest(
-        this.domainRobotConfig.url + "/domain/" + name + "/_statusUpdate",
-        this.model
+        this.domainRobotConfig.url + "/domain/" + model.name + "/_statusUpdate",
+        model
     );
   }
 
-  async renew(name) {
+  async renew(model) {
     return await this.sendPutRequest(
-        this.domainRobotConfig.url + "/domain/" + name + "/_renew",
-        this.model
+        this.domainRobotConfig.url + "/domain/" + model.name + "/_renew",
+        model
     );
   }
 
-  async restore(name) {
+  async restore(model) {
     return await this.sendPostRequest(
-        this.domainRobotConfig.url + "/domain/" + name + "/_restore",
-        this.model
+        this.domainRobotConfig.url + "/domain/" + model.name + "/_restore",
+        model
     );
   }
 
@@ -77,11 +76,11 @@ class Domain extends DomainRobotService {
      * * authinfo
      * * status
      */
-  async restoreList(keys = []) {
+  async restoreList(model, keys = []) {
     let keysString = keys.join('&keys=');
     return await this.sendPostRequest(
         this.domainRobotConfig.url + "/domain/restore/_search?keys=" + keysString,
-        this.model
+        model
     );
   }
 
@@ -111,13 +110,16 @@ class Domain extends DomainRobotService {
     * * created
     * * autorenew
     */
-  async list(keys = []) {
-    let keysString = keys.join('&keys=');
-    return await this.sendPostRequest(
-        this.domainRobotConfig.url + "/domain/_search?keys=" + keysString,
-        this.model
-    );
-  }
+    async list(model, keys = []) {
+        let keysString = '';
+        if (keys.length > 0) {
+            keysString = "?keys[]=" + keys.join('&keys[]=');
+        }
+        return await this.sendPostRequest(
+            this.domainRobotConfig.url + "/domain/_search" + keysString,
+            model
+        );
+    }
 
   async authInfo1Create(name){
     return await this.sendPostRequest(
@@ -137,16 +139,17 @@ class Domain extends DomainRobotService {
     );
   }
 
-  async cancelationCreate(name){
+  async cancelationCreate(model){
     return await this.sendPostRequest(
-        this.domainRobotConfig.url + "/domain/" + name + "/cancelation",
-        this.model
+        this.domainRobotConfig.url + "/domain/" + model.name + "/cancelation",
+        model
     );
   }
 
-  async cancelationUpdate(name){
+  async cancelationUpdate(model){
     return await this.sendPutRequest(
-        this.domainRobotConfig.url + "/domain/" + name + "/cancelation"
+        this.domainRobotConfig.url + "/domain/" + model.name + "/cancelation",
+        model
     );
   }
 
@@ -162,11 +165,14 @@ class Domain extends DomainRobotService {
     );
   }
 
-  async cancelationList(keys = []){
-      let keysString = keys.join('&keys=');
+  async cancelationList(model, keys = []){
+      let keysString = '';
+      if (keys.length > 0) {
+          keysString = "?keys[]=" + keys.join('&keys[]=');
+      }
       return await this.sendPostRequest(
-          this.domainRobotConfig.url + "/domain/cancelation_search?keys=" + keysString,
-          this.model
+          this.domainRobotConfig.url + "/domain/cancelation/_search" + keysString,
+          model
       );
   }
 
