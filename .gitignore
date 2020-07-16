@@ -6,3 +6,5 @@ tests/junit
 tests/Tests
 
 .vscode
+
+yarn-error.log
