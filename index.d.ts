@@ -181,7 +181,7 @@ export type domainRobotConfig = {
 export class DomainRobot {
     constructor(domainRobotConfig: domainRobotConfig);
 
-    accounting(subjectProductModel: DomainRobotModels.Subscription): AccountingService;
+    //accounting(subjectProductModel: DomainRobotModels.Subscription): AccountingService;
 
     certificate(certificateModel?: DomainRobotModels.Certificate): CertificateService;
 
