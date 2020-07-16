@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.3.1] - 2020-07-16
+
+* removed accounting service
+* added yarn-error.log to gitignore
+
+## [1.3.0] - 2020-07-16
+
+* massively improved typescript definitions
+* fixed several errors in several services
+
 ## [1.2.0] - 2020-06-22
 
 * improved typescript types defintion file
