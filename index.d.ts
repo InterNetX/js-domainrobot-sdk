@@ -89,7 +89,7 @@ export interface DomainRobotException {
         stid: String;
         // messages can vary depending on the task, so this is the closest
         // defintion we can provide here
-        messages: Array<object>;
+        messages: Array<DomainRobotModels.Message>;
         status: {
             code: String;
             text: String;
