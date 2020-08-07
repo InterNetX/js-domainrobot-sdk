@@ -72,11 +72,20 @@ export declare class TrustedAppService {
 export declare class DomainStudio {
     search(model: DomainRobotModels.DomainEnvelopeSearchRequest): DomainRobotResult<JsonResponseDataDomainEnvelope, Number>;
 }
+export declare class LoginService {
+    sessionID(model: DomainRobotModels.LoginData, queryParams?: {
+        acl?: Boolean,
+        profile?: Boolean,
+        customer?: Boolean,
+        timeout?: Number
+    }): DomainRobotResult<JsonResponseDataUser, Number>;
+}
 
 export declare class DomainRobotResult<Result, Number> {
     constructor(result: Result, status: Number);
     isValid(): Boolean;
     isValidResponse(): Boolean;
+    getHeaders(): ResultHeaders;
 }
 
 export interface DomainRobotResult<Result, Number> {
@@ -84,12 +93,28 @@ export interface DomainRobotResult<Result, Number> {
     status: Number;
 }
 
+export interface ResultHeaders {
+    connection?: String;
+    date?: String;
+    server?: String;
+    'set-cookie'?: Array<String>;
+    'content-length'?: String;
+    'content-type'?: String;
+    'content-language'?: String;
+    'x-domainrobot-sessionid'?: String;
+    'x-domainrobot-stid'?: String;
+}
+
 export interface DomainRobotException {
     error: {
         stid: String;
         // messages can vary depending on the task, so this is the closest
         // defintion we can provide here
-        messages: Array<DomainRobotModels.Message>;
+        messages: Array<{
+            code: String;
+            text: String;
+            type: String;
+        }>;
         status: {
             code: String;
             text: String;
@@ -167,11 +192,14 @@ export interface JsonResponseDataTrustedApplication extends Result {
 export interface JsonResponseDataDomainEnvelope extends Result {
     data: DomainRobotModels.DomainEnvelope[];
 }
-
+export interface JsonResponseDataUser extends Result {
+    data: DomainRobotModels.User[];
+}
 
 export type domainRobotConfig = {
     url?: String;
-    auth: {
+    session_id?: String,
+    auth?: {
         user: String;
         password: String;
         context?: Number;
@@ -200,6 +228,8 @@ export class DomainRobot {
     trustedapp(trustedAppModel?: DomainRobotModels.TrustedApplication): TrustedAppService;
 
     zone(zoneModel?: DomainRobotModels.Zone): ZoneService;
+
+    login(loginDataModel?: DomainRobotModels.LoginData): LoginService;
 }
 
 export const DomainRobotHeaders: {

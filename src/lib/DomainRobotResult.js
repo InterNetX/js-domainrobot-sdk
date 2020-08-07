@@ -1,24 +1,32 @@
 class DomainRobotResult {
-  constructor(result, status) {
-    this.result = result;
-    this.status = status;
-  }
-
-  isValid() {
-    if (this.result === undefined || this.result === null) {
-      return false;
+    constructor(result, status) {
+        this.result = result;
+        this.status = status;
     }
 
-    return true;
-  }
-
-  isValidResponse() {
-    if (this.result === undefined || this.result === null) {
-      return false;
+    setHeaders(headers) {
+        this.headers = headers;
     }
 
-    return true;
-  }
+    getHeaders() {
+        return this.headers;
+    }
+
+    isValid() {
+        if (this.result === undefined || this.result === null) {
+            return false;
+        }
+
+        return true;
+    }
+
+    isValidResponse() {
+        if (this.result === undefined || this.result === null) {
+            return false;
+        }
+
+        return true;
+    }
 }
 
 module.exports = DomainRobotResult;

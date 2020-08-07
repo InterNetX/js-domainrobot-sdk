@@ -10,6 +10,7 @@ let TrustedAppService = require("./services/TrustedAppService");
 let PollService = require("./services/PollService");
 let TransferOutService = require("./services/TransferOutService");
 let AccountingService = require("./services/AccountingService");
+let LoginService = require("./services/LoginService");
 
 class DomainRobot {
     /**
@@ -57,6 +58,10 @@ class DomainRobot {
 
     transferout() {
         return new TransferOutService(this.domainRobotConfig);
+    }
+
+    login() {
+        return new LoginService(this.domainRobotConfig);
     }
 
     //   accounting(){
