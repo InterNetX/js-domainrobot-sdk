@@ -5,7 +5,9 @@ For these cases we provide you with two integrated callback methods you can use 
 
 ## Implementation and Usage
 
-There are two possible ways to use these methods.
+*WORK IN PROGRESS*
+
+<!-- There are two possible ways to use these methods.
 
 1. Define them globally through the domainrobotConfig
 
@@ -60,4 +62,4 @@ Local defintions for log callbacks will always overwrite global definitions.
 * **$url**: the url the call was sent to
 * **$response**: the raw response we received from the backend
 * **$statusCode**: the HTTP status code
-* **$exectime**: the execution time of the full request from start to finish
+* **$exectime**: the execution time of the full request from start to finish -->

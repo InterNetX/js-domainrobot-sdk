@@ -4,7 +4,7 @@ module.exports = {
 	/**
 	 * Ref：https://v1.vuepress.vuejs.org/config/#title
 	 */
-	title: "PHP Domainrobot SDK Documentation",
+	title: "JS Domainrobot SDK Documentation",
 	/**
 	 * Ref：https://v1.vuepress.vuejs.org/config/#description
 	 */
@@ -20,14 +20,14 @@ module.exports = {
 		["meta", { name: "apple-mobile-web-app-capable", content: "yes" }],
 		["meta", { name: "apple-mobile-web-app-status-bar-style", content: "black" }],
 	],
-	base: "/php-domainrobot-sdk/",
+	base: "/js-domainrobot-sdk/",
 	/**
 	 * Theme configuration, here is the default theme configuration for VuePress.
 	 *
 	 * ref：https://v1.vuepress.vuejs.org/theme/default-theme-config.html
 	 */
 	themeConfig: {
-		repo: "https://github.com/InterNetX/php-domainrobot-sdk",
+		repo: "https://github.com/InterNetX/js-domainrobot-sdk",
 		editLinks: false,
 		docsDir: "",
 		editLinkText: "",
@@ -60,7 +60,7 @@ module.exports = {
 				{
 					title: "Basics",
 					collapsable: false,
-					children: ["logging", "requests", "headers", "exception"],
+                    children: ["logging", "requests", "headers", "exception"],
 				},
 				{
 					title: "Working with Models",
@@ -74,27 +74,16 @@ module.exports = {
 						"api_tasks/certificate",
 						"api_tasks/contact",
 						"api_tasks/domain",
-						"api_tasks/domain_cancelation",
+						//"api_tasks/domain_cancelation",
 						"api_tasks/domainstudio",
 						"api_tasks/poll",
 						"api_tasks/ssl_contact",
 						"api_tasks/transfer_out",
 						"api_tasks/trusted_app",
-						"api_tasks/user",
+						//"api_tasks/user",
 						"api_tasks/zone",
 					],
-				},
-				{
-					title: "Available Constants",
-					collapsable: false,
-					children: [
-						"constants/acl_restriction",
-						"constants/crypto",
-						"constants/contact_types",
-						"constants/registry_status",
-						"constants/time_unit",
-					],
-				},
+				}
 			],
 		},
 	},

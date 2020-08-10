@@ -1,20 +1,22 @@
 # Installation and Usage
 
 ::: noheader
-internetx/php-domainrobot-sdk is a composer package. 
+internetx/js-domainrobot-sdk is a node package.
 :::
 
 Official sources:
 
-* [packagist](https://packagist.org/packages/internetx/php-domainrobot-sdk)
-* [github repository](https://github.com/InterNetX/php-domainrobot-sdk)
+* [npm](https://www.npmjs.com/package/js-domainrobot-sdk)
+* [github repository](https://github.com/InterNetX/js-domainrobot-sdk)
 
-If you have no prior experience with composer or do not know what composer is please refer to their official documentation at: [getcomposer.org](https://getcomposer.org)
+If you have no prior experience with npm please refer to their official documentation at: [npm Documentation](https://docs.npmjs.com/)
 
 ## Installation
 
-```bash
-composer require internetx/php-domainrobot-sdk
+```javascript
+yarn add js-domainrobot-sdk
+
+npm install js-domainrobot-sdk
 ```
 
 If you do not use a php-framework like [Laravel](https://laravel.com), [Lumen](https://lumen.laravel.com),[CodeIgniter](https://codeigniter.com/), [Symfony](https://symfony.com/) you need to require/import the composer generated autoloader manually.
@@ -27,24 +29,99 @@ require_once "vendor/autoload.php";
 use Domainrobot\Domainrobot;
 ```
 
-internetx/php-domainrobot-sdk uses the [PSR-4: Autoloader](https://www.php-fig.org/psr/psr-4/) so once you've installed the package via composer and the required autoload.php file, you can start to implement your first task.
+### Javascript/Node Requires
 
-## Usage
+```javascript
+let DomainRobot = require("js-domainrobot-sdk").DomainRobot;
+let DomainRobotHeaders = require("js-domainrobot-sdk").DomainRobotHeaders;
+let DomainRobotModels = require("js-domainrobot-sdk").DomainRobotModels;
+```
 
-Before you can interact with the API you need to specify your authentication credentials, the baseurl and the context.
+### Typescript import and configuration
 
-```php
-use Domainrobot\Domainrobot;
-use Domainrobot\Lib\DomainrobotAuth;
+```typescript
+import { DomainRobot, DomainRobotModels, DomainRobotHeaders } from "js-domainrobot-sdk";
+```
 
-$domainrobot = new Domainrobot([
-    "url" => "https://api.autodns.com/v1",
-    "auth" => new DomainrobotAuth([
-        "user" => "user",
-        "password" => "password",
-        "context" => 4
-    ])
-]);
+In tsconfig.json add this to *compilerOptions*
+
+```typescript
+"compilerOptions": {
+    "allowSyntheticDefaultImports": true
+},
+```
+
+## Usage - Basic Auth
+
+Detailed examples can be found under [https://github.com/InterNetX/js-domainrobot-sdk/tree/master/example](https://github.com/InterNetX/js-domainrobot-sdk/tree/master/example)
+
+Before you can interact with the API you need to specify your authentication credentials and if you have a "Personal AutoDNS" account your url and context.
+
+```javascript
+let DomainRobot = require("js-domainrobot-sdk").DomainRobot;
+
+let domainRobot = new DomainRobot({
+    url: "http://dev-proxy-lab.intern.autodns-lab.com:10025",
+    auth: {
+        user: "user",
+        password: "password",
+        context: 9
+    }
+});
+```
+
+## Usage - Session ID
+
+Additionally to the authentication through basic auth, the API also offers the possibility
+to use a so called session id. This ID has to be created once and should then be stored (in a session or something similar) by your application for further usage.
+The underlying idea behind this is comparable to a JWT authentciation approach.
+
+You can find more information on this topic here: [Authentication via SessionID](https://help.internetx.com/display/APIXMLEN/Authentication#Authentication-AuthenticationviaSessionID)
+
+Below you can find a simple example of how to setup a session id authentication process.
+
+```javascript
+let DomainRobot = require("js-domainrobot-sdk").DomainRobot;
+
+// when working with a session id you don't need to declare the auth block here
+let domainRobot = new DomainRobot({
+    url: "http://dev-proxy-lab.intern.autodns-lab.com:10025"
+});
+
+// set your authentication data in a separate model
+//this will is only needed for the initial call to get our session id
+let loginData = new DomainRobotModels.LoginData({
+    context: 4,
+    password: 'password',
+    user: 'username'
+});
+
+ try {
+     // login and create the session id
+
+    // there are certain query parameters that you can define
+    // all those parameters are entirely optional
+    // the default config looks like this
+    let queryParams = {
+        acl: true, //boolean
+        profile: true, //boolean
+        customer: true, //boolean
+        timeout: 10 //how long the session id should last in minutes
+    };
+    result = await domainRobot.login().sessionID(loginData, queryParams);
+} catch (DomainRobotException) {
+    result = DomainRobotException;
+}
+
+// session id is located in the headers so we have to get those
+// headers['x-domainrobot-sessionid'] should be stored in a session or something similar
+let headers = result.getHeaders();
+
+// from this point onward we can use the session id to authenticate with the API
+domainRobot = new DomainRobot({
+    url: 'http://dev-proxy-lab.intern.autodns-lab.com:10025',
+    session_id: headers['x-domainrobot-sessionid']
+})
 ```
 
 ::: warning Attention
@@ -56,10 +133,8 @@ You need an account in at last one of these two systems to be able to use this S
 
 ## Domainrobot configuration parameters
 
-* url
-* auth: Domainrobot\Lib\DomainrobotAuth
+* url: can be left blank! (mandatory for "Personal AutoDNS" accounts)
+* auth: DomainrobotModels.LoginData
   * user
   * password
   * context
-* logRequestCallback
-* logResponseCallback

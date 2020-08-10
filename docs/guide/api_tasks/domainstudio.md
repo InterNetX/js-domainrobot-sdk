@@ -6,14 +6,13 @@ The DomainStudio search generates a list of domain names from several selected s
 
 General call of tasks:
 
-```php
- // returns an array of DomainRobot/Models/Envelope
- $suggestions = $domainrobot->domainStudio->search($domainEnvelopeSearchRequest);
+```javascript
+ let suggestions = domainrobot.domainStudio().search(domainEnvelopeSearchRequest);
 ```
 
-List of all available tasks with linked examples:
+List of all available tasks (with typescript defintions) with linked examples (if available):
 
-* [search](https://github.com/InterNetX/php-domainrobot-sdk/blob/master/example/domainstudio/DomainStudioSearch.php)(DomainEnvelopeSearchRequest $domainEnvelopeSearchRequest)
+*  search(model: DomainRobotModels.DomainEnvelopeSearchRequest): DomainRobotResult<JsonResponseDataDomainEnvelope, Number>;
 
 ::: tip Additional information
 

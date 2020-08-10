@@ -1,11 +1,10 @@
 # Preamble
 
-[![Latest Stable Version](https://poser.pugx.org/internetx/php-domainrobot-sdk/v)](//packagist.org/packages/internetx/php-domainrobot-sdk) [![Total Downloads](https://poser.pugx.org/internetx/php-domainrobot-sdk/downloads)](//packagist.org/packages/internetx/php-domainrobot-sdk) [![License](https://poser.pugx.org/internetx/php-domainrobot-sdk/license)](//packagist.org/packages/internetx/php-domainrobot-sdk)
+This node/js package can be used within every node project, including projects based on frameworks like [Express](https://expressjs.com/de/), [Adonis](https://adonisjs.com/), [feathers](https://feathersjs.com/) and many more.
 
-This composer package can be used within every composer project, including projects based on frameworks like [Laravel](https://laravel.com), [CodeIgniter](https://codeigniter.com/), [Symfony](https://symfony.com/) and many more.
+We also provide a [typescript definition file](https://github.com/InterNetX/js-domainrobot-sdk/blob/master/index.d.ts).
 
 **Note:** Feel free to contribute by creating pull requests or file an issue for bugs, questions and feature requests.
-
 
 ## Copyright and license
 

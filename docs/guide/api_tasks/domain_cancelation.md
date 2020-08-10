@@ -2,8 +2,8 @@
 
 General call of tasks:
 
-```php
- $domainCancelation = $domainrobot->domainCancelation->create($domainCancelation);
+```javascript
+ let domainCancelation = domainrobot.domainCancelation().create($domainCancelation);
 ```
 
 * create(DomainCancelation $domainCancelation);

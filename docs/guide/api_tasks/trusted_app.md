@@ -2,12 +2,14 @@
 
 General call of tasks:
 
-```php
- $trustedApplication = $domainrobot->trustedApp->create($trustedApplication);
+```javascript
+let trustedApplication = domainrobot.trustedApp().create(trustedApplication);
 ```
 
-* create(TrustedApplication $trustedApplication);
-* update(TrustedApplication $trustedApplication);
-* delete(int $id);
-* info(int $id);
-* list(Query $query = null);
+List of all available tasks (with typescript defintions) with linked examples (if available):
+
+* create(model: DomainRobotModels.TrustedApplication): DomainRobotResult<JsonResponseDataTrustedApplication, Number>;
+* update(model: DomainRobotModels.TrustedApplication): DomainRobotResult<JsonResponseDataTrustedApplication, Number>;
+* delete(id: Number): DomainRobotResult<JsonResponseDataJsonNoData, Number>;
+* info(id: Number): DomainRobotResult<JsonResponseDataTrustedApplication, Number>;
+* list(model: DomainRobotModels.Query, keys?: String[]): DomainRobotResult<JsonResponseDataTrustedApplication, Number>;

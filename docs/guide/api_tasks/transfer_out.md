@@ -2,9 +2,11 @@
 
 General call of tasks:
 
-```php
- $transferOut = $domainrobot->transferOut->answer($domain, $answer)
+```javascript
+let transferOut = domainrobot.transferOut().answer(domain, type)
 ```
 
-* answer(string $domain, string $answer)
-* list(Query $query = null)
+List of all available tasks (with typescript defintions) with linked examples (if available):
+
+* list(model: DomainRobotModels.Query, keys?: String[]): DomainRobotResult<JsonResponseDataTransferOut, Number>;
+* answer(domain: String, type: String): DomainRobotResult<JsonResponseDataTransferOut, Number>;

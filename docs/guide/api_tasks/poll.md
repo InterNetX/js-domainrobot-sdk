@@ -2,9 +2,11 @@
 
 General call of tasks:
 
-```php
- $pollMessage = $domainrobot->poll->info();
+```javascript
+ let pollMessage = domainrobot.poll().info();
 ```
 
-* [info](https://github.com/InterNetX/php-domainrobot-sdk/blob/master/example/poll/ConfirmPollMessage.php)
-* [confirm](https://github.com/InterNetX/php-domainrobot-sdk/blob/master/example/poll/ConfirmPollMessage.php)(int $id)
+List of all available tasks (with typescript defintions) with linked examples (if available):
+
+* info(): DomainRobotResult<JsonResponseDataPollMessage, Number>;
+* confirm(id: Number): DomainRobotResult<JsonResponseDataJsonNoData, Number>;

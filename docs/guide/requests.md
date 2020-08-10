@@ -1,107 +1,35 @@
-# Asynchronous vs Synchronous Requests
+# Asynchronous Requests
 
 ::: noheader
-This library is mainly meant to be used with **synchronous** request but also provides the possibility to be used with **asynchronous** requests.
+This library only provides you with **asynchronous** requests.
+
+If you need or want to work with synchronous requests think about giving our [php-sdk](https://internetx.github.io/php-domainrobot-sdk/guide/preamble.html) a chance as it provides you with both possibilities.
 :::
-
-----
-
-*The **main difference** is that the asynchronous requests will provide you with less guidance than the synchronous requests.*
-
-----
-
-See examples below for more information on this topic.
-
-A synchronous request will return an Object as described in our official [swagger documentation](https://help.internetx.com/display/APIJSONEN/Technical+Documentation), whereas an asynchronous request will give you a DomainrobotResult Object which will only return the response as a plain array. You will then have to handle the data on your own.
-
-Both methods provide certain advantages in certain situations.
-
-Be aware that in both cases you will have access to the return status code and the plain array result through:
-
-```php
-Domainrobot::getLastDomainrobotResult()->getResult();
-Domainrobot::getLastDomainrobotResult()->getStatusCode();
-```
-
-## Synchronous response
-
-```php
-// will return an array of Domainrobot\Model\Domain
-$domainList = $domainrobot->domain->list($query)
-
-// now you can loop through the array
-// and query object properties of the domainList items
-foreach($domainList as $item){
-    print_r($item->name);
-}
-
-// This is an example of a retrieved $domainList
-// Array(
-//     [0] => Domainrobot\Model\Domain Object(
-//         [container:protected] => Array(
-//             [created] => 2019-09-12T10:31:00.000+0200
-//             [updated] => 2020-06-23T16:36:41.000+0200
-//             [owner] => Array
-//                 (
-//                     [context] => 797095
-//                     [user] => user
-//                 )
-//             [name] => example.com
-//         )
-//     )
-// )
-
-```
 
 ## Asynchronous response
 
-```php
-// will return an array of domains as arrays
-try {
-    $promise = $domainrobot->domain->listAsync($query)
-    $result = $promise->wait();
-}catch(DomainrobotException $exception){
-    return response()->json($exception->getError(), $exception->getStatusCode());
-}
-// extract the resulting domain array
-$domanList = $result->getResult()
+All requests will return a DomainRobotResult on success or a DomainRobotException if an error occurs.
 
-// now you can loob through the array
-// and query object properties through array key calls
-foreach($domainList as $item){
-    print_r($item["name"]);
+DomainRobotResult (Typescript) Definition:
+
+```typescript
+export interface DomainRobotResult<Result, Number> {
+    result: Result;
+    status: Number;
 }
 
-// get the status code of the request
-$result->getStatusCode()
+export interface Result {
+    stid: String;
+    status: ResponseStatus;
+    object?: ResponseObject;
+    ctid?: String;
+    data: Array<object>;
+}
 
-// This is an example of the retrieved $domanList
-// Array(
-//     [stid] => 20200625-app3-dev-4752
-//     [status] => Array
-//         (
-//             [code] => S0105
-//             [text] => Domain-Daten wurden erfolgreich ermittelt.
-//             [type] => SUCCESS
-//         )
-//     [object] => Array
-//         (
-//             [type] => Domain
-//             [summary] => 2
-//         )
-//     [data] => Array
-//         (
-//             [0] => Array
-//                 (
-//                     [created] => 2019-09-12T10:31:00.000+0200
-//                     [updated] => 2020-06-23T16:36:41.000+0200
-//                     [owner] => Array
-//                         (
-//                             [context] => 797095
-//                             [user] => user
-//                         )
-//                     [name] => example.com
-//                 )
-//         )
-// )
+// special extension for Domain tasks
+export interface JsonResponseDataDomain extends Result {
+    data: DomainRobotModels.Domain[];
+}
 ```
+
+The above code represents a typescript definition but is also valid for javascript implementations. The structure is always the same. The only that changes is the contents of *data*.
