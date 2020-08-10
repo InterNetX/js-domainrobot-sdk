@@ -14,7 +14,7 @@ let objectJob = domainrobot.domain().create($domain);
 
 List of all available tasks (with typescript defintions) with linked examples (if available):
 
-* [create](https://github.com/InterNetX/js-domainrobot-sdk/blob/master/example/domain/DomainCreate.js)(model: DomainRobotModels.Domain): DomainRobotResult<JsonResponseDataObjectJob, Number>;
+* [create](https://github.com/InterNetX/js-domainrobot-sdk/blob/master/examples/domain/DomainCreate.js)(model: DomainRobotModels.Domain): DomainRobotResult<JsonResponseDataObjectJob, Number>;
 * update(model: DomainRobotModels.Domain): DomainRobotResult<JsonResponseDataObjectJob, Number>;
 * transfer(model: DomainRobotModels.Domain): DomainRobotResult<JsonResponseDataObjectJob, Number>;
 * updateStatus(model: DomainRobotModels.Domain): DomainRobotResult<JsonResponseDataObjectJob, Number>;
