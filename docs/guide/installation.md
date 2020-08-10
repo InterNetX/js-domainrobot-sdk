@@ -21,14 +21,6 @@ npm install js-domainrobot-sdk
 
 If you do not use a php-framework like [Laravel](https://laravel.com), [Lumen](https://lumen.laravel.com),[CodeIgniter](https://codeigniter.com/), [Symfony](https://symfony.com/) you need to require/import the composer generated autoloader manually.
 
-```php
-// path to package: vendor/internetx/php-domainrobot-sdk
-require_once "vendor/autoload.php";
-
-// now you can import the parts of the SDK you want to use
-use Domainrobot\Domainrobot;
-```
-
 ### Javascript/Node Requires
 
 ```javascript
