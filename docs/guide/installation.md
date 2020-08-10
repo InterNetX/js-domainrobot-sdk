@@ -19,8 +19,6 @@ yarn add js-domainrobot-sdk
 npm install js-domainrobot-sdk
 ```
 
-If you do not use a php-framework like [Laravel](https://laravel.com), [Lumen](https://lumen.laravel.com),[CodeIgniter](https://codeigniter.com/), [Symfony](https://symfony.com/) you need to require/import the composer generated autoloader manually.
-
 ### Javascript/Node Requires
 
 ```javascript
