@@ -31,12 +31,12 @@ class Contact extends DomainRobotService {
     );
   }
 
-  async list(keys = []) {
+  async list(model, keys = []) {
     let keysString = keys.join('&keys=');
 
     return await this.sendPostRequest(
          this.domainRobotConfig.url + "/contact/_search?keys=" + keysString,
-         this.model
+         model
     );
   }
 
