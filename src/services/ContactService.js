@@ -36,9 +36,8 @@ class Contact extends DomainRobotService {
         if (keys.length > 0) {
             keysString = "?keys[]=" + keys.join('&keys[]=');
         }
-
         return await this.sendPostRequest(
-            this.domainRobotConfig.url + "/contact/_search?keys=" + keysString,
+            this.domainRobotConfig.url + "/contact/_search" + keysString,
             model
         );
     }
