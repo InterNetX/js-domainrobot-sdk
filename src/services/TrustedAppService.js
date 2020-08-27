@@ -1,9 +1,8 @@
 let DomainRobotService = require("./DomainRobotService");
 
 class TrustedApp extends DomainRobotService {
-    constructor(trustedAppModel, domainRobotConfig) {
+    constructor(domainRobotConfig) {
         super(domainRobotConfig);
-        this.model = trustedAppModel;
     }
 
     async create(model) {

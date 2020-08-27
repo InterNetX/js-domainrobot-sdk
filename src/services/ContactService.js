@@ -1,7 +1,7 @@
 let DomainRobotService = require("./DomainRobotService");
 
 class Contact extends DomainRobotService {
-  constructor(contactModel, domainRobotConfig) {
+  constructor(domainRobotConfig) {
     super(domainRobotConfig);
   }
 
