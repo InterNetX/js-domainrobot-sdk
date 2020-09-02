@@ -5,42 +5,40 @@ For these cases we provide you with two integrated callback methods you can use 
 
 ## Implementation and Usage
 
-*WORK IN PROGRESS*
-
-<!-- There are two possible ways to use these methods.
+There are two possible ways to use these methods.
 
 1. Define them globally through the domainrobotConfig
 
-    ```php
-    new Domainrobot([
-        "url" => "https://api.autodns.com/v1",
-        "auth" => new DomainrobotAuth([
-            "user" => "username",
-            "password" => "password",
-            "context" => 4
-        ]),
-        "logRequestCallback" => function ($method, $url, $requestOptions, $headers){
-            LogCallback::dailyRequest($method, $url, $options, $user);
+    ```javascript
+    new Domainrobot({
+        url: 'https://api.demo.autodns.com/v1',
+        auth: {
+            user: 'username',
+            password: 'password',
+            context: 4
         },
-        "logResponseCallback" => function ($url, $response, $statusCode, $exectime){
-            LogCallback::dailyResponse($url, $response, $statusCode, $exectime, $user);
+        logRequestCallback: function (requestOptions, headers) {
+            console.log(requestOptions, headers)
+        },
+        logResponseCallback: function (response, executionTime) {
+            console.log(response, executionTime)
         }
-    ]);
+    });
 
     ```
 
 2. Define them locally for a single request
 
-    ```php
-    $user = User::find(1);
-
-    $domainrobot->domain->logRequest(function($method, $url, $requestOptions, $headers) use ($user){
-        // execute your code here
-        print_r($method);
-    })->logResponse(function($url, $response, $statusCode, $exectime) use ($user){
-        // execute your code here
-        print_r($user);
-    })->info("example.com");
+    ```javascript
+    result = await domainRobot
+        .login()
+        .logRequest(function (requestOptions, headers) {
+            console.log(requestOptions, headers)
+        })
+        .logResponse(function (response, executionTime) {
+            console.log(requestOptions, headers)
+        })
+        .sessionID(loginData);
     ```
 
 &nbsp;  
@@ -52,14 +50,10 @@ Local defintions for log callbacks will always overwrite global definitions.
 
 ## Request parameters
 
-* **$method**: the HTTP Method used for the call
-* **$url**: the URL the call is sent to
-* **$requestOptions**: the request options that are sent with the call; contains query parameters and other settings
-* **$headers**: the headers sent with the call
+* **requestOptions**: the request options that are sent with the call; contains query parameters and other settings
+* **headers**: the headers sent with the call
 
 ## Response parameters
 
-* **$url**: the url the call was sent to
-* **$response**: the raw response we received from the backend
-* **$statusCode**: the HTTP status code
-* **$exectime**: the execution time of the full request from start to finish -->
+* **response**: the raw response we received from the backend
+* **executionTime**: the execution time of the full request from start to finish
