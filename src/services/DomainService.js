@@ -77,9 +77,12 @@ class Domain extends DomainRobotService {
      * * status
      */
   async restoreList(model, keys = []) {
-    let keysString = keys.join('&keys=');
+    let keysString = '';
+    if (keys.length > 0) {
+        keysString = "?keys[]=" + keys.join('&keys[]=');
+    }
     return await this.sendPostRequest(
-        this.domainRobotConfig.url + "/domain/restore/_search?keys=" + keysString,
+        this.domainRobotConfig.url + "/domain/restore/_search" + keysString,
         model
     );
   }

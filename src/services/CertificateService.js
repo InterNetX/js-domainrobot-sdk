@@ -7,14 +7,17 @@ class CertificateService extends DomainRobotService {
     }
 
     prepareCsr(model) {
+
         let matches = model.csr
             .trim()
+            .replace(/(\r\n|\n|\r)/gm, "")
             .match(
                 /^(-----BEGIN CERTIFICATE REQUEST-----)(.*)(-----END CERTIFICATE REQUEST-----)$/
             );
         if (matches !== null) {
-            model.csr = [matches[1], matches[2], matches[3]].join("\n");
+            model.csr = [matches[1], matches[2], matches[3]].join("\r\n");
         }
+
         return model;
     }
 
@@ -81,8 +84,6 @@ class CertificateService extends DomainRobotService {
     }
 
     async delete(certificateId) {
-        model = this.prepareCsr(model);
-
         return await this.sendDeleteRequest(
             this.domainRobotConfig.url + "/certificate/" + certificateId
         );
