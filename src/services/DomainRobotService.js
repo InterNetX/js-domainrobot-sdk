@@ -137,6 +137,7 @@ class DomainRobotService {
     logRequestIfCallbackSet(requestOptions, headers) {
         if (typeof this.logRequestCallback === 'function') {
             this.logRequestCallback(requestOptions, headers);
+            return;
         }
 
         if (this.domainRobotConfig.hasLogRequestCallback()) {
@@ -146,8 +147,8 @@ class DomainRobotService {
 
     logResponseIfCallbackSet(rawResponse, executionTime) {
         if (typeof this.logResponseCallback === 'function') {
-            console.log("blub")
             this.logResponseCallback(rawResponse, executionTime);
+            return;
         }
 
         if (this.domainRobotConfig.hasLogResponseCallback()) {
