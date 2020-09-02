@@ -7,15 +7,17 @@ class CertificateService extends DomainRobotService {
     }
 
     prepareCsr(model) {
+
         let matches = model.csr
             .trim()
-            .replace(/(\r\n|\n|\r)/gm)
+            .replace(/(\r\n|\n|\r)/gm, "")
             .match(
                 /^(-----BEGIN CERTIFICATE REQUEST-----)(.*)(-----END CERTIFICATE REQUEST-----)$/
             );
         if (matches !== null) {
             model.csr = [matches[1], matches[2], matches[3]].join("\r\n");
         }
+
         return model;
     }
 
