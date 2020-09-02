@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.4.0] - 2020-09-02
+
+* add logging (callbacks) for request/response
+  * https://internetx.github.io/js-domainrobot-sdk/guide/logging.html
+* add new types to defintion file (index.d.ts)
+
 ## [1.3.2] - 2020-07-16
 
 * syntax and error fixes
