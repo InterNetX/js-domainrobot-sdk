@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.4.1] - 2020-09-02
+
+* bugfixes for Certificate and Domainservices
+* add UserService
+
 ## [1.4.0] - 2020-09-02
 
 * add logging (callbacks) for request/response
