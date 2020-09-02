@@ -9,8 +9,9 @@ let ZoneService = require("./services/ZoneService");
 let TrustedAppService = require("./services/TrustedAppService");
 let PollService = require("./services/PollService");
 let TransferOutService = require("./services/TransferOutService");
-let AccountingService = require("./services/AccountingService");
+let UserService = require("./services/UserService");
 let LoginService = require("./services/LoginService");
+let AccountingService = require("./services/AccountingService");
 
 class DomainRobot {
     /**
@@ -62,6 +63,10 @@ class DomainRobot {
 
     login() {
         return new LoginService(this.domainRobotConfig);
+    }
+
+    user() {
+        return new UserService(this.domainRobotConfig);
     }
 
     //   accounting(){

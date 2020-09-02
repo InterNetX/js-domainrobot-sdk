@@ -6,6 +6,7 @@ const packageJson = require("../../package.json");
 
 const DomainRobotException = require("../lib/DomainRobotException");
 const DomainRobotResult = require("../lib/DomainRobotResult");
+const DomainRobotConfig = require("../lib/DomainRobotConfig");
 
 let specs = require("../lib/specs.json");
 let ApiFactory = require("../lib/Factory");
@@ -18,15 +19,10 @@ class DomainRobotService {
     constructor(domainRobotConfig) {
         this.modelFactory = null;
 
-        // set default values if nothing has been specified
-        if (!domainRobotConfig.url) {
-            domainRobotConfig.url = config.API_URL;
-        }
+        this.domainRobotConfig = new DomainRobotConfig(domainRobotConfig);
+
+        // add context header
         if (domainRobotConfig.auth !== undefined) {
-            if (!domainRobotConfig.auth.context) {
-                domainRobotConfig.auth.context = config.API_CONTEXT;
-            }
-            // add context header
             axios.defaults.headers.common[Headers.DOMAINROBOT_HEADER_CONTEXT] =
                 domainRobotConfig.auth.context;
         }
@@ -37,21 +33,19 @@ class DomainRobotService {
         axios.defaults.headers.common[Headers.DOMAINROBOT_USER_AGENT] =
             "JSDomainrobotSdk/" + packageJson.version;
 
-        this.domainRobotConfig = domainRobotConfig;
-
         // decide which authentcation method we should use
         // its either 'basic auth' or via 'session_id'
-        if (domainRobotConfig.auth !== undefined) {
+        if (this.domainRobotConfig.auth !== undefined) {
             // set basic axios config
             this.axiosconfig = {
                 auth: {
-                    username: domainRobotConfig.auth.user,
-                    password: domainRobotConfig.auth.password
+                    username: this.domainRobotConfig.auth.user,
+                    password: this.domainRobotConfig.auth.password
                 }
             };
-        } else if (domainRobotConfig.session_id !== null && domainRobotConfig.session_id !== undefined) {
+        } else if (this.domainRobotConfig.session_id !== null && this.domainRobotConfig.session_id !== undefined) {
             // set the session_id header for authentication
-            axios.defaults.headers.common[Headers.DOMAINROBOT_HEADER_SESSION_ID] = domainRobotConfig.session_id;
+            axios.defaults.headers.common[Headers.DOMAINROBOT_HEADER_SESSION_ID] = this.domainRobotConfig.session_id;
         }
 
         this.axios = axios;
@@ -68,29 +62,29 @@ class DomainRobotService {
 
     async sendRequest(method, url, data = null) {
         try {
-            console.log(Object.assign(
+            let requestOptions = Object.assign(
                 {
                     method,
                     url,
                     data
                 },
                 this.axiosconfig
-            ));
-            let result = await this.axios(
-                Object.assign(
-                    {
-                        method,
-                        url,
-                        data
-                    },
-                    this.axiosconfig
-                )
             );
+
+            this.logRequestIfCallbackSet(requestOptions, this.axios.defaults.headers);
+
+            let start = new Date().getTime();
+
+            let result = await this.axios(requestOptions);
+
+            let end = new Date().getTime();
+
+            this.logResponseIfCallbackSet(result, end - start);
 
             let domainRobotResult = new DomainRobotResult(result.data, result.status);
             if (result.headers !== undefined) {
                 domainRobotResult.setHeaders(result.headers);
-            }
+            }            
 
             if (!domainRobotResult.isValid()) {
                 throw new DomainRobotException({}, 500);
@@ -128,6 +122,37 @@ class DomainRobotService {
             this.modelFactory = Backend.models;
         }
         return this.modelFactory;
+    }
+
+    logRequest(logRequestCallback) {
+        this.logRequestCallback = logRequestCallback;
+        return this;
+    }
+
+    logResponse(logResponseCallback) {
+        this.logResponseCallback = logResponseCallback;
+        return this;
+    }
+
+    logRequestIfCallbackSet(requestOptions, headers) {
+        if (typeof this.logRequestCallback === 'function') {
+            this.logRequestCallback(requestOptions, headers);
+        }
+
+        if (this.domainRobotConfig.hasLogRequestCallback()) {
+            this.domainRobotConfig.logRequestCallback(requestOptions, headers);
+        }
+    }
+
+    logResponseIfCallbackSet(rawResponse, executionTime) {
+        if (typeof this.logResponseCallback === 'function') {
+            console.log("blub")
+            this.logResponseCallback(rawResponse, executionTime);
+        }
+
+        if (this.domainRobotConfig.hasLogResponseCallback()) {
+            this.domainRobotConfig.logResponseCallback(rawResponse, executionTime);
+        }
     }
 }
 
