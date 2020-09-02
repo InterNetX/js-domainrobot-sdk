@@ -41,7 +41,7 @@ class Domain extends DomainRobotService {
   }
 
   async restore(model) {
-    return await this.sendPostRequest(
+    return await this.sendPutRequest(
         this.domainRobotConfig.url + "/domain/" + model.name + "/_restore",
         model
     );
