@@ -1,4 +1,10 @@
-export declare class CertificateService {
+export declare class DomainRobotService<T> {
+    constructor(domainRobotConfig: domainRobotConfig);
+    logRequest(callback: Function): T;
+    logResponse(callback: Function): T;
+}
+
+export declare class CertificateService extends DomainRobotService<CertificateService>{
     create(model: DomainRobotModels.Certificate): DomainRobotResult<JsonResponseDataObjectJob, Number>;
     createRealtime(model: DomainRobotModels.Certificate): DomainRobotResult<JsonResponseDataCertificate, Number>;
     prepareOrder(model: DomainRobotModels.CertificateData): DomainRobotResult<JsonResponseDataCertificateData, Number>;
@@ -9,17 +15,14 @@ export declare class CertificateService {
     renew(model: DomainRobotModels.Certificate): DomainRobotResult<JsonResponseDataObjectJob, Number>;
     comment(model: DomainRobotModels.Certificate): DomainRobotResult<JsonResponseDataVoid, Number>;
 }
-// export declare class AccountingService {
-//     calculate(model: DomainRobotModels.SubjectProduct): DomainRobotResult<JsonResponseDataContact, Number>;
-// }
-export declare class ContactService {
+export declare class ContactService extends DomainRobotService<ContactService> {
     create(model: DomainRobotModels.Contact): DomainRobotResult<JsonResponseDataContact, Number>;
     update(model: DomainRobotModels.Contact): DomainRobotResult<JsonResponseDataContact, Number>;
     list(model: DomainRobotModels.Query, keys?: String[]): DomainRobotResult<JsonResponseDataContact, Number>;
     info(id: Number): DomainRobotResult<JsonResponseDataContact, Number>;
     delete(id: Number): DomainRobotResult<JsonResponseDataJsonNoData, Number>;
 }
-export declare class DomainService {
+export declare class DomainService extends DomainRobotService<DomainService> {
     create(model: DomainRobotModels.Domain): DomainRobotResult<JsonResponseDataObjectJob, Number>;
     update(model: DomainRobotModels.Domain): DomainRobotResult<JsonResponseDataObjectJob, Number>;
     transfer(model: DomainRobotModels.Domain): DomainRobotResult<JsonResponseDataObjectJob, Number>;
@@ -38,14 +41,14 @@ export declare class DomainService {
     cancelationInfo(name: String): DomainRobotResult<JsonResponseDataDomainCancelation, Number>;
     cancelationList(model: DomainRobotModels.Query, keys?: String[]): DomainRobotResult<JsonResponseDataDomainCancelation, Number>;
 }
-export declare class SslContactService {
+export declare class SslContactService extends DomainRobotService<SslContactService>{
     create(model: DomainRobotModels.SslContact): DomainRobotResult<JsonResponseDataSslContact, Number>;
     update(model: DomainRobotModels.SslContact): DomainRobotResult<JsonResponseDataSslContact, Number>;
     delete(id: Number): DomainRobotResult<JsonResponseDataJsonNoData, Number>;
     info(id: Number): DomainRobotResult<JsonResponseDataSslContact, Number>;
     list(model: DomainRobotModels.Query, keys?: String[]): DomainRobotResult<JsonResponseDataSslContact, Number>;
 }
-export declare class ZoneService {
+export declare class ZoneService extends DomainRobotService<ZoneService>{
     create(model: DomainRobotModels.Zone): DomainRobotResult<JsonResponseDataZone, Number>;
     update(model: DomainRobotModels.Zone, systemNameServer: String): DomainRobotResult<JsonResponseDataZone, Number>;
     delete(name: String, systemNameServer: String): DomainRobotResult<JsonResponseDataJsonNoData, Number>;
@@ -54,25 +57,25 @@ export declare class ZoneService {
     stream(name: String, model: DomainRobotModels.ZoneStream, keys?: String[]): DomainRobotResult<JsonResponseDataZone, Number>;
     import(name: String, model: DomainRobotModels.Zone, keys?: String[]): DomainRobotResult<JsonResponseDataZone, Number>;
 }
-export declare class PollService {
+export declare class PollService extends DomainRobotService<PollService>{
     info(): DomainRobotResult<JsonResponseDataPollMessage, Number>;
     confirm(id: Number): DomainRobotResult<JsonResponseDataJsonNoData, Number>;
 }
-export declare class TransferOutService {
+export declare class TransferOutService extends DomainRobotService<TransferOutService>{
     list(model: DomainRobotModels.Query, keys?: String[]): DomainRobotResult<JsonResponseDataTransferOut, Number>;
     answer(domain: String, type: String): DomainRobotResult<JsonResponseDataTransferOut, Number>;
 }
-export declare class TrustedAppService {
+export declare class TrustedAppService extends DomainRobotService<TrustedAppService>{
     create(model: DomainRobotModels.TrustedApplication): DomainRobotResult<JsonResponseDataTrustedApplication, Number>;
     update(model: DomainRobotModels.TrustedApplication): DomainRobotResult<JsonResponseDataTrustedApplication, Number>;
     delete(id: Number): DomainRobotResult<JsonResponseDataJsonNoData, Number>;
     info(id: Number): DomainRobotResult<JsonResponseDataTrustedApplication, Number>;
     list(model: DomainRobotModels.Query, keys?: String[]): DomainRobotResult<JsonResponseDataTrustedApplication, Number>;
 }
-export declare class DomainStudio {
+export declare class DomainStudio extends DomainRobotService<DomainStudio>{
     search(model: DomainRobotModels.DomainEnvelopeSearchRequest): DomainRobotResult<JsonResponseDataDomainEnvelope, Number>;
 }
-export declare class LoginService {
+export declare class LoginService extends DomainRobotService<LoginService> {
     sessionID(model: DomainRobotModels.LoginData, queryParams?: {
         acl?: Boolean,
         profile?: Boolean,
@@ -198,6 +201,8 @@ export interface JsonResponseDataUser extends Result {
 
 export type domainRobotConfig = {
     url?: String;
+    logRequestCallback?: Function,
+    logResponseCallback?: Function,
     session_id?: String,
     auth?: {
         user: String;
