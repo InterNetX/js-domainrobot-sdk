@@ -43,7 +43,7 @@ In tsconfig.json add this to *compilerOptions*
 
 ## Usage - Basic Auth
 
-Detailed examples can be found under [https://github.com/InterNetX/js-domainrobot-sdk/tree/master/example](https://github.com/InterNetX/js-domainrobot-sdk/tree/master/example)
+Detailed examples can be found under [https://github.com/InterNetX/js-domainrobot-sdk/tree/master/examples](https://github.com/InterNetX/js-domainrobot-sdk/tree/master/examples)
 
 Before you can interact with the API you need to specify your authentication credentials and if you have a "Personal AutoDNS" account your url and context.
 
