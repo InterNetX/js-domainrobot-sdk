@@ -6,11 +6,11 @@ title: Models
 
 This SDK heavily relies on Models which are generated from our official [Swagger documentation](https://help.internetx.com/display/APIJSONEN/Technical+Documentation).
 
-If you are in doubt about which properties are accepted by a specific model you can always refer to this [documentation](https://help.internetx.com/display/APIXMLEN/JSON+Technical+Documentation), the [typescript definition](https://github.com/InterNetX/js-domainrobot-sdk/blob/master/index.d.ts) file or take a look at the [examples](https://github.com/InterNetX/php-domainrobot-sdk/tree/master/example) we provide in the source code of the SDK.
+If you are in doubt about which properties are accepted by a specific model you can always refer to this [documentation](https://help.internetx.com/display/APIXMLEN/JSON+Technical+Documentation), the [typescript definition](https://github.com/InterNetX/js-domainrobot-sdk/blob/master/index.d.ts) file or take a look at the [examples](https://github.com/InterNetX/js-domainrobot-sdk/tree/master/examples) we provide in the source code of the SDK.
 
 To build a certain request, for example to create a domain, you will first have to create the general Domainrobot instance and then provide it with a Domain Model which itself is containing other Models as well.
 
-Take a look at this [example](https://github.com/InterNetX/php-domainrobot-sdk/blob/master/example/domain/DomainCreate.js):
+Take a look at this [example](https://github.com/InterNetX/js-domainrobot-sdk/blob/master/examples/domain/DomainCreate.js):
 
 ```javascript
 // create and configure the Domainrobot instance

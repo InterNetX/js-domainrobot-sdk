@@ -12,7 +12,7 @@ General call of tasks:
 
 List of all available tasks (with typescript defintions) with linked examples (if available):
 
-*  search(model: DomainRobotModels.DomainEnvelopeSearchRequest): DomainRobotResult<JsonResponseDataDomainEnvelope, Number>;
+* [search](https://github.com/InterNetX/js-domainrobot-sdk/blob/master/examples/domainstudio/DomainStudioSearch.js)(model: DomainRobotModels.DomainEnvelopeSearchRequest): DomainRobotResult<JsonResponseDataDomainEnvelope, Number>;
 
 ::: tip Additional information
 
