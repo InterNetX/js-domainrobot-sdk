@@ -2,15 +2,17 @@
  * This is an example implementation of the sdk for AdonisJS (https://adonisjs.com/)
  */
 
-"use strict"
+"use strict";
 
 let DomainRobot = require("@internetx/js-domainrobot-sdk").DomainRobot
-let DomainRobotHeaders = require("@internetx/js-domainrobot-sdk").DomainRobotHeaders
-let DomainRobotModels = require("@internetx/js-domainrobot-sdk").DomainRobotModels
 
 const Logger = use("Logger")
 
-class DomainCreate {
+class DomainUpdate {
+
+    /**
+     * Update the status of an Domain
+     */
     async sdk({ request, response, params }) {
         
         // Create a new Instance of the Domainrobot SDK
@@ -26,39 +28,34 @@ class DomainCreate {
             }
         });
 
-        // Next create and fill the DomainRobot Domain Model
-        let domain = new DomainRobotModels.Domain({
-            name: "js-sdk-test.de",
-            nameservers: [
-                new DomainRobotModels.NameServer({
-                    name: "ns1.example.com"
-                }),
-                new DomainRobotModels.NameServer({
-                    name: "ns2.example.com"
-                })
-            ]
-        });
+        // Query an existing Domain and get the Object
+        let domainInfo = await domainRobot.domain().info("js-sdk-test.de")
 
-        // We need to set Contacts; For this we inquire a Contact
-        // we already know and pass it into the DomainModel
+        let domain = domainInfo.result.data[0]
 
-        let contactInfo = domainrobot.contact().info(23194139)
+        // Add an Comment
+        domain.comment = "Some Comment"
 
-        let contact = contactInfo.result.data[0]
+        // Change the Nameservers of the Domain
+        domain.nameservers = [
+            new DomainRobotModels.NameServer({
+                name: "ns3.example.de"
+            }),
+            new DomainRobotModels.NameServer({
+                name: "ns4.example.de"
+            })
+        ]
 
-        // contact is an intance of a Contact model
-        domain.adminc = contact
-        domain.ownerc = contact
-        domain.techc = contact
-        domain.zonec = contact
+        // Set the Domain General Request Email
+        domain.generalRequestEmail = "requests@js-sdk-test.de"
         
         // Send an Request and react to Success or Error Results
         try {
             // If the Request is Successful the returned Object
             // will be of the Type DomainRobotResult
 
-            // Create the Domain
-            let domainRobotResult = await domainRobot.domain().create(domain)
+            // Update the Domain
+            let domainRobotResult = await domainRobot.domain().update(domain)
 
             Logger.transport("file").info("Request success", domainRobotResult)
 
@@ -72,4 +69,4 @@ class DomainCreate {
     }
 }
 
-module.exports = DomainCreate
+module.exports = DomainUpdate
