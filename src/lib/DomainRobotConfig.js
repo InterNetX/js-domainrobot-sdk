@@ -11,6 +11,7 @@ class DomainRobotConfig {
         this.session_id = domainRobotConfig.session_id || undefined;
         this.logRequestCallback = domainRobotConfig.logRequestCallback || undefined;
         this.logResponseCallback = domainRobotConfig.logResponseCallback || undefined;
+        this.headers = domainRobotConfig.headers || undefined;
     }
 
     hasLogRequestCallback(){
