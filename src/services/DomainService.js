@@ -14,7 +14,7 @@ class Domain extends DomainRobotService {
 
   async update(model) {
     return await this.sendPutRequest(
-        this.domainRobotConfig.url + "/domain/"+model.name,
+        this.domainRobotConfig.url + "/domain/" + model.name,
         model
     );
   }

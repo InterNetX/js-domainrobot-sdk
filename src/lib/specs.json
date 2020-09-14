@@ -16468,6 +16468,52 @@
       "type" : "string",
       "enum" : [ "PRIMARY", "SECONDARY", "COMPLETE", "HIDDEN", "NONE", "AUTO" ]
     },
+    "NewPassword": {
+      "type" : "object",
+      "properties" : {
+        "user" : {
+          "type" : "string",
+          "description" : "The user"
+        },
+        "context" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "The context of the user"
+        },
+        "tan" : {
+          "type" : "string",
+          "description" : "The tan"
+        },
+        "password" : {
+          "type" : "string",
+          "description" : "The password"
+        },
+        "email" : {
+          "type" : "string",
+          "description" : "The disguised email to which the TAN is to be sent."
+        },
+        "mobile" : {
+          "type" : "string",
+          "description" : "The disguised mobilephone number to which the TAN is to be sent."
+        },
+        "tanMethods" : {
+          "type" : "array",
+          "description" : "The tan methods available for the user.",
+          "uniqueItems" : true,
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "token" : {
+          "type" : "string",
+          "description" : "The token"
+        },
+        "method" : {
+          "type" : "string",
+          "description" : "The selected method"
+        }
+      }
+    },
     "NicMember" : {
       "type" : "object",
       "properties" : {

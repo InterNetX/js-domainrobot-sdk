@@ -2146,6 +2146,22 @@ export namespace DomainRobotModels {
         ipAddresses?: String[];
     }
 
+    export class NewPassword {
+        constructor(config?: NewPassword);
+    }
+
+    export interface NewPassword {
+        user?: String;
+        context?: Number;
+        tan?: String;
+        password?: String;
+        email?: String;
+        mobile?: String;
+        tanMethods?: String[];
+        token?: String;
+        method?: String;
+    }
+
     export class NicMember {
         constructor(config?: NicMember);
     }

@@ -21,6 +21,9 @@ class DomainRobotService {
 
         this.domainRobotConfig = new DomainRobotConfig(domainRobotConfig);
 
+        // Initialize / Clear the Default Headers
+        axios.defaults.headers.common = {}
+
         // add context header
         if (domainRobotConfig.auth !== undefined) {
             axios.defaults.headers.common[Headers.DOMAINROBOT_HEADER_CONTEXT] =
@@ -32,6 +35,13 @@ class DomainRobotService {
             "application/json";
         axios.defaults.headers.common[Headers.DOMAINROBOT_USER_AGENT] =
             "JSDomainrobotSdk/" + packageJson.version;
+
+        // if global headers were set in the config assign them
+        if (this.domainRobotConfig.headers !== undefined) {
+            for (let [headerKey, headerValue] of Object.entries(this.domainRobotConfig.headers)) {
+                axios.defaults.headers.common[headerKey] = headerValue
+            }
+        }
 
         // decide which authentcation method we should use
         // its either 'basic auth' or via 'session_id'
