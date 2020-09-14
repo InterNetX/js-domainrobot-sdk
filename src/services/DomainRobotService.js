@@ -21,6 +21,9 @@ class DomainRobotService {
 
         this.domainRobotConfig = new DomainRobotConfig(domainRobotConfig);
 
+        // Initialize / Clear the Default Headers
+        axios.defaults.headers.common = {}
+
         // add context header
         if (domainRobotConfig.auth !== undefined) {
             axios.defaults.headers.common[Headers.DOMAINROBOT_HEADER_CONTEXT] =
