@@ -15,7 +15,7 @@ Take a look at this [example](https://github.com/InterNetX/php-domainrobot-sdk/b
 ```javascript
 // create and configure the Domainrobot instance
 let domainRobot = new DomainRobot({
-    url: "http://dev-proxy-lab.intern.autodns-lab.com:10025",
+    url: "https://api.demo.autodns.com/v1",
     auth: {
         user: "user",
         password: "password",

@@ -51,7 +51,7 @@ Before you can interact with the API you need to specify your authentication cre
 let DomainRobot = require("js-domainrobot-sdk").DomainRobot;
 
 let domainRobot = new DomainRobot({
-    url: "http://dev-proxy-lab.intern.autodns-lab.com:10025",
+    url: "https://api.demo.autodns.com/v1",
     auth: {
         user: "user",
         password: "password",
@@ -75,7 +75,7 @@ let DomainRobot = require("js-domainrobot-sdk").DomainRobot;
 
 // when working with a session id you don't need to declare the auth block here
 let domainRobot = new DomainRobot({
-    url: "http://dev-proxy-lab.intern.autodns-lab.com:10025"
+    url: "https://api.demo.autodns.com/v1"
 });
 
 // set your authentication data in a separate model
@@ -109,7 +109,7 @@ let headers = result.getHeaders();
 
 // from this point onward we can use the session id to authenticate with the API
 domainRobot = new DomainRobot({
-    url: 'http://dev-proxy-lab.intern.autodns-lab.com:10025',
+    url: 'https://api.demo.autodns.com/v1',
     session_id: headers['x-domainrobot-sessionid']
 })
 ```
