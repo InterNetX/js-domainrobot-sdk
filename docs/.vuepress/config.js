@@ -80,7 +80,7 @@ module.exports = {
 						"api_tasks/ssl_contact",
 						"api_tasks/transfer_out",
 						"api_tasks/trusted_app",
-						//"api_tasks/user",
+						"api_tasks/user",
 						"api_tasks/zone",
 					],
 				}
