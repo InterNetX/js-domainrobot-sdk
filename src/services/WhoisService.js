@@ -13,6 +13,7 @@ class WhoisService extends DomainStudio {
   constructor(domainRobotConfig) {
     super(domainRobotConfig);
   }
+
   async single(domain) {
 
     let domains = []
