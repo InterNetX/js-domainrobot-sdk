@@ -1367,6 +1367,14 @@ export namespace DomainRobotModels {
         estimation?: EstimationServiceData;
     }
 
+    export class DomainStudioSourceCustom {
+        constructor(config?: DomainStudioSourceCustom);
+    }
+    export interface DomainStudioSourceCustom {
+        services?: DomainEnvelopeSearchService[];
+        onlyAvailable?: Boolean;
+        domains?: String[];
+    }
     export class DomainStudioSourceGeo {
         constructor(config?: DomainStudioSourceGeo);
     }
@@ -1419,6 +1427,7 @@ export namespace DomainRobotModels {
         constructor(config?: DomainStudioSources);
     }
     export interface DomainStudioSources {
+        custom?: DomainStudioSourceCustom;
         initial?: DomainStudioSourceInitial;
         suggestion?: DomainStudioSourceSuggestion;
         premium?: DomainStudioSourcePremium;

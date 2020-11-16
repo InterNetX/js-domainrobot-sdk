@@ -17,11 +17,13 @@ class DomainRobotService {
      * @param {object} domainRobotConfig
      */
     constructor(domainRobotConfig) {
+
         this.modelFactory = null;
 
         this.domainRobotConfig = new DomainRobotConfig(domainRobotConfig);
 
-        // Initialize / Clear the Default Headers
+        // Reset the Axios global Headers
+        // https://stackoverflow.com/questions/47046575/axios-different-headers-for-express-request
         axios.defaults.headers.common = {}
 
         // add context header
@@ -99,7 +101,7 @@ class DomainRobotService {
             if (!domainRobotResult.isValid()) {
                 throw new DomainRobotException({}, 500);
             }
-
+            
             return domainRobotResult;
         } catch (error) {
             console.log(error)
