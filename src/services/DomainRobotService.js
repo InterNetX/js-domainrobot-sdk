@@ -128,6 +128,10 @@ class DomainRobotService {
         return this.sendRequest("DELETE", url, data);
     }
 
+    async sendPatchRequest(url, data) {
+        return this.sendRequest("PATCH", url, data);
+    }
+
     models() {
         const Backend = new ApiFactory(specs);
         if (this.modelFactory === null) {

@@ -12,7 +12,8 @@ let TransferOutService = require("./services/TransferOutService");
 let LoginService = require("./services/LoginService");
 let UserService = require("./services/UserService");
 let User2faService = require("./services/User2faService");
-let WhoisService = require("./services/WhoisService"); 
+let WhoisService = require("./services/WhoisService");
+let DomainBulkService = require("./services/DomainBulkService"); 
 // let AccountingService = require("./services/AccountingService");
 
 class DomainRobot {
@@ -77,6 +78,10 @@ class DomainRobot {
 
     whois() {
         return new WhoisService(this.domainRobotConfig);
+    }
+
+    domainBulk() {
+        return new DomainBulkService(this.domainRobotConfig);
     }
 
     //   accounting(){
