@@ -2822,7 +2822,7 @@ export namespace DomainRobotModels {
         website?: String; //UrlEntity
         email?: String;
         emailVerified?: Boolean;
-        gende?: GenderConstants;
+        gender?: GenderConstants;
         birthdate?: String;
         zoneinfo?: String;
         locale?: String;
