@@ -12,5 +12,5 @@ General call of tasks:
 
 List of all available tasks (with typescript defintions) with linked examples (if available):
 
-* [single](domain: String): DomainRobotResult<JsonResponseDataDomainEnvelope, Number>;
-* [multi](https://github.com/InterNetX/js-domainrobot-sdk/blob/master/examples/domain/DomainCreate.js)(domains: Array): DomainRobotResult<JsonResponseDataDomainEnvelope, Number>;
+* single(domain: String): DomainRobotResult<JsonResponseDataDomainEnvelope, Number>;
+* [multi](https://github.com/InterNetX/js-domainrobot-sdk/blob/master/examples/whois/WhoisMulti.js)(domains: Array): DomainRobotResult<JsonResponseDataDomainEnvelope, Number>;
