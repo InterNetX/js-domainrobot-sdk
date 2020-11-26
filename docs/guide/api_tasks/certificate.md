@@ -17,7 +17,7 @@ List of all available tasks (with typescript defintions) with linked examples (i
 * [create](https://github.com/InterNetX/js-domainrobot-sdk/blob/master/examples/certificate/CertificateCreate.js)(model: DomainRobotModels.Certificate): DomainRobotResult<JsonResponseDataObjectJob, Number>;
 * [createRealtime](https://github.com/InterNetX/js-domainrobot-sdk/blob/master/examples/certificate/CertificateCreateRealtime.js)(model: DomainRobotModels.Certificate): DomainRobotResult<JsonResponseDataCertificate, Number>;
 * [prepareOrder](https://github.com/InterNetX/js-domainrobot-sdk/blob/master/examples/certificate/CertificatePrepareOrder.js)(model: DomainRobotModels.CertificateData): DomainRobotResult<JsonResponseDataCertificateData, Number>;
-* [list](https://github.com/InterNetX/js-domainrobot-sdk/blob/master/examples/certificate/CertificateList.js)(odel: DomainRobotModels.Query, keys?: String[]): DomainRobotResult<JsonResponseDataCertificate, Number>;
+* [list](https://github.com/InterNetX/js-domainrobot-sdk/blob/master/examples/certificate/CertificateList.js)(model: DomainRobotModels.Query, keys?: String[]): DomainRobotResult<JsonResponseDataCertificate, Number>;
 * [info](https://github.com/InterNetX/js-domainrobot-sdk/blob/master/examples/certificate/CertificateInfo.js)(id: Number): DomainRobotResult<JsonResponseDataCertificate, Number>;
 * reissue(model: DomainRobotModels.Certificate): DomainRobotResult<JsonResponseDataObjectJob, Number>;
 * [delete](https://github.com/InterNetX/js-domainrobot-sdk/blob/master/examples/certificate/CertificateDelete.js)(id: Number): DomainRobotResult<JsonResponseDataObjectJob, Number>;
