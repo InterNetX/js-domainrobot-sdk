@@ -5,9 +5,14 @@ class Contact extends DomainRobotService {
         super(domainRobotConfig);
     }
 
-    async create(model) {
+    async create(model, keys = []) {
+        let keysString = "";
+        if (keys.length > 0) {
+            keysString = "?keys[]=" + keys.join("&keys[]=");
+        }
+
         return await this.sendPostRequest(
-            this.domainRobotConfig.url + "/contact",
+            this.domainRobotConfig.url + "/contact" + keysString,
             model
         );
     }
