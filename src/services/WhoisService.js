@@ -1,7 +1,3 @@
-
-// let DomainRobotService = require("./DomainRobotService");
-// const DomainRobotModels = require('js-domainrobot-sdk').DomainRobotModels
-
 let specs = require("../lib/specs.json");
 let ApiFactory = require("../lib/Factory");
 const Backend = new ApiFactory(specs);

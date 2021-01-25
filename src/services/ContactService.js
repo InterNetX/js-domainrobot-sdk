@@ -46,9 +46,6 @@ class Contact extends DomainRobotService {
             model
         );
     }
-
-
-
 }
 
 module.exports = Contact;

@@ -1,20 +1,20 @@
 /* global require,module */
 // services
-let ContactService = require("./services/ContactService");
-let CertificateService = require("./services/CertificateService");
-let DomainStudio = require("./services/DomainStudio");
-let DomainService = require("./services/DomainService");
-let SslContactService = require("./services/SslContactService");
-let ZoneService = require("./services/ZoneService");
-let TrustedAppService = require("./services/TrustedAppService");
-let PollService = require("./services/PollService");
-let TransferOutService = require("./services/TransferOutService");
-let LoginService = require("./services/LoginService");
-let UserService = require("./services/UserService");
-let User2faService = require("./services/User2faService");
-let WhoisService = require("./services/WhoisService");
-let DomainBulkService = require("./services/DomainBulkService"); 
-// let AccountingService = require("./services/AccountingService");
+let ContactService = require("./services/ContactService")
+let CertificateService = require("./services/CertificateService")
+let DomainStudio = require("./services/DomainStudio")
+let DomainService = require("./services/DomainService")
+let SslContactService = require("./services/SslContactService")
+let ZoneService = require("./services/ZoneService")
+let TrustedAppService = require("./services/TrustedAppService")
+let PollService = require("./services/PollService")
+let TransferOutService = require("./services/TransferOutService")
+let LoginService = require("./services/LoginService")
+let UserService = require("./services/UserService")
+let User2faService = require("./services/User2faService")
+let WhoisService = require("./services/WhoisService")
+let DomainBulkService = require("./services/DomainBulkService")
+let PcDomainsService = require("./services/PcDomainsService") 
 
 class DomainRobot {
     /**
@@ -23,70 +23,70 @@ class DomainRobot {
      * @param {string} password
      */
     constructor(domainRobotConfig) {
-        this.domainRobotConfig = domainRobotConfig;
+        this.domainRobotConfig = domainRobotConfig
     }
 
     // contact stuff
     contact() {
-        return new ContactService(this.domainRobotConfig);
+        return new ContactService(this.domainRobotConfig)
     }
 
     // certificate stuff
     certificate() {
-        return new CertificateService(this.domainRobotConfig);
+        return new CertificateService(this.domainRobotConfig)
     }
 
     domain() {
-        return new DomainService(this.domainRobotConfig);
+        return new DomainService(this.domainRobotConfig)
     }
 
     sslcontact() {
-        return new SslContactService(this.domainRobotConfig);
+        return new SslContactService(this.domainRobotConfig)
     }
 
     zone() {
-        return new ZoneService(this.domainRobotConfig);
+        return new ZoneService(this.domainRobotConfig)
     }
 
     trustedapp() {
-        return new TrustedAppService(this.domainRobotConfig);
+        return new TrustedAppService(this.domainRobotConfig)
     }
 
     domainStudio() {
-        return new DomainStudio(this.domainRobotConfig);
+        return new DomainStudio(this.domainRobotConfig)
     }
 
     poll() {
-        return new PollService(this.domainRobotConfig);
+        return new PollService(this.domainRobotConfig)
     }
 
     transferout() {
-        return new TransferOutService(this.domainRobotConfig);
+        return new TransferOutService(this.domainRobotConfig)
     }
 
     login() {
-        return new LoginService(this.domainRobotConfig);
+        return new LoginService(this.domainRobotConfig)
     }
 
     user() {
-        return new UserService(this.domainRobotConfig);
+        return new UserService(this.domainRobotConfig)
     }
 
     user2fa() {
-        return new User2faService(this.domainRobotConfig);
+        return new User2faService(this.domainRobotConfig)
     }
 
     whois() {
-        return new WhoisService(this.domainRobotConfig);
+        return new WhoisService(this.domainRobotConfig)
     }
 
     domainBulk() {
-        return new DomainBulkService(this.domainRobotConfig);
+        return new DomainBulkService(this.domainRobotConfig)
     }
 
-    //   accounting(){
-    //       return new AccountingService(this.domainRobotConfig);
-    //   }
+    pcDomains() {
+        return new PcDomainsService(this.domainRobotConfig)
+    }
 }
 
 // Singleton Instance of DomainRobot Object
