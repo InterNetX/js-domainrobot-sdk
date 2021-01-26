@@ -72,9 +72,27 @@ export declare class TrustedAppService extends DomainRobotService<TrustedAppServ
     info(id: Number): DomainRobotResult<JsonResponseDataTrustedApplication, Number>;
     list(model: DomainRobotModels.Query, keys?: String[]): DomainRobotResult<JsonResponseDataTrustedApplication, Number>;
 }
+
+export declare class WhoisService extends DomainRobotService<WhoisService>{
+    single(domain: String): DomainRobotResult<JsonResponseDataDomainEnvelope, Number>;
+    multi(domains: Array<String>): DomainRobotResult<JsonResponseDataDomainEnvelope, Number>;
+}
+
+export declare class PcDomainsService extends DomainRobotService<PcDomainsService>{
+    estimation(model: DomainRobotModels.Estimation): DomainRobotResult<JsonResponseDataEstimation, Number>;
+    alexa(domain: String): DomainRobotResult<JsonResponseDataAlexaSiteInfo, Number>;
+    keyword(model: DomainRobotModels.Keywords): DomainRobotResult<JsonResponseDataKeyword, Number>;
+    meta(domain: String): DomainRobotResult<JsonResponseDataMeta, Number>;
+    sistrix(domain: String, country: String): DomainRobotResult<JsonResponseDataSistrix, Number>;
+    majestic(model: DomainRobotModels.Domains): DomainRobotResult<JsonResponseDataMajestic, Number>;
+    smuCheck(username: String): DomainRobotResult<JsonResponseDataSmuCheck, Number>;
+    wayback(domain: String): DomainRobotResult<JsonResponseDataWayback, Number>;
+}
+
 export declare class DomainStudio extends DomainRobotService<DomainStudio>{
     search(model: DomainRobotModels.DomainEnvelopeSearchRequest): DomainRobotResult<JsonResponseDataDomainEnvelope, Number>;
 }
+
 export declare class LoginService extends DomainRobotService<LoginService> {
     sessionID(model: DomainRobotModels.LoginData, queryParams?: {
         acl?: Boolean,
@@ -198,6 +216,31 @@ export interface JsonResponseDataDomainEnvelope extends Result {
 export interface JsonResponseDataUser extends Result {
     data: DomainRobotModels.User[];
 }
+export interface JsonResponseDataEstimation extends Result {
+    data: DomainRobotModels.EstimationV1
+}
+export interface JsonResponseDataAlexaSiteInfo extends Result {
+    data: DomainRobotModels.AlexaSiteInfo
+}
+export interface JsonResponseDataKeyword extends Result {
+    data: DomainRobotModels.Keyword[];
+}
+export interface JsonResponseDataMeta extends Result {
+    data: DomainRobotModels.Meta;
+}
+export interface JsonResponseDataSistrix extends Result {
+    data: DomainRobotModels.Sistrix;
+}
+export interface JsonResponseDataMajestic extends Result {
+    data: DomainRobotModels.Majestic[];
+}
+export interface JsonResponseDataSmuCheck extends Result {
+    data: DomainRobotModels.SocialMedia;
+}
+export interface JsonResponseDataWayback extends Result {
+    data: DomainRobotModels.Wayback[];
+}
+
 
 export type domainRobotConfig = {
     url?: String;
@@ -224,6 +267,10 @@ export class DomainRobot {
 
     domainStudio(domainStudioEnvelopeSearchRequest: DomainRobotModels.DomainEnvelopeSearchRequest): DomainStudio;
 
+    login(loginDataModel?: DomainRobotModels.LoginData): LoginService;
+
+    pcDomains(): PcDomainsService;
+
     poll(): PollService;
 
     sslcontact(sslcontactModel?: DomainRobotModels.SslContact): SslContactService;
@@ -232,9 +279,9 @@ export class DomainRobot {
 
     trustedapp(trustedAppModel?: DomainRobotModels.TrustedApplication): TrustedAppService;
 
-    zone(zoneModel?: DomainRobotModels.Zone): ZoneService;
+    whois(): WhoisService;
 
-    login(loginDataModel?: DomainRobotModels.LoginData): LoginService;
+    zone(zoneModel?: DomainRobotModels.Zone): ZoneService;
 }
 
 export const DomainRobotHeaders: {
@@ -370,6 +417,46 @@ export namespace DomainRobotModels {
         country?: String;
     }
 
+    export class AlexaSiteInfo {
+        constructor(config?: AlexaSiteInfo);
+    }
+    export interface AlexaSiteInfo {
+        sitesLinkingIn?: Number;
+        rank?: Number;
+        loadingTime?: String;
+        adultContent?: String;
+        siteLanguage?: String;
+        siteData?: AlexaSiteInfoSiteData;
+        highestRankedIncountry?: AlexaSiteInfoHighestRankedIncountry;
+        pageViewsPerDay?: AlexaSiteInfoPageViewsPerDay;
+    }
+
+    export class AlexaSiteInfoHighestRankedIncountry {
+        constructor(config?: AlexaSiteInfoHighestRankedIncountry);
+    }
+    export interface AlexaSiteInfoHighestRankedIncountry {
+        contribution?: String;
+        rank?: Number;
+        country?: String;
+    }
+
+    export class AlexaSiteInfoPageViewsPerDay {
+        constructor(config?: AlexaSiteInfoPageViewsPerDay);
+    }
+    export interface AlexaSiteInfoPageViewsPerDay {
+        perUser?: Number;
+        codeltaunty?: String;
+    }
+
+    export class AlexaSiteInfoSiteData {
+        constructor(config?: AlexaSiteInfoSiteData);
+    }
+    export interface AlexaSiteInfoSiteData {
+        title?: String;
+        description?: String;
+        onlineSince?: String;
+    }
+
     export class Application {
         constructor(config?: Application);
     }
@@ -379,6 +466,7 @@ export namespace DomainRobotModels {
         name?: String;
         functionCodes?: String[];
     }
+
     export class BackupMx {
         constructor(config?: BackupMx);
     }
@@ -1340,6 +1428,13 @@ export namespace DomainRobotModels {
         zone?: Zone;
     }
 
+    export class Domains {
+        constructor(config?: Domains);
+    }
+    export interface Domains {
+        domains?: String[];
+    }
+
     export class DomainServices {
         constructor(config?: DomainServices);
     }
@@ -1444,6 +1539,134 @@ export namespace DomainRobotModels {
         notAfter?: String;
         confirmed?: String;
         confirmIp?: String;
+    }
+
+    export class Estimation {
+        constructor(config?: Estimation);
+    }
+    export interface Estimation {
+        domains?: String[];
+        currency?: String;
+    }
+
+    export class EstimationV1 {
+        constructor(config?: EstimationV1);
+    }
+    export interface EstimationV1 {
+        nameBased?: EstimationParametersV1NameBased;
+        keywordBased?: EstimationParametersV1KeywordBased;
+        tldBased?: EstimationParametersV1TldBased;
+        pagerank?: EstimationParametersV1PageRank;
+        language?: EstimationParametersV1Language;
+        wikipediaPageview: EstimationParametersV1WikipediaPageview
+    }
+
+    export class EstimationParametersV1 {
+        constructor(config?: EstimationParametersV1);
+    }
+    export interface EstimationParametersV1 {
+        nameBased?: EstimationParametersV1NameBased;
+        keywordBased?: EstimationParametersV1KeywordBased;
+        tldBased?: EstimationParametersV1TldBased;
+        pagerank?: EstimationParametersV1PageRank;
+        language?: EstimationParametersV1Language;
+        wikipediaPageview: EstimationParametersV1WikipediaPageview;
+    }
+
+    export class EstimationParametersV1KeywordBased {
+        constructor(config?: EstimationParametersV1KeywordBased);
+    }
+    export interface EstimationParametersV1KeywordBased {
+        word?: object;
+        version?: object;
+        segments?: String[];
+        numWords?: object;
+        keywords?: String[];
+        numKeywords?: object;
+        averageKeywordFrequency?: object;
+        averageKeywordPrice?: object;
+        prefix?: object;
+        averagePrefixFrequency?: object;
+        averagePrefixPrice?: object;
+        suffix?: object;
+        averageSuffixFrequency?: object;
+        averageSuffixPrice?: object;
+    }
+
+    export class EstimationParametersV1Language  {
+        constructor(config?: EstimationParametersV1Language);
+    }
+    export interface EstimationParametersV1Language {
+        en?: Number;
+        de?: Number;
+        fr?: Number;
+        it?: Number;
+        es?: Number;
+    }
+
+    export class EstimationParametersV1NameBased {
+        constructor(config?: EstimationParametersV1NameBased);
+    }
+    export interface EstimationParametersV1NameBased {
+        name?: String;
+        pattern?: String;
+        segments?: String[];
+        keywords?: String[];
+        numWords?: String;
+        isIDN?: Boolean;
+        numDigits?: Number;
+        numHyph?: Number;
+        numChar?: Number;
+        completelyNum?: Number;
+        averageKeywordFrequency?: Number;
+        averageKeywordPrice?: Number;
+        averageLengthFrequency?: Number;
+        averageLengthPrice?: Number;
+        prefix?: String;
+        averagePrefixFrequency?: Number;
+        averagePrefixPrice?: Number;
+        suffix?: String;
+        averageSuffixFrequency?: Number;
+        averageSuffixPrice?: Number;
+    }
+
+    export class EstimationParametersV1PageRank {
+        constructor(config?: EstimationParametersV1PageRank);
+    }
+    export interface EstimationParametersV1PageRank {
+        globalRank?: Number;
+        tldRank?: Number;
+        refSubNets?: Number;
+        refIPs?: Number;
+        prevGlobalRank?: Number;
+        prevTldRank?: Number;
+        pPrevRefSubNets?: Number;
+        prevRefIPs?: String;
+    }
+
+    export class EstimationParametersV1TldBased {
+        constructor(config?: EstimationParametersV1TldBased);
+    }
+    export interface EstimationParametersV1TldBased {
+        tld?: String;
+        subtld?: String;
+        averageTldFrequency?: Number;
+        averageTldPrice?: Number;
+        averageSubtTldFrequency?: Number;
+        averageSubtldPrice?: Number;
+        tldNumDomains?: Number;
+        tldGlobaleRank?: Number;
+        subtldNumDomains?: Number;
+        subtldGlobaleRank?: Number;
+        languageTldMatch?: Number;
+    }
+
+    export class EstimationParametersV1WikipediaPageview {
+        constructor(config?: EstimationParametersV1WikipediaPageview);
+    }
+    export interface EstimationParametersV1WikipediaPageview {
+        article?: String;
+        averagePageviewsPerDay?: String;
     }
 
     export class EstimationData {
@@ -2074,6 +2297,23 @@ export namespace DomainRobotModels {
         ctid?: String;
     }
 
+    export class Keyword {
+        constructor(config?: Keyword);
+    }
+    export interface Keyword {
+        competition?: Number;
+        keyword?: String;
+        cpc?: String;
+        vol?: String;
+    }
+
+    export class Keywords {
+        constructor(config?: Keywords);
+    }
+    export interface Keywords {
+        keywords?: String[];
+    }
+
     export class LoginData {
         constructor(config?: LoginData);
     }
@@ -2082,6 +2322,84 @@ export namespace DomainRobotModels {
         password?: String;
         token?: String;
         user?: String;
+    }
+
+    export class Majestic {
+        constructor(config?: Majestic);
+    }
+    export interface Majestic {
+        itemNu?: String;
+        item?: String;
+        resultCode?: String;
+        status?: String;
+        extBackLinks?: String;
+        refDomains?: String;
+        analysisResUnitsCost?: String;
+        aCRank?: String;
+        itemType?: String;
+        indexedURLs?: String;
+        getTopBackLinksAnalysisResUnitsCost?: String;
+        downloadBacklinksAnalysisResUnitsCost?: String;
+        downloadRefDomainBacklinksAnalysisResUnitsCost?: String;
+        refIPs?: String;
+        refSubNets?: String;
+        refDomainsEDU?: String;
+        extBackLinksEDU?: String;
+        refDomainsGOV?: String;
+        extBackLinksGOV?: String;
+        refDomainsEDUExact?: String;
+        extBackLinksEDUExact?: String;
+        refDomainsGOVExact?: String;
+        extBackLinksGOVExact?: String;
+        crawledFlag?: String;
+        lastCrawlDate?: String;
+        lastCrawlResult?: String;
+        redirectFlag?: String;
+        finalRedirectResult?: String;
+        outDomainsExternal?: String;
+        outLinksExternal?: String;
+        outLinksInternal?: String;
+        outLinksPages?: String;
+        lastSeen?: String;
+        title?: String;
+        redirectTo?: String;
+        language?: String;
+        languageDesc?: String;
+        languageConfidence?: String;
+        languagePageRatios?: String;
+        languageTotalPages?: String;
+        refLanguage?: String;
+        refLanguageDesc?: String;
+        refLanguageConfidence?: String;
+        refLanguagePageRatios?: String;
+        refLanguageTotalPages?: String;
+        crawledURLs?: String;
+        rootDomainIPAddress?: String;
+        totalNonUniqueLinks?: String;
+        nonUniqueLinkTypeHomepages?: String;
+        nonUniqueLinkTypeIndirect?: String;
+        nonUniqueLinkTypeDeleted?: String;
+        nonUniqueLinkTypeNoFollow?: String;
+        nonUniqueLinkTypeProtocolHTTPS?: String;
+        nonUniqueLinkTypeFrame?: String;
+        nonUniqueLinkTypeImageLink?: String;
+        nonUniqueLinkTypeRedirect?: String;
+        nonUniqueLinkTypeTextLink?: String;
+        refDomainTypeLive?: String;
+        refDomainTypeFollow?: String;
+        refDomainTypeHomepageLink?: String;
+        refDomainTypeDirect?: String;
+        refDomainTypeProtocolHTTPS?: String;
+        canonicalURL?: String;
+        citationFlow?: String;
+        trustFlow?: String;
+        trustMetric?: String;
+        topicalTrustFlowTopic0?: String;
+        topicalTrustFlowValue0?: String;
+        topicalTrustFlowTopic1?: String;
+        topicalTrustFlowValue1?: String;
+        topicalTrustFlowTopic2?: String;
+        topicalTrustFlowValue2?: String;
     }
 
     export class MailList {
@@ -2131,6 +2449,22 @@ export namespace DomainRobotModels {
         objects?: GenericObject[];
         code?: String;
         status?: StatusType;
+    }
+
+    export class Meta {
+        constructor(config?: Meta);
+    }
+    export interface Meta {
+        online?: Boolean;
+        dnssec?: Boolean;
+        description?: String;
+        title?: String;
+        certificateIssuer?: String;
+        certificateValid?: Boolean;
+        ipv4?: String[];
+        ipv6?: String[];
+        mx?: String[];
+        ns?: String[];
     }
 
     export class Modifier {
@@ -2411,6 +2745,16 @@ export namespace DomainRobotModels {
         period?: TimePeriod;
     }
 
+    export class Sistrix {
+        constructor(config?: Sistrix);
+    }
+    export interface Sistrix {
+        sichtbarkeitsindex?: String;
+        pages?: Number;
+        kwcountSeo?: Number;
+        kwcountSem?: Number;
+    }
+
     export class Soa {
         constructor(config?: Soa);
     }
@@ -2420,6 +2764,17 @@ export namespace DomainRobotModels {
         expire?: Number;
         ttl?: Number;
         email?: String;
+    }
+
+    export class SocialMedia {
+        constructor(config?: SocialMedia);
+    }
+    export interface SocialMedia {
+        facebook?: Boolean;
+        instagram?: Boolean;
+        pinterest?: Boolean;
+        twitter?: Boolean;
+        youtube?: Boolean;
     }
 
     export class SpamPolicy {
@@ -2690,6 +3045,38 @@ export namespace DomainRobotModels {
 
     export class Void {
         constructor();
+    }
+
+    export class Wayback {
+        constructor(config?: Wayback);
+    }
+    export interface Wayback {
+        wayback?: WaybackWayback;
+    }
+
+    export class WaybackWayback {
+        constructor(config?: WaybackWayback);
+    }
+    export interface WaybackWayback {
+        url?: String;
+        archivedSnapshots?: WaybackWaybackArchivedSnapshots;
+    }
+
+    export class WaybackWaybackArchivedSnapshots {
+        constructor(config?: WaybackWaybackArchivedSnapshots);
+    }
+    export interface WaybackWaybackArchivedSnapshots {
+        closest?: WaybackWaybackArchivedSnapshotsClosest;
+    }
+
+    export class WaybackWaybackArchivedSnapshotsClosest {
+        constructor(config?: WaybackWaybackArchivedSnapshotsClosest);
+    }
+    export interface WaybackWaybackArchivedSnapshotsClosest {
+        status?: Boolean;
+        available?: Boolean;
+        url?: String;
+        timestamp?: String;
     }
 
     export class WhoisServiceData {
