@@ -31,7 +31,7 @@ class SocialMediaUsernameCheck {
             // If the Request is Successful the returned Object
             // will be of the Type DomainRobotResult
 
-            // Search the Sistrix Service
+            // Perform the SocialMedia Username Check
             let domainRobotResult = await domainRobot.pcDomains().smuCheck(username)
 
             Logger.transport("file").info("Request success", domainRobotResult)
