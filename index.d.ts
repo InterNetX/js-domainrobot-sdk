@@ -77,9 +77,9 @@ export declare class DomainStudio extends DomainRobotService<DomainStudio>{
 }
 export declare class LoginService extends DomainRobotService<LoginService> {
     sessionID(model: DomainRobotModels.LoginData, queryParams?: {
-        acl?: Boolean,
-        profile?: Boolean,
-        customer?: Boolean,
+        acl?: boolean,
+        profile?: boolean,
+        customer?: boolean,
         timeout?: number
     }): Promise<DomainRobotResult<JsonResponseDataUser, number>>;
 }
@@ -108,8 +108,8 @@ export declare class UserService extends DomainRobotService<LoginService> {
 
 export declare class DomainRobotResult<Result, Number> {
     constructor(result: Result, status: number);
-    isValid(): Boolean;
-    isValidResponse(): Boolean;
+    isValid(): boolean;
+    isValidResponse(): boolean;
     getHeaders(): ResultHeaders;
 }
 
@@ -452,7 +452,7 @@ export namespace DomainRobotModels {
         paymentMode?: string;
         paymentCurrency?: Currency;
         invoiceLanguage?: string;
-        taxable?: Boolean;
+        taxable?: boolean;
         card?: Card;
         contracts?: CustomerContract[];
         billingUsers?: BasicUser[];
@@ -732,7 +732,7 @@ export namespace DomainRobotModels {
         fileName?: string;
         fileContent?: string;
         approverEmails?: string[];
-        provisioning?: Boolean;
+        provisioning?: boolean;
     }
 
     export class Certificate {
@@ -797,7 +797,7 @@ export namespace DomainRobotModels {
         algorithm?: CsrHashAlgorithmConstants;
         signatureHashAlgorithm?: SignatureHashAlgorithmConstants;
         idn?: string;
-        checkCaa?: Boolean;
+        checkCaa?: boolean;
     }
 
     export class CertificateHistory {
@@ -832,8 +832,8 @@ export namespace DomainRobotModels {
         protection?: ContactProtectionConstants;
         sip?: string;
         remarks?: string[];
-        domainsafe?: Boolean;
-        confirmOwnerConsent?: Boolean;
+        domainsafe?: boolean;
+        confirmOwnerConsent?: boolean;
         comment?: string;
         verification?: string; //GenericStatusConstants
         fname?: string;
@@ -984,9 +984,9 @@ export namespace DomainRobotModels {
         constructor(config?: object);
     }
     export interface ContactJobsExtensions {
-        adminType?: Boolean;
+        adminType?: boolean;
         contactTitle?: string;
-        hrMember?: Boolean;
+        hrMember?: boolean;
         industryClass?: number;
         website?: string;
     }
@@ -1111,7 +1111,7 @@ export namespace DomainRobotModels {
     }
     export interface ContactXxxExtensions {
         membershipID?: string;
-        nonResolverDomain?: Boolean;
+        nonResolverDomain?: boolean;
     }
 
     export class Currency {
@@ -1150,7 +1150,7 @@ export namespace DomainRobotModels {
         paymentMode?: string;
         paymentCurrency?: Currency;
         invoiceLanguage?: string;
-        taxable?: Boolean;
+        taxable?: boolean;
         card?: Card;
         contracts?: CustomerContract[];
         billingUsers?: BasicUser[];
@@ -1206,6 +1206,7 @@ export namespace DomainRobotModels {
     export class Domain {
         constructor(config?: object);
     }
+
     export interface Domain {
         created?: string;
         updated?: string;
@@ -1218,30 +1219,30 @@ export namespace DomainRobotModels {
         nameServers?: NameServer[];
         nameServerEntries?: string[];
         period?: TimePeriod;
-        trustee?: Boolean;
-        privacy?: Boolean;
+        trustee?: boolean;
+        privacy?: boolean;
         authinfo?: string;
-        domainsafe?: Boolean;
+        domainsafe?: boolean;
         parking?: ParkingProviderConstants;
         extensions?: DomainExtensions;
         logId?: number;
         nsCheck?: DNSCheck;
-        confirmOrder?: Boolean;
-        confirmOwnerConsent?: Boolean;
-        ignoreWhois?: Boolean;
+        confirmOrder?: boolean;
+        confirmOwnerConsent?: boolean;
+        ignoreWhois?: boolean;
         comment?: string;
-        includeWWW?: Boolean;
-        includeWildcard?: Boolean;
+        includeWWW?: boolean;
+        includeWildcard?: boolean;
         registrarStatus?: RegistryStatusConstants;
         registrarStatusReason?: string;
-        removeCancelation?: Boolean;
+        removeCancelation?: boolean;
         autodnsSecJob?: DNSSecJob;
         priceClass?: string;
         priceClassRenew?: string;
         abuseEmail?: string;
         generalRequestEmail?: string;
         privacyPlusMail?: string;
-        privacyPlus?: Boolean;
+        privacyPlus?: boolean;
         nameServerGroup?: string;
         rddsOptIn?: RddsOptInConstants;
         servicesAdd?: DomainServices;
@@ -1253,9 +1254,9 @@ export namespace DomainRobotModels {
         expire?: string;
         payable?: string;
         action?: DomainActionConstants;
-        autoDnssec?: Boolean;
-        dnssec?: Boolean;
-        validCertificate?: Boolean;
+        autoDnssec?: boolean;
+        dnssec?: boolean;
+        validCertificate?: boolean;
         cancelationStatus?: CancelationStatusConstants;
         autoRenewStatus?: AutoRenewStatusConstants;
         dnssecData?: DNSSec[];
@@ -1272,7 +1273,7 @@ export namespace DomainRobotModels {
         domain?: string;
         registryWhen?: string;
         gainingRegistrar?: string;
-        disconnect?: Boolean;
+        disconnect?: boolean;
         notice?: string;
         logId?: number;
         registryStatus?: RegistryStatusConstants;
@@ -1288,7 +1289,7 @@ export namespace DomainRobotModels {
         id?: string;
         source?: DomainStudioDomainSource;
         services?: DomainStudioService;
-        debugTime?: Boolean;
+        debugTime?: boolean;
     }
 
     export class DomainEnvelopeSearchRequest {
@@ -1297,8 +1298,8 @@ export namespace DomainRobotModels {
     export interface DomainEnvelopeSearchRequest {
         searchToken?: string;
         currency?: string;
-        debug?: Boolean;
-        checkPortfolio?: Boolean;
+        debug?: boolean;
+        checkPortfolio?: boolean;
         sources?: DomainStudioSources;
         clientIp?: string;
     }
@@ -1321,9 +1322,9 @@ export namespace DomainRobotModels {
         name?: string;
         idn?: string;
         notificationMobiles?: Phone[];
-        ocval?: Boolean;
-        cancelation?: Boolean;
-        removed?: Boolean;
+        ocval?: boolean;
+        cancelation?: boolean;
+        removed?: boolean;
         monitoringSetups?: DomainMonitoringSetup[];
         notificationEmails?: string[];
     }
@@ -1347,7 +1348,7 @@ export namespace DomainRobotModels {
         forSale?: string;
         keyword?: string;
         price?: number;
-        fixedPrice?: Boolean;
+        fixedPrice?: boolean;
         minPrice?: number;
     }
 
@@ -1366,30 +1367,30 @@ export namespace DomainRobotModels {
         nameServers?: NameServer[];
         nameServerEntries?: string[];
         period?: TimePeriod;
-        trustee?: Boolean;
-        privacy?: Boolean;
+        trustee?: boolean;
+        privacy?: boolean;
         authinfo?: string;
-        domainsafe?: Boolean;
+        domainsafe?: boolean;
         parking?: ParkingProviderConstants;
         extensions?: DomainExtensions;
         logId?: number;
         nsCheck?: DNSCheck;
-        confirmOrder?: Boolean;
-        confirmOwnerConsent?: Boolean;
-        ignoreWhois?: Boolean;
+        confirmOrder?: boolean;
+        confirmOwnerConsent?: boolean;
+        ignoreWhois?: boolean;
         comment?: string;
-        includeWWW?: Boolean;
-        includeWildcard?: Boolean;
+        includeWWW?: boolean;
+        includeWildcard?: boolean;
         registrarStatus?: RegistryStatusConstants;
         registrarStatusReason?: string;
-        removeCancelation?: Boolean;
+        removeCancelation?: boolean;
         autodnsSecJob?: DNSSecJob;
         priceClass?: string;
         priceClassRenew?: string;
         abuseEmail?: string;
         generalRequestEmail?: string;
         privacyPlusMail?: string;
-        privacyPlus?: Boolean;
+        privacyPlus?: boolean;
         nameServerGroup?: string;
         rddsOptIn?: RddsOptInConstants;
         servicesAdd?: DomainServices;
@@ -1403,9 +1404,9 @@ export namespace DomainRobotModels {
         expire?: string;
         payable?: string;
         action?: DomainActionConstants;
-        autoDnssec?: Boolean;
-        dnssec?: Boolean;
-        validCertificate?: Boolean;
+        autoDnssec?: boolean;
+        dnssec?: boolean;
+        validCertificate?: boolean;
         cancelationStatus?: CancelationStatusConstants;
         autoRenewStatus?: AutoRenewStatusConstants;
         dnssecData?: DNSSec[];
@@ -1481,9 +1482,9 @@ export namespace DomainRobotModels {
         language?: string[];
         max?: number;
         maxSldLength?: number;
-        useDash?: Boolean;
-        usenumber?: Boolean;
-        useIdn?: Boolean;
+        useDash?: boolean;
+        usenumber?: boolean;
+        useIdn?: boolean;
         tlds?: string[];
     }
 
@@ -1541,7 +1542,7 @@ export namespace DomainRobotModels {
         priorit?: PriorityConstants;
         customer?: Customer;
         period?: TimePeriod;
-        discountable?: Boolean;
+        discountable?: boolean;
         logId?: number;
         refund?: number;
         priceCondition?: PriceServiceEntity[];
@@ -1639,7 +1640,7 @@ export namespace DomainRobotModels {
         addons?: Configuration;
         magicLink?: string;
         claims?: Claims;
-        showClaims?: Boolean;
+        showClaims?: boolean;
         resetUrl?: string;
         resetUrlExpire?: string;
         name?: string;
@@ -1673,7 +1674,7 @@ export namespace DomainRobotModels {
         vatAmoun?: number;
         status?: InvoiceStatusConstants;
         type?: AccountingDocumentTypeConstants;
-        failed?: Boolean;
+        failed?: boolean;
         currency?: string;
         paid?: string;
         document?: Document;
@@ -2167,7 +2168,7 @@ export namespace DomainRobotModels {
         target?: string;
         admin?: string;
         protection?: ProtectionConstants;
-        greylisting?: Boolean;
+        greylisting?: boolean;
         virus?: string;
         bannedFiles?: string;
         header?: string;
@@ -2303,7 +2304,7 @@ export namespace DomainRobotModels {
         updated?: string;
         name?: string;
         articleLabel?: string;
-        dnssec?: Boolean;
+        dnssec?: boolean;
         statistic?: string;
     }
 
@@ -2383,7 +2384,7 @@ export namespace DomainRobotModels {
     export interface QueryView {
         limit?: number;
         offset?: number;
-        children?: Boolean;
+        children?: boolean;
         from?: string;
         to?: string;
     }
@@ -2447,7 +2448,7 @@ export namespace DomainRobotModels {
         confirmSignature?: string;
         confirmIp?: InetAddress;
         confirmUseragent?: string;
-        confirmChecked?: Boolean;
+        confirmChecked?: boolean;
         expire?: string;
         histories?: SEPAMandate[];
         accountHolder?: string;
@@ -2500,7 +2501,7 @@ export namespace DomainRobotModels {
         constructor(config?: SpamPolicy);
     }
     export interface SpamPolicy {
-        modifySubject?: Boolean;
+        modifySubject?: boolean;
         tagHeader?: number;
         spam?: number;
         kill?: number;
@@ -2584,7 +2585,7 @@ export namespace DomainRobotModels {
         autoAck?: string;
         autoNack?: string;
         end?: string;
-        autoAnswer?: Boolean;
+        autoAnswer?: boolean;
         recipient?: string;
         mailserver?: string;
         deliveredMailserver?: string;
@@ -2608,7 +2609,7 @@ export namespace DomainRobotModels {
         autoAck?: string;
         autoNack?: string;
         end?: string;
-        autoAnswer?: Boolean;
+        autoAnswer?: boolean;
         recipient?: string;
         mailserver?: string;
         deliveredMailserver?: string;
@@ -2679,9 +2680,9 @@ export namespace DomainRobotModels {
     export interface UserAcl {
         functionCode?: string;
         children?: BasicUser[];
-        childrenLocked?: Boolean;
-        userLocked?: Boolean;
-        effective?: Boolean;
+        childrenLocked?: boolean;
+        userLocked?: boolean;
+        effective?: boolean;
         childrenRem?: BasicUser[];
         childrenAdd?: BasicUser[];
         restriction?: string;
@@ -2714,7 +2715,7 @@ export namespace DomainRobotModels {
         flag?: UserProfileFlag;
         key?: string;
         value?: string;
-        readonly?: Boolean;
+        readonly?: boolean;
     }
 
     export class UserProfileViews {
@@ -2742,7 +2743,7 @@ export namespace DomainRobotModels {
         updated?: string;
         owner?: BasicUser;
         updater?: BasicUser;
-        active?: Boolean;
+        active?: boolean;
         name?: string; //Name
         mainAddres?: string; //InetAddress
         ipAddresse?: string[];
@@ -2814,19 +2815,19 @@ export namespace DomainRobotModels {
         origin?: string;
         idn?: string;
         soa?: Soa;
-        dnssec?: Boolean;
+        dnssec?: boolean;
         nameServerGroup?: string;
-        allowTransfer?: Boolean;
+        allowTransfer?: boolean;
         owner?: BasicUser;
         updater?: BasicUser;
         logId?: number;
         comment?: string;
-        domainsafe?: Boolean;
+        domainsafe?: boolean;
         source?: string;
         sourceVirtualHostname?: string;
         nameServers?: NameServer[];
         main?: MainIp;
-        wwwInclude?: Boolean;
+        wwwInclude?: boolean;
         virtualNameServer?: string;
         freeTex?: string[];
         action?: NameserverActionConstants;
@@ -2844,21 +2845,21 @@ export namespace DomainRobotModels {
         origin?: string;
         idn?: string;
         soa?: Soa;
-        dnssec?: Boolean;
+        dnssec?: boolean;
         nameServerGroup?: string;
-        allowTransfer?: Boolean;
+        allowTransfer?: boolean;
         owner?: BasicUser;
         updater?: BasicUser;
         logId: number;
         comment?: string;
-        domainsafe?: Boolean;
+        domainsafe?: boolean;
         source?: string;
         sourceVirtualHostname?: string;
         zoneGrantsAdd?: string[];
         zoneGrantsRem?: string[];
         nameServers?: NameServer[];
         main?: string; //MainIp;
-        wwwInclude?: Boolean;
+        wwwInclude?: boolean;
         virtualNameServer?: string;
         freeText?: string[];
         action?: NameserverActionConstants;
@@ -2895,13 +2896,13 @@ export namespace DomainRobotModels {
         picture?: string; //UrlEntity
         website?: string; //UrlEntity
         email?: string;
-        emailVerified?: Boolean;
+        emailVerified?: boolean;
         gende?: GenderConstants;
         birthdate?: string;
         zoneinfo?: string;
         locale?: string;
         phonenumber?: Phone;
-        phonenumberVerified?: Boolean;
+        phonenumberVerified?: boolean;
         address?: AddressClaim;
         organization?: string;
     }

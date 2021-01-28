@@ -94,6 +94,7 @@ class DomainRobotService {
             this.logResponseIfCallbackSet(result, end - start);
 
             let domainRobotResult = new DomainRobotResult(result.data, result.status);
+
             if (result.headers !== undefined) {
                 domainRobotResult.setHeaders(result.headers);
             }            
