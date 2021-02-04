@@ -492,6 +492,68 @@ export namespace DomainRobotModels {
         user: string;
     }
 
+    export class BillingCustomerXML {
+        constructor(config?: BillingCustomerXML)
+    }
+    export interface BillingCustomerXML {
+        "@_number": number,
+        "@_client": string,
+        "@_payment": string,
+        country: string,
+        fname: string,
+        lname: string,
+        city: string,
+        pcode: string,
+        taxable?: boolean,
+        discount?: boolean,
+        billing_term?: string,
+        autodelete?: boolean,
+        autodelete_tlds?: string,
+        email: string[],
+        billing_email: string[],
+        extension?: object,
+        sepa_mandate: SEPAMandate,
+        contact: BillingCustomerContact,
+        contract?: BillingContractXML,
+        comment?: Comment,
+        billing?: string
+    }
+
+    export class BillingCustomerContact {
+        constructor(config?: BillingCustomerContact)
+    }
+
+    export interface BillingCustomerContact {
+        type?: string,
+        city?: string,
+        country?: string,
+        state?: string,
+        email?: string,
+        fname?: string,
+        lname?: string,
+        address?: string[],
+        pcode?: string,
+        fax?: string,
+        phone?: string,
+    }
+
+    export class BillingContractXML {
+        constructor(config?: BillingContractXML)
+    }
+
+    export interface BillingContractXML {
+        contract: {
+            "@_label": string
+        },
+        account_manager?: {
+            name: string
+        },
+        document_id?: number,
+        classification?: string,
+        notice?: string,
+        addons?: object
+    }
+
     export class BillingLimit {
         constructor(config?: BillingLimit);
     }
