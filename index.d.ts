@@ -496,7 +496,7 @@ export namespace DomainRobotModels {
         constructor(config?: BillingCustomerXML)
     }
     export interface BillingCustomerXML {
-        "@_number": number,
+        "@_number"?: number,
         "@_client": string,
         "@_payment": string,
         country: string,
