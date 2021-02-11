@@ -175,6 +175,9 @@ export interface Result {
 export interface JsonResponseDataContact extends Result {
     data: DomainRobotModels.Contact[];
 }
+export interface JsonResponseDataCustomer extends Result {
+    data: DomainRobotModels.Customer[];
+}
 export interface JsonResponseDataDomain extends Result {
     data: DomainRobotModels.Domain[];
 }
@@ -380,7 +383,7 @@ export type UserProfileFlag = "OPTIONAL" | "FIX" | "RECURSE" | "HIDDEN" | "PAREN
 
 export namespace DomainRobotModels {
     export class Account {
-        constructor(config?: object);
+        constructor(config?: Account);
     }
     export interface Account {
         customer?: GenericCustomer;
@@ -511,7 +514,7 @@ export namespace DomainRobotModels {
         autodelete_tlds?: string,
         email: string[],
         billing_email: string[],
-        extension?: object,
+        extension?: any,
         sepa_mandate: SEPAMandate,
         contact: BillingCustomerContact,
         contract?: BillingContractXML,
@@ -551,7 +554,7 @@ export namespace DomainRobotModels {
         document_id?: number,
         classification?: string,
         notice?: string,
-        addons?: object
+        addons?: any
     }
 
     export class BillingLimit {
@@ -1036,14 +1039,14 @@ export namespace DomainRobotModels {
     }
 
     export class ContactItExtensions {
-        constructor(config?: object);
+        constructor(config?: ContactItExtensions);
     }
     export interface ContactItExtensions {
         entityType?: string;
     }
 
     export class ContactJobsExtensions {
-        constructor(config?: object);
+        constructor(config?: ContactJobsExtensions);
     }
     export interface ContactJobsExtensions {
         adminType?: boolean;
@@ -1054,7 +1057,7 @@ export namespace DomainRobotModels {
     }
 
     export class ContactJpExtensions {
-        constructor(config?: object);
+        constructor(config?: ContactJpExtensions);
     }
     export interface ContactJpExtensions {
         first?: string;
@@ -1212,11 +1215,14 @@ export namespace DomainRobotModels {
         paymentMode?: string;
         paymentCurrency?: Currency;
         invoiceLanguage?: string;
+        locked?: boolean;
+        verified?: boolean;
+        vatNumberStatus?: string;
         taxable?: boolean;
         card?: Card;
         contracts?: CustomerContract[];
         billingUsers?: BasicUser[];
-        accoun?: Account;
+        account?: Account;
         clearAccount?: string; //PClearAccountPeriod;
         fname?: string;
         lname?: string;
@@ -1266,7 +1272,7 @@ export namespace DomainRobotModels {
     }
 
     export class Domain {
-        constructor(config?: object);
+        constructor(config?: Domain);
     }
 
     export interface Domain {
@@ -1374,7 +1380,7 @@ export namespace DomainRobotModels {
     }
 
     export class DomainMonitoring {
-        constructor(config?: object);
+        constructor(config?: DomainMonitoring);
     }
     export interface DomainMonitoring {
         created?: string;
@@ -1415,7 +1421,7 @@ export namespace DomainRobotModels {
     }
 
     export class DomainRestore {
-        constructor(config?: object);
+        constructor(config?: DomainRestore);
     }
     export interface DomainRestore {
         created?: string;
@@ -1760,7 +1766,7 @@ export namespace DomainRobotModels {
     }
 
     export class Job {
-        constructor(config?: object);
+        constructor(config?: Job);
     }
     export interface Job {
         created?: string;
@@ -1788,7 +1794,7 @@ export namespace DomainRobotModels {
         messages?: Message[];
         status?: ResponseStatus;
         object?: ResponseObject;
-        data?: object[];
+        data?: any[];
         ctid?: string;
     }
 
@@ -2218,7 +2224,7 @@ export namespace DomainRobotModels {
     }
 
     export class MailProxy {
-        constructor(config?: object);
+        constructor(config?: MailProxy);
     }
     export interface MailProxy {
         domain?: string;
@@ -2260,7 +2266,7 @@ export namespace DomainRobotModels {
     }
 
     export class Modifier {
-        constructor(config?: object);
+        constructor(config?: Modifier);
     }
     export interface Modifier {
         search?: string;
@@ -2407,7 +2413,7 @@ export namespace DomainRobotModels {
         constructor(config?: PriceServiceEntity);
     }
     export interface PriceServiceEntity {
-        configuration?: object;
+        configuration?: any;
         condition?: ServiceEntity;
     }
 
@@ -2488,7 +2494,7 @@ export namespace DomainRobotModels {
         type?: string;
         value?: string;
         summary?: number;
-        data?: Object;
+        data?: any;
     }
 
     export class ResponseStatus {
@@ -2711,7 +2717,7 @@ export namespace DomainRobotModels {
     }
 
     export class User {
-        constructor(config?: object);
+        constructor(config?: User);
     }
     export interface User {
         created?: string;
@@ -2869,7 +2875,7 @@ export namespace DomainRobotModels {
     }
 
     export class Zone {
-        constructor(config?: object);
+        constructor(config?: Zone);
     }
     export interface Zone {
         created?: string;
