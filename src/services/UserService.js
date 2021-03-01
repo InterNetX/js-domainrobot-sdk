@@ -152,9 +152,9 @@ class User extends DomainRobotService {
         );
     }
 
-    async profileUpdate(user, context, model) {
+    async profileUpdate(model) {
         return await this.sendPutRequest(
-            this.domainRobotConfig.url + "/user/" + user + "/" + context + "/profile",
+            this.domainRobotConfig.url + "/user/" + model.user + "/" + model.context + "/profile",
             model
         );
     }
@@ -168,9 +168,9 @@ class User extends DomainRobotService {
         );
     }
 
-    async serviceProfileUpdate(user, context, model) {
+    async serviceProfileUpdate(model) {
         return await this.sendPutRequest(
-            this.domainRobotConfig.url + "/user/" + user + "/" + context + "/serviceProfile",
+            this.domainRobotConfig.url + "/user/" + model.user + "/" + model.context + "/serviceProfile",
             model
         );
     }
