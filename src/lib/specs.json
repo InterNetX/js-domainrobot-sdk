@@ -23098,6 +23098,11 @@
           "originalRef" : "ContactNzExtensions",
           "$ref" : "#/definitions/ContactNzExtensions"
         },
+        "scot" : {
+          "description" : "The .scot contact extensions.",
+          "originalRef" : "ContactScotExtensions",
+          "$ref" : "#/definitions/ContactScotExtensions"
+        },
         "sport" : {
           "description" : "The .sport contact extensions.",
           "originalRef" : "ContactSportExtensions",
@@ -23370,6 +23375,15 @@
         "territoryLinkedTaxpayerNumber" : {
           "type" : "string",
           "description" : "Territory-linked Taxpayer Number (kpp). Mandatory for organisations which belong to the Russian Federation."
+        }
+      }
+    },
+    "ContactScotExtensions" : {
+      "type" : "object",
+      "properties" : {
+        "intendedUse" : {
+          "type" : "string",
+          "description" : "The statement of intended use for the domain name."
         }
       }
     },
