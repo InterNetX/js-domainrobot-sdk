@@ -1,6 +1,6 @@
-let specs = require("../lib/specs.json");
+const domainrobot = require("../swagger/domainrobot.json");
 let ApiFactory = require("../lib/Factory");
-const Backend = new ApiFactory(specs);
+const Backend = new ApiFactory(domainrobot);
 const DomainRobotModels = Backend.models;
 
 const DomainStudio = require("./DomainStudio");
