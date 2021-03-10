@@ -23592,6 +23592,3480 @@
                     }
                 }
             },
+<<<<<<< HEAD
+            "responseSchema" : {
+              "originalRef" : "JsonResponseDataObjectJob",
+              "$ref" : "#/definitions/JsonResponseDataObjectJob"
+            }
+          }
+        }
+      }
+    },
+    "/alexasiteinfo/{domain}": {
+      "get": {
+        "tags": [
+          "alexa site info"
+        ],
+        "summary": "Get AlexaSiteInfo(Amazon) data",
+        "description": "Get AlexaSiteInfo(Amazon) data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "path",
+            "description": "Domain to get the data for",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiAlexaSiteInfoResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/estimate": {
+      "post": {
+        "tags": [
+          "estimation"
+        ],
+        "summary": "Estimate the value for the given domain",
+        "description": "Estimate the value for the given domain",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "",
+            "schema": {
+              "$ref": "#/definitions/Estimation"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiV1EstimationResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ApiEstimationErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized; Invalid or missing JWT",
+            "schema": {
+              "$ref": "#/definitions/ApiEstimationErrorResponse"
+            }
+          },
+          "422": {
+            "description": "Invalid request",
+            "schema": {
+              "$ref": "#/definitions/ApiEstimationErrorResponse"
+            }
+          },
+          "429": {
+            "description": "Too many requests; Quota limit reached",
+            "schema": {
+              "$ref": "#/definitions/ApiEstimationErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/exchangerate/{source}/{target}": {
+      "get": {
+        "tags": [
+          "currency, exchangerate"
+        ],
+        "summary": "Get an exchangerate for a currency",
+        "description": "Get an exchangerate for for source-currency to target-currency",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "source",
+            "in": "path",
+            "description": "Source Currency",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "target",
+            "in": "path",
+            "description": "Target Currency",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiExchangeRateResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ApiEstimationErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized; Invalid or missing JWT",
+            "schema": {
+              "$ref": "#/definitions/ApiEstimationErrorResponse"
+            }
+          },
+          "422": {
+            "description": "Invalid request",
+            "schema": {
+              "$ref": "#/definitions/ApiEstimationErrorResponse"
+            }
+          },
+          "429": {
+            "description": "Too many requests; Quota limit reached",
+            "schema": {
+              "$ref": "#/definitions/ApiEstimationErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/smu_check/{username}": {
+      "get": {
+        "tags": [
+          "social media"
+        ],
+        "summary": "Check if usernames are available on different social media plattforms",
+        "description": "Check if usernames are available on different social media plattform",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "description": "Username to check",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiSocialMediaResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ApiEstimationErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized; Invalid or missing JWT",
+            "schema": {
+              "$ref": "#/definitions/ApiEstimationErrorResponse"
+            }
+          },
+          "422": {
+            "description": "Invalid request",
+            "schema": {
+              "$ref": "#/definitions/ApiEstimationErrorResponse"
+            }
+          },
+          "429": {
+            "description": "Too many requests; Quota limit reached",
+            "schema": {
+              "$ref": "#/definitions/ApiEstimationErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/kwe": {
+      "post": {
+        "tags": [
+          "keyword"
+        ],
+        "summary": "Get Google Ad Words data for given keywords",
+        "description": "Get Google Ad Words data for given keywords",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "",
+            "schema": {
+              "$ref": "#/definitions/Keywords"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiKeywordResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ApiEstimationErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized; Invalid or missing JWT",
+            "schema": {
+              "$ref": "#/definitions/ApiEstimationErrorResponse"
+            }
+          },
+          "422": {
+            "description": "Invalid request",
+            "schema": {
+              "$ref": "#/definitions/ApiEstimationErrorResponse"
+            }
+          },
+          "429": {
+            "description": "Too many requests; Quota limit reached",
+            "schema": {
+              "$ref": "#/definitions/ApiEstimationErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/meta/{domain}": {
+      "get": {
+        "tags": [
+          "meta"
+        ],
+        "summary": "Get meta information like online status, site title/description etc.",
+        "description": "Get meta information like online status, site title/des",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "path",
+            "description": "Domain to get the data for",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiMetaResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ApiEstimationErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized; Invalid or missing JWT",
+            "schema": {
+              "$ref": "#/definitions/ApiEstimationErrorResponse"
+            }
+          },
+          "422": {
+            "description": "Invalid request",
+            "schema": {
+              "$ref": "#/definitions/ApiEstimationErrorResponse"
+            }
+          },
+          "429": {
+            "description": "Too many requests; Quota limit reached",
+            "schema": {
+              "$ref": "#/definitions/ApiEstimationErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/sistrix/{domain}[/{country}]": {
+      "get": {
+        "tags": [
+          "Sistrix"
+        ],
+        "summary": "Get Sistrix data",
+        "description": "Get Sistrix data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "path",
+            "description": "Domain to get the data for",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "country",
+            "in": "path",
+            "description": "Country (ISO Code) to get the data for",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiSistrixResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ApiEstimationErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized; Invalid or missing JWT",
+            "schema": {
+              "$ref": "#/definitions/ApiEstimationErrorResponse"
+            }
+          },
+          "422": {
+            "description": "Invalid request",
+            "schema": {
+              "$ref": "#/definitions/ApiEstimationErrorResponse"
+            }
+          },
+          "429": {
+            "description": "Too many requests; Quota limit reached",
+            "schema": {
+              "$ref": "#/definitions/ApiEstimationErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/majestic": {
+      "post": {
+        "tags": [
+          "Majestic"
+        ],
+        "summary": "Get Majestic data",
+        "description": "Get Majestic data",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "body",
+            "description": "Domains to get the data for",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Domains"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiMajesticResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ApiEstimationErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized; Invalid or missing JWT",
+            "schema": {
+              "$ref": "#/definitions/ApiEstimationErrorResponse"
+            }
+          },
+          "422": {
+            "description": "Invalid request",
+            "schema": {
+              "$ref": "#/definitions/ApiEstimationErrorResponse"
+            }
+          },
+          "429": {
+            "description": "Too many requests; Quota limit reached",
+            "schema": {
+              "$ref": "#/definitions/ApiEstimationErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/smu_check/{username}": {
+      "get": {
+        "tags": [
+          "social media"
+        ],
+        "summary": "Check if usernames are available on different social media plattforms",
+        "description": "Check if usernames are available on different social media plattform",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "description": "Username to check",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiSocialMediaResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ApiEstimationErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized; Invalid or missing JWT",
+            "schema": {
+              "$ref": "#/definitions/ApiEstimationErrorResponse"
+            }
+          },
+          "422": {
+            "description": "Invalid request",
+            "schema": {
+              "$ref": "#/definitions/ApiEstimationErrorResponse"
+            }
+          },
+          "429": {
+            "description": "Too many requests; Quota limit reached",
+            "schema": {
+              "$ref": "#/definitions/ApiEstimationErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/wayback/{domain}": {
+      "get": {
+        "tags": [
+          "wayback"
+        ],
+        "summary": "Retrieve info from Wayback snapshot archive",
+        "description": "Retrieve info from Wayback snapshot archive",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "path",
+            "description": "Domain to get the data for",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiWaybackResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ApiEstimationErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized; Invalid or missing JWT",
+            "schema": {
+              "$ref": "#/definitions/ApiEstimationErrorResponse"
+            }
+          },
+          "422": {
+            "description": "Invalid request",
+            "schema": {
+              "$ref": "#/definitions/ApiEstimationErrorResponse"
+            }
+          },
+          "429": {
+            "description": "Too many requests; Quota limit reached",
+            "schema": {
+              "$ref": "#/definitions/ApiEstimationErrorResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "ACLRestriction" : {
+      "type" : "string",
+      "enum" : [ "USER_LOCKED", "CHILDREN_LOCKED", "PARENT_LOCK", "NOT_LOCKED" ]
+    },
+    "Account" : {
+      "type" : "object",
+      "required" : [ "customer" ],
+      "properties" : {
+        "customer" : {
+          "description" : "The customer itself",
+          "originalRef" : "GenericCustomer",
+          "$ref" : "#/definitions/GenericCustomer"
+        },
+        "currentAccountBalance" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "The real account balance"
+        },
+        "runningTotal" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "The current total, the amount of all finished and unfinished transactions"
+        },
+        "creditLimit" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "The credit limit of the account."
+        },
+        "currency" : {
+          "type" : "string",
+          "example" : "EUR",
+          "description" : "The currency of the account",
+          "x-custom-type" : "currency"
+        },
+        "minRunningTotalNotification" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "The minimum running total amount if a notification should be send"
+        },
+        "minRunningTotalNotificationEmail" : {
+          "type" : "string",
+          "description" : "The recipient of the notification limit email"
+        },
+        "created" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The date of the acccount creation"
+        },
+        "updated" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The date of the las update."
+        },
+        "view" : {
+          "description" : "The selected exchange for the account",
+          "originalRef" : "CurrencyRate",
+          "$ref" : "#/definitions/CurrencyRate"
+        }
+      }
+    },
+    "AccountEntry" : {
+      "type" : "object",
+      "properties" : {
+        "label" : {
+          "type" : "string",
+          "description" : "Name of the booking"
+        },
+        "amount" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Booking amount ",
+          "minimum" : 1
+        },
+        "vatAmount" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Value added tax sum"
+        },
+        "vats" : {
+          "type" : "array",
+          "description" : "Value Added Tax",
+          "items" : {
+            "originalRef" : "Vat",
+            "$ref" : "#/definitions/Vat"
+          }
+        },
+        "netAmount" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Net amount"
+        },
+        "currency" : {
+          "type" : "string",
+          "example" : "EUR",
+          "description" : "Used currency of the amount",
+          "x-custom-type" : "currency"
+        }
+      }
+    },
+    "AccountStatusConstants" : {
+      "type" : "string",
+      "enum" : [ "SUCCESS", "CANCELED", "RESERVED", "RESERVATION" ]
+    },
+    "AccountingDocument" : {
+      "type" : "object",
+      "properties" : {
+        "created" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The created date."
+        },
+        "updated" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The updated date."
+        },
+        "owner" : {
+          "description" : "The owner of the object.",
+          "originalRef" : "BasicUser",
+          "$ref" : "#/definitions/BasicUser"
+        },
+        "updater" : {
+          "description" : "The updater of the object.",
+          "originalRef" : "BasicUser",
+          "$ref" : "#/definitions/BasicUser"
+        },
+        "id" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "id of the booking document"
+        },
+        "entry" : {
+          "description" : "the entry of the document",
+          "originalRef" : "AccountEntry",
+          "$ref" : "#/definitions/AccountEntry"
+        },
+        "type" : {
+          "description" : "The type of booking",
+          "originalRef" : "AccountingDocumentTypeConstants",
+          "$ref" : "#/definitions/AccountingDocumentTypeConstants"
+        },
+        "account" : {
+          "description" : "sum",
+          "originalRef" : "Account",
+          "$ref" : "#/definitions/Account"
+        },
+        "subjectProducts" : {
+          "type" : "array",
+          "description" : "The individual posting items",
+          "items" : {
+            "originalRef" : "SubjectProduct",
+            "$ref" : "#/definitions/SubjectProduct"
+          }
+        },
+        "view" : {
+          "description" : "The selected exchange for the document",
+          "originalRef" : "CurrencyRate",
+          "$ref" : "#/definitions/CurrencyRate"
+        },
+        "synchronized" : {
+          "type" : "boolean",
+          "description" : "shows whether the data was transferred to the external booking system"
+        },
+        "status" : {
+          "description" : "the current status of the document",
+          "originalRef" : "AccountStatusConstants",
+          "$ref" : "#/definitions/AccountStatusConstants"
+        },
+        "invoice" : {
+          "description" : "the linked invoice",
+          "originalRef" : "Invoice",
+          "$ref" : "#/definitions/Invoice"
+        },
+        "payment" : {
+          "description" : "additional payment data, such as provider: ipayment",
+          "originalRef" : "PaymentConstants",
+          "$ref" : "#/definitions/PaymentConstants"
+        }
+      }
+    },
+    "AccountingDocumentTypeConstants" : {
+      "type" : "string",
+      "enum" : [ "INVOICE", "CREDIT", "REFUND", "CANCELED", "CHARGE" ]
+    },
+    "Application" : {
+      "type" : "object",
+      "required" : [ "name" ],
+      "properties" : {
+        "created" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The created date."
+        },
+        "updated" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The updated date."
+        },
+        "name" : {
+          "type" : "string",
+          "description" : "The name of the application."
+        },
+        "functionCodes" : {
+          "type" : "array",
+          "description" : "The function codes for the application.",
+          "uniqueItems" : true,
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "Article" : {
+      "type" : "object",
+      "required" : [ "label", "type" ],
+      "properties" : {
+        "created" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The created date."
+        },
+        "updated" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The updated date."
+        },
+        "owner" : {
+          "description" : "The owner of the object.",
+          "originalRef" : "BasicUser",
+          "$ref" : "#/definitions/BasicUser"
+        },
+        "updater" : {
+          "description" : "The updater of the object.",
+          "originalRef" : "BasicUser",
+          "$ref" : "#/definitions/BasicUser"
+        },
+        "type" : {
+          "type" : "string",
+          "description" : "type of the article "
+        },
+        "label" : {
+          "type" : "string",
+          "description" : "name of the article"
+        }
+      }
+    },
+    "AuEligibilityIdTypeConstants" : {
+      "type" : "string",
+      "enum" : [ "ACN", "ABN", "VIC_BN", "NSW_BN", "SA", "BN", "NT_BN", "WA_BN", "TAS_BN", "ACT_BN", "QLD_BN", "TM", "OTHER" ]
+    },
+    "AuEligibilityTypeConstants" : {
+      "type" : "string",
+      "enum" : [ "COMPANY", "REGISTERED_BUSINESS", "SOLE_TRADER", "PARTNERSHIP", "TRADEMARK_OWNER", "PENDING_TM_OWNER", "CITIZEN_RESIDENT", "INCORPORATED_ASSOCIATION", "UNINCORPORATED_ASSOCIATION", "CLUB", "NON_PROFIT_ORGANISATION", "CHARITY", "TRADE_UNION", "INDUSTRY_BODY", "COMMERCIAL_STATUTORY_BODY", "POLITICAL_PARTY", "RELIGIOUS_CHURCH_GROUPS", "OTHER" ]
+    },
+    "AuRegistrantIdTypeConstants" : {
+      "type" : "string",
+      "enum" : [ "ACN", "ABN", "OTHER" ]
+    },
+    "AuthMethodConstants" : {
+      "type" : "string",
+      "enum" : [ "DNS", "EMAIL", "FILE", "ORG" ]
+    },
+    "AuthType" : {
+      "type" : "string",
+      "enum" : [ "PASSWORD", "PASSWORD_TOKEN", "ALIAS" ]
+    },
+    "AuthenticateStatus" : {
+      "type" : "string",
+      "enum" : [ "COMPLETED", "ADDITIONAL_INFORMATION_REQUIRED", "IN_PROGRESS", "COMMUNICATION_SENT_TO_CUSTOMER", "ATTEMPTED_TO_REACH_CUSTOMER", "PENDING_CUSTOMER_APPROVAL", "NOT_COMPLETED", "COMPLETED_PASSED", "COMPLETED_FAILED", "UNABLE_TO_COMPLETE", "NOT_STARTED" ]
+    },
+    "AuthenticationStep" : {
+      "type" : "string",
+      "enum" : [ "DOMAIN_VERIFICATION", "VERIFICATION_CALL", "ORGANIZATION_VERIFICATION", "CONSUMER_AUTHENTICATION", "CERTIFICATE", "CONTACT_CONFIRMED", "VERIFICATION", "CSR_CHECK", "DCV_CHECK", "OV_CALLBACK", "FREE_DVUP", "EV_CLICKTROUGH", "EXTENDED_VERIFICATION" ]
+    },
+    "AutoRenewStatusConstants" : {
+      "type" : "string",
+      "enum" : [ "TRUE", "FALSE", "ONCE" ]
+    },
+    "BackupMx" : {
+      "type" : "object",
+      "required" : [ "domain" ],
+      "properties" : {
+        "domain" : {
+          "type" : "string",
+          "description" : "The domain of the mail exchange to backup"
+        },
+        "idn" : {
+          "type" : "string",
+          "description" : "The idn version of the domain."
+        },
+        "created" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The date of the creation"
+        },
+        "updated" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The date of the last updated"
+        },
+        "owner" : {
+          "description" : "The owner of the entry",
+          "originalRef" : "BasicUser",
+          "$ref" : "#/definitions/BasicUser"
+        },
+        "updater" : {
+          "description" : "The last updater of the entry",
+          "originalRef" : "BasicUser",
+          "$ref" : "#/definitions/BasicUser"
+        }
+      }
+    },
+    "BasicCustomer" : {
+      "type" : "object",
+      "required" : [ "addressLines", "client", "country", "name", "number", "payment" ],
+      "properties" : {
+        "number" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "client" : {
+          "type" : "string",
+          "minLength" : 1,
+          "maxLength" : 2147483647
+        },
+        "group" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "name" : {
+          "type" : "string",
+          "description" : "The name of the customer.",
+          "minLength" : 0,
+          "maxLength" : 255
+        },
+        "organization" : {
+          "type" : "string",
+          "description" : "The name of the organization.",
+          "minLength" : 0,
+          "maxLength" : 70
+        },
+        "vatNumber" : {
+          "type" : "string",
+          "description" : "The value added tax number."
+        },
+        "gender" : {
+          "description" : "The gender of the person.",
+          "originalRef" : "GenderConstants",
+          "$ref" : "#/definitions/GenderConstants"
+        },
+        "title" : {
+          "type" : "string",
+          "description" : "The title of the customer"
+        },
+        "addressLines" : {
+          "type" : "array",
+          "description" : "The address of the customer",
+          "items" : {
+            "type" : "string"
+          },
+          "maxItems" : 2147483647,
+          "minItems" : 1
+        },
+        "city" : {
+          "type" : "string",
+          "description" : "The city of the customer."
+        },
+        "state" : {
+          "type" : "string",
+          "description" : "The state of the customer."
+        },
+        "country" : {
+          "type" : "string",
+          "description" : "The country of the customer."
+        },
+        "phone" : {
+          "type" : "string",
+          "example" : "+49-123-12345",
+          "description" : "The phone number of the customer",
+          "x-custom-type" : "phone"
+        },
+        "fax" : {
+          "description" : "The fax number.",
+          "originalRef" : "Phone",
+          "$ref" : "#/definitions/Phone"
+        },
+        "emails" : {
+          "type" : "array",
+          "description" : "The email addresses.",
+          "items" : {
+            "type" : "string"
+          },
+          "maxItems" : 2147483647,
+          "minItems" : 1
+        },
+        "billingEmails" : {
+          "type" : "array",
+          "description" : "The billing recipients.",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "payment" : {
+          "description" : "The payment typ of the customer.",
+          "originalRef" : "PaymentConstants",
+          "$ref" : "#/definitions/PaymentConstants"
+        },
+        "paymentMode" : {
+          "type" : "string",
+          "description" : "The payment mode of the customer."
+        },
+        "paymentCurrency" : {
+          "description" : "The payment currency of the customer.",
+          "originalRef" : "Currency",
+          "$ref" : "#/definitions/Currency"
+        },
+        "discountValid" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The end of a promo discount."
+        },
+        "invoiceLanguage" : {
+          "type" : "string",
+          "description" : "The language to use for the invoice."
+        },
+        "taxable" : {
+          "type" : "boolean",
+          "description" : "The taxable flag of the customer."
+        },
+        "card" : {
+          "description" : "The customers minimal credit card data if payament was post with credit card.",
+          "originalRef" : "Card",
+          "$ref" : "#/definitions/Card"
+        },
+        "contracts" : {
+          "type" : "array",
+          "description" : "The customers contracts.",
+          "items" : {
+            "originalRef" : "CustomerContract",
+            "$ref" : "#/definitions/CustomerContract"
+          }
+        },
+        "billingUsers" : {
+          "type" : "array",
+          "description" : "The billing users.",
+          "items" : {
+            "originalRef" : "BasicUser",
+            "$ref" : "#/definitions/BasicUser"
+          }
+        },
+        "account" : {
+          "description" : "The account of the customer in case of prepayment or if the customer has a credit limit",
+          "originalRef" : "Account",
+          "$ref" : "#/definitions/Account"
+        },
+        "clearAccount" : {
+          "description" : "The period after the post payment account will be cleared to zero",
+          "originalRef" : "ClearAccountPeriod",
+          "$ref" : "#/definitions/ClearAccountPeriod"
+        },
+        "autodelete" : {
+          "type" : "boolean",
+          "description" : "Flag indication if the customer is autodelete"
+        },
+        "fname" : {
+          "type" : "string",
+          "description" : "The first name.",
+          "minLength" : 0,
+          "maxLength" : 35
+        },
+        "lname" : {
+          "type" : "string",
+          "description" : "The last name.",
+          "minLength" : 0,
+          "maxLength" : 35
+        },
+        "pcode" : {
+          "type" : "string",
+          "description" : "The postal code of the city."
+        },
+        "sepa" : {
+          "description" : "The customers sepa mandate if payament was post with sepa.",
+          "originalRef" : "SEPAMandate",
+          "$ref" : "#/definitions/SEPAMandate"
+        }
+      }
+    },
+    "BasicDocument" : {
+      "type" : "object",
+      "required" : [ "uuid" ],
+      "properties" : {
+        "created" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The created date."
+        },
+        "updated" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The updated date."
+        },
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "comment" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        },
+        "mimeType" : {
+          "type" : "string"
+        },
+        "data" : {
+          "type" : "string"
+        },
+        "size" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "link" : {
+          "type" : "string"
+        },
+        "uuid" : {
+          "type" : "string",
+          "description" : "The unique identifier of the document"
+        },
+        "alias" : {
+          "type" : "string",
+          "description" : "The alias of the document"
+        },
+        "owner" : {
+          "description" : "The owner of the object.",
+          "originalRef" : "BasicUser",
+          "$ref" : "#/definitions/BasicUser"
+        },
+        "updater" : {
+          "description" : "The updating user of the object.",
+          "originalRef" : "BasicUser",
+          "$ref" : "#/definitions/BasicUser"
+        }
+      }
+    },
+    "BasicUser" : {
+      "type" : "object",
+      "required" : [ "context", "user" ],
+      "properties" : {
+        "context" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "The context."
+        },
+        "user" : {
+          "type" : "string",
+          "description" : "The user name.",
+          "pattern" : "^[^_].*"
+        }
+      }
+    },
+    "BillingLimit" : {
+      "type" : "object",
+      "required" : [ "user" ],
+      "properties" : {
+        "user" : {
+          "originalRef" : "BasicUser",
+          "$ref" : "#/definitions/BasicUser"
+        },
+        "entries" : {
+          "type" : "array",
+          "items" : {
+            "originalRef" : "BillingObjectLimit",
+            "$ref" : "#/definitions/BillingObjectLimit"
+          }
+        }
+      }
+    },
+    "BillingObjectLimit" : {
+      "type" : "object",
+      "properties" : {
+        "created" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The created date."
+        },
+        "updated" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The updated date."
+        },
+        "articleLabel" : {
+          "type" : "string"
+        },
+        "limitSelf" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "limitChildren" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "articleTypeLabel" : {
+          "type" : "string"
+        },
+        "count" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "The current count if available"
+        }
+      }
+    },
+    "BillingObjectTerm" : {
+      "type" : "object",
+      "required" : [ "cancelation", "customer", "initial", "renew" ],
+      "properties" : {
+        "created" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The created date."
+        },
+        "updated" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The updated date."
+        },
+        "owner" : {
+          "description" : "The owner of the object.",
+          "originalRef" : "BasicUser",
+          "$ref" : "#/definitions/BasicUser"
+        },
+        "updater" : {
+          "description" : "The updating user of the object.",
+          "originalRef" : "BasicUser",
+          "$ref" : "#/definitions/BasicUser"
+        },
+        "cancelation" : {
+          "originalRef" : "TimePeriod",
+          "$ref" : "#/definitions/TimePeriod"
+        },
+        "cancelationExpireOnly" : {
+          "type" : "boolean"
+        },
+        "initial" : {
+          "originalRef" : "TimePeriod",
+          "$ref" : "#/definitions/TimePeriod"
+        },
+        "renew" : {
+          "originalRef" : "TimePeriod",
+          "$ref" : "#/definitions/TimePeriod"
+        },
+        "renewTerm" : {
+          "originalRef" : "TimePeriod",
+          "$ref" : "#/definitions/TimePeriod"
+        },
+        "customer" : {
+          "description" : "the related customer or group",
+          "originalRef" : "GenericCustomer",
+          "$ref" : "#/definitions/GenericCustomer"
+        },
+        "articleTypeLabel" : {
+          "type" : "string",
+          "description" : "The label of the article group"
+        },
+        "articleLabel" : {
+          "type" : "string",
+          "description" : "The label of the articel, e.g. domain"
+        },
+        "autodeleteable" : {
+          "type" : "boolean",
+          "description" : "Flag indication if the article can be autodeleted"
+        },
+        "restoreable" : {
+          "type" : "boolean",
+          "description" : "Flag indication if the article can be restored"
+        }
+      }
+    },
+    "BillingObjectTerms" : {
+      "type" : "object",
+      "properties" : {
+        "billingObjectTerms" : {
+          "type" : "array",
+          "items" : {
+            "originalRef" : "BillingObjectTerm",
+            "$ref" : "#/definitions/BillingObjectTerm"
+          }
+        }
+      }
+    },
+    "BillingStatus" : {
+      "type" : "string",
+      "enum" : [ "ADD", "REMOVE", "UPDATE", "IGNORE", "CUSTOMER_CHANGED", "USER_CHANGED", "ACTIVE", "CANCELED", "CANCELED_EXPIRE", "RESTORE", "AUTODELETE", "REMOVED" ]
+    },
+    "BulkBackupMxDeleteRequest" : {
+      "type" : "object",
+      "properties" : {
+        "objects" : {
+          "type" : "array",
+          "description" : "The objects to process",
+          "items" : {
+            "originalRef" : "BackupMx",
+            "$ref" : "#/definitions/BackupMx"
+          }
+        },
+        "query" : {
+          "description" : "The query to fetch the object instead of defined list",
+          "originalRef" : "Query",
+          "$ref" : "#/definitions/Query"
+        }
+      }
+    },
+    "BulkBackupMxPostRequest" : {
+      "type" : "object",
+      "properties" : {
+        "objects" : {
+          "type" : "array",
+          "description" : "The objects to process",
+          "items" : {
+            "originalRef" : "BackupMx",
+            "$ref" : "#/definitions/BackupMx"
+          }
+        },
+        "template" : {
+          "description" : "The template for objects to process",
+          "originalRef" : "BackupMx",
+          "$ref" : "#/definitions/BackupMx"
+        }
+      }
+    },
+    "BulkCertificateDeleteRequest" : {
+      "type" : "object",
+      "properties" : {
+        "objects" : {
+          "type" : "array",
+          "description" : "The objects to process",
+          "items" : {
+            "originalRef" : "Certificate",
+            "$ref" : "#/definitions/Certificate"
+          }
+        },
+        "query" : {
+          "description" : "The query to fetch the object instead of defined list",
+          "originalRef" : "Query",
+          "$ref" : "#/definitions/Query"
+        }
+      }
+    },
+    "BulkCertificatePatchRequest" : {
+      "type" : "object",
+      "properties" : {
+        "objects" : {
+          "type" : "array",
+          "description" : "The objects to process",
+          "items" : {
+            "originalRef" : "Certificate",
+            "$ref" : "#/definitions/Certificate"
+          }
+        },
+        "query" : {
+          "description" : "The query to fetch the object instead of defined list",
+          "originalRef" : "Query",
+          "$ref" : "#/definitions/Query"
+        }
+      }
+    },
+    "BulkCertificatePostRequest" : {
+      "type" : "object",
+      "properties" : {
+        "objects" : {
+          "type" : "array",
+          "description" : "The objects to process",
+          "items" : {
+            "originalRef" : "Certificate",
+            "$ref" : "#/definitions/Certificate"
+          }
+        },
+        "query" : {
+          "description" : "The query to fetch the object instead of defined list",
+          "originalRef" : "Query",
+          "$ref" : "#/definitions/Query"
+        }
+      }
+    },
+    "BulkDomainCancelationDeleteRequest" : {
+      "type" : "object",
+      "properties" : {
+        "objects" : {
+          "type" : "array",
+          "description" : "The objects to process",
+          "items" : {
+            "originalRef" : "DomainCancelation",
+            "$ref" : "#/definitions/DomainCancelation"
+          }
+        },
+        "query" : {
+          "description" : "The query to fetch the object instead of defined list",
+          "originalRef" : "Query",
+          "$ref" : "#/definitions/Query"
+        }
+      }
+    },
+    "BulkDomainCancelationPatchRequest" : {
+      "type" : "object",
+      "properties" : {
+        "objects" : {
+          "type" : "array",
+          "description" : "The objects to process",
+          "items" : {
+            "originalRef" : "DomainCancelation",
+            "$ref" : "#/definitions/DomainCancelation"
+          }
+        },
+        "template" : {
+          "description" : "The template for objects to process",
+          "originalRef" : "DomainCancelation",
+          "$ref" : "#/definitions/DomainCancelation"
+        },
+        "query" : {
+          "description" : "The query to fetch the object instead of defined list",
+          "originalRef" : "Query",
+          "$ref" : "#/definitions/Query"
+        }
+      }
+    },
+    "BulkDomainCancelationPostRequest" : {
+      "type" : "object",
+      "properties" : {
+        "objects" : {
+          "type" : "array",
+          "description" : "The objects to process",
+          "items" : {
+            "originalRef" : "DomainCancelation",
+            "$ref" : "#/definitions/DomainCancelation"
+          }
+        },
+        "template" : {
+          "description" : "The template for objects to process",
+          "originalRef" : "DomainCancelation",
+          "$ref" : "#/definitions/DomainCancelation"
+        }
+      }
+    },
+    "BulkDomainCommentRequest" : {
+      "type" : "object",
+      "properties" : {
+        "objects" : {
+          "type" : "array",
+          "description" : "The objects to process",
+          "items" : {
+            "originalRef" : "Domain",
+            "$ref" : "#/definitions/Domain"
+          }
+        },
+        "template" : {
+          "description" : "The template for objects to process",
+          "originalRef" : "Domain",
+          "$ref" : "#/definitions/Domain"
+        },
+        "query" : {
+          "description" : "The query to fetch the object instead of defined list",
+          "originalRef" : "Query",
+          "$ref" : "#/definitions/Query"
+        }
+      }
+    },
+    "BulkDomainDeleteRequest" : {
+      "type" : "object",
+      "properties" : {
+        "objects" : {
+          "type" : "array",
+          "description" : "The objects to process",
+          "items" : {
+            "originalRef" : "Domain",
+            "$ref" : "#/definitions/Domain"
+          }
+        },
+        "query" : {
+          "description" : "The query to fetch the object instead of defined list",
+          "originalRef" : "Query",
+          "$ref" : "#/definitions/Query"
+        }
+      }
+    },
+    "BulkDomainPatchRequest" : {
+      "type" : "object",
+      "properties" : {
+        "objects" : {
+          "type" : "array",
+          "description" : "The objects to process",
+          "items" : {
+            "originalRef" : "Domain",
+            "$ref" : "#/definitions/Domain"
+          }
+        },
+        "template" : {
+          "description" : "The template for objects to process",
+          "originalRef" : "Domain",
+          "$ref" : "#/definitions/Domain"
+        },
+        "query" : {
+          "description" : "The query to fetch the object instead of defined list",
+          "originalRef" : "Query",
+          "$ref" : "#/definitions/Query"
+        },
+        "modifiers" : {
+          "type" : "array",
+          "description" : "The modifer to apply on the objects",
+          "items" : {
+            "originalRef" : "Modifier",
+            "$ref" : "#/definitions/Modifier"
+          }
+        }
+      }
+    },
+    "BulkDomainPostRequest" : {
+      "type" : "object",
+      "properties" : {
+        "objects" : {
+          "type" : "array",
+          "description" : "The objects to process",
+          "items" : {
+            "originalRef" : "Domain",
+            "$ref" : "#/definitions/Domain"
+          }
+        },
+        "template" : {
+          "description" : "The template for objects to process",
+          "originalRef" : "Domain",
+          "$ref" : "#/definitions/Domain"
+        }
+      }
+    },
+    "BulkDomainPreregDeleteRequest" : {
+      "type" : "object",
+      "properties" : {
+        "objects" : {
+          "type" : "array",
+          "description" : "The objects to process",
+          "items" : {
+            "originalRef" : "DomainPrereg",
+            "$ref" : "#/definitions/DomainPrereg"
+          }
+        },
+        "query" : {
+          "description" : "The query to fetch the object instead of defined list",
+          "originalRef" : "Query",
+          "$ref" : "#/definitions/Query"
+        }
+      }
+    },
+    "BulkDomainPreregPatchRequest" : {
+      "type" : "object",
+      "properties" : {
+        "objects" : {
+          "type" : "array",
+          "description" : "The objects to process",
+          "items" : {
+            "originalRef" : "DomainPrereg",
+            "$ref" : "#/definitions/DomainPrereg"
+          }
+        },
+        "template" : {
+          "description" : "The template for objects to process",
+          "originalRef" : "DomainPrereg",
+          "$ref" : "#/definitions/DomainPrereg"
+        },
+        "query" : {
+          "description" : "The query to fetch the object instead of defined list",
+          "originalRef" : "Query",
+          "$ref" : "#/definitions/Query"
+        }
+      }
+    },
+    "BulkDomainPreregPostRequest" : {
+      "type" : "object",
+      "properties" : {
+        "objects" : {
+          "type" : "array",
+          "description" : "The objects to process",
+          "items" : {
+            "originalRef" : "DomainPrereg",
+            "$ref" : "#/definitions/DomainPrereg"
+          }
+        },
+        "template" : {
+          "description" : "The template for objects to process",
+          "originalRef" : "DomainPrereg",
+          "$ref" : "#/definitions/DomainPrereg"
+        }
+      }
+    },
+    "BulkDomainSafeDomainRequest" : {
+      "type" : "object",
+      "properties" : {
+        "objects" : {
+          "type" : "array",
+          "description" : "The objects to process",
+          "items" : {
+            "originalRef" : "Domain",
+            "$ref" : "#/definitions/Domain"
+          }
+        },
+        "query" : {
+          "description" : "The query to fetch the object instead of defined list",
+          "originalRef" : "Query",
+          "$ref" : "#/definitions/Query"
+        }
+      }
+    },
+    "BulkMailProxyDeleteRequest" : {
+      "type" : "object",
+      "properties" : {
+        "objects" : {
+          "type" : "array",
+          "description" : "The objects to process",
+          "items" : {
+            "originalRef" : "MailProxy",
+            "$ref" : "#/definitions/MailProxy"
+          }
+        },
+        "query" : {
+          "description" : "The query to fetch the object instead of defined list",
+          "originalRef" : "Query",
+          "$ref" : "#/definitions/Query"
+        }
+      }
+    },
+    "BulkMailProxyPatchRequest" : {
+      "type" : "object",
+      "properties" : {
+        "objects" : {
+          "type" : "array",
+          "description" : "The objects to process",
+          "items" : {
+            "originalRef" : "MailProxy",
+            "$ref" : "#/definitions/MailProxy"
+          }
+        },
+        "template" : {
+          "description" : "The template for objects to process",
+          "originalRef" : "MailProxy",
+          "$ref" : "#/definitions/MailProxy"
+        },
+        "query" : {
+          "description" : "The query to fetch the object instead of defined list",
+          "originalRef" : "Query",
+          "$ref" : "#/definitions/Query"
+        }
+      }
+    },
+    "BulkMailProxyPostRequest" : {
+      "type" : "object",
+      "properties" : {
+        "objects" : {
+          "type" : "array",
+          "description" : "The objects to process",
+          "items" : {
+            "originalRef" : "MailProxy",
+            "$ref" : "#/definitions/MailProxy"
+          }
+        },
+        "template" : {
+          "description" : "The template for objects to process",
+          "originalRef" : "MailProxy",
+          "$ref" : "#/definitions/MailProxy"
+        }
+      }
+    },
+    "BulkObjectUserAssignmentPatchRequest" : {
+      "type" : "object",
+      "properties" : {
+        "objects" : {
+          "type" : "array",
+          "description" : "The objects to process",
+          "items" : {
+            "originalRef" : "ObjectUserAssignment",
+            "$ref" : "#/definitions/ObjectUserAssignment"
+          }
+        },
+        "template" : {
+          "description" : "The template for objects to process",
+          "originalRef" : "ObjectUserAssignment",
+          "$ref" : "#/definitions/ObjectUserAssignment"
+        }
+      }
+    },
+    "BulkRedirectDeleteRequest" : {
+      "type" : "object",
+      "properties" : {
+        "objects" : {
+          "type" : "array",
+          "description" : "The objects to process",
+          "items" : {
+            "originalRef" : "Redirect",
+            "$ref" : "#/definitions/Redirect"
+          }
+        },
+        "query" : {
+          "description" : "The query to fetch the object instead of defined list",
+          "originalRef" : "Query",
+          "$ref" : "#/definitions/Query"
+        }
+      }
+    },
+    "BulkRedirectPatchRequest" : {
+      "type" : "object",
+      "properties" : {
+        "objects" : {
+          "type" : "array",
+          "description" : "The objects to process",
+          "items" : {
+            "originalRef" : "Redirect",
+            "$ref" : "#/definitions/Redirect"
+          }
+        },
+        "template" : {
+          "description" : "The template for objects to process",
+          "originalRef" : "Redirect",
+          "$ref" : "#/definitions/Redirect"
+        },
+        "query" : {
+          "description" : "The query to fetch the object instead of defined list",
+          "originalRef" : "Query",
+          "$ref" : "#/definitions/Query"
+        }
+      }
+    },
+    "BulkRedirectPostRequest" : {
+      "type" : "object",
+      "properties" : {
+        "objects" : {
+          "type" : "array",
+          "description" : "The objects to process",
+          "items" : {
+            "originalRef" : "Redirect",
+            "$ref" : "#/definitions/Redirect"
+          }
+        },
+        "template" : {
+          "description" : "The template for objects to process",
+          "originalRef" : "Redirect",
+          "$ref" : "#/definitions/Redirect"
+        }
+      }
+    },
+    "BulkZoneCommentRequest" : {
+      "type" : "object",
+      "properties" : {
+        "objects" : {
+          "type" : "array",
+          "description" : "The objects to process",
+          "items" : {
+            "originalRef" : "Zone",
+            "$ref" : "#/definitions/Zone"
+          }
+        },
+        "template" : {
+          "description" : "The template for objects to process",
+          "originalRef" : "Zone",
+          "$ref" : "#/definitions/Zone"
+        },
+        "query" : {
+          "description" : "The query to fetch the object instead of defined list",
+          "originalRef" : "Query",
+          "$ref" : "#/definitions/Query"
+        }
+      }
+    },
+    "BulkZoneDeleteRequest" : {
+      "type" : "object",
+      "properties" : {
+        "objects" : {
+          "type" : "array",
+          "description" : "The objects to process",
+          "items" : {
+            "originalRef" : "Zone",
+            "$ref" : "#/definitions/Zone"
+          }
+        },
+        "query" : {
+          "description" : "The query to fetch the object instead of defined list",
+          "originalRef" : "Query",
+          "$ref" : "#/definitions/Query"
+        }
+      }
+    },
+    "BulkZonePatchRequest" : {
+      "type" : "object",
+      "properties" : {
+        "objects" : {
+          "type" : "array",
+          "description" : "The objects to process",
+          "items" : {
+            "originalRef" : "ZoneBasePatchRequest",
+            "$ref" : "#/definitions/ZoneBasePatchRequest"
+          }
+        },
+        "template" : {
+          "description" : "The template for objects to process",
+          "originalRef" : "ZoneBasePatchRequest",
+          "$ref" : "#/definitions/ZoneBasePatchRequest"
+        },
+        "query" : {
+          "description" : "The query to fetch the object instead of defined list",
+          "originalRef" : "Query",
+          "$ref" : "#/definitions/Query"
+        },
+        "modifiers" : {
+          "type" : "array",
+          "description" : "The modifer to apply on the objects",
+          "items" : {
+            "originalRef" : "Modifier",
+            "$ref" : "#/definitions/Modifier"
+          }
+        }
+      }
+    },
+    "BulkZonePostRequest" : {
+      "type" : "object",
+      "properties" : {
+        "objects" : {
+          "type" : "array",
+          "description" : "The objects to process",
+          "items" : {
+            "originalRef" : "Zone",
+            "$ref" : "#/definitions/Zone"
+          }
+        },
+        "template" : {
+          "description" : "The template for objects to process",
+          "originalRef" : "Zone",
+          "$ref" : "#/definitions/Zone"
+        }
+      }
+    },
+    "BusinessCategory" : {
+      "type" : "string",
+      "enum" : [ "PRIVATE_ORGANIZATION", "GOVERNMENT_ENTITY", "BUSINESS_ENTITY" ]
+    },
+    "CaCertificate" : {
+      "type" : "object",
+      "properties" : {
+        "created" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The created date."
+        },
+        "updated" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The updated date."
+        },
+        "caType" : {
+          "type" : "string",
+          "description" : "The type of the intermediate certificate."
+        },
+        "caCertificate" : {
+          "type" : "string",
+          "description" : "The plain intermediate certificate."
+        }
+      }
+    },
+    "CancelationStatusConstants" : {
+      "type" : "string",
+      "enum" : [ "DELETE", "DELETE_EXPIRE", "TRANSIT", "TRANSIT_EXPIRE", "PREACK", "PREACK_EXPIRE" ]
+    },
+    "CancelationTypeConstants" : {
+      "type" : "string",
+      "enum" : [ "DELETE", "TRANSIT", "PREACK" ]
+    },
+    "Card" : {
+      "type" : "object",
+      "properties" : {
+        "created" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The created date."
+        },
+        "updated" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The updated date."
+        },
+        "type" : {
+          "description" : "The credit card vendor",
+          "originalRef" : "CreditCardVendor",
+          "$ref" : "#/definitions/CreditCardVendor"
+        },
+        "status" : {
+          "description" : "The actual status of the credit card",
+          "originalRef" : "CardStatus",
+          "$ref" : "#/definitions/CardStatus"
+        },
+        "validFrom" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The valid from date"
+        },
+        "validTo" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The valid to date"
+        }
+      }
+    },
+    "CardStatus" : {
+      "type" : "string",
+      "enum" : [ "LOST", "EXPIRED", "ACTIVE" ]
+    },
+    "CertAuthentication" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string",
+          "description" : "The domain name the authentication data belongs to."
+        },
+        "method" : {
+          "description" : "The authentication method.",
+          "originalRef" : "AuthMethodConstants",
+          "$ref" : "#/definitions/AuthMethodConstants"
+        },
+        "dns" : {
+          "type" : "string",
+          "description" : "The dns entry for dns based authentication."
+        },
+        "fileName" : {
+          "type" : "string",
+          "description" : "The filename for file based authentication."
+        },
+        "fileContent" : {
+          "type" : "string",
+          "description" : "The content for file based authentication."
+        },
+        "approverEmails" : {
+          "type" : "array",
+          "description" : "The approver addresses for email based authentication.",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "provisioning" : {
+          "type" : "boolean",
+          "description" : "Activates automatic provisioning of the zone for dns based authentication."
+        }
+      }
+    },
+    "CertAuthenticationStatus" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "description" : "The status of the authentication step.",
+          "originalRef" : "AuthenticateStatus",
+          "$ref" : "#/definitions/AuthenticateStatus"
+        },
+        "step" : {
+          "description" : "The authentication step.",
+          "originalRef" : "AuthenticationStep",
+          "$ref" : "#/definitions/AuthenticationStep"
+        }
+      }
+    },
+    "Certificate" : {
+      "type" : "object",
+      "required" : [ "lifetime", "product", "software" ],
+      "properties" : {
+        "created" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The created date."
+        },
+        "updated" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The updated date."
+        },
+        "owner" : {
+          "description" : "The owner of the object.",
+          "originalRef" : "BasicUser",
+          "$ref" : "#/definitions/BasicUser"
+        },
+        "updater" : {
+          "description" : "The updating user of the object.",
+          "originalRef" : "BasicUser",
+          "$ref" : "#/definitions/BasicUser"
+        },
+        "extension" : {
+          "description" : "The certificate extensions for comodo.",
+          "originalRef" : "ExtendedValidationExtension",
+          "$ref" : "#/definitions/ExtendedValidationExtension"
+        },
+        "id" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "The ID of the certificate"
+        },
+        "partnerOrderId" : {
+          "type" : "string",
+          "description" : "The order number of the related request"
+        },
+        "orderId" : {
+          "type" : "string",
+          "description" : "The unique certificate order number"
+        },
+        "adminContact" : {
+          "description" : "The administrative contact",
+          "originalRef" : "SslContact",
+          "$ref" : "#/definitions/SslContact"
+        },
+        "technicalContact" : {
+          "description" : "The technical contact",
+          "originalRef" : "SslContact",
+          "$ref" : "#/definitions/SslContact"
+        },
+        "name" : {
+          "type" : "string",
+          "description" : "The name of the certificate"
+        },
+        "lifetime" : {
+          "description" : "The certificate term in months",
+          "originalRef" : "TimePeriod",
+          "$ref" : "#/definitions/TimePeriod"
+        },
+        "software" : {
+          "description" : "The webserver software in use, relevant values: 'II5' for Mircosoft, 'APACHE2' for Linux",
+          "originalRef" : "ServerSoftwareTypeConstants",
+          "$ref" : "#/definitions/ServerSoftwareTypeConstants"
+        },
+        "comment" : {
+          "type" : "string",
+          "description" : "A custom field. Can only be updated via PUT /certificate/{id}/_comment. Requires appropriate ACLs."
+        },
+        "csr" : {
+          "type" : "string",
+          "description" : "CSR - Key (Certificate Signing Request)"
+        },
+        "server" : {
+          "type" : "string",
+          "description" : "The certificate"
+        },
+        "serialNumber" : {
+          "type" : "string",
+          "description" : "Serial number of the certificate"
+        },
+        "product" : {
+          "type" : "string",
+          "description" : "The ordered product"
+        },
+        "codeSigningType" : {
+          "description" : "The type of code signing",
+          "originalRef" : "CodeSigningType",
+          "$ref" : "#/definitions/CodeSigningType"
+        },
+        "codeSigningProvisioningMethod" : {
+          "description" : "The provisioning method for the code signing token",
+          "originalRef" : "CodeSigningProvisioningMethod",
+          "$ref" : "#/definitions/CodeSigningProvisioningMethod"
+        },
+        "codeSigningHardwarePlatform" : {
+          "description" : "The hardware platform for the code signing token.",
+          "originalRef" : "CodeSigningHardwarePlatform",
+          "$ref" : "#/definitions/CodeSigningHardwarePlatform"
+        },
+        "certificateType" : {
+          "description" : "The type of the certificate",
+          "originalRef" : "CertificateType",
+          "$ref" : "#/definitions/CertificateType"
+        },
+        "signatureHashAlgorithm" : {
+          "description" : "The signature hash algorithm which was used",
+          "originalRef" : "SignatureHashAlgorithmConstants",
+          "$ref" : "#/definitions/SignatureHashAlgorithmConstants"
+        },
+        "expire" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The date on which the certificate expires"
+        },
+        "subjectAlternativeNames" : {
+          "type" : "array",
+          "description" : "Subject Alternative Names (SANs)",
+          "items" : {
+            "originalRef" : "SubjectAlternativeName",
+            "$ref" : "#/definitions/SubjectAlternativeName"
+          }
+        },
+        "histories" : {
+          "type" : "array",
+          "description" : "The history of the certificate (old certificate versions)",
+          "items" : {
+            "originalRef" : "CertificateHistory",
+            "$ref" : "#/definitions/CertificateHistory"
+          }
+        },
+        "certificationAuthority" : {
+          "type" : "array",
+          "description" : "The certificate authority chain",
+          "items" : {
+            "originalRef" : "CaCertificate",
+            "$ref" : "#/definitions/CaCertificate"
+          }
+        },
+        "password" : {
+          "type" : "string",
+          "description" : "The password that is to be used for the certificate download. Only for S/MIME!",
+          "pattern" : "^[a-zA-Z0-9]{8,32}$"
+        },
+        "firstname" : {
+          "type" : "string",
+          "description" : "First Name. Only for S/MIME!"
+        },
+        "lastname" : {
+          "type" : "string",
+          "description" : "Last Name. Only for S/MIME!"
+        },
+        "technicalContactEmail" : {
+          "type" : "string",
+          "description" : "The technical contact email address. Only used in realtime orders!"
+        },
+        "organizationUnitName" : {
+          "type" : "string",
+          "description" : "The organization unit. Only for S/MIME!"
+        },
+        "authentication" : {
+          "description" : "The authentication of the certificate",
+          "originalRef" : "CertAuthentication",
+          "$ref" : "#/definitions/CertAuthentication"
+        },
+        "certificateTransparency" : {
+          "type" : "boolean",
+          "description" : "Activates the certificate transparency for a certificate. Default is \"True\"."
+        },
+        "certificateTransparencyPrivacy" : {
+          "description" : "The privacy settings for certificate transparency. Default is \"Redacted\".",
+          "originalRef" : "CertificateTransparencyPrivacyConstants",
+          "$ref" : "#/definitions/CertificateTransparencyPrivacyConstants"
+        },
+        "domain" : {
+          "type" : "string",
+          "description" : "The domain, which the redirect belongs."
+        },
+        "hasCsr" : {
+          "type" : "boolean",
+          "description" : "States if a self created CSR is to be used for S/MIME. Default is false. Only for S/MIME!"
+        },
+        "idn" : {
+          "type" : "string",
+          "description" : "The IDN version of the URL of the target domain."
+        }
+      }
+    },
+    "CertificateData" : {
+      "type" : "object",
+      "properties" : {
+        "plain" : {
+          "type" : "string",
+          "description" : "The plain csr."
+        },
+        "name" : {
+          "type" : "string",
+          "description" : "The common name."
+        },
+        "san" : {
+          "type" : "array",
+          "description" : "The subject alternative names, listed in the csr.",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "histories" : {
+          "type" : "array",
+          "description" : "The certificate history.",
+          "items" : {
+            "originalRef" : "CertificateHistory",
+            "$ref" : "#/definitions/CertificateHistory"
+          }
+        },
+        "keySize" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "The size of the csr key."
+        },
+        "countryCode" : {
+          "type" : "string",
+          "description" : "The country code defined in the csr."
+        },
+        "challengePassword" : {
+          "type" : "string",
+          "description" : "The password defined in the csr."
+        },
+        "state" : {
+          "type" : "string",
+          "description" : "The state defined in the csr."
+        },
+        "city" : {
+          "type" : "string",
+          "description" : "The city defined in the csr."
+        },
+        "organization" : {
+          "type" : "string",
+          "description" : "The organization defined in the csr."
+        },
+        "organizationUnit" : {
+          "type" : "string",
+          "description" : "The organization unit defined in the csr."
+        },
+        "email" : {
+          "type" : "string",
+          "description" : "The email defined in the csr."
+        },
+        "product" : {
+          "type" : "string",
+          "description" : "The ssl product."
+        },
+        "authentication" : {
+          "type" : "array",
+          "description" : "The authentication data.",
+          "items" : {
+            "originalRef" : "CertAuthentication",
+            "$ref" : "#/definitions/CertAuthentication"
+          }
+        },
+        "algorithm" : {
+          "description" : "The csr algorithm.",
+          "originalRef" : "CsrHashAlgorithmConstants",
+          "$ref" : "#/definitions/CsrHashAlgorithmConstants"
+        },
+        "signatureHashAlgorithm" : {
+          "description" : "The signature hash algorithm.",
+          "originalRef" : "SignatureHashAlgorithmConstants",
+          "$ref" : "#/definitions/SignatureHashAlgorithmConstants"
+        },
+        "certificate" : {
+          "description" : "The certificat. Only necessary if used before reissue, renew and delete.",
+          "originalRef" : "Certificate",
+          "$ref" : "#/definitions/Certificate"
+        },
+        "idn" : {
+          "type" : "string",
+          "description" : "The idn version of the common name."
+        },
+        "checkCaa" : {
+          "type" : "boolean",
+          "description" : "Activates the caa record check."
+        },
+        "businessCase" : {
+          "type" : "string",
+          "description" : "Describes the business case (CREATE, RENEW, REISSUE, DELETE) for which preparation is to be performed."
+        }
+      }
+    },
+    "CertificateHistory" : {
+      "type" : "object",
+      "properties" : {
+        "serialNumber" : {
+          "type" : "string",
+          "description" : "The serialnumber of the certificate."
+        },
+        "revoked" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The revoked date of the certificate."
+        }
+      }
+    },
+    "CertificateTransparencyPrivacyConstants" : {
+      "type" : "string",
+      "enum" : [ "PUBLIC", "REDACTED" ]
+    },
+    "CertificateType" : {
+      "type" : "string",
+      "enum" : [ "FQDN", "MAIL", "CODE" ]
+    },
+    "CiraCprConstants" : {
+      "type" : "string",
+      "enum" : [ "CCT", "RES", "CCO", "ABO", "TDM", "MAJ", "GOV", "LGR", "TRS", "PRT", "ASS", "TRD", "PLT", "EDU", "LAM", "HOP", "INB", "OMK" ]
+    },
+    "ClearAccountPeriod" : {
+      "type" : "string",
+      "enum" : [ "DAY", "MONTH", "BILL", "WEEK", "NONE" ]
+    },
+    "CodeSigningHardwarePlatform" : {
+      "type" : "string",
+      "enum" : [ "AEP_KEYPER", "ARX_PRIVATE_SERVER", "BULL_TRUSTWAY_CRYPTO_PCI", "E_PASS_3003", "SAFE_NET_E_TOKEN_5100", "SAFE_NET_E_TOKEN_5105", "SAFE_NET_E_TOKEN_5110", "SAFE_NET_E_TOKEN_5110_FIPS", "SAFE_NET_E_TOKEN_5200", "SAFE_NET_E_TOKEN_5205", "SAFE_NET_E_TOKEN_PRO_72K", "SAFE_NET_E_TOKEN_PRO_ANYWHERE", "SAFE_NET_I_KEY_4000", "SAFE_NET_LUNA", "THALES_N_SHIELD", "ULTIMACO_CRYPTO_SERVER", "OTHER" ]
+    },
+    "CodeSigningProvisioningMethod" : {
+      "type" : "string",
+      "enum" : [ "EMAIL", "SOFTWARE", "SHIPPING" ]
+    },
+    "CodeSigningType" : {
+      "type" : "string",
+      "enum" : [ "JAVASOFT", "MS_AUTHENTICODE", "VBA", "ADOBE_AIR", "APPLE", "MOZILLA", "OTHER" ]
+    },
+    "ConditionType" : {
+      "type" : "string",
+      "enum" : [ "AND", "OR" ]
+    },
+    "Configuration" : {
+      "type" : "object"
+    },
+    "Contact" : {
+      "type" : "object",
+      "required" : [ "address", "city", "country", "lname", "pcode", "type" ],
+      "properties" : {
+        "created" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The created date."
+        },
+        "updated" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The updated date."
+        },
+        "id" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 1,
+          "description" : "The unique identifier of the contact"
+        },
+        "owner" : {
+          "description" : "The owner of the object.",
+          "originalRef" : "BasicUser",
+          "$ref" : "#/definitions/BasicUser"
+        },
+        "updater" : {
+          "description" : "The updating user of the object.",
+          "originalRef" : "BasicUser",
+          "$ref" : "#/definitions/BasicUser"
+        },
+        "alias" : {
+          "type" : "string",
+          "example" : "John-Doe-1",
+          "description" : "The unique alias of the contact"
+        },
+        "type" : {
+          "description" : "The type of the contact",
+          "originalRef" : "ContactTypeConstants",
+          "$ref" : "#/definitions/ContactTypeConstants"
+        },
+        "organization" : {
+          "type" : "string",
+          "example" : "Company",
+          "description" : "The name of the organization"
+        },
+        "title" : {
+          "type" : "string",
+          "example" : "Dr.",
+          "description" : "The title of the contact"
+        },
+        "city" : {
+          "type" : "string",
+          "example" : "Anytown",
+          "description" : "The city of the contact"
+        },
+        "country" : {
+          "type" : "string",
+          "example" : "DE",
+          "description" : "The country of the contact",
+          "x-custom-type" : "country"
+        },
+        "state" : {
+          "type" : "string",
+          "example" : "BY",
+          "description" : "The local country state of the contact",
+          "x-custom-type" : "state"
+        },
+        "email" : {
+          "type" : "string",
+          "example" : "john.doe@domain.com",
+          "description" : "The email of the contact",
+          "x-custom-type" : "email"
+        },
+        "protection" : {
+          "description" : "The protection of the contact",
+          "originalRef" : "ContactProtectionConstants",
+          "$ref" : "#/definitions/ContactProtectionConstants"
+        },
+        "sip" : {
+          "type" : "string",
+          "description" : "The sip of the contact"
+        },
+        "remarks" : {
+          "type" : "array",
+          "description" : "The remarks of the contact",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "domainsafe" : {
+          "type" : "boolean",
+          "description" : "The nic references of the contact"
+        },
+        "confirmOwnerConsent" : {
+          "type" : "boolean",
+          "description" : "???"
+        },
+        "comment" : {
+          "type" : "string",
+          "description" : "The comment for the contact"
+        },
+        "verification" : {
+          "description" : "The verification status of the contact",
+          "originalRef" : "GenericStatusConstants",
+          "$ref" : "#/definitions/GenericStatusConstants"
+        },
+        "fname" : {
+          "type" : "string",
+          "example" : "John",
+          "description" : "The first name of the contact"
+        },
+        "lname" : {
+          "type" : "string",
+          "example" : "Doe",
+          "description" : "The last name of the contact"
+        },
+        "address" : {
+          "type" : "array",
+          "description" : "The address of the contact.",
+          "items" : {
+            "type" : "string"
+          },
+          "maxItems" : 2147483647,
+          "minItems" : 1
+        },
+        "pcode" : {
+          "type" : "string",
+          "example" : "12345",
+          "description" : "The pcode of the contact"
+        },
+        "phone" : {
+          "type" : "string",
+          "example" : "+49-123-12345",
+          "description" : "The phone number of the contact",
+          "x-custom-type" : "phone"
+        },
+        "fax" : {
+          "type" : "string",
+          "example" : "+49-123-12345",
+          "description" : "The fax number of the contact",
+          "x-custom-type" : "phone"
+        },
+        "nicRef" : {
+          "type" : "array",
+          "description" : "The nic references of the contact",
+          "items" : {
+            "originalRef" : "ContactReference",
+            "$ref" : "#/definitions/ContactReference"
+          }
+        },
+        "extensions" : {
+          "description" : "The contact extensions.",
+          "originalRef" : "ContactExtensions",
+          "$ref" : "#/definitions/ContactExtensions"
+        }
+      }
+    },
+    "ContactAeroExtensions" : {
+      "type" : "object",
+      "properties" : {
+        "ensAuthId" : {
+          "type" : "string",
+          "description" : "Aero Authentication ID."
+        },
+        "ensKey" : {
+          "type" : "string",
+          "description" : "Aero ENS key."
+        }
+      }
+    },
+    "ContactAuExtensions" : {
+      "type" : "object",
+      "properties" : {
+        "eligibilityId" : {
+          "type" : "string",
+          "description" : "The corresponding ID number for the eligibility name if applicable, if in doubt just use the same details as your Registrant ID."
+        },
+        "eligibilityIdType" : {
+          "description" : "The type of Eligibility ID.",
+          "originalRef" : "AuEligibilityIdTypeConstants",
+          "$ref" : "#/definitions/AuEligibilityIdTypeConstants"
+        },
+        "eligibilityName" : {
+          "type" : "string",
+          "description" : "\tThis field is usually optional and whether it is required is determined by your policy reason for the domain registration, if in doubt just use the same details as your Registrant Name."
+        },
+        "eligibilityType" : {
+          "description" : "The type of entity that the registrant is.",
+          "originalRef" : "AuEligibilityTypeConstants",
+          "$ref" : "#/definitions/AuEligibilityTypeConstants"
+        },
+        "policyReason" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Reason for eligibility."
+        },
+        "registrantId" : {
+          "type" : "string",
+          "description" : "Australian Business Number or Registered Business Number."
+        },
+        "registrantIdType" : {
+          "description" : "Concerns the Registrant ID which you have selected in the Registrant ID form field.",
+          "originalRef" : "AuRegistrantIdTypeConstants",
+          "$ref" : "#/definitions/AuRegistrantIdTypeConstants"
+        },
+        "registrantName" : {
+          "type" : "string",
+          "description" : "The registrants name."
+        }
+      }
+    },
+    "ContactBankExtensions" : {
+      "type" : "object",
+      "properties" : {
+        "ftldToken" : {
+          "type" : "string",
+          "description" : "The FTLD token."
+        }
+      }
+    },
+    "ContactBarcelonaExtensions" : {
+      "type" : "object",
+      "properties" : {
+        "intededUse" : {
+          "type" : "string",
+          "description" : "The statement of intended use for the domain name."
+        }
+      }
+    },
+    "ContactBirthExtensions" : {
+      "type" : "object",
+      "properties" : {
+        "country" : {
+          "type" : "string",
+          "description" : "The country.",
+          "x-custom-type" : "country"
+        },
+        "day" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The day.",
+          "x-custom-type" : "date"
+        },
+        "postalCode" : {
+          "type" : "string",
+          "description" : "The postalCode.",
+          "x-custom-type" : "pcode"
+        },
+        "place" : {
+          "type" : "string",
+          "description" : "The place."
+        }
+      }
+    },
+    "ContactCaExtensions" : {
+      "type" : "object",
+      "properties" : {
+        "cpr" : {
+          "description" : "The cira cpr.",
+          "originalRef" : "CiraCprConstants",
+          "$ref" : "#/definitions/CiraCprConstants"
+        },
+        "agreementVersion" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "The agreement version."
+        },
+        "originatingIp" : {
+          "type" : "string",
+          "description" : "The originating ip.",
+          "x-custom-type" : "ip"
+        },
+        "officialRepresentative" : {
+          "type" : "string",
+          "description" : "The official representative."
+        },
+        "trusteePercentage" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "The trustee percentage."
+        }
+      }
+    },
+    "ContactCatExtensions" : {
+      "type" : "object",
+      "properties" : {
+        "intendedUse" : {
+          "type" : "string",
+          "description" : "The statement of intended use for the domain name."
+        }
+      }
+    },
+    "ContactExtensions" : {
+      "type" : "object",
+      "properties" : {
+        "aero" : {
+          "description" : "The .aero contact extensions.",
+          "originalRef" : "ContactAeroExtensions",
+          "$ref" : "#/definitions/ContactAeroExtensions"
+        },
+        "au" : {
+          "description" : "The .au contact extensions.",
+          "originalRef" : "ContactAuExtensions",
+          "$ref" : "#/definitions/ContactAuExtensions"
+        },
+        "cat" : {
+          "description" : "The .cat contact extensions.",
+          "originalRef" : "ContactCatExtensions",
+          "$ref" : "#/definitions/ContactCatExtensions"
+        },
+        "jobs" : {
+          "description" : "The .jobs contact extensions.",
+          "originalRef" : "ContactJobsExtensions",
+          "$ref" : "#/definitions/ContactJobsExtensions"
+        },
+        "it" : {
+          "description" : "The .it contact extensions.",
+          "originalRef" : "ContactItExtensions",
+          "$ref" : "#/definitions/ContactItExtensions"
+        },
+        "jp" : {
+          "description" : "The .jp contact extensions.",
+          "originalRef" : "ContactJpExtensions",
+          "$ref" : "#/definitions/ContactJpExtensions"
+        },
+        "xxx" : {
+          "description" : "The .xxx contact extensions.",
+          "originalRef" : "ContactXxxExtensions",
+          "$ref" : "#/definitions/ContactXxxExtensions"
+        },
+        "hk" : {
+          "description" : "The .hk contact extensions.",
+          "originalRef" : "ContactHkExtensions",
+          "$ref" : "#/definitions/ContactHkExtensions"
+        },
+        "bank" : {
+          "description" : "The .bank contact extensions.",
+          "originalRef" : "ContactBankExtensions",
+          "$ref" : "#/definitions/ContactBankExtensions"
+        },
+        "swiss" : {
+          "description" : "The .swiss contact extensions.",
+          "originalRef" : "ContactSwissExtensions",
+          "$ref" : "#/definitions/ContactSwissExtensions"
+        },
+        "ru" : {
+          "description" : "The .ru contact extensions.",
+          "originalRef" : "ContactRuExtensions",
+          "$ref" : "#/definitions/ContactRuExtensions"
+        },
+        "uk" : {
+          "description" : "The .uk contact extensions.",
+          "originalRef" : "ContactUkExtensions",
+          "$ref" : "#/definitions/ContactUkExtensions"
+        },
+        "ca" : {
+          "description" : "The .ca contact extensions.",
+          "originalRef" : "ContactCaExtensions",
+          "$ref" : "#/definitions/ContactCaExtensions"
+        },
+        "ro" : {
+          "description" : "The .ro contact extensions.",
+          "originalRef" : "ContactRoExtensions",
+          "$ref" : "#/definitions/ContactRoExtensions"
+        },
+        "barcelona" : {
+          "description" : "The .barcelona contact extensions.",
+          "originalRef" : "ContactBarcelonaExtensions",
+          "$ref" : "#/definitions/ContactBarcelonaExtensions"
+        },
+        "general" : {
+          "description" : "The general contact extensions.",
+          "originalRef" : "ContactGeneralExtensions",
+          "$ref" : "#/definitions/ContactGeneralExtensions"
+        },
+        "nz" : {
+          "description" : "The .nz contact extensions",
+          "originalRef" : "ContactNzExtensions",
+          "$ref" : "#/definitions/ContactNzExtensions"
+        },
+        "scot" : {
+          "description" : "The .scot contact extensions.",
+          "originalRef" : "ContactScotExtensions",
+          "$ref" : "#/definitions/ContactScotExtensions"
+        },
+        "sport" : {
+          "description" : "The .sport contact extensions.",
+          "originalRef" : "ContactSportExtensions",
+          "$ref" : "#/definitions/ContactSportExtensions"
+        },
+        "luxe" : {
+          "description" : "The .luxe contact extensions.",
+          "originalRef" : "ContactLuxeExtensions",
+          "$ref" : "#/definitions/ContactLuxeExtensions"
+        },
+        "madrid" : {
+          "description" : "The .madrid contact extensions.",
+          "originalRef" : "ContactMadridExtensions",
+          "$ref" : "#/definitions/ContactMadridExtensions"
+        }
+      }
+    },
+    "ContactGeneralExtensions" : {
+      "type" : "object",
+      "properties" : {
+        "birth" : {
+          "description" : "The birth extensions.",
+          "originalRef" : "ContactBirthExtensions",
+          "$ref" : "#/definitions/ContactBirthExtensions"
+        },
+        "trademark" : {
+          "description" : "The trademark extensions.",
+          "originalRef" : "ContactTrademarkExtensions",
+          "$ref" : "#/definitions/ContactTrademarkExtensions"
+        },
+        "identification" : {
+          "description" : "The identification extensions.",
+          "originalRef" : "ContactIdentificationExtensions",
+          "$ref" : "#/definitions/ContactIdentificationExtensions"
+        },
+        "language" : {
+          "type" : "string",
+          "description" : "The language.",
+          "x-custom-type" : "language"
+        },
+        "companyNumber" : {
+          "type" : "string",
+          "description" : "The company number."
+        },
+        "gender" : {
+          "description" : "The gender.",
+          "originalRef" : "GenderConstants",
+          "$ref" : "#/definitions/GenderConstants"
+        },
+        "vatNumber" : {
+          "type" : "string",
+          "description" : "The vatnumber."
+        },
+        "citizenship" : {
+          "type" : "string",
+          "description" : "The citizenship.",
+          "x-custom-type" : "country"
+        },
+        "mobilePhone" : {
+          "type" : "string",
+          "description" : "The mobile phonenumber.",
+          "x-custom-type" : "phone"
+        }
+      }
+    },
+    "ContactHkExtensions" : {
+      "type" : "object",
+      "properties" : {
+        "documentType" : {
+          "description" : "The document types.",
+          "originalRef" : "HkDocumentTypeConstants",
+          "$ref" : "#/definitions/HkDocumentTypeConstants"
+        },
+        "others" : {
+          "type" : "string",
+          "description" : "Additional descriptions for OTHIDV and OTHORG."
+        },
+        "documentNumber" : {
+          "type" : "string",
+          "description" : "Document number."
+        },
+        "documentOrigin" : {
+          "type" : "string",
+          "description" : "Country of licensure.",
+          "x-custom-type" : "country"
+        },
+        "above18" : {
+          "type" : "boolean",
+          "description" : "Is the person 18 years of age or older. For Person only."
+        },
+        "industryType" : {
+          "description" : "The industry types.",
+          "originalRef" : "HkIndustryTypeConstants",
+          "$ref" : "#/definitions/HkIndustryTypeConstants"
+        }
+      }
+    },
+    "ContactIdentificationExtensions" : {
+      "type" : "object",
+      "properties" : {
+        "number" : {
+          "type" : "string",
+          "description" : "The number."
+        },
+        "authority" : {
+          "type" : "string",
+          "description" : "The authority."
+        },
+        "dateOfIssue" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The date of issue.",
+          "x-custom-type" : "date"
+        },
+        "validTill" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The valid till date.",
+          "x-custom-type" : "date"
+        }
+      }
+    },
+    "ContactItExtensions" : {
+      "type" : "object",
+      "properties" : {
+        "entityType" : {
+          "description" : "The number of the matching entity.",
+          "originalRef" : "ItEntityTypeConstants",
+          "$ref" : "#/definitions/ItEntityTypeConstants"
+        }
+      }
+    },
+    "ContactJobsExtensions" : {
+      "type" : "object",
+      "properties" : {
+        "adminType" : {
+          "type" : "boolean",
+          "description" : "Contact is the administrative contact with the permission to act as an independent agent / recruiter on behalf of the listed registrant."
+        },
+        "contactTitle" : {
+          "type" : "string",
+          "description" : "Title of the domain contact in the organization."
+        },
+        "hrMember" : {
+          "type" : "boolean",
+          "description" : "Choose whether the contact is is a member of the Human Resource Organization"
+        },
+        "industryClass" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "The Industry class."
+        },
+        "website" : {
+          "type" : "string",
+          "description" : "The Website.",
+          "x-custom-type" : "uri"
+        }
+      }
+    },
+    "ContactJpExtensions" : {
+      "type" : "object",
+      "properties" : {
+        "first" : {
+          "type" : "string",
+          "description" : "The first name."
+        },
+        "last" : {
+          "type" : "string",
+          "description" : "The last name."
+        },
+        "organization" : {
+          "type" : "string",
+          "description" : "The organization."
+        },
+        "adressLine1" : {
+          "type" : "string",
+          "description" : "The first line of the address."
+        },
+        "adressLine2" : {
+          "type" : "string",
+          "description" : "The second line of the address."
+        },
+        "adressLine3" : {
+          "type" : "string",
+          "description" : "The third line of the address."
+        }
+      }
+    },
+    "ContactLuxeExtensions" : {
+      "type" : "object",
+      "properties" : {
+        "walletAddress" : {
+          "type" : "string",
+          "description" : "The .luxe wallet address"
+        }
+      }
+    },
+    "ContactMadridExtensions" : {
+      "type" : "object",
+      "properties" : {
+        "intendedUse" : {
+          "type" : "string",
+          "description" : "The statement of intended use for the domain name."
+        }
+      }
+    },
+    "ContactNzExtensions" : {
+      "type" : "object",
+      "properties" : {
+        "irpo" : {
+          "type" : "boolean",
+          "description" : "The irpo."
+        }
+      }
+    },
+    "ContactProtectionConstants" : {
+      "type" : "string",
+      "enum" : [ "SHOW_ALL", "SHOW_NONE" ]
+    },
+    "ContactReference" : {
+      "type" : "object",
+      "properties" : {
+        "nic" : {
+          "description" : "The nic",
+          "originalRef" : "NicMember",
+          "$ref" : "#/definitions/NicMember"
+        },
+        "status" : {
+          "description" : "The status",
+          "originalRef" : "ObjectStatus",
+          "$ref" : "#/definitions/ObjectStatus"
+        },
+        "type" : {
+          "description" : "The contact reference type",
+          "originalRef" : "ContactReferenceType",
+          "$ref" : "#/definitions/ContactReferenceType"
+        },
+        "role" : {
+          "description" : "The role as contact reference type",
+          "originalRef" : "ContactReferenceType",
+          "$ref" : "#/definitions/ContactReferenceType"
+        },
+        "name" : {
+          "type" : "string",
+          "description" : "The nic reference"
+        }
+      }
+    },
+    "ContactReferenceType" : {
+      "type" : "string",
+      "enum" : [ "ALL", "OWNERC", "ADMINC", "TECHC", "ZONEC", "BILLINGC" ]
+    },
+    "ContactRoExtensions" : {
+      "type" : "object",
+      "properties" : {
+        "personType" : {
+          "description" : "The entity person type.",
+          "originalRef" : "RoPersonTypeConstants",
+          "$ref" : "#/definitions/RoPersonTypeConstants"
+        }
+      }
+    },
+    "ContactRuExtensions" : {
+      "type" : "object",
+      "properties" : {
+        "taxpayerIdentificationNumber" : {
+          "type" : "string",
+          "description" : "Taxpayer Identification Number (code). Mandatory for organisations which belong to the Russian Federation."
+        },
+        "territoryLinkedTaxpayerNumber" : {
+          "type" : "string",
+          "description" : "Territory-linked Taxpayer Number (kpp). Mandatory for organisations which belong to the Russian Federation."
+        }
+      }
+    },
+    "ContactScotExtensions" : {
+      "type" : "object",
+      "properties" : {
+        "intendedUse" : {
+          "type" : "string",
+          "description" : "The statement of intended use for the domain name."
+        }
+      }
+    },
+    "ContactSportExtensions" : {
+      "type" : "object",
+      "properties" : {
+        "intendedUse" : {
+          "type" : "string",
+          "description" : "The intended use."
+        }
+      }
+    },
+    "ContactSwissExtensions" : {
+      "type" : "object",
+      "properties" : {
+        "enterpriseId" : {
+          "type" : "string",
+          "description" : "The enterprise ID, in the specific context of .swiss based on current rules, is the Swiss UID/IDE/IDI."
+        },
+        "intededUse" : {
+          "type" : "string",
+          "description" : "The statement of intended use for the domain name."
+        }
+      }
+    },
+    "ContactTrademarkExtensions" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string",
+          "description" : "The name."
+        },
+        "number" : {
+          "type" : "string",
+          "description" : "The number."
+        },
+        "country" : {
+          "type" : "string",
+          "description" : "The country.",
+          "x-custom-type" : "country"
+        },
+        "regdate" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The registration date.",
+          "x-custom-type" : "date"
+        },
+        "appdate" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The application date.",
+          "x-custom-type" : "date"
+        },
+        "office" : {
+          "type" : "string",
+          "description" : "The office."
+        }
+      }
+    },
+    "ContactTypeConstants" : {
+      "type" : "string",
+      "enum" : [ "PERSON", "ORG", "ROLE" ]
+    },
+    "ContactUkExtensions" : {
+      "type" : "object",
+      "properties" : {
+        "entityType" : {
+          "description" : "The entity type.",
+          "originalRef" : "UkTypeConstants",
+          "$ref" : "#/definitions/UkTypeConstants"
+        }
+      }
+    },
+    "ContactVerification" : {
+      "type" : "object",
+      "required" : [ "confirmIp", "contact" ],
+      "properties" : {
+        "created" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The created date."
+        },
+        "updated" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The updated date."
+        },
+        "owner" : {
+          "description" : "The owner of the object.",
+          "originalRef" : "BasicUser",
+          "$ref" : "#/definitions/BasicUser"
+        },
+        "updater" : {
+          "description" : "The updater of the object.",
+          "originalRef" : "BasicUser",
+          "$ref" : "#/definitions/BasicUser"
+        },
+        "reference" : {
+          "type" : "string",
+          "description" : "the unique reference of the Verification"
+        },
+        "messageSend" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "the messageSend date of the Verification"
+        },
+        "confirmed" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "the confirmed date of the Verification"
+        },
+        "confirmIp" : {
+          "description" : "the confirmIp of the Verification",
+          "originalRef" : "InetAddress",
+          "$ref" : "#/definitions/InetAddress"
+        },
+        "failed" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "the failed date of the Verification"
+        },
+        "domains" : {
+          "type" : "array",
+          "description" : "the domains of the Verification",
+          "items" : {
+            "originalRef" : "ContactVerificationDomain",
+            "$ref" : "#/definitions/ContactVerificationDomain"
+          }
+        },
+        "verificationMails" : {
+          "type" : "array",
+          "description" : "the messages of the Verification",
+          "items" : {
+            "originalRef" : "ContactVerificationMessage",
+            "$ref" : "#/definitions/ContactVerificationMessage"
+          }
+        },
+        "comment" : {
+          "type" : "string",
+          "description" : "the comment of the Verification"
+        },
+        "action" : {
+          "type" : "string",
+          "description" : "the action of the Verification, e.g. domain update or contact task"
+        },
+        "contact" : {
+          "description" : "the contact of the Verification",
+          "originalRef" : "Contact",
+          "$ref" : "#/definitions/Contact"
+        }
+      }
+    },
+    "ContactVerificationDomain" : {
+      "type" : "object",
+      "properties" : {
+        "created" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The created date."
+        },
+        "updated" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The updated date."
+        },
+        "name" : {
+          "type" : "string",
+          "description" : "the domain of the Verification"
+        },
+        "idn" : {
+          "type" : "string",
+          "description" : "the idn domain"
+        },
+        "status" : {
+          "description" : "the status of the domain Verification",
+          "originalRef" : "GenericStatusConstants",
+          "$ref" : "#/definitions/GenericStatusConstants"
+        },
+        "deactivation" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "the deactivation of the domain Verification"
+        }
+      }
+    },
+    "ContactVerificationMessage" : {
+      "type" : "object",
+      "properties" : {
+        "created" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The created date."
+        },
+        "updated" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The updated date."
+        },
+        "mail" : {
+          "description" : "the email of the VerificationMessage",
+          "originalRef" : "MailServiceMessage",
+          "$ref" : "#/definitions/MailServiceMessage"
+        },
+        "status" : {
+          "description" : "the status of the VerificationMessage",
+          "originalRef" : "GenericStatusConstants",
+          "$ref" : "#/definitions/GenericStatusConstants"
+        }
+      }
+    },
+    "ContactXxxExtensions" : {
+      "type" : "object",
+      "properties" : {
+        "membershipID" : {
+          "type" : "string",
+          "description" : "Membership ID (token) for the .XXX community."
+        },
+        "nonResolverDomain" : {
+          "type" : "boolean",
+          "description" : "XXX community membership available or not."
+        }
+      }
+    },
+    "ContextHost" : {
+      "type" : "object",
+      "properties" : {
+        "created" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The created date."
+        },
+        "updated" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The updated date."
+        },
+        "master" : {
+          "type" : "boolean",
+          "description" : "Show if host is default value"
+        },
+        "status" : {
+          "description" : "The job status",
+          "originalRef" : "JobStatusConstants",
+          "$ref" : "#/definitions/JobStatusConstants"
+        },
+        "name" : {
+          "type" : "string",
+          "description" : "The host name"
+        }
+      }
+    },
+    "CreditCardVendor" : {
+      "type" : "string",
+      "enum" : [ "MC", "VISA", "AMEX", "DIC", "DISC", "CB" ]
+    },
+    "CryptoFormatConstants" : {
+      "type" : "string",
+      "enum" : [ "SHA1", "SHA256", "SHA512" ]
+    },
+    "CsrHashAlgorithmConstants" : {
+      "type" : "string",
+      "enum" : [ "ECC", "RSA", "DSA" ]
+    },
+    "Currency" : {
+      "type" : "object"
+    },
+    "CurrencyRate" : {
+      "type" : "object",
+      "properties" : {
+        "currency" : {
+          "type" : "string",
+          "example" : "EUR",
+          "description" : "The currency of the exchange",
+          "x-custom-type" : "currency"
+        },
+        "rate" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "the rate of the exchange"
+        }
+      }
+    },
+    "Custom" : {
+      "type" : "object",
+      "required" : [ "key" ],
+      "properties" : {
+        "key" : {
+          "type" : "string",
+          "description" : "The key of the additional data of a booking item"
+        }
+      }
+    },
+    "Customer" : {
+      "type" : "object",
+      "required" : [ "addressLines", "client", "country", "name", "number", "payment" ],
+      "properties" : {
+        "number" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "client" : {
+          "type" : "string",
+          "minLength" : 1,
+          "maxLength" : 2147483647
+        },
+        "group" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "name" : {
+          "type" : "string",
+          "description" : "The name of the customer.",
+          "minLength" : 0,
+          "maxLength" : 255
+        },
+        "organization" : {
+          "type" : "string",
+          "description" : "The name of the organization.",
+          "minLength" : 0,
+          "maxLength" : 70
+        },
+        "vatNumber" : {
+          "type" : "string",
+          "description" : "The value added tax number."
+        },
+        "gender" : {
+          "description" : "The gender of the person.",
+          "originalRef" : "GenderConstants",
+          "$ref" : "#/definitions/GenderConstants"
+        },
+        "title" : {
+          "type" : "string",
+          "description" : "The title of the customer"
+        },
+        "addressLines" : {
+          "type" : "array",
+          "description" : "The address of the customer",
+          "items" : {
+            "type" : "string"
+          },
+          "maxItems" : 2147483647,
+          "minItems" : 1
+        },
+        "city" : {
+          "type" : "string",
+          "description" : "The city of the customer."
+        },
+        "state" : {
+          "type" : "string",
+          "description" : "The state of the customer."
+        },
+        "country" : {
+          "type" : "string",
+          "description" : "The country of the customer."
+        },
+        "phone" : {
+          "type" : "string",
+          "example" : "+49-123-12345",
+          "description" : "The phone number of the customer",
+          "x-custom-type" : "phone"
+        },
+        "fax" : {
+          "description" : "The fax number.",
+          "originalRef" : "Phone",
+          "$ref" : "#/definitions/Phone"
+        },
+        "emails" : {
+          "type" : "array",
+          "description" : "The email addresses.",
+          "items" : {
+            "type" : "string"
+          },
+          "maxItems" : 2147483647,
+          "minItems" : 1
+        },
+        "billingEmails" : {
+          "type" : "array",
+          "description" : "The billing recipients.",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "payment" : {
+          "description" : "The payment typ of the customer.",
+          "originalRef" : "PaymentConstants",
+          "$ref" : "#/definitions/PaymentConstants"
+        },
+        "paymentMode" : {
+          "type" : "string",
+          "description" : "The payment mode of the customer."
+        },
+        "paymentCurrency" : {
+          "description" : "The payment currency of the customer.",
+          "originalRef" : "Currency",
+          "$ref" : "#/definitions/Currency"
+        },
+        "discountValid" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The end of a promo discount."
+        },
+        "invoiceLanguage" : {
+          "type" : "string",
+          "description" : "The language to use for the invoice."
+        },
+        "taxable" : {
+          "type" : "boolean",
+          "description" : "The taxable flag of the customer."
+        },
+        "card" : {
+          "description" : "The customers minimal credit card data if payament was post with credit card.",
+          "originalRef" : "Card",
+          "$ref" : "#/definitions/Card"
+        },
+        "contracts" : {
+          "type" : "array",
+          "description" : "The customers contracts.",
+          "items" : {
+            "originalRef" : "CustomerContract",
+            "$ref" : "#/definitions/CustomerContract"
+          }
+        },
+        "billingUsers" : {
+          "type" : "array",
+          "description" : "The billing users.",
+          "items" : {
+            "originalRef" : "BasicUser",
+            "$ref" : "#/definitions/BasicUser"
+          }
+        },
+        "account" : {
+          "description" : "The account of the customer in case of prepayment or if the customer has a credit limit",
+          "originalRef" : "Account",
+          "$ref" : "#/definitions/Account"
+        },
+        "clearAccount" : {
+          "description" : "The period after the post payment account will be cleared to zero",
+          "originalRef" : "ClearAccountPeriod",
+          "$ref" : "#/definitions/ClearAccountPeriod"
+        },
+        "autodelete" : {
+          "type" : "boolean",
+          "description" : "Flag indication if the customer is autodelete"
+        },
+        "fname" : {
+          "type" : "string",
+          "description" : "The first name.",
+          "minLength" : 0,
+          "maxLength" : 35
+        },
+        "lname" : {
+          "type" : "string",
+          "description" : "The last name.",
+          "minLength" : 0,
+          "maxLength" : 35
+        },
+        "pcode" : {
+          "type" : "string",
+          "description" : "The postal code of the city."
+        },
+        "sepa" : {
+          "description" : "The customers sepa mandate if payament was post with sepa.",
+          "originalRef" : "SEPAMandate",
+          "$ref" : "#/definitions/SEPAMandate"
+        }
+      }
+    },
+    "CustomerContract" : {
+      "type" : "object",
+      "required" : [ "contract" ],
+      "properties" : {
+        "created" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The created date."
+        },
+        "updated" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The updated date."
+        },
+        "contract" : {
+          "description" : "The contract.",
+          "originalRef" : "GenericLabelEntity",
+          "$ref" : "#/definitions/GenericLabelEntity"
+        },
+        "notice" : {
+          "type" : "string",
+          "description" : "The notices."
+        },
+        "ticketNumber" : {
+          "type" : "string",
+          "description" : "The ticketing number if available."
+        }
+      }
+    },
+    "DNSSec" : {
+      "type" : "object",
+      "required" : [ "algorithm", "flags", "protocol", "publicKey" ],
+      "properties" : {
+        "algorithm" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "The algorithm."
+        },
+        "flags" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "The flags.",
+          "minimum" : 256,
+          "maximum" : 257
+        },
+        "protocol" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "The protocol."
+        },
+        "publicKey" : {
+          "type" : "string",
+          "description" : "The public key.",
+          "pattern" : "^[\\sA-Za-z0-9+\\/]+[=]*$"
+        }
+      }
+    },
+    "DNSSecJob" : {
+      "type" : "object"
+    },
+    "DeliveryStatus" : {
+      "type" : "string",
+      "enum" : [ "PENDING", "SUCCESS", "FAILED", "EXPIRED", "ATTEMPTING", "PARTIAL" ]
+    },
+    "Document" : {
+      "type" : "object",
+      "properties" : {
+        "created" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The created date."
+        },
+        "updated" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "The updated date."
+        },
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "comment" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        },
+        "mimeType" : {
+          "type" : "string"
+        },
+        "data" : {
+          "type" : "string"
+        },
+        "size" : {
+          "type" : "integer",
+          "format" : "int64"
+=======
             "delete": {
                 "tags": [
                     "Zone Tasks"
@@ -23818,6 +27292,7 @@
                     }
                 }
             }
+>>>>>>> 55c81c23b3666172b42fa1052291f5b99ec71bd0
         },
         "/zone/{name}/{systemNameServer}/_axfr": {
             "get": {
