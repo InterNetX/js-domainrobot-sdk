@@ -830,6 +830,10 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
+"@internetx/internetx-swagger-files@https://github.com/InterNetX/domainrobot-api.git":
+  version "1.0.0"
+  resolved "https://github.com/InterNetX/domainrobot-api.git#c07fa0fca4d33b4bf1189022ba3d9d9f78a34ad1"
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"

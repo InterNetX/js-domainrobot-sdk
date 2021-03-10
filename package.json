@@ -9,6 +9,9 @@
 	"repository": "https://github.com/InterNetX/js-domainrobot-sdk.git",
 	"license": "MIT",
 	"scripts": {
+		"update:specs": "yarn update:domainrobotapi | yarn update:pcdomainsapi",
+		"update:domainrobotapi": "cp node_modules/@internetx/internetx-swagger-files/src/domainrobot.json src/swagger",
+		"update:pcdomainsapi": "cp node_modules/@internetx/internetx-swagger-files/src/pcdomains.json src/swagger",
 		"docs:dev": "vuepress dev docs",
 		"docs:build": "vuepress build docs",
 		"dev": "npm run development",
@@ -24,6 +27,7 @@
 	"devDependencies": {
 		"@babel/core": "^7.7.7",
 		"@babel/preset-env": "^7.7.7",
+		"@internetx/internetx-swagger-files": "https://github.com/InterNetX/domainrobot-api.git",
 		"axios-mock-adapter": "^1.17.0",
 		"babel-loader": "^8.0.6",
 		"cross-env": "^6.0.3",
