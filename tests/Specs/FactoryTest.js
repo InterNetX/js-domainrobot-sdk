@@ -1,21 +1,30 @@
 /* global describe, it, expect, require */
 // ./node_modules/karma/bin/karma start tests/conf.js --single-run
 
-let specs = require("../../src/lib/specs.json");
-let ApiFactory = require("../../src/lib/Factory");
-const Backend = new ApiFactory(specs);
-const DomainRobotModels = Backend.models;
+const domainrobot = require("../../src/swagger/domainrobot.json");
+const pcdomains = require("../../src/swagger/pcdomains.json");
 
-let MockModels = require("../mock/models.js");
+const ApiFactory = require("../../src/lib/Factory");
+const PcDomains = new ApiFactory(pcdomains);
+const Backend = new ApiFactory(domainrobot);
+const DomainRobotModels = Object.assign(Backend.models, PcDomains.models);
+
+const MockModels = require("../mock/models.js");
+const PcDomainsMockModels = require("../mock/pcdomains_models.js");
 
 /**
  * Test if all expected models are present and have the correct type
  */
 describe("Factory", () => {
-  it("modelsExist", () => {
-    for (let model in DomainRobotModels) {
-      expect(MockModels[model]).toBeDefined();
-      expect(typeof MockModels[model]).toBe("function");
-    }
-  });
+    it("modelsExist", () => {
+        for (let model in DomainRobotModels) {
+            if (MockModels[model] === undefined) {
+                expect(PcDomainsMockModels[model]).toBeDefined();
+                expect(typeof PcDomainsMockModels[model]).toBe("function");
+                continue;
+            }
+            expect(MockModels[model]).toBeDefined();
+            expect(typeof MockModels[model]).toBe("function");
+        }
+    });
 });
