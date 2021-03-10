@@ -5,7 +5,6 @@ const domainrobot = require("./src/swagger/domainrobot.json");
 const pcdomains = require("./src/swagger/pcdomains.json");
 
 
-const specs = require("./src/lib/specs.json");
 const ApiFactory = require("./src/lib/Factory");
 const PcDomains = new ApiFactory(pcdomains);
 const Backend = new ApiFactory(domainrobot);

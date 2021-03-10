@@ -8,7 +8,8 @@ const DomainRobotException = require("../lib/DomainRobotException");
 const DomainRobotResult = require("../lib/DomainRobotResult");
 const DomainRobotConfig = require("../lib/DomainRobotConfig");
 
-let specs = require("../lib/specs.json");
+const domainrobot = require("../swagger/domainrobot.json");
+const pcdomains = require("../swagger/pcdomains.json");
 let ApiFactory = require("../lib/Factory");
 
 class DomainRobotService {
@@ -97,12 +98,12 @@ class DomainRobotService {
 
             if (result.headers !== undefined) {
                 domainRobotResult.setHeaders(result.headers);
-            }            
+            }
 
             if (!domainRobotResult.isValid()) {
                 throw new DomainRobotException({}, 500);
             }
-            
+
             return domainRobotResult;
         } catch (error) {
             console.log(error)
@@ -134,9 +135,13 @@ class DomainRobotService {
     }
 
     models() {
-        const Backend = new ApiFactory(specs);
+        const PcDomains = new ApiFactory(pcdomains);
+        const Backend = new ApiFactory(domainrobot);
+
+        const DomainRobotModels = Object.assign(Backend.models, PcDomains.models);
+
         if (this.modelFactory === null) {
-            this.modelFactory = Backend.models;
+            this.modelFactory = DomainRobotModels;
         }
         return this.modelFactory;
     }
