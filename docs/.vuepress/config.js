@@ -60,7 +60,7 @@ module.exports = {
 				{
 					title: "Basics",
 					collapsable: false,
-                    children: ["logging", "requests", "headers", "exception"],
+                    children: ["logging", "requests", "headers", "subusers", "exception"],
 				},
 				{
 					title: "Working with Models",

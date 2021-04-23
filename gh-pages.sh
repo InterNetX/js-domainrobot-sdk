@@ -11,7 +11,7 @@ cd docs/.vuepress/dist
 
 git init
 git checkout -B gh-pages
-git remote add origin https://github.com/InterNetX/js-domainrobot-sdk.git
+git remote add origin git@github.com:InterNetX/js-domainrobot-sdk.git
 git add .
 git commit -m 'deploy'
 
