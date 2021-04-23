@@ -4,7 +4,7 @@
 
 "use strict";
 
-let DomainRobot = require("@internetx/js-domainrobot-sdk").DomainRobot
+const DomainRobot = require("@internetx/js-domainrobot-sdk").DomainRobot
 
 const Logger = use("Logger")
 
@@ -16,7 +16,7 @@ class DomainRenew {
         // The Option auth.context is optional for non personal 
         // AutoDNS Users but mandatory for personal ones
         let domainRobot = new DomainRobot({
-            url: "http://dev-proxy-lab.intern.autodns-lab.com:10025",
+            url: "https://api.demo.autodns.com/v1",
             auth: {
                 user: "user",
                 password: "password",
@@ -35,7 +35,7 @@ class DomainRenew {
             let domain = domainInfo.result.data[0]
 
             // Renew the Domain
-            let domainRobotResult = await domainRobot.domain().renew(domain)
+            const domainRobotResult = await domainRobot.domain().renew(domain)
 
             Logger.transport("file").info("Request success", domainRobotResult)
 

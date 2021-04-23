@@ -4,7 +4,7 @@
 
 "use strict";
 
-let DomainRobot = require("@internetx/js-domainrobot-sdk").DomainRobot
+const DomainRobot = require("@internetx/js-domainrobot-sdk").DomainRobot
 
 const Logger = use("Logger")
 
@@ -20,7 +20,7 @@ class DomainUpdate {
         // The Option auth.context is optional for non personal 
         // AutoDNS Users but mandatory for personal ones
         let domainRobot = new DomainRobot({
-            url: "http://dev-proxy-lab.intern.autodns-lab.com:10025",
+            url: "https://api.demo.autodns.com/v1",
             auth: {
                 user: "user",
                 password: "password",
@@ -55,7 +55,7 @@ class DomainUpdate {
             // will be of the Type DomainRobotResult
 
             // Update the Domain
-            let domainRobotResult = await domainRobot.domain().update(domain)
+            const domainRobotResult = await domainRobot.domain().update(domain)
 
             Logger.transport("file").info("Request success", domainRobotResult)
 
