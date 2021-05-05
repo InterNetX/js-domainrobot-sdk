@@ -24605,6 +24605,11 @@
           "description" : "The .scot contact extensions.",
           "originalRef" : "ContactScotExtensions",
           "$ref" : "#/definitions/ContactScotExtensions"
+        },
+        "ie" : {
+          "description" : "The .ie contact extensions.",
+          "originalRef" : "ContactIeExtensions",
+          "$ref" : "#/definitions/ContactIeExtensions"
         }
       }
     },
@@ -24803,6 +24808,21 @@
         "irpo" : {
           "type" : "boolean",
           "description" : "The irpo."
+        }
+      }
+    },
+    "ContactIeExtensions" : {
+      "type" : "object",
+      "properties" : {
+        "contactType" : {
+          "description" : "The contact’s Connection to Ireland (CTI) category that is used to indicate how the Registrant meets specific presence requirements.",
+          "originalRef" : "IeContactTypeConstants",
+          "$ref" : "#/definitions/IeContactTypeConstants"
+        },
+        "croNumber" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "The Companies Registration Office (CRO) identifier that can be used to ensure the company is in a valid state to be registering domains."
         }
       }
     },
@@ -28037,6 +28057,10 @@
     "ItEntityTypeConstants" : {
       "type" : "string",
       "enum" : [ "ITALIAN_AND_FOREIGN_NATURAL_PERSONS", "ITALIAN_COMPANIES_ONE_MAN_COMPANIES", "ITALIAN_FREELANCE_WORKERS_PROFESSIONALS", "ITALIAN_NON_PROFIT_ORGANIZATIONS", "ITALIAN_PUBLIC_ORGANIZATIONS", "ITALIAN_OTHER_SUBJECTS", "FOREIGN_NON_NATURAL_PERSONS" ]
+    },
+    "IeContactTypeConstants" : {
+      "type" : "string",
+      "enum" : [ "COM", "CHA", "OTH" ]
     },
     "Job" : {
       "type" : "object",
