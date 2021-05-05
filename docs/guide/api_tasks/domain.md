@@ -26,8 +26,8 @@ List of all available tasks (with typescript defintions) with linked examples (i
 * [authInfo1Create](https://github.com/InterNetX/js-domainrobot-sdk/blob/master/examples/domain/DomainAuthInfo1Create.js)(name: String): DomainRobotResult<JsonResponseDataDomain, Number>;
 * [authInfo1Delete](https://github.com/InterNetX/js-domainrobot-sdk/blob/master/examples/domain/DomainAuthInfo1Delete.js)(name: String): DomainRobotResult<JsonResponseDataJsonNoData, Number>;
 * [authInfo2Create](https://github.com/InterNetX/js-domainrobot-sdk/blob/master/examples/domain/DomainAuthInfo2Create.js)(name: String): DomainRobotResult<JsonResponseDataJsonNoData, Number>;
-* cancelationCreate(model: DomainRobotModels.Domain): DomainRobotResult<JsonResponseDataDomainCancelation, Number>;
-* cancelationUpdate(model: DomainRobotModels.Domain): DomainRobotResult<JsonResponseDataDomainCancelation, Number>;
+* cancelationCreate(model: DomainRobotModels.DomainCancelation): DomainRobotResult<JsonResponseDataDomainCancelation, Number>;
+* cancelationUpdate(model: DomainRobotModels.DomainCancelation): DomainRobotResult<JsonResponseDataDomainCancelation, Number>;
 * cancelationDelete(name: String): DomainRobotResult<JsonResponseDataJsonNoData, Number>;
 * cancelationInfo(name: String): DomainRobotResult<JsonResponseDataDomainCancelation, Number>;
 * cancelationList(model: DomainRobotModels.Query, keys?: String[]): DomainRobotResult<JsonResponseDataDomainCancelation, Number>;
