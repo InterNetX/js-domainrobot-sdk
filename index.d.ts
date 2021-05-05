@@ -35,8 +35,8 @@ export declare class DomainService extends DomainRobotService<DomainService> {
     authInfo1Create(name: string): Promise<DomainRobotResult<JsonResponseDataDomain, number>>;
     authInfo1Delete(name: string): Promise<DomainRobotResult<JsonResponseDataJsonNoData, number>>;
     authInfo2Create(name: string): Promise<DomainRobotResult<JsonResponseDataJsonNoData, number>>;
-    cancelationCreate(model: DomainRobotModels.Domain): Promise<DomainRobotResult<JsonResponseDataDomainCancelation, number>>;
-    cancelationUpdate(model: DomainRobotModels.Domain): Promise<DomainRobotResult<JsonResponseDataDomainCancelation, number>>;
+    cancelationCreate(model: DomainRobotModels.DomainCancelation): Promise<DomainRobotResult<JsonResponseDataDomainCancelation, number>>;
+    cancelationUpdate(model: DomainRobotModels.DomainCancelation): Promise<DomainRobotResult<JsonResponseDataDomainCancelation, number>>;
     cancelationDelete(name: string): Promise<DomainRobotResult<JsonResponseDataJsonNoData, number>>;
     cancelationInfo(name: string): Promise<DomainRobotResult<JsonResponseDataDomainCancelation, number>>;
     cancelationList(model: DomainRobotModels.Query, keys?: string[]): Promise<DomainRobotResult<JsonResponseDataDomainCancelation, number>>;
