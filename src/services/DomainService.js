@@ -144,14 +144,14 @@ class Domain extends DomainRobotService {
 
   async cancelationCreate(model){
     return await this.sendPostRequest(
-        this.domainRobotConfig.url + "/domain/" + model.name + "/cancelation",
+        this.domainRobotConfig.url + "/domain/" + model.domain + "/cancelation",
         model
     );
   }
 
   async cancelationUpdate(model){
     return await this.sendPutRequest(
-        this.domainRobotConfig.url + "/domain/" + model.name + "/cancelation",
+        this.domainRobotConfig.url + "/domain/" + model.domain + "/cancelation",
         model
     );
   }
