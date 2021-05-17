@@ -172,6 +172,9 @@ export interface Result {
 }
 
 // Service Response Definitions
+export interface JsonResponseDataAccountingDocument extends Result {
+    data: DomainRobotModels.AccountingDocument[];
+}
 export interface JsonResponseDataContact extends Result {
     data: DomainRobotModels.Contact[];
 }
@@ -198,6 +201,9 @@ export interface JsonResponseDataDomainRestore extends Result {
 }
 export interface JsonResponseDataJsonNoData extends Result {
     data: DomainRobotModels.JsonNoData[];
+}
+export interface JsonResponseDataInvoice extends Result {
+    data: DomainRobotModels.Invoice[];
 }
 export interface JsonResponseDataDomainCancelation extends Result {
     data: DomainRobotModels.DomainCancelation[];
@@ -237,6 +243,9 @@ export interface JsonResponseDataUserProfileViews extends Result {
 }
 export interface JsonResponseDataServiceUsersProfile extends Result {
     data: DomainRobotModels.ServiceUsersProfile[];
+}
+export interface JsonResponseDataSubjectProduct extends Result {
+    data: DomainRobotModels.SubjectProduct[];
 }
 export type domainRobotConfig = {
     url?: string;
@@ -300,6 +309,7 @@ export const DomainRobotHeaders: {
 
 // ENUM definitions
 export type AccountingDocumentTypeConstants = "INVOICE" | "CREDIT" | "REFUND" | "CANCELED" | "CHARGE";
+export type AccountStatusConstants = "SUCCESS" | "CANCELED" | "RESERVED" | "RESERVATION";
 export type AuEligibilityIdTypeConstants = "ACN" | "ABN" | "VIC_BN" | "NSW_BN" | "SA" | "BN" | "NT_BN" | "WA_BN" | "TAS_BN" | "ACT_BN" | "QLD_BN" | "TM" | "OTHER";
 export type AuEligibilityTypeConstants = "COMPANY" | "REGISTERED_BUSINESS" | "SOLE_TRADER" | "PARTNERSHIP" | "TRADEMARK_OWNER" | "PENDING_TM_OWNER" | "CITIZEN_RESIDENT" | "INCORPORATED_ASSOCIATION" | "UNINCORPORATED_ASSOCIATION" | "CLUB" | "NON_PROFIT_ORGANISATION" | "CHARITY" | "TRADE_UNION" | "INDUSTRY_BODY" | "COMMERCIAL_STATUTORY_BODY" | "POLITICAL_PARTY" | "RELIGIOUS_CHURCH_GROUPS" | "OTHER";
 export type AuRegistrantIdTypeConstants = "ACN" | "ABN" | "OTHER";
@@ -398,6 +408,38 @@ export namespace DomainRobotModels {
         view?: CurrencyRate;
     }
 
+    export class AccountingDocument {
+        constructor(config?: AccountingDocument);
+    }
+    export interface AccountingDocument {
+        created?: string;
+        updated?: string;
+        owner?: BasicUser;
+        updater?: BasicUser;
+        id?: number;
+        entry?: AccountEntry;
+        type?: AccountingDocumentTypeConstants;
+        account?: Account;
+        subjectProducts?: SubjectProduct;
+        view?: CurrencyRate;
+        synchronized?: boolean;
+        status?: AccountStatusConstants;
+        invoice?: Invoice;
+        payment?: PaymentConstants;
+    }
+
+    export class AccountEntry {
+        constructor(config?: AccountEntry);
+    }
+    export interface AccountEntry {
+        label?: string;
+        amount?: number;
+        vatAmount?: number;
+        vats?: Vat;
+        netAmount?: number;
+        currency?: string;
+    }
+
     export class AddressClaim {
         constructor(config?: AddressClaim);
     }
@@ -408,6 +450,18 @@ export namespace DomainRobotModels {
         region?: string;
         postalCode?: string;
         country?: string;
+    }
+
+    export class Article {
+        constructor(config?: Article);
+    }
+    export interface Article {
+        created?: string;
+        updated?: string;
+        owner?: BasicUser;
+        updater?: BasicUser;
+        type?: string;
+        label?: string;
     }
 
     export class Application {
@@ -1191,6 +1245,13 @@ export namespace DomainRobotModels {
         rate?: number;
     }
 
+    export class Custom {
+        constructor(config?: Custom);
+    }
+    export interface Custom {
+        key?: string;
+    }
+
     export class Customer {
         constructor(config?: Customer);
     }
@@ -1739,7 +1800,7 @@ export namespace DomainRobotModels {
         sepaMandateReference?: string;
         sepaMandateCollection?: string;
         amount?: number;
-        vatAmoun?: number;
+        vatAmount?: number;
         status?: InvoiceStatusConstants;
         type?: AccountingDocumentTypeConstants;
         failed?: boolean;
@@ -1795,6 +1856,18 @@ export namespace DomainRobotModels {
         status?: ResponseStatus;
         object?: ResponseObject;
         data?: any[];
+        ctid?: string;
+    }
+
+    export class JsonResponseDataAccountingDocument {
+        constructor(config?: JsonResponseDataAccountingDocument);
+    }
+    export interface JsonResponseDataAccountingDocument {
+        stid?: string;
+        messages?: Message[];
+        status?: ResponseStatus;
+        object?: ResponseObject;
+        data?: AccountingDocument[];
         ctid?: string;
     }
 
@@ -2122,6 +2195,18 @@ export namespace DomainRobotModels {
         ctid?: string;
     }
 
+    export class JsonResponseDataSubjectProduct {
+        constructor(config?: JsonResponseDataSubjectProduct);
+    }
+    export interface JsonResponseDataSubjectProduct {
+        stid?: string;
+        messages?: Message[];
+        status?: ResponseStatus;
+        object?: ResponseObject;
+        data?: SubjectProduct[];
+        ctid?: string;
+    }
+
     export class JsonResponseDatastring {
         constructor(config?: JsonResponseDatastring);
     }
@@ -2417,6 +2502,20 @@ export namespace DomainRobotModels {
         condition?: ServiceEntity;
     }
 
+    export class Product {
+        constructor(config?: Product);
+    }
+    export interface Product {
+        created?: string;
+        updated?: string;
+        owner?: BasicUser;
+        updater?: BasicUser;
+        article?: Article;
+        vatType?: string;
+        priceRequired?: boolean;
+        businessCase?: string;
+    }
+
     export class Query {
         constructor(config?: Query);
     }
@@ -2599,6 +2698,15 @@ export namespace DomainRobotModels {
         id?: number;
     }
 
+    export class Subject {
+        constructor(config?: Subject);
+    }
+    export interface Subject {
+        name?: string;
+        object?: string;
+        customs?: Custom;
+    }
+
     export class SubjectAlternativeName {
         constructor(config?: SubjectAlternativeName);
     }
@@ -2606,6 +2714,36 @@ export namespace DomainRobotModels {
         name?: string;
         approverEmail?: string;
         orderId?: string;
+    }
+    export class SubjectProduct {
+        constructor(config?: SubjectProduct);
+    }
+    export interface SubjectProduct {
+        created?: string;
+        updated?: string;
+        owner?: BasicUser;
+        updater?: BasicUser;
+        id?: number;
+        period?: TimePeriod;
+        customer?: Customer;
+        billing?: BasicUser;
+        product?: Product;
+        subject?: Subject;
+        count?: number;
+        effectiveCount: number;
+        amount?: number;
+        vatAmount?: number;
+        currency?: string;
+        type?: AccountingDocumentTypeConstants;
+        price?: ExchangedPrice;
+        label?: string;
+        number?: string;
+        comment?: string;
+        payable?: string;
+        provisioning?:GenericStatusConstants,
+        netAmount?: number,
+        externalAccountingStatus?: string,
+        view?: CurrencyRate,
     }
 
     export class Subscription {
@@ -2792,6 +2930,23 @@ export namespace DomainRobotModels {
     export interface UserProfileViews {
         profiles?: UserProfile[];
     }
+
+    export class Vat {
+        constructor(config?: Vat);
+    }
+    export interface Vat {
+        rate?: VatRate;
+        amount?: number;
+    }
+
+    export class VatRate {
+        constructor(config?: VatRate);
+    }
+    export interface VatRate {
+        created?: string;
+        updated?: string;
+    }
+
 
     export class VhostCertificate {
         constructor(config?: VhostCertificate);
