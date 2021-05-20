@@ -106,6 +106,11 @@ export declare class UserService extends DomainRobotService<LoginService> {
     serviceProfileUpdate(model: DomainRobotModels.User): Promise<DomainRobotResult<JsonResponseDataServiceUsersProfile, number>>;
 }
 
+export declare class PeriodicBillingService extends DomainRobotService<PeriodicBillingService> {
+    list(model: DomainRobotModels.Query, keys?: string[]): Promise<DomainRobotResult<JsonResponseDataPeriodicBilling, number>>;
+    update(model: DomainRobotModels.PeriodicBilling): Promise<DomainRobotResult<JsonResponseDataPeriodicBilling, number>>;
+    delete(articleTypeLabel: string, articleLabel: string, object: string): Promise<DomainRobotResult<JsonResponseDataPeriodicBilling, number>>;
+}
 export declare class DomainRobotResult<Result, Number> {
     constructor(result: Result, status: number);
     isValid(): boolean;
@@ -223,6 +228,9 @@ export interface JsonResponseDataSslContact extends Result {
 export interface JsonResponseDataZone extends Result {
     data: DomainRobotModels.Zone[];
 }
+export interface JsonResponseDataPeriodicBilling extends Result {
+    data: DomainRobotModels.PeriodicBilling[];
+}
 export interface JsonResponseDataPollMessage extends Result {
     data: DomainRobotModels.PollMessage[];
 }
@@ -283,6 +291,8 @@ export class DomainRobot {
     zone(zoneModel?: DomainRobotModels.Zone): ZoneService;
 
     login(loginDataModel?: DomainRobotModels.LoginData): LoginService;
+
+    periodicBilling(periodicBillingModel?: DomainRobotModels.PeriodicBilling): PeriodicBillingService;
 }
 
 export const DomainRobotHeaders: {
