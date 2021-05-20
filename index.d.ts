@@ -105,12 +105,6 @@ export declare class UserService extends DomainRobotService<LoginService> {
     serviceProfileInfo(user: string, context: number, prefix?: string): Promise<DomainRobotResult<JsonResponseDataServiceUsersProfile, number>>;
     serviceProfileUpdate(model: DomainRobotModels.User): Promise<DomainRobotResult<JsonResponseDataServiceUsersProfile, number>>;
 }
-
-export declare class PeriodicBillingService extends DomainRobotService<PeriodicBillingService> {
-    list(model: DomainRobotModels.Query, keys?: string[]): Promise<DomainRobotResult<JsonResponseDataPeriodicBilling, number>>;
-    update(model: DomainRobotModels.PeriodicBilling): Promise<DomainRobotResult<JsonResponseDataPeriodicBilling, number>>;
-    delete(articleTypeLabel: string, articleLabel: string, object: string): Promise<DomainRobotResult<JsonResponseDataPeriodicBilling, number>>;
-}
 export declare class DomainRobotResult<Result, Number> {
     constructor(result: Result, status: number);
     isValid(): boolean;
