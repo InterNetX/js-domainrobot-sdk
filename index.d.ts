@@ -105,7 +105,6 @@ export declare class UserService extends DomainRobotService<LoginService> {
     serviceProfileInfo(user: string, context: number, prefix?: string): Promise<DomainRobotResult<JsonResponseDataServiceUsersProfile, number>>;
     serviceProfileUpdate(model: DomainRobotModels.User): Promise<DomainRobotResult<JsonResponseDataServiceUsersProfile, number>>;
 }
-
 export declare class DomainRobotResult<Result, Number> {
     constructor(result: Result, status: number);
     isValid(): boolean;
@@ -222,6 +221,9 @@ export interface JsonResponseDataSslContact extends Result {
 }
 export interface JsonResponseDataZone extends Result {
     data: DomainRobotModels.Zone[];
+}
+export interface JsonResponseDataPeriodicBilling extends Result {
+    data: DomainRobotModels.PeriodicBilling[];
 }
 export interface JsonResponseDataPollMessage extends Result {
     data: DomainRobotModels.PollMessage[];
