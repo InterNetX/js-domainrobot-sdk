@@ -1098,7 +1098,7 @@ export namespace DomainRobotModels {
         constructor(config?: ContactItExtensions);
     }
     export interface ContactItExtensions {
-        entityType?: string;
+        entityType?: ItEntityTypeConstants;
     }
 
     export class ContactJobsExtensions {
