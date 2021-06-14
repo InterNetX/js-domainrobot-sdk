@@ -77,9 +77,9 @@ export declare class DomainStudio extends DomainRobotService<DomainStudio>{
 }
 export declare class LoginService extends DomainRobotService<LoginService> {
     sessionID(model: DomainRobotModels.LoginData, queryParams?: {
-        acl?: boolean,
-        profile?: boolean,
-        customer?: boolean,
+        acl?: Boolean,
+        profile?: Boolean,
+        customer?: Boolean,
         timeout?: number
     }): Promise<DomainRobotResult<JsonResponseDataUser, number>>;
 }
@@ -106,9 +106,9 @@ export declare class UserService extends DomainRobotService<LoginService> {
     serviceProfileUpdate(model: DomainRobotModels.User): Promise<DomainRobotResult<JsonResponseDataServiceUsersProfile, number>>;
 }
 export declare class DomainRobotResult<Result, Number> {
-    constructor(result: Result, status: number);
-    isValid(): boolean;
-    isValidResponse(): boolean;
+    constructor(result: Result, status: Number);
+    isValid(): Boolean;
+    isValidResponse(): Boolean;
     getHeaders(): ResultHeaders;
 }
 
@@ -312,15 +312,15 @@ export const DomainRobotHeaders: {
 // ENUM definitions
 export type AccountingDocumentTypeConstants = "INVOICE" | "CREDIT" | "REFUND" | "CANCELED" | "CHARGE";
 export type AccountStatusConstants = "SUCCESS" | "CANCELED" | "RESERVED" | "RESERVATION";
-export type AuEligibilityIdTypeConstants = "ACN" | "ABN" | "VIC_BN" | "NSW_BN" | "SA" | "BN" | "NT_BN" | "WA_BN" | "TAS_BN" | "ACT_BN" | "QLD_BN" | "TM" | "OTHER";
-export type AuEligibilityTypeConstants = "COMPANY" | "REGISTERED_BUSINESS" | "SOLE_TRADER" | "PARTNERSHIP" | "TRADEMARK_OWNER" | "PENDING_TM_OWNER" | "CITIZEN_RESIDENT" | "INCORPORATED_ASSOCIATION" | "UNINCORPORATED_ASSOCIATION" | "CLUB" | "NON_PROFIT_ORGANISATION" | "CHARITY" | "TRADE_UNION" | "INDUSTRY_BODY" | "COMMERCIAL_STATUTORY_BODY" | "POLITICAL_PARTY" | "RELIGIOUS_CHURCH_GROUPS" | "OTHER";
-export type AuRegistrantIdTypeConstants = "ACN" | "ABN" | "OTHER";
+export type AuEligibilityIdTypeConstants = "ACN" | "ABN" | "VIC" | "NSW" | "SA" | "BN" | "NT" | "WA" | "TAS" | "ACT" | "QLD" | "TM" | "OTHER";
+export type AuEligibilityTypeConstants = "COMPANY" | "REGISTERED_BUSINESS" | "SOLE_TRADER" | "PARTNERSHIP" | "TRADEMARK_OWNER" | "PENDING_TM_OWNER" | "CITIZEN_RESIDENT" | "INCORPORATED_ASSOCIATION" | "UNINCORPORATED_ASSOCIATION" | "CLUB" | "NON_PROFIT_ORGANISATION" | "CHARITY" | "TRADE_UNION" | "INDUSTRY_BODY" | "COMMERCIAL_STATUTORY_BODY" | "POLITICAL_PARTY" | "RELIGIOUS_CHURCH_GROUPS" | "OTHER" | "REGISTRABLE_BODY" | "INDIGENOUS_CORPORATION" | "REGISTERED_ORGANISATION" | "COOPERATIVE" | "TRUST" | "EDUCATIONAL_INSTITUTION" | "COMMONWEALTH_ENTITY" | "STATUTORY_BODY" | "TRADING_COOPERATIVE" | "COMPANY_LIMITED_BY_GUARANTEE" | "NON_DISTRIBUTING_COOPERATIVE" | "NON_TRADING_COOPERATIVE" | "CHARITABLE_TRUST" | "PUBLIC_PRIVATE_ANCILLARY_FUND" | "PEAK_STATE_TERRITORY_BODY" | "NOT_FOR_PROFIT_COMMUNITY_GROUP";
+export type AuRegistrantIdTypeConstants = "ACN" | "ABN" | "OTHER" | "TAS" | "VIC" | "NSW" | "ACT" | "QLD" | "NT" | "WA" | "SA";
 export type AuthMethodConstants = "DNS" | "EMAIL" | "FILE" | "ORG";
 export type AuthType = "PASSWORD" | "PASSWORD_TOKEN" | "ALIAS";
 export type AuthenticateStatus = "COMPLETED" | "ADDITIONAL_INFORMATION_REQUIRED" | "IN_PROGRESS" | "COMMUNICATION_SENT_TO_CUSTOMER" | "ATTEMPTED_TO_REACH_CUSTOMER" | "PENDING_CUSTOMER_APPROVAL" | "NOT_COMPLETED" | "COMPLETED_PASSED" | "COMPLETED_FAILED" | "UNABLE_TO_COMPLETE" | "NOT_STARTED";
 export type AuthenticationStep = "DOMAIN_VERIFICATION" | "VERIFICATION_CALL" | "ORGANIZATION_VERIFICATION" | "CONSUMER_AUTHENTICATION" | "CERTIFICATE" | "CONTACT_CONFIRMED" | "VERIFICATION" | "CSR_CHECK" | "DCV_CHECK" | "OV_CALLBACK" | "FREE_DVUP" | "EV_CLICKTROUGH";
 export type AutoRenewStatusConstants = "TRUE" | "FALSE" | "ONCE";
-export type BillingStatus = "ADD" | "REMOVE" | "UPDATE" | "IGNORE" | "CUSTOMER_CHANGED" | "USER_CHANGED" | "ACTIVE" | "CANCELED" | "CANCELED_EXPIRE" | "RESTORE" | "AUTODELETE" | "REMOVED";
+export type BillingStatus = "ADD" | "REMOVE" | "UPDATE" | "IGNORE" | "CUSTOMER_CHANGED" | "USER_CHANGED" | "ACTIVE" | "CANCELED" | "CANCELED_EXPIRE" | "RESTORE" | "AUTODELETE" | "REMOVED" | "DROP";
 export type BusinessCategory = "PRIVATE_ORGANIZATION" | "GOVERNMENT_ENTITY" | "BUSINESS_ENTITY";
 export type CancelationStatusConstants = "DELETE" | "DELETE_EXPIRE" | "TRANSIT" | "TRANSIT_EXPIRE" | "PREACK" | "PREACK_EXPIRE";
 export type CancelationTypeConstants = "DELETE" | "TRANSIT" | "PREACK";
@@ -333,9 +333,11 @@ export type CodeSigningType = "JAVASOFT" | "MS_AUTHENTICODE" | "VBA" | "ADOBE_AI
 export type ConditionType = "AND" | "OR";
 export type ContactProtectionConstants = "SHOW_ALL" | "SHOW_NONE";
 export type ContactReferenceType = "ALL" | "OWNERC" | "ADMINC" | "TECHC" | "ZONEC" | "BILLINGC";
+export type ContactType = "BILLING" | "TECH" | "LEGAL" | "DOMAIN" | "SSL" | "SERVER";
 export type ContactTypeConstants = "PERSON" | "ORG" | "ROLE";
 export type CreditCardVendor = "MC" | "VISA" | "AMEX" | "DIC" | "DISC" | "CB";
 export type CryptoFormatConstants = "SHA1" | "SHA256" | "SHA512";
+export type CustomerType = "PERSON" | "OORGANIZATIONRG";
 export type CsrHashAlgorithmConstants = "ECC" | "RSA" | "DSA";
 export type DNSCheck = "SOA" | "NS" | "ALL" | "NONE";
 export type DeliveryStatus = "PENDING" | "SUCCESS" | "FAILED" | "EXPIRED" | "ATTEMPTING" | "PARTIAL";
@@ -343,19 +345,20 @@ export type DocumentTypeConstants = "TM_LICENSEE_DECL" | "TM_ASSIGNEE_DECL" | "T
 export type DomainActionConstants = "CREATE" | "UPDATE" | "UPDATE_OWNER_CHANGE" | "UPDATE_DNSSEC" | "UPDATE_NAMESERVER" | "DELETE" | "TRANSIT" | "TRANSFER" | "TRANSFER_INTERN" | "TRANSFER_INTERN_REGISTRAR_CHANGE" | "TRANSFER_INTERN_REGISTRAR_CHANGE_RUNTIME_TAKEOVER" | "IMPORT" | "MIGRATE" | "RESTORE" | "RESTORE_NE" | "RESTORE_RENEW" | "RESTORE_ARGP" | "RENEW" | "AUTHINFO" | "AUTHINFO_2" | "UPDATE_STATUS" | "REGISTRAR_UPDATE_STATUS" | "UPDATE_COMMENT" | "AUTOUPDATE_DNS" | "OWNERCHANGE" | "OWNERCHANGE_TRANSFER" | "OWNERCHANGE_TRANSFER_INTERN" | "OWNERCHANGE_TRANSFER_INTERN_REGISTRAR_CHANGE" | "PREACK" | "WHOIS_REGISTRY_STATUS" | "DOMAIN_AWAY" | "TRANSFER_OUT_AUTOACK" | "DROP" | "AUTHINFO_CREATE" | "AUTHINFO_DELETE" | "AUTOUPDATE_DEFERRED" | "DOMAIN_BUY";
 export type DomainEnvelopeSearchService = "WHOIS" | "PRICE" | "ESTIMATION";
 export type DomainPreregStatusConstants = "PENDING" | "PENDING_SENT" | "PENDING_DOCUMENT_SENT" | "PENDING_PROGRESS" | "PENDING_UPDATE" | "PENDING_SENT_UPDATE" | "TIMEOUT" | "ACCEPT" | "DECLINE" | "INVALID_NAME" | "FAILED" | "CANCEL" | "AUTO_CANCEL" | "ACTIVE" | "SENT" | "OPEN" | "TMCH_CLAIM" | "TMCH_CLAIM_CONFIRMED" | "TMCH_CLAIM_REJECTED" | "TMCH_CLAIM_EXPIRED" | "TMCH_CLAIM_PENDING" | "TMCH_CLAIM_FAILED" | "FAILED_REF";
-export type DomainStudioDomainSource = "INITIAL" | "SUGGESTION" | "PREMIUM" | "GEO" | "SIMILAR" | "RECOMMENDED" | "CUSTOM" | "ONLINE_PRESENCE";
+export type DomainStudioDomainSource = "INITIAL" | "SUGGESTION" | "PREMIUM" | "GEO" | "SIMILAR" | "RECOMMENDED" | "CUSTOM" | "ONLINE_PRESENCE" | "SPIN_WORD" | "PERSONAL_NAMES" | "UPCOMING";
 export type DomainStudioDomainStatus = "FREE" | "ASSIGNED" | "MARKET" | "PREMIUM" | "INVALID" | "ERROR" | "TIMEOUT" | "RESERVED" | "PREMIUM_CLAIM" | "CLAIM";
 export type DomainStudioServiceStatus = "RUNNING" | "SUCCESS" | "FAILED" | "TIMEOUT";
 export type ExecutionTypeConstants = "DATE" | "EXPIRE" | "NOW";
 export type GenderConstants = "RUNNING" | "SUCCESS" | "FAILED" | "TIMEOUT";
 export type GenericStatusConstants = "PENDING" | "SUCCESS" | "FAILED" | "NOT_SET";
 export type HkDocumentTypeConstants = "HKID" | "OTHID" | "PASSNO" | "BIRTHCERT" | "OTHIDV" | "BR" | "CI" | "CRS" | "HKSARG" | "HKORDINANCE" | "OTHORG";
-export type HkIndustryTypeConstants = "_0" | "_4160" | "_4224" | "_4288" | "_4352" | "_4416" | "_8256" | "_8320" | "_8384" | "_8448" | "_8512" | "_12352" | "_12416" | "_16448" | "_16512" | "_16576" | "_16640" | "_16704" | "_16768" | "_16832" | "_20544" | "_20608" | "_20672" | "_20736" | "_20800" | "_20864" | "_20928" | "_24640" | "_24704" | "_24768" | "_28736" | "_28800" | "_28864" | "_28928" | "_28992" | "_29056" | "_29120" | "_070800" | "_070900" | "_080100" | "_080200" | "_080300" | "_080400" | "_080500" | "_080600" | "_080700" | "_080800" | "_080900" | "_081000" | "_081100" | "_090100" | "_090200" | "_090300" | "_090400" | "_090500" | "_100100" | "_100200" | "_100300" | "_100400" | "_100500" | "_110100" | "_110200" | "_110300" | "_110400" | "_110500" | "_110600" | "_120100" | "_120200" | "_120300" | "_120400" | "_120500" | "_120600" | "_120700" | "_120800" | "_120900" | "_130100" | "_130200" | "_130300" | "_130400" | "_130500" | "_130600" | "_130700" | "_130800" | "_140101" | "_140102" | "_140103" | "_140200" | "_140300" | "_140400" | "_140500" | "_140600" | "_140700";
+export type HkIndustryTypeConstants = "_0" | "_010100" | "_010200" | "_010300" | "_010400" | "_010500" | "_020100" | "_020200" | "_020300" | "_020400" | "_020500" | "_030100" | "_030200" | "_040100" | "_040200" | "_040300" | "_040400" | "_040500" | "_040600" | "_040700" | "_050100" | "_050200" | "_050300" | "_050400" | "_050500" | "_050600" | "_050700" | "_060100" | "_060200" | "_060300" | "_070100" | "_070200" | "_070300" | "_070400" | "_070500" | "_070600" | "_070700" | "_070800" | "_070900" | "_080100" | "_080200" | "_080300" | "_080400" | "_080500" | "_080600" | "_080700" | "_080800" | "_080900" | "_081000" | "_081100" | "_090100" | "_090200" | "_090300" | "_090400" | "_090500" | "_100100" | "_100200" | "_100300" | "_100400" | "_100500" | "_110100" | "_110200" | "_110300" | "_110400" | "_110500" | "_110600" | "_120100" | "_120200" | "_120300" | "_120400" | "_120500" | "_120600" | "_120700" | "_120800" | "_120900" | "_130100" | "_130200" | "_130300" | "_130400" | "_130500" | "_130600" | "_130700" | "_130800" | "_140101" | "_140102" | "_140103" | "_140200" | "_140300" | "_140400" | "_140500" | "_140600" | "_140700";
 export type Id4MeAgentStatus = "PENDING" | "PENDING_SSL" | "PENDING_SSL_VERIFY" | "SUCCESS" | "FAILED";
 export type IdentityStatus = "VERIFY" | "SUCCESS";
 export type InvoiceStatusConstants = "CREATED" | "SIGNED" | "SENT" | "RESEND" | "FINISHED" | "LIVECONFIRMED" | "LIVEPENDING" | "POSTPENDING" | "POSTCONFIRMED";
 export type IpRestrictionTypeConstants = "CLONE" | "USER" | "CONTEXT";
 export type ItEntityTypeConstants = "ITALIAN_AND_FOREIGN_NATURAL_PERSONS" | "ITALIAN_COMPANIES_ONE_MAN_COMPANIES" | "ITALIAN_FREELANCE_WORKERS_PROFESSIONALS" | "ITALIAN_NON_PROFIT_ORGANIZATIONS" | "ITALIAN_PUBLIC_ORGANIZATIONS" | "ITALIAN_OTHER_SUBJECTS" | "FOREIGN_NON_NATURAL_PERSONS";
+export type IeEntityTypeConstants = "COM" | "CHA" | "OTH";
 export type JobStatusConstants = "RUNNING" | "SUCCESS" | "FAILED" | "CANCELED" | "SUPPORT" | "DEFERRED" | "NOT_SET" | "WAIT";
 export type MessageTypeConstants = "INITIAL" | "FIRST_REMINDER" | "SECOND_REMINDER" | "LAST_REMINDER";
 export type ModifierConstants = "TTL" | "MX" | "A" | "AAAA" | "SOA_EMAIL" | "NSERVER" | "CNAME" | "TXT" | "ALL" | "MAIN_IP" | "OWNERC" | "ADMINC" | "TECHC" | "ZONEC" | "BILLINGC" | "ALIAS";
@@ -367,6 +370,7 @@ export type Operator = "EQUAL" | "NOT_EQUAL" | "NOT_LIKE" | "LIKE" | "ILIKE" | "
 export type OrderType = "DESC" | "ASC";
 export type ParkingProviderConstants = "SEDO" | "NAMEDRIVE" | "PARKINGCREW";
 export type PaymentConstants = "PRE" | "POST" | "LIVE";
+export type PolicyMode = "DISABLED" | "QUARANTINE" | "DISCARD" | "ACCEPT";
 export type PriceTypeConstants = "GROSS" | "NET";
 export type PriorityConstants = "DEFAULT" | "OFFER" | "PROTECTED" | "PROMO";
 export type ProtectionConstants = "HIGH" | "MEDIUM" | "LOW" | "OFF" | "CUSTOM";
@@ -379,10 +383,13 @@ export type RegistrationTypeConstants = "FCFS" | "APPLICATION" | "OTHER";
 export type RegistryStatusConstants = "ACTIVE" | "HOLD" | "LOCK" | "HOLD_LOCK" | "AUTO" | "LOCK_OWNER" | "LOCK_UPDATE" | "PENDING" | "NONE";
 export type RenewStatusConstants = "AUTO" | "CANCELED" | "ONCE";
 export type RoPersonTypeConstants = "P" | "AP" | "NC" | "C" | "GI" | "PI" | "O";
+export type SanType = "FQDN" | "SUBDOMAIN" | "WILDCARD";
 export type ServerSoftwareTypeConstants = "IIS4" | "IIS5" | "APACHE2" | "APACHESSL" | "PLESK" | "TOMCAT" | "NOT_SET";
-export type SignatureHashAlgorithmConstants = "SHA1" | "SHA2" | "SHA2_FULL_CHAIN" | "UNKNOWN" | "SHA384" | "SHA512" | "SHA256";
+export type SignatureHashAlgorithmConstants = "SHA1" | "SHA2" | "SHA2_FULL_CHAIN" | "UNKNOWN" | "SHA384" | "SHA512" | "SHA256" | "SHA384_SHA1" | "SHA256_SHA256" | "SHA256_ECDSA_SHA1" | "SHA384ECDSA_SHA1" | "SHA384_ECDSA_SHA1" | "SHA256_ECDSA_SHA384_ECDSA" | "SHA384_ECDSA_SHA384_ECDSA";
 export type StatusType = "SUCCESS" | "ERROR" | "NOTIFY" | "NOTICE" | "NICCOM_NOTIFY";
+export type SepaStatus = "ACTIVE" | "UPDATE" | "CANCELED" | "EXPIRED" | "LOCKED" | "REMOVE";
 export type TanMethods = "METHOD_EMAIL" | "METHOD_MOBILE" | "METHOD_2FA";
+export type TaskGroup = "DOMAIN_CREATE" | "DOMAIN_DELETE" | "DOMAIN_STATUS_UPDATE" | "DOMAIN_TRANSFER_IN" | "DOMAIN_TRANSFER_OUT" | "DOMAINSAFE" | "AUTHINFO_CREATE" | "AUTHINFO_SEND" | "ZONE_CREATE" | "WHOIS" | "DOMAIN_UPDATE" | "DOMAINSTUDIO" | "ZONE_UPDATE" | "ZONE_DELETE" | "ZONE_AXFR";
 export type TimeUnitConstants = "MILLISECOND" | "SECOND" | "MINUTE" | "HOUR" | "DAY" | "WEEK" | "MONTH" | "QUARTER" | "YEAR";
 export type TmchMarkHolderConstants = "OWNER" | "LICENSEE" | "ASSIGNEE";
 export type TmchMarkStatusConstants = "OPEN" | "PAYMENT" | "PENDING" | "INCORRECT" | "VERIFIED" | "SENT" | "ACTIVE" | "DEACTIVATED" | "CANCELED" | "RENEW" | "FAILED" | "EXTERNAL" | "PENDING_TRANSFER" | "PENDING_RENEW" | "PENDING_DELETE" | "PENDING_PAYMENT" | "PENDING_TRANSFER_PAYMENT" | "PENDING_RENEW_PAYMENT";
@@ -424,7 +431,7 @@ export namespace DomainRobotModels {
         account?: Account;
         subjectProducts?: SubjectProduct;
         view?: CurrencyRate;
-        synchronized?: boolean;
+        synchronized?: Boolean;
         status?: AccountStatusConstants;
         invoice?: Invoice;
         payment?: PaymentConstants;
@@ -440,6 +447,27 @@ export namespace DomainRobotModels {
         vats?: Vat;
         netAmount?: number;
         currency?: string;
+    }
+
+    export class AccountManager {
+        constructor(config?: AccountManager)
+    }
+    export interface AccountManager {
+        created?: string
+        updated?: string
+        owner?: BasicUser
+        updater?: BasicUser
+        id?: number
+        name?: string
+        phone?: Phone
+        email?: string
+    }
+
+    export class AdoptExpiration {
+        constructor(config?: AdoptExpiration)
+    }
+    export interface AdoptExpiration {
+        tlds?: string[]
     }
 
     export class AddressClaim {
@@ -487,6 +515,14 @@ export namespace DomainRobotModels {
         updater?: BasicUser;
     }
 
+    export class BasicCertificate {
+        constructor(config?: BasicCertificate)
+    }
+    export interface BasicCertificate {
+        id?: number
+        product?: string
+    }
+
     export class BasicCustomer {
         constructor(config?: BasicCustomer);
     }
@@ -511,7 +547,7 @@ export namespace DomainRobotModels {
         paymentMode?: string;
         paymentCurrency?: Currency;
         invoiceLanguage?: string;
-        taxable?: boolean;
+        taxable?: Boolean;
         card?: Card;
         contracts?: CustomerContract[];
         billingUsers?: BasicUser[];
@@ -521,6 +557,17 @@ export namespace DomainRobotModels {
         lname?: string;
         pcode?: string;
         sepa?: SEPAMandate;
+    }
+
+    export class BasicCustomerSpoolVerification {
+        constructor(config?: BasicCustomerSpoolVerification)
+    }
+    export interface BasicCustomerSpoolVerification {
+        created?: string
+        updated?: string
+        email?: string
+        status?: GenericStatusConstants
+        customer?: GenericCustomer
     }
 
     export class BasicDocument {
@@ -541,6 +588,7 @@ export namespace DomainRobotModels {
         alias?: string;
         owner?: BasicUser;
         updater?: BasicUser;
+        expire?: string;
     }
 
     export class BasicUser {
@@ -563,10 +611,10 @@ export namespace DomainRobotModels {
         lname: string,
         city: string,
         pcode: string,
-        taxable?: boolean,
-        discount?: boolean,
+        taxable?: Boolean,
+        discount?: Boolean,
         billing_term?: string,
-        autodelete?: boolean,
+        autodelete?: Boolean,
         autodelete_tlds?: string,
         email: string[],
         billing_email: string[],
@@ -613,6 +661,13 @@ export namespace DomainRobotModels {
         addons?: any
     }
 
+    export class BillingEventExtensions {
+        constructor(config?: BillingEventExtensions)
+    }
+    export interface BillingEventExtensions {
+        externalReference?: string
+    }
+
     export class BillingLimit {
         constructor(config?: BillingLimit);
     }
@@ -637,15 +692,15 @@ export namespace DomainRobotModels {
         owner?: BasicUser;
         updater?: BasicUser;
         cancelation?: TimePeriod;
-        cancelationExpireOnly?: boolean;
+        cancelationExpireOnly?: Boolean;
         initial?: TimePeriod;
         renew?: TimePeriod;
         renewTerm?: TimePeriod;
         customer?: GenericCustomer;
         articleTypeLabel?: string;
         acrticleLabel?: string;
-        autodeleteable: boolean;
-        restoreable?: boolean;
+        autodeleteable: Boolean;
+        restoreable?: Boolean;
     }
 
     export class BillingObjectLimit {
@@ -675,6 +730,14 @@ export namespace DomainRobotModels {
     export interface BulkBackupMxPostRequest {
         objects?: BackupMx[];
         template?: BackupMx;
+    }
+
+    export class BulkContactDeleteRequest {
+        constructor(config?: BulkContactDeleteRequest);
+    }
+    export interface BulkContactDeleteRequest {
+        objects?: Contact[];
+        query?: Query;
     }
 
     export class BulkDomainCancelationDeleteRequest {
@@ -735,6 +798,14 @@ export namespace DomainRobotModels {
     export interface BulkDomainPostRequest {
         objects?: Domain[];
         template?: Domain;
+    }
+
+    export class BulkSslContactDeleteRequest {
+        constructor(config?: BulkSslContactDeleteRequest);
+    }
+    export interface BulkSslContactDeleteRequest {
+        objects?: SslContact[];
+        query?: Query;
     }
 
     export class BulkMailProxyDeleteRequest {
@@ -853,7 +924,8 @@ export namespace DomainRobotModels {
         fileName?: string;
         fileContent?: string;
         approverEmails?: string[];
-        provisioning?: boolean;
+        provisioning?: Boolean;
+        domains?: CertAuthentication[];
     }
 
     export class Certificate {
@@ -864,7 +936,6 @@ export namespace DomainRobotModels {
         updated?: string;
         owner?: BasicUser;
         updater?: BasicUser;
-        extension?: ExtendedValidationExtension;
         id?: number;
         partnerOrderId?: string;
         orderId?: string;
@@ -882,6 +953,8 @@ export namespace DomainRobotModels {
         certificateType?: CertificateType;
         signatureHashAlgorithm?: SignatureHashAlgorithmConstants;
         expire?: string;
+        payable?: string;
+        extension?: ExtendedValidationExtension;
         subjectAlternativeNames?: SubjectAlternativeName[];
         histories?: CertificateHistory[];
         certificationAuthority?: CaCertificate[];
@@ -890,10 +963,10 @@ export namespace DomainRobotModels {
         lastname?: string;
         organizationUnitName?: string;
         authentication?: CertAuthentication;
-        certificateTransparency?: boolean;
+        certificateTransparency?: Boolean;
         certificateTransparencyPrivacy?: CertificateTransparencyPrivacyConstants;
         domain?: string;
-        hasCsr?: boolean;
+        hasCsr?: Boolean;
         idn?: string;
     }
 
@@ -918,7 +991,52 @@ export namespace DomainRobotModels {
         algorithm?: CsrHashAlgorithmConstants;
         signatureHashAlgorithm?: SignatureHashAlgorithmConstants;
         idn?: string;
-        checkCaa?: boolean;
+        checkCaa?: Boolean;
+    }
+
+    export class CertificateInstallCheckData {
+        constructor(config?: CertificateInstallCheckData);
+    }
+    export interface CertificateInstallCheckData {
+        ip?: string;
+        secured?: Boolean;
+        redirect?: Boolean;
+        redirectMatch?: Boolean;
+        caa?: Boolean;
+        multipleCaa?: Boolean;
+        selfSigned?: Boolean;
+        chainOk?: Boolean;
+        inventory?: Boolean;
+        certificate?: Certificate;
+        tls?: TlsData[];
+        certificateData?: X509CertificateData;
+        redirectCertificateData?: X509CertificateData;
+        chain?: X509CertificateData[];
+        notices?: CertificateInstallCheckNotice[];
+    }
+
+    export class CertificateInstallCheckNotice {
+        constructor(config?: CertificateInstallCheckNotice);
+    }
+    export interface CertificateInstallCheckNotice {
+        type?: string;
+        label?: string;
+        value?: string;
+    }
+
+    export class CertificateInstallCheckRequest {
+        constructor(config?: CertificateInstallCheckRequest);
+    }
+    export interface CertificateInstallCheckRequest {
+        hostname?: string;
+    }
+
+    export class CertificateInstallCheckResult {
+        constructor(config?: CertificateInstallCheckResult);
+    }
+    export interface CertificateInstallCheckResult {
+        hostname?: string;
+        data?: CertificateInstallCheckData[];
     }
 
     export class CertificateHistory {
@@ -937,34 +1055,27 @@ export namespace DomainRobotModels {
         constructor(config?: Contact);
     }
     export interface Contact {
-        create?: string;
+        created?: string;
         updated?: string;
-        id?: number;
         owner?: BasicUser;
         updater?: BasicUser;
-        alias?: string;
+        id?: number;
+        customer?: GenericCustomer;
         type?: ContactTypeConstants;
-        organization?: string;
+        firstName?: string;
+        lastName?: string;
         title?: string;
+        label?: string;
+        locale?: Locale;
+        gender?: GenderConstants;
+        postalCode?: string;
         city?: string;
         country?: string;
         state?: string;
+        phones?: Phone[];
+        faxes?: Phone[];
         email?: string;
-        protection?: ContactProtectionConstants;
-        sip?: string;
-        remarks?: string[];
-        domainsafe?: boolean;
-        confirmOwnerConsent?: boolean;
-        comment?: string;
-        verification?: string; //GenericStatusConstants
-        fname?: string;
-        lname?: string;
         address?: string[];
-        pcode?: string;
-        phone?: string;
-        fax?: string;
-        nicRef?: ContactReference[];
-        extensions?: ContactExtensions;
     }
 
     export class ContactAeroExtensions {
@@ -1055,6 +1166,8 @@ export namespace DomainRobotModels {
         sport?: ContactSportExtensions;
         luxe?: ContactLuxeExtensions;
         madrid?: ContactMadridExtensions;
+        scot?: ContactScotExtensions;
+        ie?: ContactIeExtensions;
     }
 
     export class ContactGeneralExtensions {
@@ -1101,13 +1214,22 @@ export namespace DomainRobotModels {
         entityType?: ItEntityTypeConstants;
     }
 
+    export class ContactIeExtensions {
+        constructor(config?: ContactIeExtensions)
+    }
+    export interface ContactIeExtensions {
+        contactType?: IeEntityTypeConstants
+        cronumber?: string
+        supportingnumber?: string
+    }
+
     export class ContactJobsExtensions {
         constructor(config?: ContactJobsExtensions);
     }
     export interface ContactJobsExtensions {
-        adminType?: boolean;
+        adminType?: Boolean;
         contactTitle?: string;
-        hrMember?: boolean;
+        hrMember?: Boolean;
         industryClass?: number;
         website?: string;
     }
@@ -1171,6 +1293,13 @@ export namespace DomainRobotModels {
         territoryLinkedTaxpayernumber?: string;
     }
 
+    export class ContactScotExtensions {
+        constructor(config?: ContactScotExtensions)
+    }
+    export interface ContactScotExtensions {
+        intendedUse?: string
+    }
+
     export class ContactSportExtensions {
         constructor(config?: ContactSportExtensions);
     }
@@ -1232,7 +1361,45 @@ export namespace DomainRobotModels {
     }
     export interface ContactXxxExtensions {
         membershipID?: string;
-        nonResolverDomain?: boolean;
+        nonResolverDomain?: Boolean;
+    }
+
+    export class Comment {
+        constructor(config?: Comment)
+    }
+    export interface Comment {
+        created?: string
+        updated?: number
+        id?: number
+        customer?: GenericCustomer
+        text?: string
+        user?: BasicUser
+    }
+
+    export class ContextHost {
+        constructor(config?: ContextHost)
+    }
+    export interface ContextHost {
+        created?: string
+        updated?: number
+        master?: Boolean
+        csr?: string
+        serverCert?: string
+        caCert?: string
+        status?: JobStatusConstants
+        subStatus?: string
+        zone?: ContextHostZone
+        certificate?: BasicCertificate
+        name?: string
+    }
+
+    export class ContextHostZone {
+        constructor(config?: ContextHostZone)
+    }
+    export interface ContextHostZone {
+        origin?: string
+        sub?: string
+        zones?: HostSubZone[]
     }
 
     export class Currency {
@@ -1272,25 +1439,26 @@ export namespace DomainRobotModels {
         country?: string;
         phone?: Phone;
         fax?: Phone;
-        emails?: string;
+        emails?: string[];
         billingEmails?: string[];
         payment?: PaymentConstants;
         paymentMode?: string;
         paymentCurrency?: Currency;
         invoiceLanguage?: string;
-        locked?: boolean;
-        verified?: boolean;
-        vatNumberStatus?: string;
-        taxable?: boolean;
+        taxable?: Boolean;
         card?: Card;
         contracts?: CustomerContract[];
         billingUsers?: BasicUser[];
+        comments?: Comment[];
+        contacts?: Contact[];
         account?: Account;
-        clearAccount?: string; //PClearAccountPeriod;
+        clearAccount?: ClearAccountPeriod;
         fname?: string;
         lname?: string;
         pcode?: string;
+        technical?: GenericCustomer;
         sepa?: SEPAMandate;
+        pricelists?: CustomerPriceLists
     }
 
     export class CustomerContract {
@@ -1302,6 +1470,21 @@ export namespace DomainRobotModels {
         contract?: GenericLabelEntity;
         notice?: string;
         ticketnumber?: string;
+    }
+
+    export class CustomerPriceLists {
+        constructor();
+        // constructor(config?: CustomerPriceLists);
+    }
+    // export interface CustomerPriceLists {}
+
+    export class CustomerTag {
+        constructor(config?: CustomerTag);
+    }
+    export interface CustomerTag {
+        created?: string;
+        updated?: string;
+        tag?: GenericLabelEntity;
     }
 
     export class DNSSec {
@@ -1350,30 +1533,30 @@ export namespace DomainRobotModels {
         nameServers?: NameServer[];
         nameServerEntries?: string[];
         period?: TimePeriod;
-        trustee?: boolean;
-        privacy?: boolean;
+        trustee?: Boolean;
+        privacy?: Boolean;
         authinfo?: string;
-        domainsafe?: boolean;
+        domainsafe?: Boolean;
         parking?: ParkingProviderConstants;
         extensions?: DomainExtensions;
         logId?: number;
         nsCheck?: DNSCheck;
-        confirmOrder?: boolean;
-        confirmOwnerConsent?: boolean;
-        ignoreWhois?: boolean;
+        confirmOrder?: Boolean;
+        confirmOwnerConsent?: Boolean;
+        ignoreWhois?: Boolean;
         comment?: string;
-        includeWWW?: boolean;
-        includeWildcard?: boolean;
+        includeWWW?: Boolean;
+        includeWildcard?: Boolean;
         registrarStatus?: RegistryStatusConstants;
         registrarStatusReason?: string;
-        removeCancelation?: boolean;
+        removeCancelation?: Boolean;
         autodnsSecJob?: DNSSecJob;
         priceClass?: string;
         priceClassRenew?: string;
         abuseEmail?: string;
         generalRequestEmail?: string;
         privacyPlusMail?: string;
-        privacyPlus?: boolean;
+        privacyPlus?: Boolean;
         nameServerGroup?: string;
         rddsOptIn?: RddsOptInConstants;
         servicesAdd?: DomainServices;
@@ -1385,9 +1568,9 @@ export namespace DomainRobotModels {
         expire?: string;
         payable?: string;
         action?: DomainActionConstants;
-        autoDnssec?: boolean;
-        dnssec?: boolean;
-        validCertificate?: boolean;
+        autoDnssec?: Boolean;
+        dnssec?: Boolean;
+        validCertificate?: Boolean;
         cancelationStatus?: CancelationStatusConstants;
         autoRenewStatus?: AutoRenewStatusConstants;
         dnssecData?: DNSSec[];
@@ -1404,7 +1587,7 @@ export namespace DomainRobotModels {
         domain?: string;
         registryWhen?: string;
         gainingRegistrar?: string;
-        disconnect?: boolean;
+        disconnect?: Boolean;
         notice?: string;
         logId?: number;
         registryStatus?: RegistryStatusConstants;
@@ -1420,7 +1603,7 @@ export namespace DomainRobotModels {
         id?: string;
         source?: DomainStudioDomainSource;
         services?: DomainStudioService;
-        debugTime?: boolean;
+        debugTime?: Boolean;
     }
 
     export class DomainEnvelopeSearchRequest {
@@ -1428,11 +1611,6 @@ export namespace DomainRobotModels {
     }
     export interface DomainEnvelopeSearchRequest {
         searchToken?: string;
-        currency?: string;
-        debug?: boolean;
-        checkPortfolio?: boolean;
-        sources?: DomainStudioSources;
-        clientIp?: string;
     }
     export class DomainExtensions {
         constructor(config?: DomainExtensions);
@@ -1453,9 +1631,9 @@ export namespace DomainRobotModels {
         name?: string;
         idn?: string;
         notificationMobiles?: Phone[];
-        ocval?: boolean;
-        cancelation?: boolean;
-        removed?: boolean;
+        ocval?: Boolean;
+        cancelation?: Boolean;
+        removed?: Boolean;
         monitoringSetups?: DomainMonitoringSetup[];
         notificationEmails?: string[];
     }
@@ -1479,7 +1657,7 @@ export namespace DomainRobotModels {
         forSale?: string;
         keyword?: string;
         price?: number;
-        fixedPrice?: boolean;
+        fixedPrice?: Boolean;
         minPrice?: number;
     }
 
@@ -1498,30 +1676,30 @@ export namespace DomainRobotModels {
         nameServers?: NameServer[];
         nameServerEntries?: string[];
         period?: TimePeriod;
-        trustee?: boolean;
-        privacy?: boolean;
+        trustee?: Boolean;
+        privacy?: Boolean;
         authinfo?: string;
-        domainsafe?: boolean;
+        domainsafe?: Boolean;
         parking?: ParkingProviderConstants;
         extensions?: DomainExtensions;
         logId?: number;
         nsCheck?: DNSCheck;
-        confirmOrder?: boolean;
-        confirmOwnerConsent?: boolean;
-        ignoreWhois?: boolean;
+        confirmOrder?: Boolean;
+        confirmOwnerConsent?: Boolean;
+        ignoreWhois?: Boolean;
         comment?: string;
-        includeWWW?: boolean;
-        includeWildcard?: boolean;
+        includeWWW?: Boolean;
+        includeWildcard?: Boolean;
         registrarStatus?: RegistryStatusConstants;
         registrarStatusReason?: string;
-        removeCancelation?: boolean;
+        removeCancelation?: Boolean;
         autodnsSecJob?: DNSSecJob;
         priceClass?: string;
         priceClassRenew?: string;
         abuseEmail?: string;
         generalRequestEmail?: string;
         privacyPlusMail?: string;
-        privacyPlus?: boolean;
+        privacyPlus?: Boolean;
         nameServerGroup?: string;
         rddsOptIn?: RddsOptInConstants;
         servicesAdd?: DomainServices;
@@ -1535,13 +1713,23 @@ export namespace DomainRobotModels {
         expire?: string;
         payable?: string;
         action?: DomainActionConstants;
-        autoDnssec?: boolean;
-        dnssec?: boolean;
-        validCertificate?: boolean;
+        autoDnssec?: Boolean;
+        dnssec?: Boolean;
+        validCertificate?: Boolean;
         cancelationStatus?: CancelationStatusConstants;
         autoRenewStatus?: AutoRenewStatusConstants;
         dnssecData?: DNSSec[];
         zone?: Zone;
+    }
+
+    export class DomainSafeUser {
+        constructor(config?: DomainSafeUser)
+    }
+    export interface DomainSafeUser {
+        context?: number
+        mobile?: Phone
+        user?: string
+        pin?: number
     }
 
     export class DomainServices {
@@ -1562,6 +1750,19 @@ export namespace DomainRobotModels {
         servicesAdd?: DomainServices;
         servicesRem?: DomainServices;
     }
+
+    export class DomainStudioMarket {
+        constructor(config?: DomainStudioMarket);
+    }
+    export interface DomainStudioMarket {
+        services?: DomainEnvelopeSearchService[]
+        onlyAvailable?: Boolean
+        promoTlds?: string[]
+        max?: number
+        priceMin?: number
+        priceMax?: number
+    }
+
     export class DomainStudioService {
         constructor(config?: DomainStudioService);
     }
@@ -1569,6 +1770,15 @@ export namespace DomainRobotModels {
         whois?: WhoisServiceData;
         price?: PriceServiceData;
         estimation?: EstimationServiceData;
+    }
+
+    export class DomainStudioSourceCustom {
+        constructor(config?: DomainStudioSourceCustom);
+    }
+    export interface DomainStudioSourceCustom {
+        services?: DomainEnvelopeSearchService[]
+        onlyAvailable?: Boolean
+        domains?: string[]
     }
 
     export class DomainStudioSourceGeo {
@@ -1583,18 +1793,80 @@ export namespace DomainRobotModels {
         constructor(config?: DomainStudioSourceInitial);
     }
     export interface DomainStudioSourceInitial {
-        services?: string[]; //DomainEnvelopeSearchService[];
+        services?: DomainEnvelopeSearchService[];
         tlds?: string[];
     }
 
+    export class DomainStudioSourceMarket {
+        constructor(config?: DomainStudioSourceMarket)
+    }
+    export interface DomainStudioSourceMarket {
+        services?: DomainEnvelopeSearchService[]
+        onlyAvailable?: Boolean
+        promoTlds?: string[]
+        topTlds?: string[]
+        max?: number
+        priceMin?: number
+        priceMax?: number
+    }
+
+    export class DomainStudioSourceOnlinePresence {
+        constructor(config?: DomainStudioSourceOnlinePresence)
+    }
+    export interface DomainStudioSourceOnlinePresence {
+        services?: DomainEnvelopeSearchService[]
+        onlyAvailable?: Boolean
+        max?: number
+        maxSldLength?: number
+        useDash?: Boolean
+        tlds?: string[]
+        onlinePresenceUrl?: string
+        onlinePresenceTitle?: string
+        relatedUrls?: string[]
+        category?: string
+        onlinePresenceDescription?: string
+        preferredName?: string
+        location?: string
+        business?: Boolean
+        shortName?: string
+        fullName?: string
+        firstName?: string
+        middleNames?: string[]
+        lastName?: string
+        email?: string
+        hometown?: string
+        skills?: string[]
+    }
+    
+    export class DomainStudioSourcePersonalNames {
+        constructor(config?: DomainStudioSourcePersonalNames);
+    }
+    export interface DomainStudioSourcePersonalNames {
+        services?: DomainEnvelopeSearchService[];
+        onlyAvailable?: Boolean
+        max?: number
+        maxSldLength?: number
+        useDash?: Boolean
+        spinFirstName?: Boolean
+        tlds?: string[]
+        firstName?: string
+        middleNames?: string[]
+        lastName?: string
+        useIdn?: Boolean
+    }
+    
     export class DomainStudioSourcePremium {
         constructor(config?: DomainStudioSourcePremium);
     }
+
     export interface DomainStudioSourcePremium {
-        services?: string[]; //DomainEnvelopeSearchService[];
-        promoTld?: string[];
+        services?: DomainEnvelopeSearchService[];
+        onlyAvailable?: Boolean
+        promoTlds?: string[];
         topTlds?: string[];
         max?: number;
+        priceMin?: number;
+        priceMax?: number;
     }
 
     export class DomainStudioSourceSimilar {
@@ -1605,6 +1877,20 @@ export namespace DomainRobotModels {
         max?: number;
     }
 
+    export class DomainStudioSourceSpinWord {
+        constructor(config?: DomainStudioSourceSpinWord);
+    }
+    export interface DomainStudioSourceSpinWord {
+        services?: DomainEnvelopeSearchService[];
+        onlyAvailable?: Boolean
+        max?: number
+        maxSldLength?: number
+        tlds?: string[]
+        useIdn?: Boolean
+        similarity?: number
+        position?: number
+    }
+
     export class DomainStudioSourceSuggestion {
         constructor(config?: DomainStudioSourceSuggestion);
     }
@@ -1613,10 +1899,35 @@ export namespace DomainRobotModels {
         language?: string[];
         max?: number;
         maxSldLength?: number;
-        useDash?: boolean;
-        usenumber?: boolean;
-        useIdn?: boolean;
+        useDash?: Boolean;
+        usenumber?: Boolean;
+        useIdn?: Boolean;
         tlds?: string[];
+    }
+
+    export class DomainStudioSourcePrefixSuffix {
+        constructor(config?: DomainStudioSourcePrefixSuffix);
+    }
+    export interface DomainStudioSourcePrefixSuffix {
+        services?: DomainEnvelopeSearchService[]
+        onlyAvailable?: Boolean
+        language?: string
+        max?: number
+        maxSldLength?: number
+        tlds?: string[]
+        prefixVocabulary?: string[]
+        suffixVocabulary?: string[]
+        useIdn?: Boolean
+        useDash?: Boolean
+    }
+
+    export class DomainStudioSourceUpcoming {
+        constructor(config?: DomainStudioSourceUpcoming);
+    }
+    export interface DomainStudioSourceUpcoming {
+        services?: DomainEnvelopeSearchService[];
+        onlyAvailable?: Boolean
+        max?: number
     }
 
     export class DomainStudioSources {
@@ -1626,9 +1937,16 @@ export namespace DomainRobotModels {
         initial?: DomainStudioSourceInitial;
         suggestion?: DomainStudioSourceSuggestion;
         premium?: DomainStudioSourcePremium;
+        market?: DomainStudioSourceMarket;
         geo?: DomainStudioSourceGeo;
         similar?: DomainStudioSourceSimilar;
         recommended?: DomainStudioSourceSimilar;
+        custom?: DomainStudioSourceCustom;
+        onlinePresence?: DomainStudioSourceOnlinePresence;
+        personalNames?: DomainStudioSourcePersonalNames;
+        spinWord?: DomainStudioSourceSpinWord;
+        upcoming?: DomainStudioSourceUpcoming;
+        prefixSuffix?: DomainStudioSourcePrefixSuffix;
     }
 
     export class DomainTmchClaimNoticeExtensions {
@@ -1673,7 +1991,7 @@ export namespace DomainRobotModels {
         priorit?: PriorityConstants;
         customer?: Customer;
         period?: TimePeriod;
-        discountable?: boolean;
+        discountable?: Boolean;
         logId?: number;
         refund?: number;
         priceCondition?: PriceServiceEntity[];
@@ -1690,6 +2008,8 @@ export namespace DomainRobotModels {
     }
     export interface ExtendedValidationExtension {
         joiCountryName?: string;
+        joiLocality?: string;
+        joiStateOrProvince?: string;
         companynumber?: string;
         businessCategor?: BusinessCategory
     }
@@ -1711,6 +2031,8 @@ export namespace DomainRobotModels {
         updated?: string;
         label?: string;
         name?: string;
+        category?: string;
+        configuration?: Map<string, object>
         packageLabel?: string;
     }
 
@@ -1742,6 +2064,14 @@ export namespace DomainRobotModels {
         handle?: Contact;
     }
 
+    export class HostSubZone {
+        constructor(config?: HostSubZone);
+    }
+    export interface HostSubZone {
+        origin?: string
+        virtualNameServer?: string
+    }
+
     export class Id4MeAgent {
         constructor(config?: Id4MeAgent);
     }
@@ -1752,7 +2082,7 @@ export namespace DomainRobotModels {
         updater?: BasicUser;
         externalReference?: string;
         certificate?: VhostCertificate;
-        layoutAddon?: Configuration;
+        layoutAddon?: Id4MeLayoutConfiguration;
         name?: string;
         status?: Id4MeAgentStatus;
         records?: string[];
@@ -1768,16 +2098,41 @@ export namespace DomainRobotModels {
         updater?: BasicUser;
         agent?: Id4MeAgent;
         verifyExpire?: string;
-        addons?: Configuration;
+        addons?: Id4MeIdentityAddons;
         magicLink?: string;
         claims?: Claims;
-        showClaims?: boolean;
+        showClaims?: Boolean;
         resetUrl?: string;
         resetUrlExpire?: string;
         name?: string;
-        status?: string; //IdentityStatus',
+        status?: IdentityStatus
         language?: string;
         record?: string[];
+    }
+
+    export class Id4MeLayoutConfiguration {
+        constructor(config?: Id4MeLayoutConfiguration);
+    }
+    export interface Id4MeLayoutConfiguration {
+        title?: string
+        loginLogoHeight?: string
+        loginLogoWidth?: string
+        menuLogoHeight?: string
+        menuLogoWidth?: string
+        primaryColor?: string
+        primaryText?: string
+        secondaryColor?: string
+        loginLogoSrc?: string
+        menuLogoSrc?: string
+        about?: string
+        privacy?: string
+    }
+
+    export class Id4MeIdentityAddons {
+        constructor(config?: Id4MeIdentityAddons);
+    }
+
+    export interface Id4MeIdentityAddons {
     }
 
     export class InetAddress {
@@ -1805,7 +2160,7 @@ export namespace DomainRobotModels {
         vatAmount?: number;
         status?: InvoiceStatusConstants;
         type?: AccountingDocumentTypeConstants;
-        failed?: boolean;
+        failed?: Boolean;
         currency?: string;
         paid?: string;
         document?: Document;
@@ -1858,6 +2213,18 @@ export namespace DomainRobotModels {
         status?: ResponseStatus;
         object?: ResponseObject;
         data?: any[];
+        ctid?: string;
+    }
+
+    export class JsonResponseDataCertificateInstallCheckResult {
+        constructor(config?: JsonResponseDataCertificateInstallCheckResult);
+    }
+    export interface JsonResponseDataCertificateInstallCheckResult {
+        stid?: string;
+        messages?: Message[];
+        status?: ResponseStatus;
+        object?: ResponseObject;
+        data?: CertificateInstallCheckResult[];
         ctid?: string;
     }
 
@@ -1978,6 +2345,30 @@ export namespace DomainRobotModels {
         status?: ResponseStatus;
         object?: ResponseObject;
         data?: DomainRestore[];
+        ctid?: string;
+    }
+
+    export class JsonResponseDataListJsonResponseDataContact {
+        constructor(config?: JsonResponseDataListJsonResponseDataContact);
+    }
+    export interface JsonResponseDataListJsonResponseDataContact {
+        stid?: string;
+        messages?: Message[];
+        status?: ResponseStatus;
+        object?: ResponseObject;
+        data?: JsonResponseDataContact[];
+        ctid?: string;
+    }
+
+    export class JsonResponseDataListJsonResponseDataSslContact {
+        constructor(config?: JsonResponseDataListJsonResponseDataSslContact);
+    }
+    export interface JsonResponseDataListJsonResponseDataSslContact {
+        stid?: string;
+        messages?: Message[];
+        status?: ResponseStatus;
+        object?: ResponseObject;
+        data?: JsonResponseDataSslContact[];
         ctid?: string;
     }
 
@@ -2184,6 +2575,18 @@ export namespace DomainRobotModels {
         data?: Redirect[];
         ctid?: string;
     }
+    
+    export class JsonResponseDataSiteSealInformation {
+        constructor(config?: JsonResponseDataSiteSealInformation);
+    }
+    export interface JsonResponseDataSiteSealInformation {
+        stid?: string;
+        messages?: Message[];
+        status?: ResponseStatus;
+        object?: ResponseObject;
+        data?: SiteSealInformation[];
+        ctid?: string;
+    }
 
     export class JsonResponseDataSslContact {
         constructor(config?: JsonResponseDataSslContact);
@@ -2218,6 +2621,19 @@ export namespace DomainRobotModels {
         status?: ResponseStatus;
         object?: ResponseObject;
         data?: string[];
+        ctid?: string;
+    }
+
+    
+    export class JsonResponseDataTaskUserLimit {
+        constructor(config?: JsonResponseDataTaskUserLimit);
+    }
+    export interface JsonResponseDataTaskUserLimit {
+        stid?: string;
+        messages?: Message[];
+        status?: ResponseStatus;
+        object?: ResponseObject;
+        data?: TaskUserLimit[];
         ctid?: string;
     }
 
@@ -2269,6 +2685,18 @@ export namespace DomainRobotModels {
         ctid?: string;
     }
 
+    export class JsonResponseDataUserSalesReport {
+        constructor(config?: JsonResponseDataUserSalesReport);
+    }
+    export interface JsonResponseDataUserSalesReport {
+        stid?: string;
+        messages?: Message[];
+        status?: ResponseStatus;
+        object?: ResponseObject;
+        data?: UserSalesReport[];
+        ctid?: string;
+    }
+
     export class JsonResponseDataVoid {
         constructor(config?: JsonResponseDataVoid);
     }
@@ -2291,6 +2719,12 @@ export namespace DomainRobotModels {
         object?: ResponseObject;
         data?: Zone[];
         ctid?: string;
+    }
+
+    export class Locale {
+        constructor(config?: Locale);
+    }
+    export interface Locale {
     }
 
     export class LoginData {
@@ -2323,7 +2757,7 @@ export namespace DomainRobotModels {
         target?: string;
         admin?: string;
         protection?: ProtectionConstants;
-        greylisting?: boolean;
+        greylisting?: Boolean;
         virus?: string;
         bannedFiles?: string;
         header?: string;
@@ -2444,7 +2878,10 @@ export namespace DomainRobotModels {
         articleTypeLabel?: string;
         articleLabe?: string;
         item?: PeriodicBilling[];
+        expire?: string;
+        cancelation?: string;
         businessCase?: string;
+        extensions?: BillingEventExtensions;
     }
 
     export class Phone {
@@ -2459,7 +2896,7 @@ export namespace DomainRobotModels {
         updated?: string;
         name?: string;
         articleLabel?: string;
-        dnssec?: boolean;
+        dnssec?: Boolean;
         statistic?: string;
     }
 
@@ -2475,6 +2912,7 @@ export namespace DomainRobotModels {
         ctid?: string;
         messages?: Message[];
         flags?: string;
+        notice?: string;
         created?: string;
         object?: ResponseObject;
     }
@@ -2514,7 +2952,7 @@ export namespace DomainRobotModels {
         updater?: BasicUser;
         article?: Article;
         vatType?: string;
-        priceRequired?: boolean;
+        priceRequired?: Boolean;
         businessCase?: string;
     }
 
@@ -2553,7 +2991,7 @@ export namespace DomainRobotModels {
     export interface QueryView {
         limit?: number;
         offset?: number;
-        children?: boolean;
+        children?: Boolean;
         from?: string;
         to?: string;
     }
@@ -2613,16 +3051,25 @@ export namespace DomainRobotModels {
     export interface SEPAMandate {
         created?: string;
         updated?: string;
+        document?: Document;
         reference?: string;
         confirmSignature?: string;
         confirmIp?: InetAddress;
         confirmUseragent?: string;
-        confirmChecked?: boolean;
+        confirmChecked?: Boolean;
         expire?: string;
         histories?: SEPAMandate[];
+        status?: SepaStatus;
         accountHolder?: string;
         iban?: string;
         bic?: string;
+    }
+
+    export class ServiceProfiles {
+        constructor(config?: ServiceProfiles);
+    }
+    export interface ServiceProfiles {
+        serviceProfiles?: ServiceUsersProfile[]
     }
 
     export class ServiceUsersProfile {
@@ -2655,6 +3102,17 @@ export namespace DomainRobotModels {
         period?: TimePeriod;
     }
 
+    export class SiteSealInformation {
+        constructor(config?: SiteSealInformation);
+    }
+    export interface SiteSealInformation {
+        hash?: string
+        size?: string
+        html?: string
+        icon?: string
+        preview?: string
+    }
+    
     export class Soa {
         constructor(config?: Soa);
     }
@@ -2670,7 +3128,8 @@ export namespace DomainRobotModels {
         constructor(config?: SpamPolicy);
     }
     export interface SpamPolicy {
-        modifySubject?: boolean;
+        mode?: PolicyMode;
+        modifySubject?: Boolean;
         tagHeader?: number;
         spam?: number;
         kill?: number;
@@ -2683,6 +3142,8 @@ export namespace DomainRobotModels {
     export interface SslContact {
         created?: string;
         updated?: string;
+        extensions?: SslContactExtensions;
+        references?: SslContactReference[];
         fname?: string;
         lname?: string;
         phone?: string;
@@ -2700,6 +3161,32 @@ export namespace DomainRobotModels {
         id?: number;
     }
 
+    export class SslContactExtensions {
+        constructor(config?: SslContactExtensions)
+    }
+    export interface SslContactExtensions {
+        general?: string
+    }
+
+    export class SslContactGeneralExtensions {
+        constructor(config?: SslContactGeneralExtensions)
+    }
+    export interface SslContactGeneralExtensions {
+        joiCountryName?: string
+        joiLocality?: string
+        joiStateOrProvince?: string
+        companynumber?: string
+        businessCategory?: BusinessCategory
+    }
+
+    export class SslContactReference {
+        constructor(config?: SslContactReference)
+    }
+    export interface SslContactReference {
+        created?: string;
+        updated?: string;
+    }
+
     export class Subject {
         constructor(config?: Subject);
     }
@@ -2713,10 +3200,16 @@ export namespace DomainRobotModels {
         constructor(config?: SubjectAlternativeName);
     }
     export interface SubjectAlternativeName {
+        created?: string;
+        updated?: string;
+        type: SanType;
+        sslCertificateId: number;
         name?: string;
         approverEmail?: string;
         orderId?: string;
+        free?: Boolean
     }
+
     export class SubjectProduct {
         constructor(config?: SubjectProduct);
     }
@@ -2763,10 +3256,46 @@ export namespace DomainRobotModels {
         articleTypeLabel?: string;
         articleLabel?: string;
         item?: PeriodicBilling[];
+        expire?: string;
+        cancelation?: string;
         limits?: BillingObjectLimit[];
         acls?: UserAcl[];
         variant?: string;
+        cancelationEffective: string;
         businessCase?: string;
+        extensions?: BillingEventExtensions;
+    }
+
+    export class TaskCount {
+        constructor(config?: TaskCount)
+    }
+    export interface TaskCount {
+        taskGroup?: string
+        counts?: Map<string, number>
+    }
+
+    export class TaskLimit {
+        constructor(config?: TaskLimit)
+    }
+    export interface TaskLimit {
+        created?: string
+        updated?: string
+        taskGroup?: TaskGroup
+        limitSelf?: number
+        inclusiveSelf?: number
+        inclusiveChildren?: number
+        timeUnitChildren?: TimeUnitConstants
+        count?: number
+        user?: BasicUser
+    }
+
+    export class TaskUserLimit {
+        constructor(config?: TaskUserLimit)
+    }
+    export interface TaskUserLimit {
+        user?: BasicUser
+        entries?: TaskLimit[]
+        count?: TaskCount[]
     }
 
     export class TimePeriod {
@@ -2775,6 +3304,16 @@ export namespace DomainRobotModels {
     export interface TimePeriod {
         unit?: TimeUnitConstants;
         period?: number;
+    }
+
+
+    export class TlsData {
+        constructor(config?: TlsData)
+    }
+
+    export interface TlsData {
+        version?: string
+        supported?: Boolean
     }
 
     export class Transfer {
@@ -2793,7 +3332,7 @@ export namespace DomainRobotModels {
         autoAck?: string;
         autoNack?: string;
         end?: string;
-        autoAnswer?: boolean;
+        autoAnswer?: Boolean;
         recipient?: string;
         mailserver?: string;
         deliveredMailserver?: string;
@@ -2817,7 +3356,7 @@ export namespace DomainRobotModels {
         autoAck?: string;
         autoNack?: string;
         end?: string;
-        autoAnswer?: boolean;
+        autoAnswer?: Boolean;
         recipient?: string;
         mailserver?: string;
         deliveredMailserver?: string;
@@ -2870,16 +3409,21 @@ export namespace DomainRobotModels {
         authType?: AuthType;
         details?: UserDetails;
         lock?: UserLock;
+        oldPassword?: string;
         acls?: UserAcls;
         profiles?: UserProfileViews;
+        serviceProfiles?: ServiceProfiles;
         ancestors?: BasicUser[];
         customer?: BasicCustomer;
         nameServerGroup?: VirtualNameServerGroup[];
         subscriptions?: Subscription[];
         applications?: TrustedApplication[];
+        restrictions?: IpRestrictions;
+        customerLevel?: number;
         user?: string;
-        languag?: string;
+        language?: string;
         parent?: User;
+        directCustomer?: Boolean;
     }
 
     export class UserAcl {
@@ -2888,9 +3432,9 @@ export namespace DomainRobotModels {
     export interface UserAcl {
         functionCode?: string;
         children?: BasicUser[];
-        childrenLocked?: boolean;
-        userLocked?: boolean;
-        effective?: boolean;
+        childrenLocked?: Boolean;
+        userLocked?: Boolean;
+        effective?: Boolean;
         childrenRem?: BasicUser[];
         childrenAdd?: BasicUser[];
         restriction?: string;
@@ -2920,10 +3464,15 @@ export namespace DomainRobotModels {
         constructor(config?: UserProfile);
     }
     export interface UserProfile {
-        flag?: UserProfileFlag;
+        created?: string;
+        updated?: string;
+        owner?: BasicUser;
+        updater?: BasicUser;
         key?: string;
         value?: string;
-        readonly?: boolean;
+        flag?: UserProfileFlag;
+        inherited?: Boolean;
+        readonly?: Boolean;
     }
 
     export class UserProfileViews {
@@ -2933,6 +3482,21 @@ export namespace DomainRobotModels {
         profiles?: UserProfile[];
     }
 
+    export class UserSalesReport {
+        constructor(config?: UserSalesReport)
+    }
+    export interface UserSalesReport {
+        created?: string
+        updated?: string
+        owner?: BasicUser
+        updater?: BasicUser
+        date?: string
+        domainSales?: number
+        certificateSales?: number
+        serverSales?: number
+        packageSales?: number
+    }
+    
     export class Vat {
         constructor(config?: Vat);
     }
@@ -2948,7 +3512,6 @@ export namespace DomainRobotModels {
         created?: string;
         updated?: string;
     }
-
 
     export class VhostCertificate {
         constructor(config?: VhostCertificate);
@@ -2968,7 +3531,7 @@ export namespace DomainRobotModels {
         updated?: string;
         owner?: BasicUser;
         updater?: BasicUser;
-        active?: boolean;
+        active?: Boolean;
         name?: string; //Name
         mainAddres?: string; //InetAddress
         ipAddresse?: string[];
@@ -3007,6 +3570,7 @@ export namespace DomainRobotModels {
     }
     export interface WhoisStatus {
         status?: DomainStudioDomainStatus;
+        priceClass?: string;
     }
 
     export class WorkflowEvent {
@@ -3031,6 +3595,66 @@ export namespace DomainRobotModels {
         id?: number;
     }
 
+    export class X509CertificateData {
+        constructor(config?: X509CertificateData)
+    }
+    export interface X509CertificateData {
+        cn?: string
+        serialNumber?: string
+        issuer?: X509CertificateIssuer
+        subject?: X509CertificateSubject
+        validity?: X509CertificateValidity
+        subjectAlternativNames?: string[]
+        plain?: string
+        signatureAlgorithm?: string
+        sha256Thumbprint?: string
+        md5Thumbprint?: string
+        publicKeyData?: X509CertificatePublicKeyData
+    }
+
+    export class X509CertificateIssuer {
+        constructor(config?: X509CertificateIssuer)
+    }
+    export interface X509CertificateIssuer {
+        commonName?: string
+        organization?: string
+        country?: string
+        organizationUnit?: string
+        locality?: string
+        state?: string
+    }
+
+    export class X509CertificatePublicKeyData {
+        constructor(config?: X509CertificatePublicKeyData)
+    }
+    export interface X509CertificatePublicKeyData {
+        algorithm?: string
+        length?: Number
+        sha1Thumbprint?: string
+        sha256Thumbprint?: string
+        bytes?: string
+    }
+
+    export class X509CertificateSubject {
+        constructor(config?: X509CertificateSubject)
+    }
+    export interface X509CertificateSubject {
+        commonName?: string
+        organization?: string
+        country?: string
+        organizationUnit?: string
+        locality?: string
+        state?: string
+    }
+
+    export class X509CertificateValidity {
+        constructor(config?: X509CertificateValidity)
+    }
+    export interface X509CertificateValidity {
+        notAfter?: string
+        notBefore?: string
+    }
+
     export class Zone {
         constructor(config?: Zone);
     }
@@ -3040,19 +3664,19 @@ export namespace DomainRobotModels {
         origin?: string;
         idn?: string;
         soa?: Soa;
-        dnssec?: boolean;
+        dnssec?: Boolean;
         nameServerGroup?: string;
-        allowTransfer?: boolean;
+        allowTransfer?: Boolean;
         owner?: BasicUser;
         updater?: BasicUser;
         logId?: number;
         comment?: string;
-        domainsafe?: boolean;
+        domainsafe?: Boolean;
         source?: string;
         sourceVirtualHostname?: string;
         nameServers?: NameServer[];
         main?: MainIp;
-        wwwInclude?: boolean;
+        wwwInclude?: Boolean;
         virtualNameServer?: string;
         freeTex?: string[];
         action?: NameserverActionConstants;
@@ -3070,21 +3694,22 @@ export namespace DomainRobotModels {
         origin?: string;
         idn?: string;
         soa?: Soa;
-        dnssec?: boolean;
+        dnssec?: Boolean;
         nameServerGroup?: string;
-        allowTransfer?: boolean;
+        allowTransfer?: Boolean;
         owner?: BasicUser;
         updater?: BasicUser;
         logId: number;
         comment?: string;
-        domainsafe?: boolean;
+        domainsafe?: Boolean;
         source?: string;
         sourceVirtualHostname?: string;
         zoneGrantsAdd?: string[];
         zoneGrantsRem?: string[];
+        modifiers?: Modifier[];
         nameServers?: NameServer[];
         main?: string; //MainIp;
-        wwwInclude?: boolean;
+        wwwInclude?: Boolean;
         virtualNameServer?: string;
         freeText?: string[];
         action?: NameserverActionConstants;
@@ -3121,13 +3746,13 @@ export namespace DomainRobotModels {
         picture?: string; //UrlEntity
         website?: string; //UrlEntity
         email?: string;
-        emailVerified?: boolean;
+        emailVerified?: Boolean;
         gende?: GenderConstants;
         birthdate?: string;
         zoneinfo?: string;
         locale?: string;
         phonenumber?: Phone;
-        phonenumberVerified?: boolean;
+        phonenumberVerified?: Boolean;
         address?: AddressClaim;
         organization?: string;
     }
