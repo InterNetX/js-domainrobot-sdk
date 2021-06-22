@@ -78,7 +78,7 @@ class DomainRobotService {
             let requestOptions = Object.assign(
                 {
                     method,
-                    url,
+                    url: encodeURI(url),
                     data
                 },
                 this.axiosconfig
