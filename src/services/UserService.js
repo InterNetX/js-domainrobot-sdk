@@ -174,6 +174,13 @@ class User extends DomainRobotService {
             model
         );
     }
+
+    async verification(model) {
+        return await this.sendPostRequest(
+            this.domainRobotConfig.url + "/user/" + model.user + "/" + model.context + "/verification",
+            model
+        );
+    }
 }
 
 module.exports = User;
