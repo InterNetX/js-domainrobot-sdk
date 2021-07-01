@@ -1985,10 +1985,10 @@ export namespace DomainRobotModels {
         updated?: string;
         owner?: BasicUser;
         updater?: BasicUser;
-        amoun?: number;
+        amount?: number;
         type?: PriceTypeConstants;
         currency?: Currency;
-        priorit?: PriorityConstants;
+        priority?: PriorityConstants;
         customer?: Customer;
         period?: TimePeriod;
         discountable?: Boolean;
@@ -2915,6 +2915,30 @@ export namespace DomainRobotModels {
         notice?: string;
         created?: string;
         object?: ResponseObject;
+    }
+
+    export class Price {
+        constructor(config?: Price);
+    }
+    export interface Price {
+        created?: string;
+        updated?: string;
+        id?: number;
+        owner?: BasicUser;
+        updater?: BasicUser;
+        amount?: number;
+        type?: PriceTypeConstants;
+        currency?: Currency;
+        priority?: PriorityConstants;
+        customer?: GenericCustomer;
+        period?: TimePeriod;
+        discountable?: boolean;
+        logId?: number;
+        refund?: number;
+        priceCondition?: PriceServiceEntity[];
+        comment?: string;
+        normalPrice?: ExchangedPrice;
+        valid?: string;
     }
 
     export class PriceData {
