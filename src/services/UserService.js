@@ -175,9 +175,9 @@ class User extends DomainRobotService {
         );
     }
 
-    async verification(model) {
+    async verification(user, context, model) {
         return await this.sendPostRequest(
-            this.domainRobotConfig.url + "/user/" + model.user + "/" + model.context + "/verification",
+            this.domainRobotConfig.url + "/user/" + user + "/" + context + "/verification",
             model
         );
     }
