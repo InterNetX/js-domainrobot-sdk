@@ -285,6 +285,8 @@ export class DomainRobot {
     zone(zoneModel?: DomainRobotModels.Zone): ZoneService;
 
     login(loginDataModel?: DomainRobotModels.LoginData): LoginService;
+
+    user(basicUserModel?: DomainRobotModels.BasicUser): UserService;
 }
 
 export const DomainRobotHeaders: {
