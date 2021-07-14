@@ -2941,10 +2941,37 @@ export namespace DomainRobotModels {
         discountable?: boolean;
         logId?: number;
         refund?: number;
-        priceCondition?: PriceServiceEntity[];
+        priceConditions?: PriceServiceEntity[];
         comment?: string;
         normalPrice?: ExchangedPrice;
         valid?: string;
+    }
+
+    export class PriceClass {
+        constructor(config?: PriceClass);
+    }
+    export interface PriceClass {
+        created?: string;
+        updated?: string;
+        id?: number;
+        owner?: BasicUser;
+        updater?: BasicUser;
+        amount?: number;
+        type?: PriceTypeConstants;
+        currency?: Currency;
+        priority?: PriorityConstants;
+        customer?: GenericCustomer;
+        period?: TimePeriod;
+        discountable?: boolean;
+        logId?: number;
+        refund?: number;
+        priceConditions?: PriceServiceEntity[];
+        comment?: string;
+        normalPrice?: ExchangedPrice;
+        valid?: string;
+        name?: string;
+        articleType?: GenericLabelEntity;
+        businessCase?: GenericLabelEntity;
     }
 
     export class PriceData {
