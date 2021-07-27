@@ -2291,6 +2291,17 @@ export namespace DomainRobotModels {
         data?: BasicDocument[];
         ctid?: string;
     }
+    export class JsonResponseDataBillingEvent {
+        constructor(config?: JsonResponseDataBillingEvent);
+    }
+    export interface JsonResponseDataBillingEvent {
+        stid?: string;
+        messages?: Message[];
+        status?: ResponseStatus;
+        object?: ResponseObject;
+        data?: BillingEvent[];
+        ctid?: string;
+    }
 
     export class JsonResponseDataCertificate {
         constructor(config?: JsonResponseDataCertificate);
