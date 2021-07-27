@@ -187,6 +187,9 @@ export interface JsonResponseDataDomain extends Result {
 export interface JsonResponseDataBasicUser extends Result {
     data: DomainRobotModels.BasicUser[];
 }
+export interface JsonResponseDataBillingEvent extends Result {
+    data: DomainRobotModels.BillingEvent[];
+}
 export interface JsonResponseDataBillingLimit extends Result {
     data: DomainRobotModels.BillingLimit[];
 }
@@ -665,6 +668,25 @@ export namespace DomainRobotModels {
         classification?: string,
         notice?: string,
         addons?: any
+    }
+
+    export class BillingEvent {
+        constructor(config?: BillingEvent)
+    }
+    export interface BillingEvent {
+        created?: string,
+        updated?: string,
+        owner?: BasicUser,
+        updater?: BasicUser,
+        status?: BillingStatus,
+        object?: string,
+        description?: string,
+        period?: TimePeriod,
+        articleTypeLabel?: string,
+        payable?: string,
+        articleLabel?: string,
+        businessCase?: string,
+        extensions?: BillingEventExtensions
     }
 
     export class BillingEventExtensions {
