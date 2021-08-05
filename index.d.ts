@@ -181,6 +181,9 @@ export interface JsonResponseDataContact extends Result {
 export interface JsonResponseDataCustomer extends Result {
     data: DomainRobotModels.Customer[];
 }
+export interface JsonResponseDataCustomerGroup extends Result {
+    data: DomainRobotModels.CustomerGroup[];
+}
 export interface JsonResponseDataDomain extends Result {
     data: DomainRobotModels.Domain[];
 }
@@ -1499,7 +1502,78 @@ export namespace DomainRobotModels {
         notice?: string;
         ticketnumber?: string;
     }
-
+    
+    export class CustomerGroup {
+        constructor(config?: CustomerGroup);
+    }
+    export interface CustomerGroup {
+        created?: string;
+        updated?: string;
+        number?: number;
+        client?: string;
+        name?: PriceTypeConstants;
+        parent?: object;
+        addons?: CustomerGroupAddon;
+        owner?: BasicUser;
+    }
+    export class CustomerGroupAddon {
+        constructor(config?: CustomerGroupAddon);
+    }
+    export interface CustomerGroupAddon {
+        maxNumber?: number;
+        minNumber?: number;
+        from?: string;
+        emailSignature?: string;
+        archiveTo?: string;
+        footer?: string;
+        replyTo?: string;
+        renewReminderMailText?: LocalizedValue;
+        renewReminderMailSubject?: LocalizedValue;
+        certificateComment?: string;
+        domainComment?: string;
+        domainSeoComment?: string;
+        housingComment?: string;
+        serverAddonComment?: string;
+        serverVirtualComment?: string;
+        proceedComment?: string;
+        serverLicenceComment?: string;
+        proceedAddonComment?: string;
+        nsVirtualGroupComment?: string;
+        websitebuilderComment?: string;
+        tmchComment?: string;
+        zoneComment?: string;
+        packageComment?: string;
+        packageAddonComment?: string;
+        invoiceCreditNumberGeneratorSequenceNamePattern?: string;
+        invoiceJasper?: LocalizedValue;
+        invoiceMailSubject?: LocalizedValue;
+        invoiceMailText?: LocalizedValue;
+        invoiceNumberGenerator?: string;
+        invoiceNumberGeneratorInitialValue?: number;
+        invoiceNumberGeneratorPattern?: string;
+        invoiceNumberGeneratorSequenceNamePattern?: string;
+        invoiceDefaultLanguage?: Locale;
+        invoiceSshDefaultPath?: string;
+        invoiceSshHostname?: string;
+        invoiceSshPrivateKey?: string;
+        invoiceSshUserName?: string;
+        sepaMailSubject?: LocalizedValue;
+        sepaMailText?: LocalizedValue;
+        sepaJasper?: LocalizedValue;
+        creditJasper?: LocalizedValue;
+        creditMailSubject?: LocalizedValue;
+        creditMailText?: LocalizedValue;
+        creditNumberGenerator?:	string;
+        creditNumberGeneratorPattern?: string;
+        creditNumberGeneratorRotateUnit?: TimeUnitConstants;
+        logo?: string;
+        housingNumber?:	string;
+        domainNumber?: string;
+        payee?: string;
+        url?: string;
+        watermark?: LocalizedValue;
+        priceTaskCommentRequired?: boolean;
+    }
     export class CustomerPriceLists {
         constructor();
         // constructor(config?: CustomerPriceLists);
@@ -2764,6 +2838,14 @@ export namespace DomainRobotModels {
         constructor(config?: Locale);
     }
     export interface Locale {
+    }
+
+    export class LocalizedValue {
+        constructor(config?: LocalizedValue);
+    }
+    export interface LocalizedValue {
+        language?: string;
+        value?: string;
     }
 
     export class LoginData {
