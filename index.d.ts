@@ -106,6 +106,11 @@ export declare class UserService extends DomainRobotService<LoginService> {
     serviceProfileUpdate(model: DomainRobotModels.User): Promise<DomainRobotResult<JsonResponseDataServiceUsersProfile, number>>;
     verifcation(user: string, context: number, model: DomainRobotModels.User): Promise<DomainRobotResult<JsonResponseData, number>>;
 }
+
+export declare class WhoisService extends DomainRobotService<WhoisService>{
+    single(domain: string): Promise<DomainRobotResult<JsonResponseDataDomainEnvelope, number>>;
+    multi(domains: Array<string>): Promise<DomainRobotResult<JsonResponseDataDomainEnvelope, number>>;
+}
 export declare class DomainRobotResult<Result, Number> {
     constructor(result: Result, status: Number);
     isValid(): Boolean;
@@ -297,6 +302,8 @@ export class DomainRobot {
     login(loginDataModel?: DomainRobotModels.LoginData): LoginService;
 
     user(basicUserModel?: DomainRobotModels.BasicUser): UserService;
+
+    whois(): WhoisService;
 }
 
 export const DomainRobotHeaders: {
