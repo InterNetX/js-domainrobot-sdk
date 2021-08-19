@@ -327,6 +327,7 @@ export const DomainRobotHeaders: {
     DOMAINROBOT_HEADER_WEBSOCKET: string;
     DOMAINROBOT_HEADER_WEBSOCKET_TARGET: string;
     DOMAINROBOT_USER_AGENT: string;
+    DOMAINROBOT_HEADER_DEMO: string;
 };
 
 // ENUM definitions
