@@ -2,6 +2,7 @@ export declare class DomainRobotService<T> {
     constructor(domainRobotConfig: domainRobotConfig);
     logRequest(callback: Function): T;
     logResponse(callback: Function): T;
+    headers(headers: { [key: string]: string | number }): T;
 }
 
 export declare class CertificateService extends DomainRobotService<CertificateService>{
