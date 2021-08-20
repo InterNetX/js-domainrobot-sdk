@@ -1095,29 +1095,34 @@ export namespace DomainRobotModels {
         constructor(config?: Contact);
     }
     export interface Contact {
-        created?: string;
+        create?: string;
         updated?: string;
+        id?: number;
         owner?: BasicUser;
         updater?: BasicUser;
-        id?: number;
-        customer?: GenericCustomer;
+        alias?: string;
         type?: ContactTypeConstants;
-        firstName?: string;
-        lastName?: string;
+        organization?: string;
         title?: string;
-        label?: string;
-        locale?: Locale;
-        gender?: GenderConstants;
-        postalCode?: string;
         city?: string;
         country?: string;
         state?: string;
-        phones?: Phone[];
-        faxes?: Phone[];
         email?: string;
+        protection?: ContactProtectionConstants;
+        sip?: string;
+        remarks?: string[];
+        domainsafe?: boolean;
+        confirmOwnerConsent?: boolean;
+        comment?: string;
+        verification?: string; //GenericStatusConstants
+        fname?: string;
+        lname?: string;
         address?: string[];
-        organization: string;
-        extensions: ContactExtensions[]
+        pcode?: string;
+        phone?: string;
+        fax?: string;
+        nicRef?: ContactReference[];
+        extensions?: ContactExtensions;
     }
 
     export class ContactAeroExtensions {
