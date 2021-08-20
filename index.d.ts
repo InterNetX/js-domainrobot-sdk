@@ -1116,6 +1116,8 @@ export namespace DomainRobotModels {
         faxes?: Phone[];
         email?: string;
         address?: string[];
+        organization: string;
+        extensions: ContactExtensions[]
     }
 
     export class ContactAeroExtensions {
