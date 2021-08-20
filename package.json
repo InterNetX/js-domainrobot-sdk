@@ -1,6 +1,6 @@
 {
 	"name": "js-domainrobot-sdk",
-	"version": "2.0.17",
+	"version": "2.0.18",
 	"description": "A (node)js package for easy integration of the domainrobot API powered by InterNetX GmbH.",
 	"main": "index.js",
 	"types": "index.d.ts",
