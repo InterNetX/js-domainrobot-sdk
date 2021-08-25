@@ -1,5 +1,7 @@
 # JS Domainrobot API
 
+![](https://github.com/InterNetX/js-domainrobot-sdk/workflows/Tests/badge.svg) ![https://www.npmjs.com/package/js-domainrobot-sdk](https://badge.fury.io/js/js-domainrobot-sdk.svg)
+
 A node/js package for easy integration of the **Domainrobot API** powered by [InterNetX GmbH](https://internetx.com).
 
 ## Table of Contents
