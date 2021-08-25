@@ -420,6 +420,8 @@ export type TransferStatusConstants = "NOT_SET" | "START" | "FAILED" | "NACK" | 
 export type UkTypeConstants = "LTD" | "PLC" | "PTNR" | "STRA" | "LLP" | "IP" | "IND" | "SCH" | "RCHAR" | "GOV" | "CRC" | "STAT" | "OTHER" | "FIND" | "FCORP" | "FOTHER";
 export type UserLock = "NONE" | "CUSTOMER" | "EXPIRED" | "USER";
 export type UserProfileFlag = "OPTIONAL" | "FIX" | "RECURSE" | "HIDDEN" | "PARENT_FIX";
+export type CodeSigningProvisioningMethod = "EMAIL" | "SOFTWARE" | "SHIPPING";
+export type CodeSigningHardwarePlatform = "AEP_KEYPER" | "ARX_PRIVATE_SERVER" | "BULL_TRUSTWAY_CRYPTO_PCI" | "E_PASS_3003" | "SAFE_NET_E_TOKEN_5100" | "SAFE_NET_E_TOKEN_5105" | "SAFE_NET_E_TOKEN_5110" | "SAFE_NET_E_TOKEN_5110_FIPS" | "SAFE_NET_E_TOKEN_5200" | "SAFE_NET_E_TOKEN_5205" | "SAFE_NET_E_TOKEN_PRO_72K" | "SAFE_NET_E_TOKEN_PRO_ANYWHERE" | "SAFE_NET_I_KEY_4000" | "SAFE_NET_LUNA" | "THALES_N_SHIELD" | "ULTIMACO_CRYPTO_SERVER" | "OTHER";
 
 export namespace DomainRobotModels {
     export class Account {
@@ -452,7 +454,7 @@ export namespace DomainRobotModels {
         account?: Account;
         subjectProducts?: SubjectProduct;
         view?: CurrencyRate;
-        synchronized?: Boolean;
+        synchronized?: boolean;
         status?: AccountStatusConstants;
         invoice?: Invoice;
         payment?: PaymentConstants;
@@ -474,14 +476,14 @@ export namespace DomainRobotModels {
         constructor(config?: AccountManager)
     }
     export interface AccountManager {
-        created?: string
-        updated?: string
-        owner?: BasicUser
-        updater?: BasicUser
-        id?: number
-        name?: string
-        phone?: Phone
-        email?: string
+        created?: string;
+        updated?: string;
+        owner?: BasicUser;
+        updater?: BasicUser;
+        id?: number;
+        name?: string;
+        phone?: Phone;
+        email?: string;
     }
 
     export class AdoptExpiration {
@@ -578,6 +580,13 @@ export namespace DomainRobotModels {
         lname?: string;
         pcode?: string;
         sepa?: SEPAMandate;
+        type?: string;
+        vatNumber?: string;
+        discountValid?: string;
+        autodelete?: boolean;
+        pending?: string;
+        verifications?: BasicCustomerSpoolVerification[];
+        comments?: Comment[];
     }
 
     export class BasicCustomerSpoolVerification {
@@ -632,10 +641,10 @@ export namespace DomainRobotModels {
         lname: string,
         city: string,
         pcode: string,
-        taxable?: Boolean,
-        discount?: Boolean,
+        taxable?: boolean,
+        discount?: boolean,
         billing_term?: string,
-        autodelete?: Boolean,
+        autodelete?: boolean,
         autodelete_tlds?: string,
         email: string[],
         billing_email: string[],
@@ -732,15 +741,16 @@ export namespace DomainRobotModels {
         owner?: BasicUser;
         updater?: BasicUser;
         cancelation?: TimePeriod;
-        cancelationExpireOnly?: Boolean;
+        cancelationExpireOnly?: boolean;
         initial?: TimePeriod;
         renew?: TimePeriod;
         renewTerm?: TimePeriod;
         customer?: GenericCustomer;
         articleTypeLabel?: string;
         acrticleLabel?: string;
-        autodeleteable: Boolean;
-        restoreable?: Boolean;
+        autodeleteable: boolean;
+        restoreable?: boolean;
+        articleLabel?: string;
     }
 
     export class BillingObjectLimit {
@@ -968,6 +978,14 @@ export namespace DomainRobotModels {
         domains?: CertAuthentication[];
     }
 
+    export class CertAuthenticationStatus {
+        constructor(config?: CertAuthenticationStatus);
+    }
+    export interface CertAuthenticationStatus {
+        status?: AuthenticateStatus;
+        step?: AuthenticationStep;
+    }
+
     export class Certificate {
         constructor(config?: Certificate);
     }
@@ -1008,6 +1026,11 @@ export namespace DomainRobotModels {
         domain?: string;
         hasCsr?: Boolean;
         idn?: string;
+        serialNumber?: string;
+        codeSigningProvisioningMethod?: CodeSigningProvisioningMethod;
+        codeSigningHardwarePlatform?: CodeSigningHardwarePlatform;
+        technicalContactEmail?: string;
+        multiyear?: boolean;
     }
 
     export class CertificateData {
@@ -1031,7 +1054,9 @@ export namespace DomainRobotModels {
         algorithm?: CsrHashAlgorithmConstants;
         signatureHashAlgorithm?: SignatureHashAlgorithmConstants;
         idn?: string;
-        checkCaa?: Boolean;
+        checkCaa?: boolean;
+        certificate?: Certificate;
+        businessCase?: string;
     }
 
     export class CertificateInstallCheckData {
@@ -1039,14 +1064,14 @@ export namespace DomainRobotModels {
     }
     export interface CertificateInstallCheckData {
         ip?: string;
-        secured?: Boolean;
-        redirect?: Boolean;
-        redirectMatch?: Boolean;
-        caa?: Boolean;
-        multipleCaa?: Boolean;
-        selfSigned?: Boolean;
-        chainOk?: Boolean;
-        inventory?: Boolean;
+        secured?: boolean;
+        redirect?: boolean;
+        redirectMatch?: boolean;
+        caa?: boolean;
+        multipleCaa?: boolean;
+        selfSigned?: boolean;
+        chainOk?: boolean;
+        inventory?: boolean;
         certificate?: Certificate;
         tls?: TlsData[];
         certificateData?: X509CertificateData;
@@ -1085,6 +1110,7 @@ export namespace DomainRobotModels {
     export interface CertificateHistory {
         serialnumber?: string;
         revoked?: string;
+        serialNumber?: string;
     }
 
     export class Configuration {
@@ -1095,7 +1121,7 @@ export namespace DomainRobotModels {
         constructor(config?: Contact);
     }
     export interface Contact {
-        create?: string;
+        created?: string;
         updated?: string;
         id?: number;
         owner?: BasicUser;
@@ -1159,6 +1185,7 @@ export namespace DomainRobotModels {
     }
     export interface ContactBarcelonaExtensions {
         intendedUse?: string;
+        intededUse?: string;
     }
 
     export class ContactBirthExtensions {
@@ -1178,7 +1205,7 @@ export namespace DomainRobotModels {
         cpr?: CiraCprConstants;
         agreementVersion?: number;
         originatingIp?: string;
-        officialRepresentativ?: string;
+        officialRepresentative?: string;
         trusteePercentage?: number;
     }
 
@@ -1224,12 +1251,13 @@ export namespace DomainRobotModels {
         birth?: ContactBirthExtensions;
         trademark?: ContactTrademarkExtensions;
         identification?: ContactIdentificationExtensions;
-        languag?: string;
-        companynumber?: string;
+        language?: string;
+        companyNumber?: string;
         gender?: GenderConstants
-        vatnumber?: string;
+        vatNumber?: string;
         citizenship?: string;
         mobilePhone?: string;
+        documentNumber?: string;
     }
 
     export class ContactHkExtensions {
@@ -1241,7 +1269,8 @@ export namespace DomainRobotModels {
         documentnumber?: string;
         documentOrigin?: string;
         above18?: string;
-        industryType?: HkIndustryTypeConstants
+        industryType?: HkIndustryTypeConstants;
+        documentNumber?: string;
     }
 
     export class ContactIdentificationExtensions {
@@ -1265,18 +1294,19 @@ export namespace DomainRobotModels {
         constructor(config?: ContactIeExtensions)
     }
     export interface ContactIeExtensions {
-        contactType?: IeEntityTypeConstants
-        cronumber?: string
-        supportingnumber?: string
+        contactType?: IeEntityTypeConstants;
+        cronumber?: string;
+        supportingNumber?: string;
+        croNumber?: string;
     }
 
     export class ContactJobsExtensions {
         constructor(config?: ContactJobsExtensions);
     }
     export interface ContactJobsExtensions {
-        adminType?: Boolean;
+        adminType?: boolean;
         contactTitle?: string;
-        hrMember?: Boolean;
+        hrMember?: boolean;
         industryClass?: number;
         website?: string;
     }
@@ -1329,15 +1359,15 @@ export namespace DomainRobotModels {
         constructor(config?: ContactRoExtensions);
     }
     export interface ContactRoExtensions {
-        persontype?: string;
+        personType?: string;        
     }
 
     export class ContactRuExtensions {
         constructor(config?: ContactRuExtensions);
     }
     export interface ContactRuExtensions {
-        taxpayerIdentificationnumber?: string;
-        territoryLinkedTaxpayernumber?: string;
+        taxpayerIdentificationNumber?: string;
+        territoryLinkedTaxpayerNumber?: string;
     }
 
     export class ContactScotExtensions {
@@ -1408,36 +1438,36 @@ export namespace DomainRobotModels {
     }
     export interface ContactXxxExtensions {
         membershipID?: string;
-        nonResolverDomain?: Boolean;
+        nonResolverDomain?: boolean;
     }
 
     export class Comment {
         constructor(config?: Comment)
     }
     export interface Comment {
-        created?: string
-        updated?: number
-        id?: number
-        customer?: GenericCustomer
-        text?: string
-        user?: BasicUser
+        created?: string;
+        updated?: number;
+        id?: number;
+        customer?: GenericCustomer;
+        text?: string;
+        user?: BasicUser;
     }
 
     export class ContextHost {
         constructor(config?: ContextHost)
     }
     export interface ContextHost {
-        created?: string
-        updated?: number
-        master?: Boolean
-        csr?: string
-        serverCert?: string
-        caCert?: string
-        status?: JobStatusConstants
-        subStatus?: string
-        zone?: ContextHostZone
-        certificate?: BasicCertificate
-        name?: string
+        created?: string;
+        updated?: number;
+        master?: boolean;
+        csr?: string;
+        serverCert?: string;
+        caCert?: string;
+        status?: JobStatusConstants;
+        subStatus?: string;
+        zone?: ContextHostZone;
+        certificate?: BasicCertificate;
+        name?: string;
     }
 
     export class ContextHostZone {
@@ -1492,7 +1522,7 @@ export namespace DomainRobotModels {
         paymentMode?: string;
         paymentCurrency?: Currency;
         invoiceLanguage?: string;
-        taxable?: Boolean;
+        taxable?: boolean;
         card?: Card;
         contracts?: CustomerContract[];
         billingUsers?: BasicUser[];
@@ -1505,7 +1535,15 @@ export namespace DomainRobotModels {
         pcode?: string;
         technical?: GenericCustomer;
         sepa?: SEPAMandate;
-        pricelists?: CustomerPriceLists
+        pricelists?: CustomerPriceLists;
+        type?: string;
+        vatNumber?: string;
+        discountValid?: string;
+        autodelete?: boolean;
+        pending?: boolean;
+        verifications?: BasicCustomerSpoolVerification[];
+        tags?: CustomerTag[];
+        pin?: string;
     }
 
     export class CustomerContract {
@@ -1516,7 +1554,8 @@ export namespace DomainRobotModels {
         updated?: string;
         contract?: GenericLabelEntity;
         notice?: string;
-        ticketnumber?: string;
+        ticketNumber?: string;
+        accountManager?: AccountManager;
     }
     
     export class CustomerGroup {
@@ -1641,6 +1680,7 @@ export namespace DomainRobotModels {
 
     export interface Domain {
         created?: string;
+        domainCreated?: string;
         updated?: string;
         owner?: BasicUser;
         updater?: BasicUser;
@@ -1651,23 +1691,23 @@ export namespace DomainRobotModels {
         nameServers?: NameServer[];
         nameServerEntries?: string[];
         period?: TimePeriod;
-        trustee?: Boolean;
-        privacy?: Boolean;
+        trustee?: boolean;
+        privacy?: boolean;
         authinfo?: string;
-        domainsafe?: Boolean;
+        domainsafe?: boolean;
         parking?: ParkingProviderConstants;
         extensions?: DomainExtensions;
         logId?: number;
         nsCheck?: DNSCheck;
-        confirmOrder?: Boolean;
-        confirmOwnerConsent?: Boolean;
-        ignoreWhois?: Boolean;
+        confirmOrder?: boolean;
+        confirmOwnerConsent?: boolean;
+        ignoreWhois?: boolean;
         comment?: string;
-        includeWWW?: Boolean;
-        includeWildcard?: Boolean;
+        includeWWW?: boolean;
+        includeWildcard?: boolean;
         registrarStatus?: RegistryStatusConstants;
         registrarStatusReason?: string;
-        removeCancelation?: Boolean;
+        removeCancelation?: boolean;
         autodnsSecJob?: DNSSecJob;
         priceClass?: string;
         priceClassRenew?: string;
@@ -1686,9 +1726,9 @@ export namespace DomainRobotModels {
         expire?: string;
         payable?: string;
         action?: DomainActionConstants;
-        autoDnssec?: Boolean;
-        dnssec?: Boolean;
-        validCertificate?: Boolean;
+        autoDnssec?: boolean;
+        dnssec?: boolean;
+        validCertificate?: boolean;
         cancelationStatus?: CancelationStatusConstants;
         autoRenewStatus?: AutoRenewStatusConstants;
         dnssecData?: DNSSec[];
@@ -1705,7 +1745,7 @@ export namespace DomainRobotModels {
         domain?: string;
         registryWhen?: string;
         gainingRegistrar?: string;
-        disconnect?: Boolean;
+        disconnect?: boolean;
         notice?: string;
         logId?: number;
         registryStatus?: RegistryStatusConstants;
@@ -1713,6 +1753,20 @@ export namespace DomainRobotModels {
         execution?: ExecutionTypeConstants;
     }
 
+    export class DomainCancelationExtensions {
+        constructor(config?: DomainCancelationExtensions);
+    }
+    export interface DomainCancelationExtensions {
+        cancelation?: string;
+        disconnected?: boolean;
+    }
+    export class DomainControllValidationStatus {
+         constructor(config?: DomainControllValidationStatus);
+    }
+    export interface DomainControllValidationStatus {
+        domain?: string;
+        status?: string;
+    }
     export class DomainEnvelope {
         constructor(config?: DomainEnvelope);
     }
@@ -1721,7 +1775,12 @@ export namespace DomainRobotModels {
         id?: string;
         source?: DomainStudioDomainSource;
         services?: DomainStudioService;
-        debugTime?: Boolean;
+        debugTime?: boolean;
+        idn?: string;
+        portfolio?: boolean;
+        forceDnsCheck?: boolean;
+        onlyAvailable?: boolean;
+        isPrereg?: boolean;
     }
 
     export class DomainEnvelopeSearchRequest {
@@ -1736,6 +1795,8 @@ export namespace DomainRobotModels {
     export interface DomainExtensions {
         parkingExtensions?: DomainParkingExtensions;
         tmchClaimsNoticeExtensions?: DomainTmchClaimNoticeExtensions;
+        verificationExtensions?: ContactVerificationDomain;
+        cancelationExtensions?: DomainCancelationExtensions;
     }
 
     export class DomainMonitoring {
@@ -1749,9 +1810,9 @@ export namespace DomainRobotModels {
         name?: string;
         idn?: string;
         notificationMobiles?: Phone[];
-        ocval?: Boolean;
-        cancelation?: Boolean;
-        removed?: Boolean;
+        ocval?: boolean;
+        cancelation?: boolean;
+        removed?: boolean;
         monitoringSetups?: DomainMonitoringSetup[];
         notificationEmails?: string[];
     }
@@ -1784,6 +1845,7 @@ export namespace DomainRobotModels {
     }
     export interface DomainRestore {
         created?: string;
+        domainCreated?: string;
         updated?: string;
         owner?: BasicUser;
         updater?: BasicUser;
@@ -1794,30 +1856,30 @@ export namespace DomainRobotModels {
         nameServers?: NameServer[];
         nameServerEntries?: string[];
         period?: TimePeriod;
-        trustee?: Boolean;
-        privacy?: Boolean;
+        trustee?: boolean;
+        privacy?: boolean;
         authinfo?: string;
-        domainsafe?: Boolean;
+        domainsafe?: boolean;
         parking?: ParkingProviderConstants;
         extensions?: DomainExtensions;
         logId?: number;
         nsCheck?: DNSCheck;
-        confirmOrder?: Boolean;
-        confirmOwnerConsent?: Boolean;
-        ignoreWhois?: Boolean;
+        confirmOrder?: boolean;
+        confirmOwnerConsent?: boolean;
+        ignoreWhois?: boolean;
         comment?: string;
-        includeWWW?: Boolean;
-        includeWildcard?: Boolean;
+        includeWWW?: boolean;
+        includeWildcard?: boolean;
         registrarStatus?: RegistryStatusConstants;
         registrarStatusReason?: string;
-        removeCancelation?: Boolean;
+        removeCancelation?: boolean;
         autodnsSecJob?: DNSSecJob;
         priceClass?: string;
         priceClassRenew?: string;
         abuseEmail?: string;
         generalRequestEmail?: string;
         privacyPlusMail?: string;
-        privacyPlus?: Boolean;
+        privacyPlus?: boolean;
         nameServerGroup?: string;
         rddsOptIn?: RddsOptInConstants;
         servicesAdd?: DomainServices;
@@ -1831,9 +1893,9 @@ export namespace DomainRobotModels {
         expire?: string;
         payable?: string;
         action?: DomainActionConstants;
-        autoDnssec?: Boolean;
-        dnssec?: Boolean;
-        validCertificate?: Boolean;
+        autoDnssec?: boolean;
+        dnssec?: boolean;
+        validCertificate?: boolean;
         cancelationStatus?: CancelationStatusConstants;
         autoRenewStatus?: AutoRenewStatusConstants;
         dnssecData?: DNSSec[];
@@ -1844,10 +1906,10 @@ export namespace DomainRobotModels {
         constructor(config?: DomainSafeUser)
     }
     export interface DomainSafeUser {
-        context?: number
-        mobile?: Phone
-        user?: string
-        pin?: number
+        context?: number;
+        mobile?: Phone;
+        user?: string;
+        pin?: number;
     }
 
     export class DomainServices {
@@ -1873,12 +1935,12 @@ export namespace DomainRobotModels {
         constructor(config?: DomainStudioMarket);
     }
     export interface DomainStudioMarket {
-        services?: DomainEnvelopeSearchService[]
-        onlyAvailable?: Boolean
-        promoTlds?: string[]
-        max?: number
-        priceMin?: number
-        priceMax?: number
+        services?: DomainEnvelopeSearchService[];
+        onlyAvailable?: boolean;
+        promoTlds?: string[];
+        max?: number;
+        priceMin?: number;
+        priceMax?: number;
     }
 
     export class DomainStudioService {
@@ -1894,9 +1956,9 @@ export namespace DomainRobotModels {
         constructor(config?: DomainStudioSourceCustom);
     }
     export interface DomainStudioSourceCustom {
-        services?: DomainEnvelopeSearchService[]
-        onlyAvailable?: Boolean
-        domains?: string[]
+        services?: DomainEnvelopeSearchService[];
+        onlyAvailable?: boolean;
+        domains?: string[];
     }
 
     export class DomainStudioSourceGeo {
@@ -1905,6 +1967,7 @@ export namespace DomainRobotModels {
     export interface DomainStudioSourceGeo {
         services?: DomainEnvelopeSearchService[];
         max?: number;
+        onlyAvailable?: boolean;
     }
 
     export class DomainStudioSourceInitial {
@@ -1913,47 +1976,48 @@ export namespace DomainRobotModels {
     export interface DomainStudioSourceInitial {
         services?: DomainEnvelopeSearchService[];
         tlds?: string[];
+        onlyAvailable?: boolean;
     }
 
     export class DomainStudioSourceMarket {
         constructor(config?: DomainStudioSourceMarket)
     }
     export interface DomainStudioSourceMarket {
-        services?: DomainEnvelopeSearchService[]
-        onlyAvailable?: Boolean
-        promoTlds?: string[]
-        topTlds?: string[]
-        max?: number
-        priceMin?: number
-        priceMax?: number
+        services?: DomainEnvelopeSearchService[];
+        onlyAvailable?: boolean;
+        promoTlds?: string[];
+        topTlds?: string[];
+        max?: number;
+        priceMin?: number;
+        priceMax?: number;
     }
 
     export class DomainStudioSourceOnlinePresence {
         constructor(config?: DomainStudioSourceOnlinePresence)
     }
     export interface DomainStudioSourceOnlinePresence {
-        services?: DomainEnvelopeSearchService[]
-        onlyAvailable?: Boolean
-        max?: number
-        maxSldLength?: number
-        useDash?: Boolean
-        tlds?: string[]
-        onlinePresenceUrl?: string
-        onlinePresenceTitle?: string
-        relatedUrls?: string[]
-        category?: string
-        onlinePresenceDescription?: string
-        preferredName?: string
-        location?: string
-        business?: Boolean
-        shortName?: string
-        fullName?: string
-        firstName?: string
-        middleNames?: string[]
-        lastName?: string
-        email?: string
-        hometown?: string
-        skills?: string[]
+        services?: DomainEnvelopeSearchService[];
+        onlyAvailable?: boolean;
+        max?: number;
+        maxSldLength?: number;
+        useDash?: boolean;
+        tlds?: string[];
+        onlinePresenceUrl?: string;
+        onlinePresenceTitle?: string;
+        relatedUrls?: string[];
+        category?: string;
+        onlinePresenceDescription?: string;
+        preferredName?: string;
+        location?: string;
+        business?: boolean;
+        shortName?: string;
+        fullName?: string;
+        firstName?: string;
+        middleNames?: string[];
+        lastName?: string;
+        email?: string;
+        hometown?: string;
+        skills?: string[];
     }
     
     export class DomainStudioSourcePersonalNames {
@@ -1961,16 +2025,16 @@ export namespace DomainRobotModels {
     }
     export interface DomainStudioSourcePersonalNames {
         services?: DomainEnvelopeSearchService[];
-        onlyAvailable?: Boolean
-        max?: number
-        maxSldLength?: number
-        useDash?: Boolean
-        spinFirstName?: Boolean
-        tlds?: string[]
-        firstName?: string
-        middleNames?: string[]
-        lastName?: string
-        useIdn?: Boolean
+        onlyAvailable?: boolean;
+        max?: number;
+        maxSldLength?: number;
+        useDash?: boolean;
+        spinFirstName?: boolean;
+        tlds?: string[];
+        firstName?: string;
+        middleNames?: string[];
+        lastName?: string;
+        useIdn?: boolean;
     }
     
     export class DomainStudioSourcePremium {
@@ -1979,7 +2043,7 @@ export namespace DomainRobotModels {
 
     export interface DomainStudioSourcePremium {
         services?: DomainEnvelopeSearchService[];
-        onlyAvailable?: Boolean
+        onlyAvailable?: boolean;
         promoTlds?: string[];
         topTlds?: string[];
         max?: number;
@@ -1991,8 +2055,10 @@ export namespace DomainRobotModels {
         constructor(config?: DomainStudioSourceSimilar);
     }
     export interface DomainStudioSourceSimilar {
-        services?: string[]; //DomainEnvelopeSearchService[];
+        services?: DomainEnvelopeSearchService[];
         max?: number;
+        onlyAvailable?: boolean;
+        tlds?: string[];
     }
 
     export class DomainStudioSourceSpinWord {
@@ -2000,27 +2066,28 @@ export namespace DomainRobotModels {
     }
     export interface DomainStudioSourceSpinWord {
         services?: DomainEnvelopeSearchService[];
-        onlyAvailable?: Boolean
-        max?: number
-        maxSldLength?: number
-        tlds?: string[]
-        useIdn?: Boolean
-        similarity?: number
-        position?: number
+        onlyAvailable?: Boolean;
+        max?: number;
+        maxSldLength?: number;
+        tlds?: string[];
+        useIdn?: boolean;
+        similarity?: number;
+        position?: number;
     }
 
     export class DomainStudioSourceSuggestion {
         constructor(config?: DomainStudioSourceSuggestion);
     }
     export interface DomainStudioSourceSuggestion {
-        services?: string[]; //DomainEnvelopeSearchService[];
+        services?: DomainEnvelopeSearchService[];
         language?: string[];
         max?: number;
         maxSldLength?: number;
-        useDash?: Boolean;
-        usenumber?: Boolean;
-        useIdn?: Boolean;
+        useDash?: boolean;
+        useNumber?: boolean;
+        useIdn?: boolean;
         tlds?: string[];
+        onlyAvailable?: boolean;
     }
 
     export class DomainStudioSourcePrefixSuffix {
@@ -2035,8 +2102,8 @@ export namespace DomainRobotModels {
         tlds?: string[]
         prefixVocabulary?: string[]
         suffixVocabulary?: string[]
-        useIdn?: Boolean
-        useDash?: Boolean
+        useIdn?: boolean
+        useDash?: boolean
     }
 
     export class DomainStudioSourceUpcoming {
@@ -2044,7 +2111,7 @@ export namespace DomainRobotModels {
     }
     export interface DomainStudioSourceUpcoming {
         services?: DomainEnvelopeSearchService[];
-        onlyAvailable?: Boolean
+        onlyAvailable?: boolean
         max?: number
     }
 
@@ -2109,16 +2176,17 @@ export namespace DomainRobotModels {
         priority?: PriorityConstants;
         customer?: Customer;
         period?: TimePeriod;
-        discountable?: Boolean;
+        discountable?: boolean;
         logId?: number;
         refund?: number;
-        priceCondition?: PriceServiceEntity[];
+        priceConditions?: PriceServiceEntity[];
         comment?: string;
         normalPrice?: ExchangedPrice;
         valid?: string;
         vatRate?: number;
         vatAmount?: number;
         rate?: number;
+        exchangeFee?: number;
     }
 
     export class ExtendedValidationExtension {
@@ -2129,7 +2197,8 @@ export namespace DomainRobotModels {
         joiLocality?: string;
         joiStateOrProvince?: string;
         companynumber?: string;
-        businessCategor?: BusinessCategory
+        businessCategory?: BusinessCategory;
+        companyNumber?: string;
     }
 
     export class GenericCustomer {
@@ -2278,7 +2347,7 @@ export namespace DomainRobotModels {
         vatAmount?: number;
         status?: InvoiceStatusConstants;
         type?: AccountingDocumentTypeConstants;
-        failed?: Boolean;
+        failed?: boolean;
         currency?: string;
         paid?: string;
         document?: Document;
@@ -2899,9 +2968,9 @@ export namespace DomainRobotModels {
         bannedFiles?: string;
         header?: string;
         spam?: SpamPolicy;
-        whitelis?: MailList;
+        whitelist?: MailList;
         blacklist?: MailList;
-        excludelis?: MailList;
+        excludelist?: MailList;
     }
 
     export class MainIp {
@@ -2943,6 +3012,20 @@ export namespace DomainRobotModels {
         name?: string;
         ttl?: number;
         ipAddresses?: string[];
+    }
+
+    export class NiccomLog {
+        constructor(config?: NiccomLog);
+    }
+    export interface NiccomLog {
+        name?: string;
+        task?: string;
+        jobId?: number;
+        vertexId?: number;
+        nicTransactionId?: string;
+        source?: NiccomSourceConstants;
+        text?: string;
+        created?: string;
     }
 
     export class NicMember {
@@ -2998,6 +3081,9 @@ export namespace DomainRobotModels {
     export interface ObjectJob {
         job?: Job;
         object?: ResponseObject;
+        niccomLogs?: NiccomLog[];
+        authentication?: CertAuthenctionStatus;
+        dcvAuth?: DomainControllValidationStatus;
     }
 
     export class PeriodicBilling {
@@ -3013,7 +3099,7 @@ export namespace DomainRobotModels {
         description?: string;
         period?: TimePeriod;
         articleTypeLabel?: string;
-        articleLabe?: string;
+        articleLabel?: string;
         item?: PeriodicBilling[];
         expire?: string;
         cancelation?: string;
@@ -3033,7 +3119,7 @@ export namespace DomainRobotModels {
         updated?: string;
         name?: string;
         articleLabel?: string;
-        dnssec?: Boolean;
+        dnssec?: boolean;
         statistic?: string;
     }
 
@@ -3140,7 +3226,7 @@ export namespace DomainRobotModels {
         updater?: BasicUser;
         article?: Article;
         vatType?: string;
-        priceRequired?: Boolean;
+        priceRequired?: boolean;
         businessCase?: string;
     }
 
@@ -3179,7 +3265,7 @@ export namespace DomainRobotModels {
     export interface QueryView {
         limit?: number;
         offset?: number;
-        children?: Boolean;
+        children?: boolean;
         from?: string;
         to?: string;
     }
@@ -3212,6 +3298,7 @@ export namespace DomainRobotModels {
         type?: string;
         value?: string;
         pref?: number;
+        raw?: string;
     }
 
     export class ResponseObject {
@@ -3288,17 +3375,23 @@ export namespace DomainRobotModels {
         price?: ExchangedPrice;
         businessCase?: string;
         period?: TimePeriod;
+        amount?: number;
+        netAmount?: number;
+        vatAmount?: number;
+        currency?: string;
+        customs?: Custom[];
+        view?: CurrencyRate[];
     }
 
     export class SiteSealInformation {
         constructor(config?: SiteSealInformation);
     }
     export interface SiteSealInformation {
-        hash?: string
-        size?: string
-        html?: string
-        icon?: string
-        preview?: string
+        hash?: string;
+        size?: string;
+        html?: string;
+        icon?: string;
+        preview?: string;
     }
     
     export class Soa {
@@ -3353,18 +3446,18 @@ export namespace DomainRobotModels {
         constructor(config?: SslContactExtensions)
     }
     export interface SslContactExtensions {
-        general?: string
+        general?: string;
     }
 
     export class SslContactGeneralExtensions {
         constructor(config?: SslContactGeneralExtensions)
     }
     export interface SslContactGeneralExtensions {
-        joiCountryName?: string
-        joiLocality?: string
-        joiStateOrProvince?: string
-        companynumber?: string
-        businessCategory?: BusinessCategory
+        joiCountryName?: string;
+        joiLocality?: string;
+        joiStateOrProvince?: string;
+        companyNumber?: string;
+        businessCategory?: BusinessCategory;
     }
 
     export class SslContactReference {
@@ -3395,7 +3488,7 @@ export namespace DomainRobotModels {
         name?: string;
         approverEmail?: string;
         orderId?: string;
-        free?: Boolean
+        free?: boolean;
     }
 
     export class SubjectProduct {
@@ -3423,10 +3516,10 @@ export namespace DomainRobotModels {
         number?: string;
         comment?: string;
         payable?: string;
-        provisioning?:GenericStatusConstants,
-        netAmount?: number,
-        externalAccountingStatus?: string,
-        view?: CurrencyRate,
+        provisioning?:GenericStatusConstants;
+        netAmount?: number;
+        externalAccountingStatus?: string;
+        view?: CurrencyRate;
     }
 
     export class Subscription {
@@ -3458,23 +3551,25 @@ export namespace DomainRobotModels {
         constructor(config?: TaskCount)
     }
     export interface TaskCount {
-        taskGroup?: string
-        counts?: Map<string, number>
+        taskGroup?: string;
+        counts?: Map<string, number>;
     }
 
     export class TaskLimit {
         constructor(config?: TaskLimit)
     }
     export interface TaskLimit {
-        created?: string
-        updated?: string
-        taskGroup?: TaskGroup
-        limitSelf?: number
-        inclusiveSelf?: number
-        inclusiveChildren?: number
-        timeUnitChildren?: TimeUnitConstants
-        count?: number
-        user?: BasicUser
+        created?: string;
+        updated?: string;
+        taskGroup?: TaskGroup;
+        limitSelf?: number;
+        inclusiveSelf?: number;
+        inclusiveChildren?: number;
+        timeUnitChildren?: TimeUnitConstants;
+        timeUnitSelf?: TimeUnitConstants;
+        count?: number;
+        user?: BasicUser;
+        limitChildren?: number;
     }
 
     export class TaskUserLimit {
@@ -3500,8 +3595,8 @@ export namespace DomainRobotModels {
     }
 
     export interface TlsData {
-        version?: string
-        supported?: Boolean
+        version?: string;
+        supported?: Boolean;
     }
 
     export class Transfer {
@@ -3552,6 +3647,7 @@ export namespace DomainRobotModels {
         transactio?: string;
         type?: TransferAnswer;
         nackReason?: number;
+        transaction?: string;
     }
 
     export class TrustedApplication {
@@ -3603,7 +3699,7 @@ export namespace DomainRobotModels {
         serviceProfiles?: ServiceProfiles;
         ancestors?: BasicUser[];
         customer?: BasicCustomer;
-        nameServerGroup?: VirtualNameServerGroup[];
+        nameServerGroups?: VirtualNameServerGroup[];
         subscriptions?: Subscription[];
         applications?: TrustedApplication[];
         restrictions?: IpRestrictions;
@@ -3644,8 +3740,9 @@ export namespace DomainRobotModels {
         passwordResetMobile?: string;
         passwordResetVerifyEmail?: string;
         passwordResetEmail?: string;
-        fnam?: string;
+        fname?: string;
         lname?: string;
+        phone?: string;
     }
 
     export class UserProfile {
@@ -3674,15 +3771,16 @@ export namespace DomainRobotModels {
         constructor(config?: UserSalesReport)
     }
     export interface UserSalesReport {
-        created?: string
-        updated?: string
-        owner?: BasicUser
-        updater?: BasicUser
-        date?: string
-        domainSales?: number
-        certificateSales?: number
-        serverSales?: number
-        packageSales?: number
+        created?: string;
+        updated?: string;
+        owner?: BasicUser;
+        updater?: BasicUser;
+        date?: string;
+        domainSales?: number;
+        certificateSales?: number;
+        serverSales?: number;
+        packageSales?: number;
+        domainAddonSales?: number;
     }
     
     export class Vat {
@@ -3721,8 +3819,8 @@ export namespace DomainRobotModels {
         updater?: BasicUser;
         active?: Boolean;
         name?: string; //Name
-        mainAddres?: string; //InetAddress
-        ipAddresse?: string[];
+        mainAddress?: string; //InetAddress
+        ipAddresses?: string[];
     }
 
     export class VirtualNameServerGroup {
@@ -3787,60 +3885,61 @@ export namespace DomainRobotModels {
         constructor(config?: X509CertificateData)
     }
     export interface X509CertificateData {
-        cn?: string
-        serialNumber?: string
-        issuer?: X509CertificateIssuer
-        subject?: X509CertificateSubject
-        validity?: X509CertificateValidity
-        subjectAlternativNames?: string[]
-        plain?: string
-        signatureAlgorithm?: string
-        sha256Thumbprint?: string
-        md5Thumbprint?: string
-        publicKeyData?: X509CertificatePublicKeyData
+        cn?: string;
+        serialNumber?: string;
+        issuer?: X509CertificateIssuer;
+        subject?: X509CertificateSubject;
+        validity?: X509CertificateValidity;
+        subjectAlternativNames?: string[];
+        plain?: string;
+        signatureAlgorithm?: string;
+        sha256Thumbprint?: string;
+        md5Thumbprint?: string;
+        publicKeyData?: X509CertificatePublicKeyData;
+        sha1Thumbprint?: string;
     }
 
     export class X509CertificateIssuer {
         constructor(config?: X509CertificateIssuer)
     }
     export interface X509CertificateIssuer {
-        commonName?: string
-        organization?: string
-        country?: string
-        organizationUnit?: string
-        locality?: string
-        state?: string
+        commonName?: string;
+        organization?: string;
+        country?: string;
+        organizationUnit?: string;
+        locality?: string;
+        state?: string;
     }
 
     export class X509CertificatePublicKeyData {
         constructor(config?: X509CertificatePublicKeyData)
     }
     export interface X509CertificatePublicKeyData {
-        algorithm?: string
-        length?: Number
-        sha1Thumbprint?: string
-        sha256Thumbprint?: string
-        bytes?: string
+        algorithm?: string;
+        length?: Number;
+        sha1Thumbprint?: string;
+        sha256Thumbprint?: string;
+        bytes?: string;
     }
 
     export class X509CertificateSubject {
         constructor(config?: X509CertificateSubject)
     }
     export interface X509CertificateSubject {
-        commonName?: string
-        organization?: string
-        country?: string
-        organizationUnit?: string
-        locality?: string
-        state?: string
+        commonName?: string;
+        organization?: string;
+        country?: string;
+        organizationUnit?: string;
+        locality?: string;
+        state?: string;
     }
 
     export class X509CertificateValidity {
         constructor(config?: X509CertificateValidity)
     }
     export interface X509CertificateValidity {
-        notAfter?: string
-        notBefore?: string
+        notAfter?: string;
+        notBefore?: string;
     }
 
     export class Zone {
@@ -3866,7 +3965,7 @@ export namespace DomainRobotModels {
         main?: MainIp;
         wwwInclude?: Boolean;
         virtualNameServer?: string;
-        freeTex?: string[];
+        freeText?: string[];
         action?: NameserverActionConstants;
         grants?: string[];
         resourceRecords?: ResourceRecord[];
