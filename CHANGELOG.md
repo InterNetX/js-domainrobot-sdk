@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.0.20] - 2021-08-25
+
+* type definition tests
+* multiple fixes for type definitions
+
 ## [1.4.1] - 2020-09-02
 
 * bugfixes for Certificate and Domainservices
