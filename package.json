@@ -14,31 +14,18 @@
 		"update:pcdomainsapi": "cp node_modules/@internetx/internetx-swagger-files/src/pcdomains.json src/swagger",
 		"docs:dev": "vuepress dev docs",
 		"docs:build": "vuepress build docs",
-		"dev": "npm run development",
-		"development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=webpack.config.js",
-		"test": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --watch --hide-modules --config=webpack.config.js",
-		"prod": "yarn run production",
-		"prod-watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --watch --hide-modules --config=webpack.config.js",
-		"production": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=webpack.config.js"
+		"test:mocha": "mocha \"tests/Specs/*.js\""
 	},
 	"publishConfig": {
 		"access": "public"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.7.7",
-		"@babel/preset-env": "^7.7.7",
 		"@internetx/internetx-swagger-files": "https://github.com/InterNetX/domainrobot-api.git",
 		"axios-mock-adapter": "^1.17.0",
-		"babel-loader": "^8.0.6",
 		"cross-env": "^6.0.3",
-		"jasmine": "^3.5.0",
-		"karma": "^4.4.1",
-		"karma-chrome-launcher": "^3.1.0",
-		"karma-jasmine": "^3.1.0",
-		"karma-junit-reporter": "^2.0.1",
-		"karma-webpack": "^4.0.2",
-		"webpack": "^4.41.4",
-		"webpack-cli": "^3.3.10"
+		"expect.js": "^0.3.1",
+		"mocha": "^9.1.0",
+		"webpack": "^4.41.4"
 	},
 	"dependencies": {
 		"axios": "^0.21.1"

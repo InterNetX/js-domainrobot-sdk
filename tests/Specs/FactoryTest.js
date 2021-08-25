@@ -11,6 +11,7 @@ const DomainRobotModels = Object.assign(Backend.models, PcDomains.models);
 
 const MockModels = require("../mock/models.js");
 const PcDomainsMockModels = require("../mock/pcdomains_models.js");
+const expect = require('expect.js');
 
 /**
  * Test if all expected models are present and have the correct type
@@ -18,13 +19,12 @@ const PcDomainsMockModels = require("../mock/pcdomains_models.js");
 describe("Factory", () => {
     it("modelsExist", () => {
         for (let model in DomainRobotModels) {
-            if (MockModels[model] === undefined) {
-                expect(PcDomainsMockModels[model]).toBeDefined();
-                expect(typeof PcDomainsMockModels[model]).toBe("function");
+            if (MockModels[model] === undefined) { 
+                expect(PcDomainsMockModels[model]).to.be.a("function");
                 continue;
             }
-            expect(MockModels[model]).toBeDefined();
-            expect(typeof MockModels[model]).toBe("function");
+
+            expect(MockModels[model]).to.be.a("function");
         }
     });
 });
