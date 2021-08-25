@@ -77,7 +77,7 @@ describe("CertificateService", () => {
         }
 
         expect(domainRobotResult).to.be.a("object");
-        //compareJson(domainRobotResult.result, CreateResponse);
+        compareJson(domainRobotResult.result, CreateResponse);
         expect(domainRobotResult.status).to.be.equal(200);
     });
 });
