@@ -78,10 +78,10 @@ export declare class DomainStudio extends DomainRobotService<DomainStudio>{
 }
 export declare class LoginService extends DomainRobotService<LoginService> {
     sessionID(model: DomainRobotModels.LoginData, queryParams?: {
-        acl?: Boolean,
-        profile?: Boolean,
-        customer?: Boolean,
-        timeout?: number
+        acl?: Boolean;
+        profile?: Boolean;
+        customer?: Boolean;
+        timeout?: number;
     }): Promise<DomainRobotResult<JsonResponseDataUser, number>>;
 }
 export declare class UserService extends DomainRobotService<LoginService> {
@@ -490,7 +490,7 @@ export namespace DomainRobotModels {
         constructor(config?: AdoptExpiration)
     }
     export interface AdoptExpiration {
-        tlds?: string[]
+        tlds?: string[];
     }
 
     export class AddressClaim {
@@ -542,8 +542,8 @@ export namespace DomainRobotModels {
         constructor(config?: BasicCertificate)
     }
     export interface BasicCertificate {
-        id?: number
-        product?: string
+        id?: number;
+        product?: string;
     }
 
     export class BasicCustomer {
@@ -593,11 +593,11 @@ export namespace DomainRobotModels {
         constructor(config?: BasicCustomerSpoolVerification)
     }
     export interface BasicCustomerSpoolVerification {
-        created?: string
-        updated?: string
-        email?: string
-        status?: GenericStatusConstants
-        customer?: GenericCustomer
+        created?: string;
+        updated?: string;
+        email?: string;
+        status?: GenericStatusConstants;
+        customer?: GenericCustomer;
     }
 
     export class BasicDocument {
@@ -625,35 +625,35 @@ export namespace DomainRobotModels {
         constructor(config?: BasicUser);
     }
     export interface BasicUser {
-        context: number;
-        user: string;
+        context?: number;
+        user?: string;
     }
 
     export class BillingCustomerXML {
         constructor(config?: BillingCustomerXML)
     }
     export interface BillingCustomerXML {
-        "@_number"?: number,
-        "@_client": string,
-        "@_payment": string,
-        country: string,
-        fname: string,
-        lname: string,
-        city: string,
-        pcode: string,
-        taxable?: boolean,
-        discount?: boolean,
-        billing_term?: string,
-        autodelete?: boolean,
-        autodelete_tlds?: string,
-        email: string[],
-        billing_email: string[],
-        extension?: any,
-        sepa_mandate: SEPAMandate,
-        contact: BillingCustomerContact,
-        contract?: BillingContractXML,
-        comment?: Comment,
-        billing?: string
+        "@_number"?: number;
+        "@_client": string;
+        "@_payment": string;
+        country: string;
+        fname: string;
+        lname: string;
+        city: string;
+        pcode: string;
+        taxable?: boolean;
+        discount?: boolean;
+        billing_term?: string;
+        autodelete?: boolean;
+        autodelete_tlds?: string;
+        email: string[];
+        billing_email: string[];
+        extension?: any;
+        sepa_mandate: SEPAMandate;
+        contact: BillingCustomerContact;
+        contract?: BillingContractXML;
+        comment?: Comment;
+        billing?: string;
     }
 
     export class BillingCustomerContact {
@@ -661,17 +661,17 @@ export namespace DomainRobotModels {
     }
 
     export interface BillingCustomerContact {
-        type?: string,
-        city?: string,
-        country?: string,
-        state?: string,
-        email?: string,
-        fname?: string,
-        lname?: string,
-        address?: string[],
-        pcode?: string,
-        fax?: string,
-        phone?: string,
+        type?: string;
+        city?: string;
+        country?: string;
+        state?: string;
+        email?: string;
+        fname?: string;
+        lname?: string;
+        address?: string[];
+        pcode?: string;
+        fax?: string;
+        phone?: string;
     }
 
     export class BillingContractXML {
@@ -680,41 +680,41 @@ export namespace DomainRobotModels {
 
     export interface BillingContractXML {
         contract: {
-            "@_label": string
+            "@_label": string;
         },
         account_manager?: {
-            name: string
+            name: string;
         },
-        document_id?: number,
-        classification?: string,
-        notice?: string,
-        addons?: any
+        document_id?: number;
+        classification?: string;
+        notice?: string;
+        addons?: any;
     }
 
     export class BillingEvent {
         constructor(config?: BillingEvent)
     }
     export interface BillingEvent {
-        created?: string,
-        updated?: string,
-        owner?: BasicUser,
-        updater?: BasicUser,
-        status?: BillingStatus,
-        object?: string,
+        created?: string;
+        updated?: string;
+        owner?: BasicUser;
+        updater?: BasicUser;
+        status?: BillingStatus;
+        object?: string;
         description?: string,
-        period?: TimePeriod,
-        articleTypeLabel?: string,
-        payable?: string,
-        articleLabel?: string,
-        businessCase?: string,
-        extensions?: BillingEventExtensions
+        period?: TimePeriod;
+        articleTypeLabel?: string;
+        payable?: string;
+        articleLabel?: string;
+        businessCase?: string;
+        extensions?: BillingEventExtensions;
     }
 
     export class BillingEventExtensions {
         constructor(config?: BillingEventExtensions)
     }
     export interface BillingEventExtensions {
-        externalReference?: string
+        externalReference?: string;
     }
 
     export class BillingLimit {
@@ -748,7 +748,7 @@ export namespace DomainRobotModels {
         customer?: GenericCustomer;
         articleTypeLabel?: string;
         acrticleLabel?: string;
-        autodeleteable: boolean;
+        autodeleteable?: boolean;
         restoreable?: boolean;
         articleLabel?: string;
     }
@@ -839,7 +839,7 @@ export namespace DomainRobotModels {
         objects?: Domain[];
         template?: Domain;
         query?: Query;
-        modifiers: Modifier[];
+        modifiers?: Modifier[];
     }
 
     export class BulkDomainPostRequest {
@@ -929,10 +929,10 @@ export namespace DomainRobotModels {
         constructor(config?: BulkZonePatchRequest);
     }
     export interface BulkZonePatchRequest {
-        objects?: [ZoneBasePatchRequest];
+        objects?: ZoneBasePatchRequest[];
         template?: ZoneBasePatchRequest;
         query?: Query;
-        modifiers: Modifier[];
+        modifiers?: Modifier[];
     }
 
     export class BulkZonePostRequest {
@@ -974,7 +974,7 @@ export namespace DomainRobotModels {
         fileName?: string;
         fileContent?: string;
         approverEmails?: string[];
-        provisioning?: Boolean;
+        provisioning?: boolean;
         domains?: CertAuthentication[];
     }
 
@@ -1253,7 +1253,7 @@ export namespace DomainRobotModels {
         identification?: ContactIdentificationExtensions;
         language?: string;
         companyNumber?: string;
-        gender?: GenderConstants
+        gender?: GenderConstants;
         vatNumber?: string;
         citizenship?: string;
         mobilePhone?: string;
@@ -1374,7 +1374,7 @@ export namespace DomainRobotModels {
         constructor(config?: ContactScotExtensions)
     }
     export interface ContactScotExtensions {
-        intendedUse?: string
+        intendedUse?: string;
     }
 
     export class ContactSportExtensions {
@@ -1474,9 +1474,9 @@ export namespace DomainRobotModels {
         constructor(config?: ContextHostZone)
     }
     export interface ContextHostZone {
-        origin?: string
-        sub?: string
-        zones?: HostSubZone[]
+        origin?: string;
+        sub?: string;
+        zones?: HostSubZone[];
     }
 
     export class Currency {
@@ -2066,7 +2066,7 @@ export namespace DomainRobotModels {
     }
     export interface DomainStudioSourceSpinWord {
         services?: DomainEnvelopeSearchService[];
-        onlyAvailable?: Boolean;
+        onlyAvailable?: boolean;
         max?: number;
         maxSldLength?: number;
         tlds?: string[];
@@ -2094,16 +2094,16 @@ export namespace DomainRobotModels {
         constructor(config?: DomainStudioSourcePrefixSuffix);
     }
     export interface DomainStudioSourcePrefixSuffix {
-        services?: DomainEnvelopeSearchService[]
-        onlyAvailable?: Boolean
-        language?: string
-        max?: number
-        maxSldLength?: number
-        tlds?: string[]
-        prefixVocabulary?: string[]
-        suffixVocabulary?: string[]
-        useIdn?: boolean
-        useDash?: boolean
+        services?: DomainEnvelopeSearchService[];
+        onlyAvailable?: boolean;
+        language?: string;
+        max?: number;
+        maxSldLength?: number;
+        tlds?: string[];
+        prefixVocabulary?: string[];
+        suffixVocabulary?: string[];
+        useIdn?: boolean;
+        useDash?: boolean;
     }
 
     export class DomainStudioSourceUpcoming {
@@ -2111,8 +2111,8 @@ export namespace DomainRobotModels {
     }
     export interface DomainStudioSourceUpcoming {
         services?: DomainEnvelopeSearchService[];
-        onlyAvailable?: boolean
-        max?: number
+        onlyAvailable?: boolean;
+        max?: number;
     }
 
     export class DomainStudioSources {
@@ -2219,7 +2219,7 @@ export namespace DomainRobotModels {
         label?: string;
         name?: string;
         category?: string;
-        configuration?: Map<string, object>
+        configuration?: Map<string, object>;
         packageLabel?: string;
     }
 
@@ -2255,8 +2255,8 @@ export namespace DomainRobotModels {
         constructor(config?: HostSubZone);
     }
     export interface HostSubZone {
-        origin?: string
-        virtualNameServer?: string
+        origin?: string;
+        virtualNameServer?: string;
     }
 
     export class Id4MeAgent {
@@ -2292,7 +2292,7 @@ export namespace DomainRobotModels {
         resetUrl?: string;
         resetUrlExpire?: string;
         name?: string;
-        status?: IdentityStatus
+        status?: IdentityStatus;
         language?: string;
         record?: string[];
     }
@@ -2301,18 +2301,18 @@ export namespace DomainRobotModels {
         constructor(config?: Id4MeLayoutConfiguration);
     }
     export interface Id4MeLayoutConfiguration {
-        title?: string
-        loginLogoHeight?: string
-        loginLogoWidth?: string
-        menuLogoHeight?: string
-        menuLogoWidth?: string
-        primaryColor?: string
-        primaryText?: string
-        secondaryColor?: string
-        loginLogoSrc?: string
-        menuLogoSrc?: string
-        about?: string
-        privacy?: string
+        title?: string;
+        loginLogoHeight?: string;
+        loginLogoWidth?: string;
+        menuLogoHeight?: string;
+        menuLogoWidth?: string;
+        primaryColor?: string;
+        primaryText?: string;
+        secondaryColor?: string;
+        loginLogoSrc?: string;
+        menuLogoSrc?: string;
+        about?: string;
+        privacy?: string;
     }
 
     export class Id4MeIdentityAddons {
@@ -3344,7 +3344,7 @@ export namespace DomainRobotModels {
         constructor(config?: ServiceProfiles);
     }
     export interface ServiceProfiles {
-        serviceProfiles?: ServiceUsersProfile[]
+        serviceProfiles?: ServiceUsersProfile[];
     }
 
     export class ServiceUsersProfile {
@@ -3483,8 +3483,8 @@ export namespace DomainRobotModels {
     export interface SubjectAlternativeName {
         created?: string;
         updated?: string;
-        type: SanType;
-        sslCertificateId: number;
+        type?: SanType;
+        sslCertificateId?: number;
         name?: string;
         approverEmail?: string;
         orderId?: string;
@@ -3506,7 +3506,7 @@ export namespace DomainRobotModels {
         product?: Product;
         subject?: Subject;
         count?: number;
-        effectiveCount: number;
+        effectiveCount?: number;
         amount?: number;
         vatAmount?: number;
         currency?: string;
@@ -3516,7 +3516,7 @@ export namespace DomainRobotModels {
         number?: string;
         comment?: string;
         payable?: string;
-        provisioning?:GenericStatusConstants;
+        provisioning?: GenericStatusConstants;
         netAmount?: number;
         externalAccountingStatus?: string;
         view?: CurrencyRate;
@@ -3542,7 +3542,7 @@ export namespace DomainRobotModels {
         limits?: BillingObjectLimit[];
         acls?: UserAcl[];
         variant?: string;
-        cancelationEffective: string;
+        cancelationEffective?: string;
         businessCase?: string;
         extensions?: BillingEventExtensions;
     }
@@ -3576,9 +3576,9 @@ export namespace DomainRobotModels {
         constructor(config?: TaskUserLimit)
     }
     export interface TaskUserLimit {
-        user?: BasicUser
-        entries?: TaskLimit[]
-        count?: TaskCount[]
+        user?: BasicUser;
+        entries?: TaskLimit[];
+        count?: TaskCount[];
     }
 
     export class TimePeriod {
@@ -3986,7 +3986,7 @@ export namespace DomainRobotModels {
         allowTransfer?: Boolean;
         owner?: BasicUser;
         updater?: BasicUser;
-        logId: number;
+        logId?: number;
         comment?: string;
         domainsafe?: Boolean;
         source?: string;
@@ -4002,7 +4002,7 @@ export namespace DomainRobotModels {
         action?: NameserverActionConstants;
         grants?: string[];
         resourceRecords?: ResourceRecord[];
-        roid: number;
+        roid?: number;
         resourceRecordsAdd?: ResourceRecord[];
         resourceRecordsRem?: ResourceRecord[];
     }
