@@ -102,7 +102,7 @@ class CertificateService extends DomainRobotService {
         model = this.prepareCsr(model);
 
         return await this.sendPutRequest(
-            this.domainRobotConfig.url + "/certificate/" + model.certificateId + "/_comment",
+            this.domainRobotConfig.url + "/certificate/" + model.id + "/_comment",
             model
         );
     }
