@@ -106,7 +106,6 @@ class DomainRobotService {
 
             return domainRobotResult;
         } catch (error) {
-            console.log(error)
             throw new DomainRobotException(
                 error.response.data,
                 error.response.status
