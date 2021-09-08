@@ -1,3 +1,4 @@
+const config = require('./config');
 class DomainRobotConfig {
     constructor(domainRobotConfig) {
         // set default values if nothing has been specified
