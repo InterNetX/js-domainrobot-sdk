@@ -9,7 +9,7 @@ class Login extends DomainRobotService {
     async sessionID(model, queryParams = {}){
         let qPArr = [];
         for(let queryParam in queryParams){
-            qPArr.push(queryParam.key + "=" + queryParam.valueOf);
+            qPArr.push(queryParam + "=" + queryParams[queryParam]);
         }
         let qP = qPArr.join("&");
         return await this.sendPostRequest(
