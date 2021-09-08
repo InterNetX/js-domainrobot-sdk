@@ -18,7 +18,7 @@ const expect = require('expect.js');
  */
 describe("Factory", () => {
     it("modelsExist", () => {
-        for (let model in DomainRobotModels) {
+        for (let model in DomainRobotModels) {          
             if (MockModels[model] === undefined) { 
                 expect(PcDomainsMockModels[model]).to.be.a("function");
                 continue;

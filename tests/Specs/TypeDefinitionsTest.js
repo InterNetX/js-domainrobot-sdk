@@ -9,8 +9,50 @@ const PcDomains = new ApiFactory(pcdomains);
 const Backend = new ApiFactory(domainrobot);
 const DomainRobotModels = Object.assign(Backend.models, PcDomains.models);
 
-var assert = require('assert');
 const expect = require('expect.js');
+
+function getValueForType(type, isArrayOrSubType){
+
+    if (isArrayOrSubType !== undefined) {
+        if (type === 'string') {
+            return [new String('')];
+        } else if (type === 'number') {
+            return [new Number()];
+        } else if (type === 'boolean') {
+            return [true];
+        } else if (DomainRobotModels[type] !== undefined) {
+            return [new DomainRobotModels[type]()]
+        } else if (type === 'any') {
+            // do nothing
+        } else {
+            try {
+                return [eval("new " + type + "()")];
+            } catch (Exception) {
+                return [''];
+            }
+        }
+    } else {
+        if (type === 'string') {
+            return new String('');
+        } else if (type === 'number') {
+            return new Number();
+        } else if (type === 'boolean') {
+            return true;
+        } else if (DomainRobotModels[type] !== undefined) {
+            return new DomainRobotModels[type]()
+        } else if (type === 'any') {
+            // do nothing
+        } else {
+            try{
+                return eval("new " + type + "()");
+            }catch(Exception){
+                return '';
+            }
+        }
+    }
+
+    return '';
+}
 
 describe("Type Definitions", () => {
     it("Definitions are correct", async () => {
@@ -23,11 +65,18 @@ describe("Type Definitions", () => {
             let matches = data.match(regex);
             if (matches !== null){
                 let specificModel = new DomainRobotModels[model]();
-                for(property in specificModel){
-                    if(property !== "constructor"){                 
-                        expect(matches[1]).to.match(new RegExp(property));
+                let modelData = {};
+
+                for(property in specificModel){                    
+                    if(property !== "constructor"){       
+                        let propertyTypeMatches = matches[1].match(new RegExp(property + "\\??:\\s(.\\w+)(\\[\\]|<.+>)?;"));
+                        modelData[property] = getValueForType(propertyTypeMatches[1], propertyTypeMatches[2]);
+
+                        expect(matches[1]).to.match(new RegExp(property));                      
                     }
-                }                
+                }  
+
+                expect(typeof new DomainRobotModels[model](modelData)).to.be("object");
             }
         }
     });

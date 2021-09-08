@@ -1,0 +1,18 @@
+{
+
+    "stid": "20200311-app3-dev-3257",
+    "status": {
+        "code": "S000000",
+        "text": "Some status text",
+        "type": "SUCCESS"
+    },
+    "object": {
+        "type": "type",
+        "value": "value"
+    },
+    "data": [
+        {
+            
+        }
+    ]
+}
