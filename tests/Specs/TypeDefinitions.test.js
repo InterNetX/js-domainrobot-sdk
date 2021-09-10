@@ -12,7 +12,6 @@ const DomainRobotModels = Object.assign(Backend.models, PcDomains.models);
 const expect = require('expect.js');
 
 function getValueForType(type, isArrayOrSubType){
-
     if (isArrayOrSubType !== undefined) {
         if (type === 'string') {
             return [new String('')];

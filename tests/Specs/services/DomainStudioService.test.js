@@ -1,16 +1,16 @@
 /* global describe, it, beforeEach, expect, require */
 
-const compareJson = require("../compareJson");
+const compareJson = require("../../compareJson");
 
-const Domainrobot = require("../../src/Domainrobot");
-const DomainRobotHeaders = require("../../src/lib/Headers");
-const domainrobot = require("../../src/swagger/domainrobot.json");
-const ApiFactory = require("../../src/lib/Factory");
+const Domainrobot = require("../../../src/Domainrobot");
+const DomainRobotHeaders = require("../../../src/lib/Headers");
+const domainrobot = require("../../../src/swagger/domainrobot.json");
+const ApiFactory = require("../../../src/lib/Factory");
 const Backend = new ApiFactory(domainrobot);
 const DomainRobotModels = Backend.models;
-const ValidResponse = require("../mock/ValidResponse.json");
+const ValidResponse = require("../../mock/ValidResponse.json");
 const expect = require('expect.js');
-const axiosMock = require('../axios-mock');
+const axiosMock = require('../../axios-mock');
 
 describe("DomainstudioServiceTest", () => {
     let domainRobot;

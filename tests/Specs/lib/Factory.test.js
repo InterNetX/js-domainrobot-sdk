@@ -1,16 +1,16 @@
 /* global describe, it, expect, require */
 // ./node_modules/karma/bin/karma start tests/conf.js --single-run
 
-const domainrobot = require("../../src/swagger/domainrobot.json");
-const pcdomains = require("../../src/swagger/pcdomains.json");
+const domainrobot = require("../../../src/swagger/domainrobot.json");
+const pcdomains = require("../../../src/swagger/pcdomains.json");
 
-const ApiFactory = require("../../src/lib/Factory");
+const ApiFactory = require("../../../src/lib/Factory");
 const PcDomains = new ApiFactory(pcdomains);
 const Backend = new ApiFactory(domainrobot);
 const DomainRobotModels = Object.assign(Backend.models, PcDomains.models);
 
-const MockModels = require("../mock/models.js");
-const PcDomainsMockModels = require("../mock/pcdomains_models.js");
+const MockModels = require("../../mock/models.js");
+const PcDomainsMockModels = require("../../mock/pcdomains_models.js");
 const expect = require('expect.js');
 
 /**

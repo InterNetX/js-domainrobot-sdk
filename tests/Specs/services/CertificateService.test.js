@@ -1,22 +1,22 @@
 /* global describe, it, beforeEach, expect, require */
 
-const compareJson = require("../compareJson");
+const compareJson = require("../../compareJson");
 
-const Domainrobot = require("../../src/Domainrobot");
-const DomainRobotHeaders = require("../../src/lib/Headers");
-const domainrobot = require("../../src/swagger/domainrobot.json");
-const ApiFactory = require("../../src/lib/Factory");
+const Domainrobot = require("../../../src/Domainrobot");
+const DomainRobotHeaders = require("../../../src/lib/Headers");
+const domainrobot = require("../../../src/swagger/domainrobot.json");
+const ApiFactory = require("../../../src/lib/Factory");
 const Backend = new ApiFactory(domainrobot);
 const DomainRobotModels = Backend.models;
 
 // mock data
-const PrepareOrderResponse = require("../mock/Certificate/PrepareOrderResponse.json");
-const prepareOrderCertificateModel = require("../mock/Certificate/PrepareOrderCertificateModel.json");
+const PrepareOrderResponse = require("../../mock/Certificate/PrepareOrderResponse.json");
+const prepareOrderCertificateModel = require("../../mock/Certificate/PrepareOrderCertificateModel.json");
 
-const ValidResponse = require("../mock/ValidResponse.json");
+const ValidResponse = require("../../mock/ValidResponse.json");
 
 const expect = require('expect.js');
-const axiosMock = require('../axios-mock');
+const axiosMock = require('../../axios-mock');
 
 describe("CertificateService", () => {
     let domainRobot;
@@ -222,6 +222,7 @@ describe("CertificateService", () => {
             prepareOrderCertificateModel
         );
         certficateModel.id = "1";
+        ValidResponse.headers = {}
         axiosMock().onPut().reply(200, ValidResponse);
 
         let domainRobotResult;
@@ -330,6 +331,20 @@ describe("CertificateService", () => {
                     expect(response).to.be.a('object')
                 })
                 .list(query, keys);
+
+            // without keys
+            domainRobotResult = await domainRobot
+                .certificate()
+                .logRequest(function (requestOptions, headers) {
+                    expect(requestOptions.method).to.be.equal('POST');
+                    expect(requestOptions.url).to.match(/.+\/certificate\/_search$/);
+                    compareJson(requestOptions.data, query);
+                })
+                .logResponse(function (response, executionTime) {
+                    expect(executionTime).to.be.a('number');
+                    expect(response).to.be.a('object')
+                })
+                .list(query);
         } catch (DomainRobotException) {
             console.log(DomainRobotException);
         }
