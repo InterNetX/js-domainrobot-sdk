@@ -4,6 +4,17 @@
 
 A node/js package for easy integration of the **Domainrobot API** powered by [InterNetX GmbH](https://internetx.com).
 
+## Tests Code Coverage
+
+```bash
+=============================== Coverage summary ===============================
+Statements   : 84.71% ( 421/497 )
+Branches     : 66.03% ( 138/209 )
+Functions    : 92.12% ( 152/165 )
+Lines        : 85.19% ( 420/493 )
+================================================================================
+```
+
 ## Table of Contents
 
 1. [Preamble](#preamble)
