@@ -10,6 +10,12 @@ class WhoisService extends DomainStudio {
     super(domainRobotConfig);
   }
 
+  /**
+   * Inquire whois for a single domain.
+   * 
+   * @param domain string
+   * @returns Promise<DomainRobotResult<JsonResponseDataDomainEnvelope, number>>
+   */
   async single(domain) {
 
     let domains = []
@@ -19,6 +25,12 @@ class WhoisService extends DomainStudio {
     return await this.sendWhoisRequest(domains)
   }
 
+/**
+ * Inquire whois for multiple domains.
+ *
+ * @param domains string[]
+ * @returns Promise<DomainRobotResult<JsonResponseDataDomainEnvelope, number>>
+ */
   async multi(domains) {
     return await this.sendWhoisRequest(domains)
   }

@@ -8,13 +8,13 @@ class User2fa extends DomainRobotService {
 
     async tokenConfigInfo() {
         return await this.sendGetRequest(
-            this.domainRobotConfig.url + "/OTPAuth/"
+            this.domainRobotConfig.url + "/OTPAuth"
         );
     }
 
     async tokenConfigCreate() {
         return await this.sendPostRequest(
-            this.domainRobotConfig.url + "/OTPAuth/"
+            this.domainRobotConfig.url + "/OTPAuth"
         );
     }
 

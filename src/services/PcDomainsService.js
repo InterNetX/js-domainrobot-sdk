@@ -31,12 +31,6 @@ class PcDomains extends DomainRobotService {
         )
     }
 
-    async sistrix(domain, country) {
-        return await this.sendGetRequest(
-            this.domainRobotConfig.url + "/sistrix/" + domain + "/" + country
-        )
-    }
-
     async majestic(model) {
         return await this.sendPostRequest(
             this.domainRobotConfig.url + "/majestic",

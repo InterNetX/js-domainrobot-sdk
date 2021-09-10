@@ -18,7 +18,7 @@ class TransferOut extends DomainRobotService {
   }
 
   async answer(domain, type) {
-    return await this.sendPostRequest(
+    return await this.sendPutRequest(
         this.domainRobotConfig.url + "/transferout/" + domain + "/" + type
     );
   }

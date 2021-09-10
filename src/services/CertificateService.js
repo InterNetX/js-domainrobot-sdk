@@ -14,6 +14,7 @@ class CertificateService extends DomainRobotService {
             .match(
                 /^(-----BEGIN CERTIFICATE REQUEST-----)(.*)(-----END CERTIFICATE REQUEST-----)$/
             );
+
         if (matches !== null) {
             model.csr = [matches[1], matches[2], matches[3]].join("\r\n");
         }

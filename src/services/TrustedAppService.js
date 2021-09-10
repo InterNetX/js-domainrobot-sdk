@@ -12,9 +12,13 @@ class TrustedApp extends DomainRobotService {
         );
     }
 
-    async update(model) {
+    async update(model, keys = []) {
+        let keysString = '';
+        if (keys.length > 0) {
+            keysString = "?keys[]=" + keys.join('&keys[]=');
+        }
         return await this.sendPutRequest(
-            this.domainRobotConfig.url + "/trustedapp/" + model.id,
+            this.domainRobotConfig.url + "/trustedapp/" + model.uuid + keysString,
             model
         );
     }
