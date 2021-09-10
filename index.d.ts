@@ -105,7 +105,6 @@ export declare class UserService extends DomainRobotService<LoginService> {
     profileUpdate(model: DomainRobotModels.User): Promise<DomainRobotResult<JsonResponseDataUserProfileViews, number>>;
     serviceProfileInfo(user: string, context: number, prefix?: string): Promise<DomainRobotResult<JsonResponseDataServiceUsersProfile, number>>;
     serviceProfileUpdate(model: DomainRobotModels.User): Promise<DomainRobotResult<JsonResponseDataServiceUsersProfile, number>>;
-    verifcation(user: string, context: number, model: DomainRobotModels.User): Promise<DomainRobotResult<JsonResponseData, number>>;
 }
 
 export declare class WhoisService extends DomainRobotService<WhoisService>{
@@ -280,8 +279,6 @@ export type domainRobotConfig = {
 export class DomainRobot {
     constructor(domainRobotConfig: domainRobotConfig);
 
-    //accounting(subjectProductModel: DomainRobotModels.Subscription): AccountingService;
-
     certificate(certificateModel?: DomainRobotModels.Certificate): CertificateService;
 
     contact(contactModel?: DomainRobotModels.Contact): ContactService;
@@ -422,6 +419,7 @@ export type UserLock = "NONE" | "CUSTOMER" | "EXPIRED" | "USER";
 export type UserProfileFlag = "OPTIONAL" | "FIX" | "RECURSE" | "HIDDEN" | "PARENT_FIX";
 export type CodeSigningProvisioningMethod = "EMAIL" | "SOFTWARE" | "SHIPPING";
 export type CodeSigningHardwarePlatform = "AEP_KEYPER" | "ARX_PRIVATE_SERVER" | "BULL_TRUSTWAY_CRYPTO_PCI" | "E_PASS_3003" | "SAFE_NET_E_TOKEN_5100" | "SAFE_NET_E_TOKEN_5105" | "SAFE_NET_E_TOKEN_5110" | "SAFE_NET_E_TOKEN_5110_FIPS" | "SAFE_NET_E_TOKEN_5200" | "SAFE_NET_E_TOKEN_5205" | "SAFE_NET_E_TOKEN_PRO_72K" | "SAFE_NET_E_TOKEN_PRO_ANYWHERE" | "SAFE_NET_I_KEY_4000" | "SAFE_NET_LUNA" | "THALES_N_SHIELD" | "ULTIMACO_CRYPTO_SERVER" | "OTHER";
+
 
 export namespace DomainRobotModels {
     export class Account {
@@ -3654,6 +3652,7 @@ export namespace DomainRobotModels {
         constructor(config?: TrustedApplication);
     }
     export interface TrustedApplication {
+        id?: number;
         created?: string;
         updated?: string;
         owner?: BasicUser;
