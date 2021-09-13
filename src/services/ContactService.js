@@ -1,3 +1,4 @@
+const { DomainRobotModels } = require("../..");
 let DomainRobotService = require("./DomainRobotService");
 
 class Contact extends DomainRobotService {
@@ -43,6 +44,33 @@ class Contact extends DomainRobotService {
         }
         return await this.sendPostRequest(
             this.domainRobotConfig.url + "/contact/_search" + keysString,
+            model
+        );
+    }
+
+    /**
+     * the data for the specified verification.
+     * 
+     * @param reference string
+     * @returns Promise<DomainRobotResult<JsonResponseDataContactVerification,number>>
+     */
+    async verificationInfo(reference) {
+        return await this.sendGetRequest(
+            this.domainRobotConfig.url + "/contact/verification?reference=" + reference
+        );
+    }
+
+    /**
+      * the data for the specified verification.
+      * 
+      * mandatory fields in  DomainRobotResult.ContactVerification: reference, confirmIp, comment
+      * 
+      * @param model DomainRobotResult.ContactVerification
+      * @returns Promise<DomainRobotResult<JsonResponseDataContactVerification,number>>
+      */
+    async verificationConfirm(model) {
+        return await this.sendPutRequest(
+            this.domainRobotConfig.url + "/contact/verification/_confirm",
             model
         );
     }

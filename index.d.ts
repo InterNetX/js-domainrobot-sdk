@@ -22,6 +22,8 @@ export declare class ContactService extends DomainRobotService<ContactService> {
     list(model: DomainRobotModels.Query, keys?: string[]): Promise<DomainRobotResult<JsonResponseDataContact, number>>;
     info(id: number): Promise<DomainRobotResult<JsonResponseDataContact, number>>;
     delete(id: number): Promise<DomainRobotResult<JsonResponseDataJsonNoData, number>>;
+    verificationInfo(reference: string): Promise<DomainRobotResult<JsonResponseDataContactVerification, number>>;
+    verificationConfirm(model: DomainRobotModels.ContactVerification): Promise<DomainRobotResult<JsonResponseDataContactVerification, number>>;
 }
 export declare class DomainService extends DomainRobotService<DomainService> {
     create(model: DomainRobotModels.Domain): Promise<DomainRobotResult<JsonResponseDataObjectJob, number>>;
@@ -264,6 +266,10 @@ export interface JsonResponseDataServiceUsersProfile extends Result {
 export interface JsonResponseDataSubjectProduct extends Result {
     data: DomainRobotModels.SubjectProduct[];
 }
+export interface JsonResponseDataContactVerification extends Result {
+    data: DomainRobotModels.ContactVerification[];
+}
+
 export type domainRobotConfig = {
     url?: string;
     logRequestCallback?: Function,
@@ -1407,6 +1413,26 @@ export namespace DomainRobotModels {
     }
     export interface ContactUkExtensions {
         entityType?: string;
+    }
+
+    export class ContactVerification {
+        constructor(config?: ContactVerification);
+    }
+    export interface ContactVerification {
+        created?: string;
+        updated?: string;
+        owner?: BasicUser;
+        updater?: BasicUser;
+        reference?: string;
+        messageSend?: string;
+        confirmed?: string;
+        confirmIp: string;
+        failed?: string;
+        domains?: ContactVerificationDomain[];
+        verificationMails?: ContactVerificationMessage[];
+        comment?: string;
+        action?: string;
+        contact?: Contact;
     }
 
     export class ContactVerificationDomain {
@@ -3080,7 +3106,7 @@ export namespace DomainRobotModels {
         job?: Job;
         object?: ResponseObject;
         niccomLogs?: NiccomLog[];
-        authentication?: CertAuthenctionStatus;
+        authentication?: CertAuthenticationStatus;
         dcvAuth?: DomainControllValidationStatus;
     }
 

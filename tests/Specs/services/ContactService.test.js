@@ -212,4 +212,54 @@ describe("ContactServiceTest", () => {
         expect(result).to.be.a("object");
         expect(result.status).to.be.equal(200);
     });
+
+    it("contactVerificationInfo", async () => {
+        axiosMock().onGet().reply(200, ValidResponse);
+
+        let result;
+
+        try {
+            result = await domainRobot
+                .contact()
+                .logRequest(function (requestOptions, headers) {
+                    expect(requestOptions.method).to.be.equal('GET');
+                    expect(requestOptions.url).to.match(/.+\/contact\/verification\?reference=asdfasdf-asdfasf-adf3234$/);
+                })
+                .logResponse(function (response, executionTime) {
+                    expect(executionTime).to.be.a('number');
+                    expect(response).to.be.a('object')
+                })
+                .verificationInfo("asdfasdf-asdfasf-adf3234");
+        } catch (DomainRobotException) {
+            console.log(DomainRobotException);
+        }
+        expect(result).to.be.a("object");
+        expect(result.status).to.be.equal(200);
+    });
+
+    it("contactVerification", async () => {
+        const contactVerificationModel = new DomainRobotModels.ContactVerification({  });
+        axiosMock().onPut().reply(200, ValidResponse);
+
+        let result;
+
+        try {
+            result = await domainRobot
+                .contact()
+                .logRequest(function (requestOptions, headers) {
+                    expect(requestOptions.method).to.be.equal('PUT');
+                    expect(requestOptions.url).to.match(/.+\/contact\/verification\/_confirm$/);
+                    compareJson(requestOptions.data, contactVerificationModel);
+                })
+                .logResponse(function (response, executionTime) {
+                    expect(executionTime).to.be.a('number');
+                    expect(response).to.be.a('object')
+                })
+                .verificationConfirm(contactVerificationModel);
+        } catch (DomainRobotException) {
+            console.log(DomainRobotException);
+        }
+        expect(result).to.be.a("object");
+        expect(result.status).to.be.equal(200);
+    });
 });
