@@ -1,6 +1,6 @@
 {
 	"name": "js-domainrobot-sdk",
-	"version": "2.0.20",
+	"version": "2.0.21",
 	"description": "A (node)js package for easy integration of the domainrobot API powered by InterNetX GmbH.",
 	"main": "index.js",
 	"types": "index.d.ts",
@@ -14,7 +14,23 @@
 		"update:pcdomainsapi": "cp node_modules/@internetx/internetx-swagger-files/src/pcdomains.json src/swagger",
 		"docs:dev": "vuepress dev docs",
 		"docs:build": "vuepress build docs",
-		"test:mocha": "mocha \"tests/Specs/*.js\""
+		"test:mocha": "nyc mocha \"tests/Specs/**/*.js\""
+	},
+	"nyc": {
+		"exclude": [
+			"examples/",
+			"node_modules",
+			".github",
+			"coverage",
+			"tests",
+			"index.js"
+		],
+		"reporter": [
+			"text-summary",
+			"text",
+			"html"
+		],
+		"all": true
 	},
 	"publishConfig": {
 		"access": "public"
@@ -25,6 +41,7 @@
 		"cross-env": "^6.0.3",
 		"expect.js": "^0.3.1",
 		"mocha": "^9.1.0",
+		"nyc": "^15.1.0",
 		"webpack": "^4.41.4"
 	},
 	"dependencies": {
