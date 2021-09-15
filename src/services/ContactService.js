@@ -1,4 +1,3 @@
-const { DomainRobotModels } = require("../..");
 let DomainRobotService = require("./DomainRobotService");
 
 class Contact extends DomainRobotService {
