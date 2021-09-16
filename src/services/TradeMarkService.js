@@ -12,4 +12,4 @@ class TradeMarkService extends DomainRobotServiceInternal {
     }
 }
 
-module.exports = TradeMark;
+module.exports = TradeMarkService;

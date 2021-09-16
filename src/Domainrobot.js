@@ -16,7 +16,7 @@ const User2faService = require("./services/User2faService")
 const WhoisService = require("./services/WhoisService")
 const DomainBulkService = require("./services/DomainBulkService")
 const PcDomainsService = require("./services/PcDomainsService") 
-const TradeMark = require("./services/TradeMark")
+const TradeMarkService = require("./services/TradeMarkService")
 
 class DomainRobot {
     /**
@@ -91,7 +91,7 @@ class DomainRobot {
     }
 
     tmch() {
-        return new TradeMark(this.domainRobotConfig)
+        return new TradeMarkService(this.domainRobotConfig)
     }
 }
 
