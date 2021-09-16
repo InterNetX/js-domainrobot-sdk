@@ -3618,7 +3618,7 @@ export namespace DomainRobotModels {
     }
     export interface TmchMark {
         created?: string;
-        update?: string;
+        updated?: string;
         owner?: BasicUser;
         updater?: BasicUser;
         id?: number;
