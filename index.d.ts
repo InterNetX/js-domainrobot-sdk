@@ -61,7 +61,7 @@ export declare class ZoneService extends DomainRobotService<ZoneService>{
     import(name: string, model: DomainRobotModels.Zone, keys?: string[]): Promise<DomainRobotResult<JsonResponseDataZone, number>>;
 }
 
-export declare class TradeMark extends DomainRobotServiceInternal<TradeMark>{
+export declare class TradeMarkService extends DomainRobotServiceInternal<TradeMarkService>{
     get(reference: string): Promise<DomainRobotResult<JsonResponseDataContactTmchMark, number>>;
 }
 export declare class PollService extends DomainRobotService<PollService>{
@@ -316,6 +316,8 @@ export class DomainRobot {
     user(basicUserModel?: DomainRobotModels.BasicUser): UserService;
 
     whois(): WhoisService;
+
+    tmch(): TradeMarkService;
 }
 
 export const DomainRobotHeaders: {

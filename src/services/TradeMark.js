@@ -1,11 +1,11 @@
 const DomainRobotServiceInternal = require('./DomainRobotService');
 
-class TradeMark extends DomainRobotServiceInternal {
+class TradeMarkService extends DomainRobotServiceInternal {
     constructor(domainRobotConfig) {
         super(domainRobotConfig);
     }
 
-    async get(reference) {
+    async info(reference) {
         return await this.sendGetRequest(
             this.domainRobotConfig.url + '/tmchMark/' + reference
         );
