@@ -1,20 +1,22 @@
 /* global require,module */
 // services
-let ContactService = require("./services/ContactService")
-let CertificateService = require("./services/CertificateService")
-let DomainStudio = require("./services/DomainStudio")
-let DomainService = require("./services/DomainService")
-let SslContactService = require("./services/SslContactService")
-let ZoneService = require("./services/ZoneService")
-let TrustedAppService = require("./services/TrustedAppService")
-let PollService = require("./services/PollService")
-let TransferOutService = require("./services/TransferOutService")
-let LoginService = require("./services/LoginService")
-let UserService = require("./services/UserService")
-let User2faService = require("./services/User2faService")
-let WhoisService = require("./services/WhoisService")
-let DomainBulkService = require("./services/DomainBulkService")
-let PcDomainsService = require("./services/PcDomainsService") 
+
+const ContactService = require("./services/ContactService")
+const CertificateService = require("./services/CertificateService")
+const DomainStudio = require("./services/DomainStudio")
+const DomainService = require("./services/DomainService")
+const SslContactService = require("./services/SslContactService")
+const ZoneService = require("./services/ZoneService")
+const TrustedAppService = require("./services/TrustedAppService")
+const PollService = require("./services/PollService")
+const TransferOutService = require("./services/TransferOutService")
+const LoginService = require("./services/LoginService")
+const UserService = require("./services/UserService")
+const User2faService = require("./services/User2faService")
+const WhoisService = require("./services/WhoisService")
+const DomainBulkService = require("./services/DomainBulkService")
+const PcDomainsService = require("./services/PcDomainsService") 
+const TradeMark = require("./services/TradeMark")
 
 class DomainRobot {
     /**
@@ -86,6 +88,10 @@ class DomainRobot {
 
     pcDomains() {
         return new PcDomainsService(this.domainRobotConfig)
+    }
+
+    tmch() {
+        return new TradeMark(this.domainRobotConfig)
     }
 }
 

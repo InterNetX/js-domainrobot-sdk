@@ -67,14 +67,17 @@ describe("Type Definitions", () => {
                 let modelData = {};
 
                 for(property in specificModel){                    
-                    if(property !== "constructor"){       
+                    if(property !== "constructor"){      
+                        try{ 
                         let propertyTypeMatches = matches[1].match(new RegExp(property + "\\??:\\s(.\\w+)(\\[\\]|<.+>)?;"));
                         modelData[property] = getValueForType(propertyTypeMatches[1], propertyTypeMatches[2]);
 
                         expect(matches[1]).to.match(new RegExp(property));                      
+                        }catch(Ex){
+                            throw new Error(`Type mismatch in ${model} for ${property}`)
+                        }
                     }
                 }  
-
                 expect(typeof new DomainRobotModels[model](modelData)).to.be("object");
             }
         }

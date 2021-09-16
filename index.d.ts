@@ -60,6 +60,10 @@ export declare class ZoneService extends DomainRobotService<ZoneService>{
     stream(name: string, model: DomainRobotModels.ZoneStream, keys?: string[]): Promise<DomainRobotResult<JsonResponseDataZone, number>>;
     import(name: string, model: DomainRobotModels.Zone, keys?: string[]): Promise<DomainRobotResult<JsonResponseDataZone, number>>;
 }
+
+export declare class TradeMark extends DomainRobotServiceInternal<TradeMark>{
+    get(reference: string): Promise<DomainRobotResult<JsonResponseDataContactTmchMark, number>>;
+}
 export declare class PollService extends DomainRobotService<PollService>{
     info(): Promise<DomainRobotResult<JsonResponseDataPollMessage, number>>;
     confirm(id: number): Promise<DomainRobotResult<JsonResponseDataJsonNoData, number>>;
@@ -268,6 +272,10 @@ export interface JsonResponseDataSubjectProduct extends Result {
 }
 export interface JsonResponseDataContactVerification extends Result {
     data: DomainRobotModels.ContactVerification[];
+}
+
+export interface JsonResponseDataContactTmchMark extends Result {
+    data: DomainRobotModels.TmchMark[];
 }
 
 export type domainRobotConfig = {
@@ -3603,6 +3611,92 @@ export namespace DomainRobotModels {
         user?: BasicUser;
         entries?: TaskLimit[];
         count?: TaskCount[];
+    }
+
+    export class TmchMark {
+        constructor(config?: TmchMark)
+    }
+    export interface TmchMark {
+        created?: string;
+        update?: string;
+        owner?: BasicUser;
+        updater?: BasicUser;
+        id?: number;
+        type?: TmchMarkTypeConstants;
+        name?: string;
+        reference?: string;
+        holder?: TmchContact;
+        description?: string;
+        period?: TimePeriod;
+        documents?: TmchMarkDocument[];
+        labels?: string[];
+        comments?: TmchMarkComment[];
+        renew?: RenewStatusConstants;
+        status?: TmchMarkStatusConstants;
+        payable?: string;
+        sent?: boolean;
+        smdInclusion?: boolean;
+        claimsNotify?: boolean;
+        orderComplete?: boolean;
+        claimsNotifyExtended?: boolean;
+        extension?: TmchMarkAddon;
+        smdFile?: string;
+    }
+
+    export class TmchMarkAddon {
+        constructor(config?: TmchMarkAddon)
+    }
+    export interface TmchMarkAddon {
+        courtName?: string;
+        protection?: string;
+        courtProtectionCountry?: string;
+        courtReference?: string;
+        treatyTitle?: string;
+        treatyExecution?: string;
+        trademarkRegistration?: string;
+        trademarkClassification?: string;
+        trademarkExpire?: string;
+        trademarkNumber?: string;
+        trademarkJurisdiction?:	string;
+        parentReference?: string;
+    }
+
+    export class TmchMarkComment {
+        constructor(config?: TmchMarkComment)
+    }
+    export interface TmchMarkComment {
+        created?: string;
+        updated?: string;
+        status?: TmchMarkStatusConstants;
+        comment?: string;
+        user?: BasicUser;
+    }
+
+    export class TmchMarkContact {
+        constructor(config?: TmchMarkContact)
+    }
+    export interface TmchMarkContact {
+        entitlement?: TmchMarkHolderConstants;
+        name?: string;
+        organization?: string;
+        street?: string;
+        city?: string;
+        postalCode?: string;
+        state?: string;
+        country?: string;
+        email?: string;
+        phone?: string;
+        fax?: string;
+    }
+
+    export class TmchMarkDocument {
+        constructor(config?: TmchMarkDocument)
+    }
+    export interface TmchMarkDocument {
+        created?: string;
+        updated?: string;
+        type?: DocumentTypeConstants;
+        document?: Document;
     }
 
     export class TimePeriod {

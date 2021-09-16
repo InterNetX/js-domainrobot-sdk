@@ -8,3 +8,6 @@ tests/Tests
 .vscode
 
 yarn-error.log
+
+coverage
+.nyc_output
