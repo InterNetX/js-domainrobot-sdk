@@ -1159,6 +1159,7 @@ export namespace DomainRobotModels {
         confirmOwnerConsent?: boolean;
         comment?: string;
         verification?: string; //GenericStatusConstants
+        documents?: ContactDocument;
         fname?: string;
         lname?: string;
         address?: string[];
@@ -1844,7 +1845,7 @@ export namespace DomainRobotModels {
         checkPortfolio?: boolean;
         forceDnsCheck?: boolean;
         allowDuplicates?: boolean;
-        source?: DomainStudioDomainSource[];
+        sources?: DomainStudioDomainSource[];
         clientIp?: string;
         onlyAvailable?: boolean;
     }
