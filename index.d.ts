@@ -61,7 +61,7 @@ export declare class ZoneService extends DomainRobotService<ZoneService>{
     import(name: string, model: DomainRobotModels.Zone, keys?: string[]): Promise<DomainRobotResult<JsonResponseDataZone, number>>;
 }
 
-export declare class TradeMarkService extends DomainRobotServiceInternal<TradeMarkService>{
+export declare class TradeMarkService extends DomainRobotService<TradeMarkService>{
     get(reference: string): Promise<DomainRobotResult<JsonResponseDataContactTmchMark, number>>;
 }
 export declare class PollService extends DomainRobotService<PollService>{
@@ -354,7 +354,7 @@ export type AuthType = "PASSWORD" | "PASSWORD_TOKEN" | "ALIAS";
 export type AuthenticateStatus = "COMPLETED" | "ADDITIONAL_INFORMATION_REQUIRED" | "IN_PROGRESS" | "COMMUNICATION_SENT_TO_CUSTOMER" | "ATTEMPTED_TO_REACH_CUSTOMER" | "PENDING_CUSTOMER_APPROVAL" | "NOT_COMPLETED" | "COMPLETED_PASSED" | "COMPLETED_FAILED" | "UNABLE_TO_COMPLETE" | "NOT_STARTED";
 export type AuthenticationStep = "DOMAIN_VERIFICATION" | "VERIFICATION_CALL" | "ORGANIZATION_VERIFICATION" | "CONSUMER_AUTHENTICATION" | "CERTIFICATE" | "CONTACT_CONFIRMED" | "VERIFICATION" | "CSR_CHECK" | "DCV_CHECK" | "OV_CALLBACK" | "FREE_DVUP" | "EV_CLICKTROUGH";
 export type AutoRenewStatusConstants = "TRUE" | "FALSE" | "ONCE";
-export type BillingStatus = "ADD" | "REMOVE" | "UPDATE" | "IGNORE" | "CUSTOMER_CHANGED" | "USER_CHANGED" | "ACTIVE" | "CANCELED" | "CANCELED_EXPIRE" | "RESTORE" | "AUTODELETE" | "REMOVED" | "DROP";
+export type BillingStatus = "ADD" | "REMOVE" | "UPDATE" | "IGNORE" | "CUSTOMER_CHANGED" | "USER_CHANGED" | "UPGRADE" | "ACTIVE" | "CANCELED" | "CANCELED_EXPIRE" | "RESTORE" | "AUTODELETE" | "REMOVED" | "DROP";
 export type BusinessCategory = "PRIVATE_ORGANIZATION" | "GOVERNMENT_ENTITY" | "BUSINESS_ENTITY";
 export type CancelationStatusConstants = "DELETE" | "DELETE_EXPIRE" | "TRANSIT" | "TRANSIT_EXPIRE" | "PREACK" | "PREACK_EXPIRE";
 export type CancelationTypeConstants = "DELETE" | "TRANSIT" | "PREACK";
@@ -362,6 +362,7 @@ export type CardStatus = "LOST" | "EXPIRED" | "ACTIVE";
 export type CertificateTransparencyPrivacyConstants = "PUBLIC" | "REDACTED";
 export type CertificateType = "FQDN" | "MAIL" | "CODE";
 export type CiraCprConstants = "CCT" | "RES" | "CCO" | "ABO" | "TDM" | "MAJ" | "GOV" | "LGR" | "TRS" | "PRT" | "ASS" | "TRD" | "PLT" | "EDU" | "LAM" | "HOP" | "INB" | "OMK";
+export type CnAuditDocumentType = "ID_CARD" | "PASSPORT" | "CN_MAINLAND_TRAVEL_PERMIT_HK_MO" | "CN_MAINLAND_TRAVEL_PERMIT_TW" | "PERMANENT_RESIDENCE_PERMIT_FOREIGNERS" | "CN_RESIDENCE_PERMIT_HK_MO" | "CN_RESIDENCE_PERMIT_TW" | "MILITARY_ID_CARD" | "OTHER_ID_CARD" | "CN_ORG_ID" | "CN_BUSINESS_ID" | "CN_SOCIAL_CREDIT_LICENCE" | "MILITARY_UNIT_CODE" | "MILITARY_UNIT_EXTERNAL_PERMIT" | "INSTITUION_LEGAL_PERSON" | "CN_FOREIGN_ENTERPRISE_REGISTRATION" | "SOCIAL_ORG_LEGAL_PERSON" | "RELIGIOS_ACTIVITY" | "PRIVATE_NON_ENTERPRISE_REGISTRATION" | "FOUNDATION_LEGAL_PERSON" | "LAW_FIRM_LICENCE" | "CN_FOREIGN_CULTURAL_CENTER" | "CN_FOREIGN_TOURISM_DEPARTMENT_REGISTRATION" | "FORENSIC_EXPERTISE_LICENCE" | "SOCIAL_AGENCY_CERTIFICATE" | "PRIVATE_SCHOOL_PERMIT" | "MEDICAL_INSTITUION_LICENCE" | "NOTARY_ORG_LICENCE" | "CN_FOREIGN_EMBASSY_CHILDREN_PERMIT_BEIJING" | "OTHER_ORG_DOC" | "ORG_CERTIFICATE";
 export type ClearAccountPeriod = "DAY" | "MONTH" | "BILL" | "WEEK" | "NONE";
 export type CodeSigningType = "JAVASOFT" | "MS_AUTHENTICODE" | "VBA" | "ADOBE_AIR" | "APPLE";
 export type ConditionType = "AND" | "OR";
@@ -419,7 +420,7 @@ export type RenewStatusConstants = "AUTO" | "CANCELED" | "ONCE";
 export type RoPersonTypeConstants = "P" | "AP" | "NC" | "C" | "GI" | "PI" | "O";
 export type SanType = "FQDN" | "SUBDOMAIN" | "WILDCARD";
 export type ServerSoftwareTypeConstants = "IIS4" | "IIS5" | "APACHE2" | "APACHESSL" | "PLESK" | "TOMCAT" | "NOT_SET";
-export type SignatureHashAlgorithmConstants = "SHA1" | "SHA2" | "SHA2_FULL_CHAIN" | "UNKNOWN" | "SHA384" | "SHA512" | "SHA256" | "SHA384_SHA1" | "SHA256_SHA256" | "SHA256_ECDSA_SHA1" | "SHA384ECDSA_SHA1" | "SHA384_ECDSA_SHA1" | "SHA256_ECDSA_SHA384_ECDSA" | "SHA384_ECDSA_SHA384_ECDSA";
+export type SignatureHashAlgorithmConstants = "DEFAULT" | "SHA1" | "SHA2" | "SHA2_FULL_CHAIN" | "UNKNOWN" | "SHA384" | "SHA512" | "SHA256" | "SHA384_SHA1" | "SHA256_SHA256" | "SHA256_ECDSA_SHA1" | "SHA384ECDSA_SHA1" | "SHA384_ECDSA_SHA1" | "SHA256_ECDSA_SHA384_ECDSA" | "SHA384_ECDSA_SHA384_ECDSA";
 export type StatusType = "SUCCESS" | "ERROR" | "NOTIFY" | "NOTICE" | "NICCOM_NOTIFY";
 export type SepaStatus = "ACTIVE" | "UPDATE" | "CANCELED" | "EXPIRED" | "LOCKED" | "REMOVE";
 export type TanMethods = "METHOD_EMAIL" | "METHOD_MOBILE" | "METHOD_2FA";
@@ -569,6 +570,7 @@ export namespace DomainRobotModels {
         group?: number;
         name?: string;
         organization?: string;
+        organization2?: string;
         vatnumber?: string;
         gender?: string;
         title?: string;
@@ -580,10 +582,12 @@ export namespace DomainRobotModels {
         fax?: Phone;
         emails?: string[];
         billingEmails?: string[];
+        contacts?: Contact[];
         payment?: string;
         paymentMode?: string;
         paymentCurrency?: Currency;
         invoiceLanguage?: string;
+        pin?: string;
         taxable?: Boolean;
         card?: Card;
         contracts?: CustomerContract[];
@@ -1199,7 +1203,6 @@ export namespace DomainRobotModels {
     }
     export interface ContactBarcelonaExtensions {
         intendedUse?: string;
-        intededUse?: string;
     }
 
     export class ContactBirthExtensions {
@@ -1228,6 +1231,19 @@ export namespace DomainRobotModels {
     }
     export interface ContactCatExtensions {
         intendedUse?: string;
+    }
+
+    export class ContactDocument {
+        constructor(config?: ContactDocument);
+    }
+    export interface ContactDocument {
+        created?: string;
+        updated?: string;
+        contact?: Contact;
+        document?: Document;
+        type?: CnAuditDocumentType;
+        verification?: GenericStatusConstants;
+        expire?: string;
     }
 
     export class ContactExtensions {
@@ -1366,6 +1382,7 @@ export namespace DomainRobotModels {
         status?: ObjectStatus;
         type?: ContactReferenceType;
         role?: ContactReferenceType;
+        verification?: GenericStatusConstants;
         name?: string;
     }
 
@@ -1822,7 +1839,16 @@ export namespace DomainRobotModels {
     }
     export interface DomainEnvelopeSearchRequest {
         searchToken?: string;
+        currency?: string;
+        debug?: boolean;
+        checkPortfolio?: boolean;
+        forceDnsCheck?: boolean;
+        allowDuplicates?: boolean;
+        source?: DomainStudioDomainSource[];
+        clientIp?: string;
+        onlyAvailable?: boolean;
     }
+
     export class DomainExtensions {
         constructor(config?: DomainExtensions);
     }
@@ -2178,6 +2204,13 @@ export namespace DomainRobotModels {
         confirmIp?: string;
     }
 
+    export class DomainstudioSocialMediaRequest {
+        constructor(config?: DomainstudioSocialMediaRequest);
+    }
+    export interface DomainstudioSocialMediaRequest {
+        searchToken?: string;
+    }
+
     export class EstimationData {
         constructor(config?: EstimationData);
     }
@@ -2208,7 +2241,7 @@ export namespace DomainRobotModels {
         type?: PriceTypeConstants;
         currency?: Currency;
         priority?: PriorityConstants;
-        customer?: Customer;
+        customer?: GenericCustomer;
         period?: TimePeriod;
         discountable?: boolean;
         logId?: number;
@@ -2336,17 +2369,17 @@ export namespace DomainRobotModels {
     }
     export interface Id4MeLayoutConfiguration {
         title?: string;
+        privacy?: string;
+        about?: string;
         loginLogoHeight?: string;
         loginLogoWidth?: string;
+        loginLogoSrc?: string;
         menuLogoHeight?: string;
         menuLogoWidth?: string;
+        menuLogoSrc?: string;
         primaryColor?: string;
         primaryText?: string;
         secondaryColor?: string;
-        loginLogoSrc?: string;
-        menuLogoSrc?: string;
-        about?: string;
-        privacy?: string;
     }
 
     export class Id4MeIdentityAddons {
@@ -2370,7 +2403,7 @@ export namespace DomainRobotModels {
         updater?: BasicUser;
         id?: number;
         number?: string;
-        customer?: Customer;
+        customer?: GenericCustomer;
         payment?: PaymentConstants;
         paymentMode?: string;
         paymentTransaction?: string;
@@ -3139,6 +3172,7 @@ export namespace DomainRobotModels {
         cancelation?: string;
         businessCase?: string;
         extensions?: BillingEventExtensions;
+        payable?: string;
     }
 
     export class Phone {
@@ -3579,6 +3613,7 @@ export namespace DomainRobotModels {
         cancelationEffective?: string;
         businessCase?: string;
         extensions?: BillingEventExtensions;
+        payable?: string;
     }
 
     export class TaskCount {
@@ -3613,6 +3648,23 @@ export namespace DomainRobotModels {
         user?: BasicUser;
         entries?: TaskLimit[];
         count?: TaskCount[];
+    }
+
+    export class TmchContact {
+        constructor(config?: TmchContact)
+    }
+    export interface TmchContact {
+        entitlement?: TmchMarkHolderConstants;
+        name?: string;
+        organization?: string;
+        street?: string;
+        city?: string;
+        postalCode?: string;
+        state?: string;
+        country?: string;
+        email?: string;
+        phone?: string;
+        fax?: string;
     }
 
     export class TmchMark {
