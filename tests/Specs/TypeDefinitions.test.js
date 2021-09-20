@@ -9,7 +9,7 @@ const PcDomains = new ApiFactory(pcdomains);
 const Backend = new ApiFactory(domainrobot);
 const DomainRobotModels = Object.assign(Backend.models, PcDomains.models);
 
-const expect = require('expect.js');
+const expect = require('chai').expect;
 
 function getValueForType(type, isArrayOrSubType){
     if (isArrayOrSubType !== undefined) {
@@ -78,7 +78,7 @@ describe("Type Definitions", () => {
                         }
                     }
                 }  
-                expect(typeof new DomainRobotModels[model](modelData)).to.be("object");
+                expect(new DomainRobotModels[model](modelData)).to.be.an("object");
             }
         }
     });

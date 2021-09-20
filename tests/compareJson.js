@@ -1,5 +1,4 @@
-const expect = require('expect.js');
-
+const expect = require('chai').expect;
 /* global expect, module */
 function compareJSON(json1, json2) {
   for (let item in json1) {

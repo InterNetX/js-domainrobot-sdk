@@ -10,7 +10,7 @@ const DomainRobotModels = Object.assign(Backend.models, PcDomains.models);
 
 const MockModels = require("../../mock/models.js");
 const PcDomainsMockModels = require("../../mock/pcdomains_models.js");
-const expect = require('expect.js');
+const expect = require('chai').expect;
 const DomainRobotResult = require("../../../src/lib/DomainRobotResult");
 const { DomainSafeObject } = require("../../mock/models.js");
 

@@ -8,7 +8,7 @@ const ApiFactory = require("../../../src/lib/Factory");
 const PcDomains = new ApiFactory(pcdomains);
 const PcDomainsModels = PcDomains.models;
 const ValidResponse = require("../../mock/ValidResponse.json");
-const expect = require('expect.js');
+const expect = require('chai').expect;
 const axiosMock = require('../../axios-mock');
 
 describe("PcDomainsServiceTest", () => {

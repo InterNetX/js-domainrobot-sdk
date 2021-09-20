@@ -8,7 +8,7 @@ const ApiFactory = require("../../../src/lib/Factory");
 const Backend = new ApiFactory(domainrobot);
 const DomainRobotModels = Backend.models;
 const ValidResponse = require("../../mock/ValidResponse.json");
-const expect = require('expect.js');
+const expect = require('chai').expect;
 const axiosMock = require('../../axios-mock');
 
 describe("WhoisServiceTest", () => {

@@ -15,7 +15,7 @@ const prepareOrderCertificateModel = require("../../mock/Certificate/PrepareOrde
 
 const ValidResponse = require("../../mock/ValidResponse.json");
 
-const expect = require('expect.js');
+const expect = require('chai').expect;
 const axiosMock = require('../../axios-mock');
 
 describe("DomainService", () => {
