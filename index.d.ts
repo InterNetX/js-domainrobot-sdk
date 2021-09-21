@@ -1326,7 +1326,6 @@ export namespace DomainRobotModels {
     }
     export interface ContactIeExtensions {
         contactType?: IeEntityTypeConstants;
-        cronumber?: string;
         supportingNumber?: string;
         croNumber?: string;
     }
@@ -1491,6 +1490,14 @@ export namespace DomainRobotModels {
     export interface ContactXxxExtensions {
         membershipID?: string;
         nonResolverDomain?: boolean;
+    }
+
+    export class ContactZuerichExtensions {
+        constructor(config?: ContactZuerichExtensions);
+    }
+    export interface ContactZuerichExtensions {
+        enterpriseId?: string;
+        isAuthority?: boolean;
     }
 
     export class Comment {
