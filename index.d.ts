@@ -3657,7 +3657,34 @@ export namespace DomainRobotModels {
         entries?: TaskLimit[];
         count?: TaskCount[];
     }
-
+    export class TmchClaimsNotice {
+        constructor(config?: TmchClaimsNotice)
+    }
+    export interface TmchClaimsNotice {
+        created?: string;
+        updated?: string;
+        owner?: BasicUser;
+        updater?: BasicUser;
+        reference?: string;
+        name?: Domain;
+        idn?: string;
+        ownerc?: Contact;
+        messageSent?: string;
+        email?: string;
+        confirmed?: string;
+        confirmIP?: string;
+        status?: GenericStatusConstants;
+        comment?: string;
+        tmchClaimsNoticeMails?: TmchClaimsNoticeMessage[];
+        expire?: string;
+    }
+    export class TmchClaimsNoticeMessage {
+        constructor(config?: TmchClaimsNoticeMessage)
+    }
+    export interface TmchClaimsNoticeMessage {
+        created?: string;
+        updated?: string;
+    }
     export class TmchContact {
         constructor(config?: TmchContact)
     }
