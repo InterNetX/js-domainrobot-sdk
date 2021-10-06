@@ -3306,6 +3306,42 @@ export namespace DomainRobotModels {
         businessCase?: string;
     }
 
+    export class PurchasePrice {
+        constructor(config?: PurchasePrice);
+    }
+    export interface PurchasePrice {
+        created?: string;
+        updated?: string;
+        id?: number;
+        owner?: BasicUser;
+        updater?: BasicUser;
+        amount?: number;
+        type?: PriceTypeConstants;
+        currency?: string;
+        priority?: PriorityConstants;
+        customer?: GenericCustomer;
+        period?: TimePeriod;
+        discountable?: boolean;
+        logId?: number;
+        refund?: number;
+        priceConditions?: PriceServiceEntity[];
+        comment?: string;
+        normalPrice?: ExchangedPrice;
+        valid?: string;
+        product?: Product;
+        amountEur?: number;
+        amountUsd?: number;
+        purchasePriceConditions?: PurchasePriceServiceEntity;
+    }
+
+    export class PurchasePriceServiceEntity {
+        constructor(config?: PurchasePriceServiceEntity);
+    }
+    export interface PurchasePriceServiceEntity {
+        configuration?: any;
+        condition?: ServiceEntity;
+    }
+
     export class Query {
         constructor(config?: Query);
     }
