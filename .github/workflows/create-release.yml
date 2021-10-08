@@ -26,5 +26,5 @@ jobs:
       - name: Create Release
         uses: shogo82148/actions-create-release@v1
         with:
-          body_path: release-notes/${{ env.GITHUB_REF }}
+          body_path: release-notes/${{ env.GITHUB_REF }}.txt
           release_name: ${{ env.GITHUB_REF }}
