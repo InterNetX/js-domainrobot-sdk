@@ -3167,6 +3167,7 @@ export namespace DomainRobotModels {
     export interface PeriodicBilling {
         created?: string;
         updated?: string;
+        id?: number;
         owner?: BasicUser;
         updater?: BasicUser;
         status?: BillingStatus;

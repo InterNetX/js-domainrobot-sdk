@@ -6,7 +6,7 @@ name: Create Release from Tag
 on:
   push:
     tags:
-      - '*'
+      - 'v*'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -26,5 +26,5 @@ jobs:
       - name: Create Release
         uses: shogo82148/actions-create-release@v1
         with:
-          body_path: release-notes/${{ env.GITHUB_REF }}.txt
+          body_path: release-notes/v${{ env.GITHUB_REF }}.txt
           release_name: ${{ env.GITHUB_REF }}
