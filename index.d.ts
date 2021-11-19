@@ -353,6 +353,7 @@ export type AuthMethodConstants = "DNS" | "EMAIL" | "FILE" | "ORG";
 export type AuthType = "PASSWORD" | "PASSWORD_TOKEN" | "ALIAS";
 export type AuthenticateStatus = "COMPLETED" | "ADDITIONAL_INFORMATION_REQUIRED" | "IN_PROGRESS" | "COMMUNICATION_SENT_TO_CUSTOMER" | "ATTEMPTED_TO_REACH_CUSTOMER" | "PENDING_CUSTOMER_APPROVAL" | "NOT_COMPLETED" | "COMPLETED_PASSED" | "COMPLETED_FAILED" | "UNABLE_TO_COMPLETE" | "NOT_STARTED";
 export type AuthenticationStep = "DOMAIN_VERIFICATION" | "VERIFICATION_CALL" | "ORGANIZATION_VERIFICATION" | "CONSUMER_AUTHENTICATION" | "CERTIFICATE" | "CONTACT_CONFIRMED" | "VERIFICATION" | "CSR_CHECK" | "DCV_CHECK" | "OV_CALLBACK" | "FREE_DVUP" | "EV_CLICKTROUGH";
+export type AutoDeleteStatus = "CONFIRMED" | "DELETED" | "NOTIFY" | "NOTIFY_5" | "NOTIFY_10" | "NOTIFY_15" | "NOTIFY_20" | "NOTIFY_30" | "NOTIFY_35" | "NOTIFY_45" | "PENDING" | "RENEWED" | "RESTORED" | "CANCELED";
 export type AutoRenewStatusConstants = "TRUE" | "FALSE" | "ONCE";
 export type BillingStatus = "ADD" | "REMOVE" | "UPDATE" | "IGNORE" | "CUSTOMER_CHANGED" | "USER_CHANGED" | "UPGRADE" | "ACTIVE" | "CANCELED" | "CANCELED_EXPIRE" | "RESTORE" | "AUTODELETE" | "REMOVED" | "DROP";
 export type BusinessCategory = "PRIVATE_ORGANIZATION" | "GOVERNMENT_ENTITY" | "BUSINESS_ENTITY";
@@ -393,7 +394,7 @@ export type IdentityStatus = "VERIFY" | "SUCCESS";
 export type InvoiceStatusConstants = "CREATED" | "SIGNED" | "SENT" | "RESEND" | "FINISHED" | "LIVECONFIRMED" | "LIVEPENDING" | "POSTPENDING" | "POSTCONFIRMED";
 export type IpRestrictionTypeConstants = "CLONE" | "USER" | "CONTEXT";
 export type ItEntityTypeConstants = "ITALIAN_AND_FOREIGN_NATURAL_PERSONS" | "ITALIAN_COMPANIES_ONE_MAN_COMPANIES" | "ITALIAN_FREELANCE_WORKERS_PROFESSIONALS" | "ITALIAN_NON_PROFIT_ORGANIZATIONS" | "ITALIAN_PUBLIC_ORGANIZATIONS" | "ITALIAN_OTHER_SUBJECTS" | "FOREIGN_NON_NATURAL_PERSONS";
-export type IeEntityTypeConstants = "COM" | "CHA" | "OTH";
+export type IeEntityTypeConstants = "COM" | "OTH";
 export type JobStatusConstants = "RUNNING" | "SUCCESS" | "FAILED" | "CANCELED" | "SUPPORT" | "DEFERRED" | "NOT_SET" | "WAIT";
 export type MessageTypeConstants = "INITIAL" | "FIRST_REMINDER" | "SECOND_REMINDER" | "LAST_REMINDER";
 export type ModifierConstants = "TTL" | "MX" | "A" | "AAAA" | "SOA_EMAIL" | "NSERVER" | "CNAME" | "TXT" | "ALL" | "MAIN_IP" | "OWNERC" | "ADMINC" | "TECHC" | "ZONEC" | "BILLINGC" | "ALIAS";
@@ -406,6 +407,8 @@ export type OrderType = "DESC" | "ASC";
 export type ParkingProviderConstants = "SEDO" | "NAMEDRIVE" | "PARKINGCREW";
 export type PaymentConstants = "PRE" | "POST" | "LIVE";
 export type PolicyMode = "DISABLED" | "QUARANTINE" | "DISCARD" | "ACCEPT";
+export type PriceMarkupType = "PERCENT" | "ABSOLUTE";
+export type PriceRounding = "NONE" | "ROUND_X0" | "ROUND_00" | "ROUND_X9" | "ROUND_99";
 export type PriceTypeConstants = "GROSS" | "NET";
 export type PriorityConstants = "DEFAULT" | "OFFER" | "PROTECTED" | "PROMO";
 export type ProtectionConstants = "HIGH" | "MEDIUM" | "LOW" | "OFF" | "CUSTOM";
@@ -419,6 +422,7 @@ export type RegistryStatusConstants = "ACTIVE" | "HOLD" | "LOCK" | "HOLD_LOCK" |
 export type RenewStatusConstants = "AUTO" | "CANCELED" | "ONCE";
 export type RoPersonTypeConstants = "P" | "AP" | "NC" | "C" | "GI" | "PI" | "O";
 export type SanType = "FQDN" | "SUBDOMAIN" | "WILDCARD";
+export type SocialMediaPlatform = "FACEBOOK" | "TWITTER" | "PINTEREST" | "YOUTUBE" | "TIKTOK" | "GITHUB" | "TWITCH" | "VIMEO" | "VK";
 export type ServerSoftwareTypeConstants = "IIS4" | "IIS5" | "APACHE2" | "APACHESSL" | "PLESK" | "TOMCAT" | "NOT_SET";
 export type SignatureHashAlgorithmConstants = "DEFAULT" | "SHA1" | "SHA2" | "SHA2_FULL_CHAIN" | "UNKNOWN" | "SHA384" | "SHA512" | "SHA256" | "SHA384_SHA1" | "SHA256_SHA256" | "SHA256_ECDSA_SHA1" | "SHA384ECDSA_SHA1" | "SHA384_ECDSA_SHA1" | "SHA256_ECDSA_SHA384_ECDSA" | "SHA384_ECDSA_SHA384_ECDSA";
 export type StatusType = "SUCCESS" | "ERROR" | "NOTIFY" | "NOTICE" | "NICCOM_NOTIFY";
@@ -532,6 +536,18 @@ export namespace DomainRobotModels {
         label?: string;
     }
 
+    export class AuthSession {
+        constructor(config?: AuthSession);
+    }
+    export interface AuthSession {
+        created?: string;
+        updated?: string;
+        owner?: BasicUser;
+        updater?: BasicUser;
+        language?: string;
+        configuration?: Configuration;
+    }
+
     export class Application {
         constructor(config?: Application);
     }
@@ -541,6 +557,23 @@ export namespace DomainRobotModels {
         name?: string;
         functionCodes?: string[];
     }
+
+    export class AutoDeleteDomain {
+        constructor(config?: AutoDeleteDomain);
+    }
+    export interface AutoDeleteDomain {
+        created?: string;
+        updated?: string;
+        owner?: BasicUser;
+        updater?: BasicUser;
+        domain?: Domain;
+        changed?: string;
+        nicMemberLabel?: string;
+        status?: AutoDeleteStatus;
+        paymentLimit?: string;
+        payable?: string;
+    }
+
     export class BackupMx {
         constructor(config?: BackupMx);
     }
@@ -605,6 +638,34 @@ export namespace DomainRobotModels {
         pending?: string;
         verifications?: BasicCustomerSpoolVerification[];
         comments?: Comment[];
+        persistent?: BasicCustomer;
+    }
+
+    export class basicCustomerContact {
+        constructor(config?: basicCustomerContact);
+    }
+    export interface basicCustomerContact {
+        created?: string;
+        updated?: string;
+        owner?: BasicUser;
+        updater?: BasicUser;
+        id?: number;
+        customer?: GenericCustomer;
+        type?: ContactType;
+        firstName?: string;
+        lastName?: string;
+        title?: string;
+        label?: string;
+        language?: string;
+        gender?: GenderConstants;
+        postalCode?: string;
+        city?: string;
+        country?: string;
+        state?: string;
+        phones?: Phone[];
+        faxes?: Phone[];
+        email?: string;
+        address?: string[];
     }
 
     export class BasicCustomerSpoolVerification {
@@ -1002,6 +1063,7 @@ export namespace DomainRobotModels {
     export interface CertAuthenticationStatus {
         status?: AuthenticateStatus;
         step?: AuthenticationStep;
+        updated?: string;
     }
 
     export class Certificate {
@@ -1049,6 +1111,8 @@ export namespace DomainRobotModels {
         codeSigningHardwarePlatform?: CodeSigningHardwarePlatform;
         technicalContactEmail?: string;
         multiyear?: boolean;
+        reissueRequired?: boolean;
+        reissueStatus?: string;
     }
 
     export class CertificateData {
@@ -1075,6 +1139,7 @@ export namespace DomainRobotModels {
         checkCaa?: boolean;
         certificate?: Certificate;
         businessCase?: string;
+        ecCurve?: CsrHashAlgorithmConstants;
     }
 
     export class CertificateInstallCheckData {
@@ -1273,6 +1338,7 @@ export namespace DomainRobotModels {
         madrid?: ContactMadridExtensions;
         scot?: ContactScotExtensions;
         ie?: ContactIeExtensions;
+        zuerich?: ContactZuerichExtensions;
     }
 
     export class ContactGeneralExtensions {
@@ -1327,7 +1393,6 @@ export namespace DomainRobotModels {
     export interface ContactIeExtensions {
         contactType?: IeEntityTypeConstants;
         supportingNumber?: string;
-        croNumber?: string;
     }
 
     export class ContactJobsExtensions {
@@ -1840,6 +1905,7 @@ export namespace DomainRobotModels {
         forceDnsCheck?: boolean;
         onlyAvailable?: boolean;
         isPrereg?: boolean;
+        whoisTimeout?: number;
     }
 
     export class DomainEnvelopeSearchRequest {
@@ -1855,6 +1921,7 @@ export namespace DomainRobotModels {
         sources?: DomainStudioDomainSource[];
         clientIp?: string;
         onlyAvailable?: boolean;
+        whoisTimeout?: number;
     }
 
     export class DomainExtensions {
@@ -2217,6 +2284,8 @@ export namespace DomainRobotModels {
     }
     export interface DomainstudioSocialMediaRequest {
         searchToken?: string;
+        platforms?: SocialMediaPlatform;
+        clientIp?: string;
     }
 
     export class EstimationData {
@@ -2276,6 +2345,30 @@ export namespace DomainRobotModels {
         companyNumber?: string;
     }
 
+    export class ExternalAccounting {
+        constructor(config?: ExternalAccounting);
+    }
+    export interface ExternalAccounting {
+        created?: string;
+        updated?: string;
+        owner?: BasicUser;
+        updater?: BasicUser;
+        provider?: ProviderEntity;
+        label?: string;
+        reportTo?: string;
+        priceType?: PriceTypeConstants;
+        priceMarkupType?: PriceMarkupType;
+        priceMarkup?: number;
+        priceRounding?: PriceRounding;
+        currency?: number;
+        country?: string;
+        creditorIdentifier?: string;
+        customerNumberMin?: number;
+        customerNumberMax?: number;
+        creditLimit?: number;
+        discount?: number;
+    }
+
     export class GenericCustomer {
         constructor(config?: GenericCustomer);
     }
@@ -2283,6 +2376,8 @@ export namespace DomainRobotModels {
         number?: number;
         client?: string;
         group?: number;
+        adoptExpiration?: AdoptExpiration;
+        autoDeleteTlds?: string;
     }
 
     export class GenericLabelEntity {
@@ -2427,6 +2522,8 @@ export namespace DomainRobotModels {
         paid?: string;
         document?: Document;
         comment?: string;
+        extension?: Configuration;
+        messages?: string[];
     }
     export class IpRestriction {
         constructor(config?: IpRestriction);
@@ -3131,6 +3228,7 @@ export namespace DomainRobotModels {
     }
     export interface NotifyMessage {
         type?: string;
+        object?: ResponseObject;
     }
 
     export class OTPAuth {
@@ -3305,6 +3403,7 @@ export namespace DomainRobotModels {
         vatType?: string;
         priceRequired?: boolean;
         businessCase?: string;
+        id?: number;
     }
 
     export class PurchasePrice {
@@ -3341,6 +3440,16 @@ export namespace DomainRobotModels {
     export interface PurchasePriceServiceEntity {
         configuration?: any;
         condition?: ServiceEntity;
+    }
+
+    export class ProviderEntity {
+        constructor(config?: ProviderEntity);
+    }
+    export interface ProviderEntity {
+        created?: string;
+        updated?: string;
+        owner?: BasicUser;
+        updater?: BasicUser;
     }
 
     export class Query {
@@ -3659,6 +3768,7 @@ export namespace DomainRobotModels {
         businessCase?: string;
         extensions?: BillingEventExtensions;
         payable?: string;
+        id?: number;
     }
 
     export class TaskCount {
@@ -3714,6 +3824,7 @@ export namespace DomainRobotModels {
         comment?: string;
         tmchClaimsNoticeMails?: TmchClaimsNoticeMessage[];
         expire?: string;
+        data?: string;
     }
     export class TmchClaimsNoticeMessage {
         constructor(config?: TmchClaimsNoticeMessage)
@@ -3953,6 +4064,7 @@ export namespace DomainRobotModels {
         language?: string;
         parent?: User;
         directCustomer?: Boolean;
+        clientAccount?: ExternalAccounting;
     }
 
     export class UserAcl {
@@ -4080,6 +4192,7 @@ export namespace DomainRobotModels {
         useDefaultIps?: number;
         nameServers?: VirtualNameServer[];
         systemNameServerGroup?: PhysicalNameServerGroup;
+        id?: number;
     }
 
     export class Void {
