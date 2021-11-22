@@ -249,6 +249,9 @@ export interface JsonResponseDataPeriodicBilling extends Result {
 export interface JsonResponseDataPollMessage extends Result {
     data: DomainRobotModels.PollMessage[];
 }
+export interface JsonResponseDataPurchasePriceClass extends Result {
+    data: DomainRobotModels.PurchasePriceClass[];
+}
 export interface JsonResponseDataTransferOut extends Result {
     data: DomainRobotModels.TransferOut[];
 }
