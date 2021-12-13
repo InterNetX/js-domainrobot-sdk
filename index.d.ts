@@ -249,6 +249,9 @@ export interface JsonResponseDataPeriodicBilling extends Result {
 export interface JsonResponseDataPollMessage extends Result {
     data: DomainRobotModels.PollMessage[];
 }
+export interface JsonResponseDataPrice extends Result {
+    data: DomainRobotModels.Price[];
+}
 export interface JsonResponseDataPurchasePriceClass extends Result {
     data: DomainRobotModels.PurchasePriceClass[];
 }
@@ -964,7 +967,28 @@ export namespace DomainRobotModels {
         objects?: MailProxy[];
         template?: MailProxy;
     }
-
+    export class BulkPricePostRequest {
+        constructor(config?: BulkPricePostRequest);
+    }
+    export interface BulkPricePostRequest {
+        objects?: Price[];
+        template?: Price;
+    }
+    export class BulkPriceDeleteRequest {
+        constructor(config?: BulkPriceDeleteRequest);
+    }
+    export interface BulkPriceDeleteRequest {
+        objects?: Price[];
+        query?: Query;
+    }
+    export class BulkPricePatchRequest {
+        constructor(config?: BulkPricePatchRequest);
+    }
+    export interface BulkPricePatchRequest {
+        objects?: Price[];
+        template?: Price;
+        query?: Query;
+    }
     export class BulkRedirectDeleteRequest {
         constructor(config?: BulkRedirectDeleteRequest);
     }
@@ -2732,7 +2756,17 @@ export namespace DomainRobotModels {
         data?: JsonResponseDataContact[];
         ctid?: string;
     }
-
+    export class JsonResponseDataListJsonResponseDataPrice {
+        constructor(config?: JsonResponseDataListJsonResponseDataPrice);
+    }
+    export interface JsonResponseDataListJsonResponseDataPrice {
+        stid?: string;
+        messages?: Message[];
+        status?: ResponseStatus;
+        object?: ResponseObject;
+        data?: JsonResponseDataPrice[];
+        ctid?: string;
+    }
     export class JsonResponseDataListJsonResponseDataSslContact {
         constructor(config?: JsonResponseDataListJsonResponseDataSslContact);
     }
@@ -2936,7 +2970,17 @@ export namespace DomainRobotModels {
         data?: PollMessage[];
         ctid?: string;
     }
-
+    export class JsonResponseDataPrice {
+        constructor(config?: JsonResponseDataPrice);
+    }
+    export interface JsonResponseDataPrice {
+        stid?: string;
+        messages?: Message[];
+        status?: ResponseStatus;
+        object?: ResponseObject;
+        data?: Price[];
+        ctid?: string;
+    }
     export class JsonResponseDataRedirect {
         constructor(config?: JsonResponseDataRedirect);
     }
