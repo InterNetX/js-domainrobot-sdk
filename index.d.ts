@@ -3387,6 +3387,7 @@ export namespace DomainRobotModels {
         comment?: string;
         normalPrice?: ExchangedPrice;
         valid?: string;
+        product?: Product;
     }
 
     export class PriceClass {
