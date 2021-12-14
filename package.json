@@ -45,6 +45,7 @@
 	},
 	"dependencies": {
 		"axios": "^0.21.1",
-		"chai": "^4.3.4"
+		"chai": "^4.3.4",
+		"yarn.lock": "^0.0.1-security"
 	}
 }
