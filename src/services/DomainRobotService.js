@@ -88,7 +88,7 @@ class DomainRobotService {
 
             let start = new Date().getTime();
 
-            const result;
+            let result;
             if(this.domainRobotConfig.debug !== undefined){
                 result = await this.axios(requestOptions);
             }else{
