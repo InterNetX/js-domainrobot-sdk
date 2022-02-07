@@ -13,7 +13,8 @@ class DomainRobotConfig {
         this.logRequestCallback = domainRobotConfig.logRequestCallback || undefined;
         this.logResponseCallback = domainRobotConfig.logResponseCallback || undefined;
         this.headers = domainRobotConfig.headers || undefined;
-        this.debug = domainRobotConfig.debug || undefined;
+        this.isMockRequest = domainRobotConfig.isMockRequest || undefined;
+        this.mockResponse = domainRobotConfig.mockResponse || undefined;
     }
 
     hasLogRequestCallback(){

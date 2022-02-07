@@ -3,6 +3,7 @@ export declare class DomainRobotService<T> {
     logRequest(callback: Function): T;
     logResponse(callback: Function): T;
     headers(headers: { [key: string]: string | number }): T;
+    mockResponse(response: Result): T;
 }
 
 export declare class CertificateService extends DomainRobotService<CertificateService>{
@@ -287,6 +288,11 @@ export interface JsonResponseDataContactTmchMark extends Result {
     data: DomainRobotModels.TmchMark[];
 }
 
+export interface MockResponse {
+    data: Result,
+    status: number
+}
+
 export type domainRobotConfig = {
     url?: string;
     logRequestCallback?: Function,
@@ -297,7 +303,8 @@ export type domainRobotConfig = {
         password: string;
         context?: number;
     };
-    debug?: undefined | { response: { data: Result } }
+    isMockRequest?: boolean
+    mockResponse?: undefined | MockResponse
 };
 
 export class DomainRobot {

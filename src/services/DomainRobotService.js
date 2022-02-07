@@ -11,6 +11,7 @@ const DomainRobotConfig = require("../lib/DomainRobotConfig");
 const domainrobot = require("../swagger/domainrobot.json");
 const pcdomains = require("../swagger/pcdomains.json");
 let ApiFactory = require("../lib/Factory");
+const getByVirtualPath = require('js-domainrobot-sdk/tests/mock');
 
 class DomainRobotService {
     /**
@@ -18,6 +19,9 @@ class DomainRobotService {
      * @param {object} domainRobotConfig
      */
     constructor(domainRobotConfig) {
+        // used if mock request/response mode is active
+        // has to be set in the respective services
+        this.virtualPath = null;
 
         this.modelFactory = null;
 
@@ -72,6 +76,15 @@ class DomainRobotService {
         this.axiosconfig.headers = headers;
         return this;
     }
+    /**
+     * 
+     * @param {MockResponse} response 
+     * @returns 
+     */
+    mockResponse(response) {
+        this.domainRobotConfig.mockResponse = response;
+        return this;
+    }
 
     async sendRequest(method, url, data = null) {
         try {
@@ -87,6 +100,17 @@ class DomainRobotService {
             this.logRequestIfCallbackSet(requestOptions, this.axios.defaults.headers);
 
             let start = new Date().getTime();
+
+            // mock mode handling
+            if (this.domainRobotConfig.isMockRequest === true) {
+                if (this.domainRobotConfig.mockResponse === undefined) {
+                    if (this.virtualPath !== null) {
+                        this.domainRobotConfig.mockResponse = getByVirtualPath(this.virtualPath)
+                    } else {
+                        throw "Mock mode active, but no MockResponse found."
+                    }
+                }
+            }
 
             let result;
             if(this.domainRobotConfig.debug === undefined){

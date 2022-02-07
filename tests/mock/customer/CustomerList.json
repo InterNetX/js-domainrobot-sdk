@@ -1,0 +1,339 @@
+{
+    "status": 200,
+    "data": {
+        "stid": "20220207-acc2-dev-865",
+        "status": {
+            "code": "S209205",
+            "text": "Storages wurden erfolgreich ermittelt.",
+            "type": "SUCCESS"
+        },
+        "data": [
+            {
+                "number": 135111855,
+                "client": "ix",
+                "name": "hha3 Example",
+                "type": "PERSON",
+                "organization2": "",
+                "city": "Regensburg",
+                "state": "Bayern",
+                "country": "DE",
+                "phone": "+49-000-00000",
+                "emails": [
+                    "example@example.com"
+                ],
+                "billingEmails": [
+                    "someone@example.org"
+                ],
+                "payment": "POST",
+                "paymentMode": "SEPA",
+                "billable": true,
+                "locked": true,
+                "verified": false,
+                "canceled": "NONE",
+                "taxable": true,
+                "created": "2015-01-19T14:27:57.000+0100",
+                "updated": "2021-12-29T13:17:43.000+0100",
+                "owner": {
+                    "context": 4,
+                    "user": "hassan"
+                },
+                "newsletter": false,
+                "active": true,
+                "pcode": "93055"
+            },
+            {
+                "number": 135111856,
+                "client": "ix",
+                "name": "hha Example",
+                "type": "PERSON",
+                "organization2": "",
+                "city": "Regensburg",
+                "state": "Bayern",
+                "country": "DE",
+                "phone": "+49-000-00000",
+                "emails": [
+                    "example@example.com"
+                ],
+                "billingEmails": [
+                    "someone@example.org"
+                ],
+                "payment": "PRE",
+                "paymentMode": "SEPA",
+                "billable": true,
+                "locked": true,
+                "verified": false,
+                "canceled": "NONE",
+                "taxable": true,
+                "created": "2015-01-19T14:56:07.000+0100",
+                "updated": "2021-04-30T12:27:58.000+0200",
+                "owner": {
+                    "context": 4,
+                    "user": "hassan"
+                },
+                "newsletter": false,
+                "active": true,
+                "pcode": "93055"
+            },
+            {
+                "number": 135111857,
+                "client": "ix",
+                "name": "hha Example",
+                "type": "PERSON",
+                "organization2": "",
+                "city": "Regensburg",
+                "state": "Bayern",
+                "country": "DE",
+                "phone": "+49-000-00000",
+                "emails": [
+                    "example@example.com"
+                ],
+                "billingEmails": [
+                    "someone@example.org"
+                ],
+                "payment": "POST",
+                "paymentMode": "SEPA",
+                "billable": true,
+                "locked": true,
+                "verified": false,
+                "canceled": "NONE",
+                "taxable": true,
+                "created": "2015-01-19T15:05:16.000+0100",
+                "updated": "2021-09-02T08:35:26.000+0200",
+                "owner": {
+                    "context": 4,
+                    "user": "hassan"
+                },
+                "newsletter": false,
+                "active": true,
+                "pcode": "93055"
+            },
+            {
+                "number": 135111879,
+                "client": "ix",
+                "name": "Hassan",
+                "type": "PERSON",
+                "organization2": "",
+                "city": "Regensburg",
+                "state": "Bayern",
+                "country": "DE",
+                "phone": "+49-0-0",
+                "emails": [
+                    "festos@yahoo.com"
+                ],
+                "billingEmails": [
+                    "festos@gmx.de"
+                ],
+                "payment": "POST",
+                "billable": true,
+                "locked": false,
+                "verified": false,
+                "taxable": true,
+                "created": "2015-01-07T12:47:16.000+0100",
+                "updated": "2021-04-30T12:27:58.000+0200",
+                "owner": {
+                    "context": 797095,
+                    "user": "fluttershy"
+                },
+                "newsletter": false,
+                "active": true,
+                "pcode": "93055"
+            },
+            {
+                "number": 135111901,
+                "client": "ix",
+                "name": "Klie Halola",
+                "type": "PERSON",
+                "organization2": "",
+                "city": "Regensburg",
+                "state": "Bayern",
+                "country": "DE",
+                "phone": "+49-0-0",
+                "emails": [
+                    "festos@yahoo.com"
+                ],
+                "billingEmails": [
+                    "festos@gmx.de"
+                ],
+                "payment": "POST",
+                "paymentMode": "SEPA",
+                "billable": true,
+                "locked": true,
+                "verified": false,
+                "canceled": "NONE",
+                "taxable": true,
+                "created": "2015-01-21T15:01:53.000+0100",
+                "updated": "2021-04-30T12:27:58.000+0200",
+                "owner": {
+                    "context": 4,
+                    "user": "hassan"
+                },
+                "newsletter": false,
+                "active": true,
+                "pcode": "93055"
+            },
+            {
+                "number": 135111903,
+                "client": "ix",
+                "name": "blabbaFestado",
+                "type": "PERSON",
+                "organization2": "",
+                "city": "Regensburg",
+                "country": "DE",
+                "phone": "+49-12445-12345",
+                "fax": "+49-12445-12345",
+                "emails": [
+                    "festus@internetx.de"
+                ],
+                "billingEmails": [
+                    "festus@internetx.de"
+                ],
+                "payment": "POST",
+                "billable": true,
+                "locked": false,
+                "verified": false,
+                "taxable": false,
+                "created": "2015-01-21T15:42:36.000+0100",
+                "updated": "2021-04-30T12:27:58.000+0200",
+                "owner": {
+                    "context": 4,
+                    "user": "hassan"
+                },
+                "newsletter": false,
+                "active": true,
+                "pcode": "93053"
+            },
+            {
+                "number": 135111905,
+                "client": "ix",
+                "name": "Kalas Halass",
+                "type": "PERSON",
+                "organization2": "",
+                "city": "Regensburg",
+                "state": "Bayern",
+                "country": "DE",
+                "phone": "+49-0-0",
+                "emails": [
+                    "festos@yahoo.com"
+                ],
+                "billingEmails": [
+                    "festos@gmx.de"
+                ],
+                "payment": "POST",
+                "paymentMode": "SEPA",
+                "billable": true,
+                "locked": true,
+                "verified": false,
+                "canceled": "NONE",
+                "taxable": true,
+                "created": "2015-01-21T16:03:07.000+0100",
+                "updated": "2021-04-30T12:27:58.000+0200",
+                "owner": {
+                    "context": 4,
+                    "user": "hassan"
+                },
+                "newsletter": false,
+                "active": true,
+                "pcode": "93055"
+            },
+            {
+                "number": 135111906,
+                "client": "ix",
+                "name": "addb5d32-6887-4dc2-8775-b493c1376bf2",
+                "type": "PERSON",
+                "organization2": "",
+                "city": "Musterstadt",
+                "country": "AT",
+                "phone": "+49-0-123456",
+                "fax": "+49-0-123456",
+                "emails": [
+                    "email@localhost.local"
+                ],
+                "billingEmails": [
+                    "email@localhost.local"
+                ],
+                "payment": "PRE",
+                "billable": true,
+                "locked": false,
+                "verified": false,
+                "taxable": true,
+                "created": "2015-01-21T23:00:18.000+0100",
+                "updated": "2021-09-02T08:35:26.000+0200",
+                "owner": {
+                    "context": 4,
+                    "user": "curd"
+                },
+                "newsletter": false,
+                "active": true,
+                "fname": "Max",
+                "lname": "Mustermann",
+                "pcode": "12345"
+            },
+            {
+                "number": 135111907,
+                "client": "ix",
+                "name": "93b28086-6700-4080-98d8-ae87f102311a",
+                "type": "PERSON",
+                "organization2": "",
+                "city": "Musterstadt",
+                "country": "AT",
+                "phone": "+49-0-123456",
+                "fax": "+49-0-123456",
+                "emails": [
+                    "email@localhost.local"
+                ],
+                "billingEmails": [
+                    "email@localhost.local"
+                ],
+                "payment": "POST",
+                "billable": true,
+                "locked": false,
+                "verified": false,
+                "taxable": true,
+                "created": "2015-01-21T23:00:45.000+0100",
+                "updated": "2021-04-30T12:27:58.000+0200",
+                "owner": {
+                    "context": 4,
+                    "user": "curd"
+                },
+                "newsletter": false,
+                "active": true,
+                "fname": "Max",
+                "lname": "Mustermann",
+                "pcode": "12345"
+            },
+            {
+                "number": 135111908,
+                "client": "ix",
+                "name": "6af11d06-1467-4791-93e4-6088514b3fe0",
+                "type": "PERSON",
+                "organization2": "",
+                "city": "Musterstadt",
+                "country": "AT",
+                "phone": "+49-0-123456",
+                "fax": "+49-0-123456",
+                "emails": [
+                    "email@localhost.local"
+                ],
+                "billingEmails": [
+                    "email@localhost.local"
+                ],
+                "payment": "POST",
+                "billable": true,
+                "locked": false,
+                "verified": false,
+                "taxable": true,
+                "created": "2015-01-21T23:03:11.000+0100",
+                "updated": "2021-04-30T12:27:58.000+0200",
+                "owner": {
+                    "context": 4,
+                    "user": "curd"
+                },
+                "newsletter": false,
+                "active": true,
+                "fname": "Max",
+                "lname": "Mustermann",
+                "pcode": "12345"
+            }
+        ]
+    }
+}
