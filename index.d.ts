@@ -297,7 +297,7 @@ export type domainRobotConfig = {
         password: string;
         context?: number;
     };
-    debug?: undefined | { response: Result }
+    debug?: undefined | { response: { data: Result } }
 };
 
 export class DomainRobot {
