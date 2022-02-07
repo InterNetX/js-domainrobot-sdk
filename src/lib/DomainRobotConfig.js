@@ -13,6 +13,7 @@ class DomainRobotConfig {
         this.logRequestCallback = domainRobotConfig.logRequestCallback || undefined;
         this.logResponseCallback = domainRobotConfig.logResponseCallback || undefined;
         this.headers = domainRobotConfig.headers || undefined;
+        this.debug = domainRobotConfig.debug || undefined;
     }
 
     hasLogRequestCallback(){
