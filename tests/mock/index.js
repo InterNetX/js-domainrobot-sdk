@@ -1,4 +1,4 @@
-import prepareOrder from './Certificate/PrepareOrderResponse.json'
+const prepareOrder = require('./Certificate/PrepareOrderResponse.json')
 
 const mocks = {
     "certificate": {

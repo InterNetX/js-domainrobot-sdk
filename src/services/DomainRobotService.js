@@ -11,7 +11,7 @@ const DomainRobotConfig = require("../lib/DomainRobotConfig");
 const domainrobot = require("../swagger/domainrobot.json");
 const pcdomains = require("../swagger/pcdomains.json");
 let ApiFactory = require("../lib/Factory");
-const getByVirtualPath = require('js-domainrobot-sdk/tests/mock');
+const getByVirtualPath = require('../../tests/mock');
 
 class DomainRobotService {
     /**
