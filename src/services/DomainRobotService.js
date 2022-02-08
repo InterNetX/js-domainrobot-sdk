@@ -113,10 +113,10 @@ class DomainRobotService {
             }
 
             let result;
-            if(this.domainRobotConfig.debug === undefined){
+            if (this.domainRobotConfig.isMockRequest === undefined){
                 result = await this.axios(requestOptions);
             }else{
-                result = this.domainRobotConfig.debug.response;
+                result = this.domainRobotConfig.mockResponse;
             }
 
             let end = new Date().getTime();
