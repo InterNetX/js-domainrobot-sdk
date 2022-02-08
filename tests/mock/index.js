@@ -1,8 +1,8 @@
-const CustomerList = require("./customer/CustomerList")
+import prepareOrder from './Certificate/PrepareOrderResponse.json'
 
 const mocks = {
-    "customer": {
-        "list": CustomerList
+    "certificate": {
+        "prepareOrder": prepareOrder
     }
 }
 
