@@ -862,6 +862,17 @@ export namespace DomainRobotModels {
         count?: number;
     }
 
+    export class BillingTerm {
+        constructor(config?: BillingTerm);
+    }
+    export interface BillingTerm {
+        terms?: BillingTldTerm[];
+    }
+
+    export class BillingTldTerm {
+        constructor(config?: BillingTldTerm);
+    }
+
     export class BulkBackupMxDeleteRequest {
         constructor(config?: BulkBackupMxDeleteRequest);
     }
@@ -1695,7 +1706,7 @@ export namespace DomainRobotModels {
         fname?: string;
         lname?: string;
         pcode?: string;
-        technical?: GenericCustomer;
+        technical?: TechnicalCustomer;
         sepa?: SEPAMandate;
         pricelists?: CustomerPriceLists;
         type?: string;
@@ -3897,6 +3908,17 @@ export namespace DomainRobotModels {
         user?: BasicUser;
         entries?: TaskLimit[];
         count?: TaskCount[];
+    }
+    export class TechnicalCustomer {
+        constructor(config?: TechnicalCustomer);
+    }
+    export interface TechnicalCustomer {
+        number?: number;
+        client?: string;
+        group?: number;
+        adoptExpiration?: AdoptExpiration;
+        billingTerm?: BillingTerm;
+        autoDeleteTlds?: string;
     }
     export class TmchClaimsNotice {
         constructor(config?: TmchClaimsNotice)

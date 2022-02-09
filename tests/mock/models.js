@@ -372,6 +372,7 @@ const MockModels = {
     TaskGroup: function (data) { },
     TaskLimit: function (data) { },
     TaskUserLimit: function (data) { },
+    TechnicalCustomer: function (data) { },
     TimePeriod: function (data) { },
     TimeUnitConstants: function (data) { },
     TlsData: function (data) { },

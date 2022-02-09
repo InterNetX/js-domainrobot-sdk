@@ -24012,6 +24012,20 @@
       "type" : "string",
       "enum" : [ "ADD", "REMOVE", "UPDATE", "IGNORE", "CUSTOMER_CHANGED", "USER_CHANGED", "UPGRADE", "ACTIVE", "CANCELED", "CANCELED_EXPIRE", "RESTORE", "AUTODELETE", "REMOVED", "DROP" ]
     },
+    "BillingTerm" : {
+      "type" : "object",
+      "properties" : {
+        "terms" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/BillingTldTerm"
+          }
+        }
+      }
+    },
+    "BillingTldTerm" : {
+      "type" : "object"
+    },
     "BulkBackupMxDeleteRequest" : {
       "type" : "object",
       "properties" : {
@@ -33952,6 +33966,36 @@
             "originalRef" : "TaskCount",
             "$ref" : "#/definitions/TaskCount"
           }
+        }
+      }
+    },
+    "TechnicalCustomer" : {
+      "type" : "object",
+      "required" : [ "client", "number" ],
+      "properties" : {
+        "number" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "client" : {
+          "type" : "string",
+          "minLength" : 1,
+          "maxLength" : 2147483647
+        },
+        "group" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "adoptExpiration" : {
+          "originalRef" : "AdoptExpiration",
+          "$ref" : "#/definitions/AdoptExpiration"
+        },
+        "billingTerm": {
+          "originalRef" : "BillingTerm",
+          "$ref" : "#/definitions/BillingTerm"
+        },
+        "autoDeleteTlds" : {
+          "type" : "string"
         }
       }
     },
