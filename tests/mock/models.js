@@ -34,6 +34,7 @@ const MockModels = {
     BillingObjectTerms: function (data) { },
     BillingStatus: function (data) { },
     BillingTerm: function (data) { },
+    BillingTldTerm: function (data) { },
     BulkBackupMxDeleteRequest: function (data) { },
     BulkBackupMxPostRequest: function (data) { },
     BulkCertificateDeleteRequest: function (data) { },
