@@ -427,6 +427,7 @@ export type PolicyMode = "DISABLED" | "QUARANTINE" | "DISCARD" | "ACCEPT";
 export type PriceMarkupType = "PERCENT" | "ABSOLUTE";
 export type PriceRounding = "NONE" | "ROUND_X0" | "ROUND_00" | "ROUND_X9" | "ROUND_99";
 export type PriceTypeConstants = "GROSS" | "NET";
+export type PriceChangeTypeConstants = "DEFAULT" | "OFFER" | "PROTECTED" | "PROMO";
 export type PriorityConstants = "DEFAULT" | "OFFER" | "PROTECTED" | "PROMO";
 export type ProtectionConstants = "HIGH" | "MEDIUM" | "LOW" | "OFF" | "CUSTOM";
 export type ProtocolTypeConstants = "TOTP" | "HOTP";
@@ -3409,6 +3410,22 @@ export namespace DomainRobotModels {
         product?: Product;
     }
 
+    export class PriceChange {
+        constructor(config?: PriceChange);
+    }
+    export interface PriceChange {
+        created?: string;
+        updated?: string;
+        id?: number;
+        owner?: BasicUser;
+        updater?: BasicUser;
+        name?: string;
+        comment?: string;
+        type?: PriceChangeTypeConstants;
+        status?: GenericStatusConstants;
+        priceTemplates?: ProductPriceTemplate[];
+    }
+
     export class PriceClass {
         constructor(config?: PriceClass);
     }
@@ -3474,6 +3491,28 @@ export namespace DomainRobotModels {
         priceRequired?: boolean;
         businessCase?: string;
         id?: number;
+    }
+    export class ProductPriceServiceTemplateEntity {
+        constructor(config?: ProductPriceServiceTemplateEntity);
+    }
+    export interface ProductPriceServiceTemplateEntity {
+        configuration?: unknown;
+        condition?: ServiceEntity;
+    }
+    export class ProductPriceTemplate {
+        constructor(config?: ProductPriceTemplate);
+    }
+    export interface ProductPriceTemplate {
+        created?: string;
+        updated?: string;
+        id?: number;
+        priceChange?: PriceChange;
+        product?: Product;
+        amount?: number;
+        currency?: string;
+        customer?: GenericCustomer;
+        period?: TimePeriod;
+        priceConditions?: ProductPriceServiceTemplateEntity[];
     }
 
     export class PurchasePrice {
