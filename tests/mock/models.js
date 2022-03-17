@@ -327,7 +327,6 @@ const MockModels = {
     PriceTypeConstants: function (data) { },
     PriorityConstants: function (data) { },
     Product: function (data) { },
-    ProductPriceServiceTemplateEntity: function (data) { },
     ProductPriceTemplate: function (data) { },
     PurchasePrice: function (data) { },
     PurchasePriceServiceEntity: function (data) { },

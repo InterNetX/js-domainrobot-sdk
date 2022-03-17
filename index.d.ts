@@ -3492,13 +3492,6 @@ export namespace DomainRobotModels {
         businessCase?: string;
         id?: number;
     }
-    export class ProductPriceServiceTemplateEntity {
-        constructor(config?: ProductPriceServiceTemplateEntity);
-    }
-    export interface ProductPriceServiceTemplateEntity {
-        configuration?: unknown;
-        condition?: ServiceEntity;
-    }
     export class ProductPriceTemplate {
         constructor(config?: ProductPriceTemplate);
     }
@@ -3512,7 +3505,7 @@ export namespace DomainRobotModels {
         currency?: string;
         customer?: GenericCustomer;
         period?: TimePeriod;
-        priceConditions?: ProductPriceServiceTemplateEntity[];
+        priceConditions?: PriceServiceEntity[];
     }
 
     export class PurchasePrice {
