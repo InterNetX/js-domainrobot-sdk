@@ -1012,6 +1012,28 @@ export namespace DomainRobotModels {
         template?: Price;
         query?: Query;
     }
+    export class BulkProductPriceTemplatePostRequest {
+        constructor(config?: BulkProductPriceTemplatePostRequest);
+    }
+    export interface BulkProductPriceTemplatePostRequest {
+        objects?: ProductPriceTemplate[];
+        template?: ProductPriceTemplate;
+    }
+    export class BulkProductPriceTemplateDeleteRequest {
+        constructor(config?: BulkProductPriceTemplateDeleteRequest);
+    }
+    export interface BulkProductPriceTemplateDeleteRequest {
+        objects?: ProductPriceTemplate[];
+        query?: Query;
+    }
+    export class BulkProductPriceTemplatePatchRequest {
+        constructor(config?: BulkProductPriceTemplatePatchRequest);
+    }
+    export interface BulkProductPriceTemplatePatchRequest {
+        objects?: ProductPriceTemplate[];
+        template?: ProductPriceTemplate;
+        query?: Query;
+    }
     export class BulkRedirectDeleteRequest {
         constructor(config?: BulkRedirectDeleteRequest);
     }
