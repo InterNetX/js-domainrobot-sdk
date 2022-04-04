@@ -437,6 +437,7 @@ export type RedirectModeConstants = "CATCHALL" | "FRAME" | "HTTP" | "SINGLE" | "
 export type RedirectTypeConstants = "DOMAIN" | "EMAIL";
 export type RegistrationTypeConstants = "FCFS" | "APPLICATION" | "OTHER";
 export type RegistryStatusConstants = "ACTIVE" | "HOLD" | "LOCK" | "HOLD_LOCK" | "AUTO" | "LOCK_OWNER" | "LOCK_UPDATE" | "PENDING" | "NONE";
+export type RelativeConstants = "FIX" | 'RELATIVE_PERCENT' | 'RELATIVE_AMOUNT';
 export type RenewStatusConstants = "AUTO" | "CANCELED" | "ONCE";
 export type RoPersonTypeConstants = "P" | "AP" | "NC" | "C" | "GI" | "PI" | "O";
 export type SanType = "FQDN" | "SUBDOMAIN" | "WILDCARD";
@@ -3527,6 +3528,7 @@ export namespace DomainRobotModels {
         currency?: string;
         customer?: GenericCustomer;
         period?: TimePeriod;
+        relative?: RelativeConstants;
         priceConditions?: PriceServiceEntity[];
     }
 

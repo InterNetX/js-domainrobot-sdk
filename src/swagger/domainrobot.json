@@ -33002,6 +33002,10 @@
       "type" : "string",
       "enum" : [ "ACTIVE", "HOLD", "LOCK", "HOLD_LOCK", "AUTO", "LOCK_OWNER", "LOCK_UPDATE", "PENDING", "NONE" ]
     },
+    "RelativeConstants": {
+      "type" : "string",
+      "enum" : [ "FIX", "RELATIVE_PERCENT", "RELATIVE_AMOUNT" ]
+    },
     "RenewStatusConstants" : {
       "type" : "string",
       "enum" : [ "AUTO", "CANCELED", "ONCE" ]

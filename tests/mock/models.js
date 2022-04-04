@@ -352,6 +352,7 @@ const MockModels = {
     RedirectTypeConstants: function (data) { },
     RegistrationTypeConstants: function (data) { },
     RegistryStatusConstants: function (data) { },
+    RelativeConstants: function (data) { },
     RenewStatusConstants: function (data) { },
     ResourceRecord: function (data) { },
     ResponseObject: function (data) { },
