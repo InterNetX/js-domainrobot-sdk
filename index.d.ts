@@ -3528,7 +3528,7 @@ export namespace DomainRobotModels {
         currency?: string;
         customer?: GenericCustomer;
         priority?: PriorityConstants;
-        discountable: boolean;
+        discountable?: boolean;
         period?: TimePeriod;
         relative?: RelativeConstants;
         priceConditions?: PriceServiceEntity[];
