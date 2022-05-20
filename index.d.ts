@@ -3630,7 +3630,7 @@ export namespace DomainRobotModels {
     export interface QueryFilter {
         key?: string;
         value?: string;
-        values?: string;
+        values?: Array<string|number>;
         operator?: string; //Operator
         link?: string; //ConditionType
         filters?: QueryFilter[];
