@@ -3446,6 +3446,9 @@ export namespace DomainRobotModels {
         comment?: string;
         type?: PriceChangeTypeConstants;
         status?: GenericStatusConstants;
+        validFrom?: string;
+        validUntil?: string;
+        confirmed?: string;
         priceTemplates?: ProductPriceTemplate[];
     }
 
