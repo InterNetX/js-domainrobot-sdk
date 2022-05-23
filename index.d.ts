@@ -1465,6 +1465,7 @@ export namespace DomainRobotModels {
     }
     export interface ContactIeExtensions {
         contactType?: IeEntityTypeConstants;
+        croNumber?: string;
         supportingNumber?: string;
     }
 
