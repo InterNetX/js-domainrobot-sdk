@@ -3448,6 +3448,8 @@ export namespace DomainRobotModels {
         type?: PriceChangeTypeConstants;
         status?: GenericStatusConstants;
         customer?: GenericCustomer;
+        article?: Article;
+        primary?: object;
         validFrom?: string;
         validUntil?: string;
         confirmed?: string;
