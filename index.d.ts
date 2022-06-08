@@ -3539,6 +3539,7 @@ export namespace DomainRobotModels {
         period?: TimePeriod;
         relative?: RelativeConstants;
         priceConditions?: PriceServiceEntity[];
+        includeCustomer?: boolean;
     }
 
     export class PurchasePrice {
