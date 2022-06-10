@@ -3453,7 +3453,22 @@ export namespace DomainRobotModels {
         validFrom?: string;
         validUntil?: string;
         confirmed?: string;
+        messageSend?: string;
         priceTemplates?: ProductPriceTemplate[];
+        priceChangeExcludes?: PriceChangeExclude[];
+        priceChangeExcludesAdd?: PriceChangeExclude[];
+        priceChangeExcludesRem?: PriceChangeExclude[];
+    }
+
+    export class PriceChangeExclude {
+        constructor(config?: PriceChangeExclude);
+    }
+    export interface PriceChangeExclude {
+        created?: string;
+        updated?: string;
+        id?: number;
+        customer?: GenericCustomer;
+        priceChange?: PriceChange;
     }
 
     export class PriceClass {
