@@ -3458,6 +3458,8 @@ export namespace DomainRobotModels {
         priceChangeExcludes?: PriceChangeExclude[];
         priceChangeExcludesAdd?: PriceChangeExclude[];
         priceChangeExcludesRem?: PriceChangeExclude[];
+        worker?: string;
+        ticketNumber?: string;
     }
 
     export class PriceChangeExclude {
