@@ -9,12 +9,13 @@ const ApiFactory = require("./src/lib/Factory");
 const PcDomains = new ApiFactory(pcdomains);
 const Backend = new ApiFactory(domainrobot);
 const DomainRobotModels = Object.assign(Backend.models, PcDomains.models);
-
+const DomainRobotException = require("./src/lib/DomainRobotException");
 const DomainRobotService = require("./src/services/DomainRobotService")
 
 //export default Domainrobot;
 module.exports = {
 	DomainRobot,
+    DomainRobotException,
 	DomainRobotHeaders,
     DomainRobotModels,
     DomainRobotService

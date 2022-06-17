@@ -3,6 +3,7 @@ export declare class DomainRobotService<T> {
     logRequest(callback: Function): T;
     logResponse(callback: Function): T;
     headers(headers: { [key: string]: string | number }): T;
+    mockResponse(response: Result): T;
 }
 
 export declare class CertificateService extends DomainRobotService<CertificateService>{
@@ -287,6 +288,11 @@ export interface JsonResponseDataContactTmchMark extends Result {
     data: DomainRobotModels.TmchMark[];
 }
 
+export interface MockResponse {
+    data: Result,
+    status: number
+}
+
 export type domainRobotConfig = {
     url?: string;
     logRequestCallback?: Function,
@@ -297,6 +303,8 @@ export type domainRobotConfig = {
         password: string;
         context?: number;
     };
+    isMockRequest?: boolean
+    mockResponse?: undefined | MockResponse
 };
 
 export class DomainRobot {
@@ -419,6 +427,7 @@ export type PolicyMode = "DISABLED" | "QUARANTINE" | "DISCARD" | "ACCEPT";
 export type PriceMarkupType = "PERCENT" | "ABSOLUTE";
 export type PriceRounding = "NONE" | "ROUND_X0" | "ROUND_00" | "ROUND_X9" | "ROUND_99";
 export type PriceTypeConstants = "GROSS" | "NET";
+export type PriceChangeTypeConstants = "DEFAULT" | "OFFER" | "PROTECTED" | "PROMO";
 export type PriorityConstants = "DEFAULT" | "OFFER" | "PROTECTED" | "PROMO";
 export type ProtectionConstants = "HIGH" | "MEDIUM" | "LOW" | "OFF" | "CUSTOM";
 export type ProtocolTypeConstants = "TOTP" | "HOTP";
@@ -428,6 +437,7 @@ export type RedirectModeConstants = "CATCHALL" | "FRAME" | "HTTP" | "SINGLE" | "
 export type RedirectTypeConstants = "DOMAIN" | "EMAIL";
 export type RegistrationTypeConstants = "FCFS" | "APPLICATION" | "OTHER";
 export type RegistryStatusConstants = "ACTIVE" | "HOLD" | "LOCK" | "HOLD_LOCK" | "AUTO" | "LOCK_OWNER" | "LOCK_UPDATE" | "PENDING" | "NONE";
+export type RelativeConstants = "FIX" | 'RELATIVE_PERCENT' | 'RELATIVE_AMOUNT';
 export type RenewStatusConstants = "AUTO" | "CANCELED" | "ONCE";
 export type RoPersonTypeConstants = "P" | "AP" | "NC" | "C" | "GI" | "PI" | "O";
 export type SanType = "FQDN" | "SUBDOMAIN" | "WILDCARD";
@@ -854,6 +864,17 @@ export namespace DomainRobotModels {
         count?: number;
     }
 
+    export class BillingTerm {
+        constructor(config?: BillingTerm);
+    }
+    export interface BillingTerm {
+        terms?: BillingTldTerm[];
+    }
+
+    export class BillingTldTerm {
+        constructor(config?: BillingTldTerm);
+    }
+
     export class BulkBackupMxDeleteRequest {
         constructor(config?: BulkBackupMxDeleteRequest);
     }
@@ -990,6 +1011,28 @@ export namespace DomainRobotModels {
     export interface BulkPricePatchRequest {
         objects?: Price[];
         template?: Price;
+        query?: Query;
+    }
+    export class BulkProductPriceTemplatePostRequest {
+        constructor(config?: BulkProductPriceTemplatePostRequest);
+    }
+    export interface BulkProductPriceTemplatePostRequest {
+        objects?: ProductPriceTemplate[];
+        template?: ProductPriceTemplate;
+    }
+    export class BulkProductPriceTemplateDeleteRequest {
+        constructor(config?: BulkProductPriceTemplateDeleteRequest);
+    }
+    export interface BulkProductPriceTemplateDeleteRequest {
+        objects?: ProductPriceTemplate[];
+        query?: Query;
+    }
+    export class BulkProductPriceTemplatePatchRequest {
+        constructor(config?: BulkProductPriceTemplatePatchRequest);
+    }
+    export interface BulkProductPriceTemplatePatchRequest {
+        objects?: ProductPriceTemplate[];
+        template?: ProductPriceTemplate;
         query?: Query;
     }
     export class BulkRedirectDeleteRequest {
@@ -1422,6 +1465,7 @@ export namespace DomainRobotModels {
     }
     export interface ContactIeExtensions {
         contactType?: IeEntityTypeConstants;
+        croNumber?: string;
         supportingNumber?: string;
     }
 
@@ -1687,7 +1731,7 @@ export namespace DomainRobotModels {
         fname?: string;
         lname?: string;
         pcode?: string;
-        technical?: GenericCustomer;
+        technical?: TechnicalCustomer;
         sepa?: SEPAMandate;
         pricelists?: CustomerPriceLists;
         type?: string;
@@ -3390,6 +3434,45 @@ export namespace DomainRobotModels {
         product?: Product;
     }
 
+    export class PriceChange {
+        constructor(config?: PriceChange);
+    }
+    export interface PriceChange {
+        created?: string;
+        updated?: string;
+        id?: number;
+        owner?: BasicUser;
+        updater?: BasicUser;
+        name?: string;
+        comment?: string;
+        type?: PriceChangeTypeConstants;
+        status?: GenericStatusConstants;
+        customer?: GenericCustomer;
+        article?: Article;
+        primary?: object;
+        validFrom?: string;
+        validUntil?: string;
+        confirmed?: string;
+        messageSend?: string;
+        priceTemplates?: ProductPriceTemplate[];
+        priceChangeExcludes?: PriceChangeExclude[];
+        priceChangeExcludesAdd?: PriceChangeExclude[];
+        priceChangeExcludesRem?: PriceChangeExclude[];
+        worker?: string;
+        ticketNumber?: string;
+    }
+
+    export class PriceChangeExclude {
+        constructor(config?: PriceChangeExclude);
+    }
+    export interface PriceChangeExclude {
+        created?: string;
+        updated?: string;
+        id?: number;
+        customer?: GenericCustomer;
+        priceChange?: PriceChange;
+    }
+
     export class PriceClass {
         constructor(config?: PriceClass);
     }
@@ -3455,6 +3538,25 @@ export namespace DomainRobotModels {
         priceRequired?: boolean;
         businessCase?: string;
         id?: number;
+    }
+    export class ProductPriceTemplate {
+        constructor(config?: ProductPriceTemplate);
+    }
+    export interface ProductPriceTemplate {
+        created?: string;
+        updated?: string;
+        id?: number;
+        priceChange?: PriceChange;
+        product?: Product;
+        amount?: number;
+        currency?: string;
+        customer?: GenericCustomer;
+        priority?: PriorityConstants;
+        discountable?: boolean;
+        period?: TimePeriod;
+        relative?: RelativeConstants;
+        priceConditions?: PriceServiceEntity[];
+        includeCustomer?: boolean;
     }
 
     export class PurchasePrice {
@@ -3553,6 +3655,7 @@ export namespace DomainRobotModels {
     export interface QueryFilter {
         key?: string;
         value?: string;
+        values?: Array<string|number>;
         operator?: string; //Operator
         link?: string; //ConditionType
         filters?: QueryFilter[];
@@ -3889,6 +3992,17 @@ export namespace DomainRobotModels {
         user?: BasicUser;
         entries?: TaskLimit[];
         count?: TaskCount[];
+    }
+    export class TechnicalCustomer {
+        constructor(config?: TechnicalCustomer);
+    }
+    export interface TechnicalCustomer {
+        number?: number;
+        client?: string;
+        group?: number;
+        adoptExpiration?: AdoptExpiration;
+        billingTerm?: BillingTerm;
+        autoDeleteTlds?: string;
     }
     export class TmchClaimsNotice {
         constructor(config?: TmchClaimsNotice)
