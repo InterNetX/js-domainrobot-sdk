@@ -29,6 +29,6 @@ jobs:
         uses: suceda/tag-from-version@v0.1.0
 
       - name: NPM Publish
-        uses: JS-DevTools/npm-publish@v1
+        uses: mmarchini-oss/npm-otp-publish@v0 #JS-DevTools/npm-publish@v1
         with:
           token: ${{secrets.NPM_TOKEN}}
