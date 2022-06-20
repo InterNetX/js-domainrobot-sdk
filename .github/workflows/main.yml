@@ -30,8 +30,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: Yarn CLI ${{ matrix.node-version }}
         uses: CultureHQ/actions-yarn@v1.0.1
-        with:
-          args: install
       - name: Test
         uses: CultureHQ/actions-yarn@v1.0.1
         with:
