@@ -33,6 +33,6 @@ jobs:
         with:
           args: install
       - name: Test
-        uses: CultureHQ/actions-yarn@1.0.1
+        uses: CultureHQ/actions-yarn@v1.0.1
         with:
           args: test:mocha
