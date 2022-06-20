@@ -32,3 +32,4 @@ jobs:
         uses: mmarchini-oss/npm-otp-publish@v0 #JS-DevTools/npm-publish@v1
         with:
           npm_token: ${{secrets.NPM_TOKEN}}
+          notifier: console
