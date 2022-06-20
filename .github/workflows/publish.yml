@@ -31,4 +31,4 @@ jobs:
       - name: NPM Publish
         uses: mmarchini-oss/npm-otp-publish@v0 #JS-DevTools/npm-publish@v1
         with:
-          token: ${{secrets.NPM_TOKEN}}
+          npm_token: ${{secrets.NPM_TOKEN}}
