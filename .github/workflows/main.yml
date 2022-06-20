@@ -29,5 +29,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - name: Yarn CLI ${{ matrix.node-version }}
-      - run: yarn
-      - run: yarn test:mocha
+        uses: CultureHQ/actions-yarn@v1.0.1
+        with:
+          args: install
+      - name: Test
+        uses: CultureHQ/actions-yarn@1.0.1
+        with:
+          args: test:mocha
