@@ -27,7 +27,11 @@ jobs:
 
       - name: Tag from package version
         uses: suceda/tag-from-version@v0.1.0
-
+        
+      - name: Yarn CLI ${{ matrix.node-version }}
+        uses: CultureHQ/actions-yarn@v1.0.1
+      - run: yarn
+      
       - name: NPM Publish
         uses: mmarchini-oss/npm-otp-publish@v0 #JS-DevTools/npm-publish@v1
         with:
