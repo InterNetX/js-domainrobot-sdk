@@ -329,6 +329,7 @@ const MockModels = {
     PriceRounding: function (data) { },
     PriceServiceData: function (data) { },
     PriceServiceEntity: function (data) { },
+    PriceChangeStatusConstants: function (data) { },
     PriceChangeTypeConstants: function (data) { },
     PriceTypeConstants: function (data) { },
     PriorityConstants: function (data) { },
