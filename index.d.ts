@@ -425,10 +425,10 @@ export type ParkingProviderConstants = "SEDO" | "NAMEDRIVE" | "PARKINGCREW";
 export type PaymentConstants = "PRE" | "POST" | "LIVE";
 export type PolicyMode = "DISABLED" | "QUARANTINE" | "DISCARD" | "ACCEPT";
 export type PriceMarkupType = "PERCENT" | "ABSOLUTE";
-export type PriceRounding = "NONE" | "ROUND_X0" | "ROUND_00" | "ROUND_X9" | "ROUND_99";
 export type PriceTypeConstants = "GROSS" | "NET";
 export type PriceChangeStatusConstants = "PENDING" | "SUCCESS" | "FAILED" | "NOT_SET" | "CONFIRMED";
 export type PriceChangeTypeConstants = "CUSTOMER" | "GENERAL" | "GENERAL_DISCOUNT" | "PROMO" | "PRIMARY";
+export type PriceRoundingConstants = "NONE" | "ROUND_X0" | "ROUND_00" | "ROUND_X9" | "ROUND_99";
 export type PriorityConstants = "DEFAULT" | "OFFER" | "PROTECTED" | "PROMO";
 export type ProtectionConstants = "HIGH" | "MEDIUM" | "LOW" | "OFF" | "CUSTOM";
 export type ProtocolTypeConstants = "TOTP" | "HOTP";
@@ -438,7 +438,7 @@ export type RedirectModeConstants = "CATCHALL" | "FRAME" | "HTTP" | "SINGLE" | "
 export type RedirectTypeConstants = "DOMAIN" | "EMAIL";
 export type RegistrationTypeConstants = "FCFS" | "APPLICATION" | "OTHER";
 export type RegistryStatusConstants = "ACTIVE" | "HOLD" | "LOCK" | "HOLD_LOCK" | "AUTO" | "LOCK_OWNER" | "LOCK_UPDATE" | "PENDING" | "NONE";
-export type RelativeConstants = "FIX" | 'RELATIVE_PERCENT' | 'RELATIVE_AMOUNT';
+export type RelativeConstants = "FIX" | 'RELATIVE_PERCENT' | 'RELATIVE_AMOUNT' | 'DELETE';
 export type RenewStatusConstants = "AUTO" | "CANCELED" | "ONCE";
 export type RoPersonTypeConstants = "P" | "AP" | "NC" | "C" | "GI" | "PI" | "O";
 export type SanType = "FQDN" | "SUBDOMAIN" | "WILDCARD";
@@ -2434,7 +2434,7 @@ export namespace DomainRobotModels {
         priceType?: PriceTypeConstants;
         priceMarkupType?: PriceMarkupType;
         priceMarkup?: number;
-        priceRounding?: PriceRounding;
+        priceRounding?: PriceRoundingConstants;
         currency?: number;
         country?: string;
         creditorIdentifier?: string;
@@ -3524,6 +3524,16 @@ export namespace DomainRobotModels {
     export interface PriceServiceEntity {
         configuration?: any;
         condition?: ServiceEntity;
+    }
+
+    export class PriceTemplateBuilderOptions {
+        constructor(config?: PriceTemplateBuilderOptions)
+    }
+
+    export interface PriceTemplateBuilderOptions {
+        relative: RelativeConstants,
+        amount: number,
+        rounding: PriceRoundingConstants
     }
 
     export class Product {
