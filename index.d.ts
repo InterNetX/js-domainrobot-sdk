@@ -428,7 +428,7 @@ export type PriceMarkupType = "PERCENT" | "ABSOLUTE";
 export type PriceTypeConstants = "GROSS" | "NET";
 export type PriceChangeStatusConstants = "PENDING" | "SUCCESS" | "FAILED" | "NOT_SET" | "CONFIRMED";
 export type PriceChangeTypeConstants = "CUSTOMER" | "GENERAL" | "GENERAL_DISCOUNT" | "PROMO" | "PRIMARY";
-export type PriceRoundingConstants = "NONE" | "ROUND_X0" | "ROUND_00" | "ROUND_X9" | "ROUND_99";
+export type PriceRoundingConstants = "NONE" | "DEFAULT" | "ROUND_X0" | "ROUND_00" | "ROUND_X9" | "ROUND_99";
 export type PriorityConstants = "DEFAULT" | "OFFER" | "PROTECTED" | "PROMO";
 export type ProtectionConstants = "HIGH" | "MEDIUM" | "LOW" | "OFF" | "CUSTOM";
 export type ProtocolTypeConstants = "TOTP" | "HOTP";
@@ -3531,9 +3531,9 @@ export namespace DomainRobotModels {
     }
 
     export interface PriceTemplateBuilderOptions {
-        relative: RelativeConstants,
-        amount: number,
-        rounding: PriceRoundingConstants
+        relative?: RelativeConstants;
+        amount?: number;
+        rounding?: PriceRoundingConstants;
     }
 
     export class Product {
