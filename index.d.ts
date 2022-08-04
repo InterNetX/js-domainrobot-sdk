@@ -193,6 +193,9 @@ export interface JsonResponseDataContact extends Result {
 export interface JsonResponseDataCustomer extends Result {
     data: DomainRobotModels.Customer[];
 }
+export interface JsonResponseDataBasicCustomer extends Result {
+    data: DomainRobotModels.BasicCustomer[];
+}
 export interface JsonResponseDataCustomerGroup extends Result {
     data: DomainRobotModels.CustomerGroup[];
 }
