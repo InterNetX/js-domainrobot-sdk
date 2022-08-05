@@ -1023,6 +1023,8 @@ export namespace DomainRobotModels {
     export interface BulkProductPriceTemplatePostRequest {
         objects?: ProductPriceTemplate[];
         template?: ProductPriceTemplate;
+        query?: Query;
+        priceRounding?: PriceTemplateBuilderOptions;
     }
     export class BulkProductPriceTemplateDeleteRequest {
         constructor(config?: BulkProductPriceTemplateDeleteRequest);
