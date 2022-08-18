@@ -1189,7 +1189,7 @@ export namespace DomainRobotModels {
         reissueStatus?: string;
         vmcLogo?: string;
         vmcTrademarkRegistrationNumber?: string | number;
-        vmcTrademarkCountryOrRegion: 'US' | 'CA' | 'EM' | 'GB' | 'DE' | 'JP' | 'AU' | 'ES' | 'IN' | 'KR' | 'BR';
+        vmcTrademarkCountryOrRegion?: 'US' | 'CA' | 'EM' | 'GB' | 'DE' | 'JP' | 'AU' | 'ES' | 'IN' | 'KR' | 'BR';
         scope?: 'FQDN' | 'BASEDOMAIN' | 'DEFAULT'
     }
 
@@ -1220,7 +1220,7 @@ export namespace DomainRobotModels {
         ecCurve?: CsrHashAlgorithmConstants;
         vmcLogo?: string;
         vmcTrademarkRegistrationNumber?: string | number;
-        vmcTrademarkCountryOrRegion: 'US' | 'CA' | 'EM' | 'GB' | 'DE' | 'JP' | 'AU' | 'ES' | 'IN' | 'KR' | 'BR';
+        vmcTrademarkCountryOrRegion?: 'US' | 'CA' | 'EM' | 'GB' | 'DE' | 'JP' | 'AU' | 'ES' | 'IN' | 'KR' | 'BR';
         scope?: 'FQDN' | 'BASEDOMAIN' | 'DEFAULT'
     }
 
