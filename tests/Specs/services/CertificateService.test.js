@@ -11,7 +11,9 @@ const DomainRobotModels = Backend.models;
 
 // mock data
 const PrepareOrderResponse = require("../../mock/Certificate/PrepareOrderResponse.json");
+const prepareOrderCertificateDataModel = require("../../mock/Certificate/PrepareOrderCertificateDataModel.json");
 const prepareOrderCertificateModel = require("../../mock/Certificate/PrepareOrderCertificateModel.json");
+
 
 const ValidResponse = require("../../mock/ValidResponse.json");
 
@@ -33,8 +35,8 @@ describe("CertificateService", () => {
     });
 
     it("prepareOrder", async () => {
-        let certficateModel = new DomainRobotModels.Certificate(
-            prepareOrderCertificateModel
+        let certficateModel = new DomainRobotModels.CertificateData(
+            prepareOrderCertificateDataModel
         );
 
         axiosMock().onPost().reply(200, PrepareOrderResponse);
