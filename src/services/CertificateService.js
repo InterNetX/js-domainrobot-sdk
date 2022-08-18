@@ -44,6 +44,7 @@ class CertificateService extends DomainRobotService {
      * @return CertificateData
      */
     async prepareOrder(model) {
+        model.csr = model.plain
         model = this.prepareCsr(model);
         model.plain = model.csr;
         model.csr = null;
@@ -55,6 +56,16 @@ class CertificateService extends DomainRobotService {
             this.domainRobotConfig.url + "/certificate/_prepareOrder",
             model
         );
+    }
+
+    convertCertificateToCertificateData(model){
+      return new DomainRobotModels.CertificateData({
+        plain: model.csr,
+        name: model.name,
+        san: model.subjectAlternativeNames,
+        histories: model.histories,
+        product: model.product,
+      })
     }
 
     async list(model, keys = []) {

@@ -16,6 +16,7 @@ export declare class CertificateService extends DomainRobotService<CertificateSe
     delete(id: number): Promise<DomainRobotResult<JsonResponseDataObjectJob, number>>;
     renew(model: DomainRobotModels.Certificate): Promise<DomainRobotResult<JsonResponseDataObjectJob, number>>;
     comment(model: DomainRobotModels.Certificate): Promise<DomainRobotResult<JsonResponseDataVoid, number>>;
+    convertCertificateToCertificateData(model: DomainRobotModels.Certificate): DomainRobotModels.CertificateData;
 }
 export declare class ContactService extends DomainRobotService<ContactService> {
     create(model: DomainRobotModels.Contact): Promise<DomainRobotResult<JsonResponseDataContact, number>>;
@@ -1186,6 +1187,10 @@ export namespace DomainRobotModels {
         multiyear?: boolean;
         reissueRequired?: boolean;
         reissueStatus?: string;
+        vmcLogo?: string;
+        vmcTrademarkRegistrationNumber?: string | number;
+        vmcTrademarkCountryOrRegion: 'US' | 'CA' | 'EM' | 'GB' | 'DE' | 'JP' | 'AU' | 'ES' | 'IN' | 'KR' | 'BR';
+        scope?: 'FQDN' | 'BASEDOMAIN' | 'DEFAULT'
     }
 
     export class CertificateData {
@@ -1194,7 +1199,7 @@ export namespace DomainRobotModels {
     export interface CertificateData {
         plain?: string;
         name?: string;
-        san?: string[];
+        san?: SubjectAlternativeName[];
         histories?: CertificateHistory[];
         keySize?: number;
         countryCode?: string;
@@ -1213,6 +1218,10 @@ export namespace DomainRobotModels {
         certificate?: Certificate;
         businessCase?: string;
         ecCurve?: CsrHashAlgorithmConstants;
+        vmcLogo?: string;
+        vmcTrademarkRegistrationNumber?: string | number;
+        vmcTrademarkCountryOrRegion: 'US' | 'CA' | 'EM' | 'GB' | 'DE' | 'JP' | 'AU' | 'ES' | 'IN' | 'KR' | 'BR';
+        scope?: 'FQDN' | 'BASEDOMAIN' | 'DEFAULT'
     }
 
     export class CertificateInstallCheckData {
