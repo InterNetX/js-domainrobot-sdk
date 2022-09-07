@@ -25207,7 +25207,7 @@
         },
         "vatNumber" : {
           "type" : "string",
-          "description" : "The vatnumber."
+          "description" : "The vatNumber."
         },
         "citizenship" : {
           "type" : "string",

@@ -629,7 +629,7 @@ export namespace DomainRobotModels {
         type?: CustomerType;
         organization?: string;
         organization2?: string;
-        vatnumber?: string;
+        vatNumber?: string;
         gender?: string;
         title?: string;
         addressLines?: string[];
@@ -1728,7 +1728,7 @@ export namespace DomainRobotModels {
         group?: number;
         name?: string;
         organization?: string;
-        vatnumber?: string;
+        vatNumber?: string;
         gender?: GenderConstants;
         title?: string;
         addressLines?: string[];
