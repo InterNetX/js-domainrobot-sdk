@@ -1770,7 +1770,24 @@ export namespace DomainRobotModels {
         ticketNumber?: string;
         accountManager?: AccountManager;
     }
-    
+    export class CustomerDocument {
+        constructor(config?: CustomerDocument);
+    }
+    export interface CustomerDocument {
+        created?: string;
+        updated?: string;
+        id?: number;
+        document?: Document;
+        customer?: GenericCustomer;
+        comment?: string;
+        extension?: Configuration;
+        name?: string;
+        category?: string;
+        worker?: string;
+        owner?: BasicUser;
+        updater?: BasicUser;
+        date?: string;
+    }
     export class CustomerGroup {
         constructor(config?: CustomerGroup);
     }
