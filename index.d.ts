@@ -394,7 +394,7 @@ export type ContactType = "BILLING" | "TECH" | "LEGAL" | "DOMAIN" | "SSL" | "SER
 export type ContactTypeConstants = "PERSON" | "ORG" | "ROLE";
 export type CreditCardVendor = "MC" | "VISA" | "AMEX" | "DIC" | "DISC" | "CB";
 export type CryptoFormatConstants = "SHA1" | "SHA256" | "SHA512";
-export type CustomerType = "PERSON" | "OORGANIZATIONRG";
+export type CustomerType = "PERSON" | "ORGANIZATION";
 export type CsrHashAlgorithmConstants = "ECC" | "RSA" | "DSA";
 export type DNSCheck = "SOA" | "NS" | "ALL" | "NONE";
 export type DeliveryStatus = "PENDING" | "SUCCESS" | "FAILED" | "EXPIRED" | "ATTEMPTING" | "PARTIAL";
@@ -626,6 +626,7 @@ export namespace DomainRobotModels {
         client?: string;
         group?: number;
         name?: string;
+        type?: CustomerType;
         organization?: string;
         organization2?: string;
         vatnumber?: string;
@@ -639,32 +640,39 @@ export namespace DomainRobotModels {
         fax?: Phone;
         emails?: string[];
         billingEmails?: string[];
-        contacts?: Contact[];
         payment?: string;
         paymentMode?: string;
         paymentCurrency?: Currency;
+        paymentCurrencyExchangeFee?: number;
+        discount?: number;
+        discountNgtld?: number;
+        discountCertificate?: number;
+        discountValid?: string;
         invoiceLanguage?: string;
-        pin?: string;
-        taxable?: Boolean;
+        taxable?: boolean;
         card?: Card;
         contracts?: CustomerContract[];
         billingUsers?: BasicUser[];
+        comments?: Comment[];
+        contacts?: basicCustomerContact[];
         account?: Account;
+        priceListEntities?: CustomerPriceList[];
+        addPriceListEntities?: CustomerPriceList[];
+        remPriceListEntities?: CustomerPriceList[];
         clearAccount?: ClearAccountPeriod;
+        autodelete?: boolean;
+        pending?: boolean;
+        verifications?: BasicCustomerSpoolVerification[];
+        tags?: CustomerTag;
+        pin?: string;
+        persistent?: object;
+        active?: boolean;
         fname?: string;
         lname?: string;
         pcode?: string;
+        technical?: TechnicalCustomer;
         sepa?: SEPAMandate;
-        type?: string;
-        vatNumber?: string;
-        discountValid?: string;
-        autodelete?: boolean;
-        pending?: string;
-        verifications?: BasicCustomerSpoolVerification[];
-        comments?: Comment[];
-        persistent?: BasicCustomer;
     }
-
     export class basicCustomerContact {
         constructor(config?: basicCustomerContact);
     }
@@ -1859,6 +1867,17 @@ export namespace DomainRobotModels {
         watermark?: LocalizedValue;
         priceTaskCommentRequired?: boolean;
     }
+    export class CustomerPriceList {
+        constructor(config?: CustomerPriceList);
+    }
+    export interface CustomerPriceList {
+        created?: string;
+        updated?: string;
+        id?: number;
+        customer?: GenericCustomer;
+        priceList?: PriceList;
+    }
+
     export class CustomerPriceLists {
         constructor();
         // constructor(config?: CustomerPriceLists);
@@ -3538,7 +3557,26 @@ export namespace DomainRobotModels {
     export interface PriceData {
         prices?: SimplePrice;
     }
-
+    export class PriceList {
+        constructor(config?: PriceList);
+    }
+    export interface PriceList {
+        created?: string;
+        updated?: string;
+        owner?: BasicUser;
+        updater?: BasicUser;
+        id?: number;
+        label?: string;
+        client?: string;
+        group?: string;
+        type?: string;
+        from?: string;
+        to?: string;
+        inactive?: boolean;
+        comment?: string;
+        customerPriceListsAdd?: Array<object>;
+        customerPriceListsRem?: Array<object>;
+    }
     export class PriceServiceData {
         constructor(config?: PriceServiceData);
     }
