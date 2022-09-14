@@ -8,6 +8,8 @@ export declare class DomainRobotService<T> {
 
 export declare class CertificateService extends DomainRobotService<CertificateService>{
     create(model: DomainRobotModels.Certificate): Promise<DomainRobotResult<JsonResponseDataObjectJob, number>>;
+    createDocumentSigning(model: DomainRobotModels.Certificate): Promise<DomainRobotResult<JsonResponseDataObjectJob, number>>;
+    createVMC(model: DomainRobotModels.Certificate): Promise<DomainRobotResult<JsonResponseDataObjectJob, number>>;
     createRealtime(model: DomainRobotModels.Certificate): Promise<DomainRobotResult<JsonResponseDataCertificate, number>>;
     prepareOrder(model: DomainRobotModels.CertificateData): Promise<DomainRobotResult<JsonResponseDataCertificateData, number>>;
     list(odel: DomainRobotModels.Query, keys?: string[]): Promise<DomainRobotResult<JsonResponseDataCertificate, number>>;
@@ -1728,7 +1730,6 @@ export namespace DomainRobotModels {
         group?: number;
         name?: string;
         organization?: string;
-        vatNumber?: string;
         gender?: GenderConstants;
         title?: string;
         addressLines?: string[];
