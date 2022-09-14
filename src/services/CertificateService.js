@@ -31,6 +31,22 @@ class CertificateService extends DomainRobotService {
         );
     }
 
+    async createDocumentSigning(model) {
+
+      return await this.sendPostRequest(
+        this.domainRobotConfig.url + "/certificate",
+        model
+      );
+    }
+
+    async createVMC(model) {
+
+      return await this.sendPostRequest(
+        this.domainRobotConfig.url + "/certificate",
+        model
+      );
+    }
+
     async createRealtime(model) {
         model = this.prepareCsr(model);
 
