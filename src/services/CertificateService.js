@@ -111,6 +111,22 @@ class CertificateService extends DomainRobotService {
         );
     }
 
+    async reissueDocumentSigning(model) {
+
+      return await this.sendPutRequest(
+        this.domainRobotConfig.url + "/certificate/" + model.id,
+        model
+      );
+    }
+
+    async reissueVMC(model) {
+
+      return await this.sendPutRequest(
+        this.domainRobotConfig.url + "/certificate/" + model.id,
+        model
+      );
+  }
+
     async delete(certificateId) {
         return await this.sendDeleteRequest(
             this.domainRobotConfig.url + "/certificate/" + certificateId
@@ -124,6 +140,22 @@ class CertificateService extends DomainRobotService {
             this.domainRobotConfig.url + "/certificate/" + model.id + "/_renew",
             model
         );
+    }
+
+    async renewDocumentSigning(model) {
+
+      return await this.sendPutRequest(
+        this.domainRobotConfig.url + "/certificate/" + model.id + "/_renew",
+        model
+      );
+    }
+
+    async renewVMC(model) {
+
+      return await this.sendPutRequest(
+        this.domainRobotConfig.url + "/certificate/" + model.id + "/_renew",
+        model
+      );
     }
 
     async comment(model) {
