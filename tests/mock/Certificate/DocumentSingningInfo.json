@@ -1,0 +1,74 @@
+{
+  "data":{
+    "stid": "20220922-app2-dev-9241",
+    "status": {
+      "code": "S400104",
+      "text": "Zertifikats-Daten wurden erfolgreich ermittelt.",
+      "type": "SUCCESS"
+    },
+    "object": {
+      "type": "Certificate",
+      "value": "InterNetX Gmbh",
+      "data": {
+        "id": 1658471,
+        "name": "InterNetX Gmbh",
+        "software": "NOT_SET"
+      }
+    },
+    "data": [
+      {
+        "created": "2022-01-13T13:33:21.000+0100",
+        "updated": "2022-01-13T13:37:15.000+0100",
+        "owner": {
+          "context": 9,
+          "user": "mmustermann"
+        },
+        "updater": {
+          "context": 9,
+          "user": "mmustermann"
+        },
+        "id": 1658471,
+        "orderId": "AATL20220113011980",
+        "adminContact": {
+          "fname": "Max",
+          "lname": "Mustermann",
+          "phone": "+49-0-0",
+          "fax": "+49-0-0",
+          "email": "mmustermann@example.com",
+          "title": "Herr",
+          "organization": "InterNetX GmbH",
+          "address": [
+            "Maximilianstrasse 6"
+          ],
+          "pcode": "93047",
+          "city": "Schwabelweis",
+          "country": "DE",
+          "state": "Bayern",
+          "id": 100
+        },
+        "name": "InterNetX Gmbh",
+        "lifetime": {
+          "unit": "MONTH",
+          "period": 12
+        },
+        "software": "NOT_SET",
+        "serialNumber": "NOT_SET",
+        "product": "GLOBALSIGN_DOCUMENT_SIGNING",
+        "certificateType": "DOCUMENT",
+        "signatureHashAlgorithm": "SHA2",
+        "expire": "2022-12-25T00:00:00.000+0100",
+        "payable": "2022-12-25T00:00:00.000+0100",
+        "extension": {},
+        "histories": [],
+        "certificationAuthority": [],
+        "authentication": {
+          "method": "ORG"
+        },
+        "certificateTransparencyPrivacy": "PUBLIC",
+        "multiyear": false,
+        "reissueRequired": false
+      }
+    ]
+  },
+  "status": 200
+}

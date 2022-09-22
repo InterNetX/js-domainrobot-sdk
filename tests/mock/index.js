@@ -1,14 +1,17 @@
 const prepareOrder = require('./Certificate/PrepareOrderResponse.json')
 const sslContactList = require('./SSLContact/SSLContactList.json')
+const documentSigningInfo = require('./Certificate/DocumentSingningInfo.json')
 
 const mocks = {
   "certificate": {
-    "prepareOrder": prepareOrder
+    "prepareOrder": prepareOrder,
+    "info": documentSigningInfo
   },
   "sslcontact": {
     "list": sslContactList
   }
 }
+
 
 /**
  * Returns a DomainRobot.Result object
