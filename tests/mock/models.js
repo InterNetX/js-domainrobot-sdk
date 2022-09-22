@@ -148,6 +148,7 @@ const MockModels = {
     CustomerDocument: function (data) { },
     CustomerGroup: function (data) { },
     CustomerGroupAddon: function (data) { }, 
+    CustomerNumberRange: function (data) { },
     CustomerTag: function (data) { },
     CustomerType: function (data) { },
     DNSSec: function (data) { },
