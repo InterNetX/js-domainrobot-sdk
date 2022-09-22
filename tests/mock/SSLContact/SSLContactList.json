@@ -1,50 +1,53 @@
 {
-  "stid": "20220921-app3-dev-8496",
-  "status": {
-    "code": "S400205",
-    "text": "Kontakte wurden erfolgreich ermittelt.",
-    "type": "SUCCESS"
-  },
-  "object": {
-    "type": "SslContact",
-    "summary": 3
-  },
-  "data": [
-    {
-      "created": "2015-11-25T10:35:41.000+0100",
-      "updated": "2020-03-03T14:04:00.000+0100",
-      "fname": "Max",
-      "lname": "Mustermann",
-      "organization": "InterNetX GmbH",
-      "owner": {
-        "context": 9,
-        "user": "mmustermann"
-      },
-      "id": 100
+  "data": {
+    "stid": "20220921-app3-dev-8496",
+    "status": {
+      "code": "S400205",
+      "text": "Kontakte wurden erfolgreich ermittelt.",
+      "type": "SUCCESS"
     },
-    {
-      "created": "2022-02-17T10:03:07.000+0100",
-      "updated": "2022-03-30T10:05:03.000+0200",
-      "fname": "Master",
-      "lname": "of the Universe",
-      "organization": "Company Kg",
-      "owner": {
-        "context": 9,
-        "user": "muniverse"
-      },
-      "id": 37791
+    "object": {
+      "type": "SslContact",
+      "summary": 3
     },
-    {
-      "created": "2022-04-14T13:22:18.000+0200",
-      "updated": "2022-04-14T13:22:18.000+0200",
-      "fname": "Max",
-      "lname": "Mustermann",
-      "organization": "Galaxy Incoporated",
-      "owner": {
-        "context": 9,
-        "user": "mmustermann"
+    "data": [
+      {
+        "created": "2015-11-25T10:35:41.000+0100",
+        "updated": "2020-03-03T14:04:00.000+0100",
+        "fname": "Daniel",
+        "lname": "Linsenmeier",
+        "organization": "InterNetX GmbH",
+        "owner": {
+          "context": 9,
+          "user": "dlinsenmeier"
+        },
+        "id": 100
       },
-      "id": 37798
-    }
-  ]
+      {
+        "created": "2022-02-17T10:03:07.000+0100",
+        "updated": "2022-03-30T10:05:03.000+0200",
+        "fname": "Master",
+        "lname": "Universe",
+        "organization": "Galaxy",
+        "owner": {
+          "context": 9,
+          "user": "dlinsenmeier"
+        },
+        "id": 37791
+      },
+      {
+        "created": "2022-04-14T13:22:18.000+0200",
+        "updated": "2022-04-14T13:22:18.000+0200",
+        "fname": "Master",
+        "lname": "Universe",
+        "organization": "Galaxy",
+        "owner": {
+          "context": 9,
+          "user": "dlinsenmeier"
+        },
+        "id": 37798
+      }
+    ]
+  },
+  "status": 200
 }
