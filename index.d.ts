@@ -1813,6 +1813,8 @@ export namespace DomainRobotModels {
         parent?: object;
         addons?: CustomerGroupAddon;
         owner?: BasicUser;
+        disabled?: boolean;
+        numberRanges?: CustomerNumberRange[];
     }
     export class CustomerGroupAddon {
         constructor(config?: CustomerGroupAddon);
@@ -1871,6 +1873,13 @@ export namespace DomainRobotModels {
         url?: string;
         watermark?: LocalizedValue;
         priceTaskCommentRequired?: boolean;
+    }
+    export class CustomerNumberRange {
+        constructor(config?: CustomerNumberRange);
+    }
+    export interface CustomerNumberRange {
+        min?: number;
+        max?: number;
     }
     export class CustomerPriceList {
         constructor(config?: CustomerPriceList);
