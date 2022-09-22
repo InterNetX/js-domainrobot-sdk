@@ -1,9 +1,13 @@
 const prepareOrder = require('./Certificate/PrepareOrderResponse.json')
+const sslContactList = require('./SSLContact/SSLContactList.json')
 
 const mocks = {
-    "certificate": {
-        "prepareOrder": prepareOrder
-    }
+  "certificate": {
+    "prepareOrder": prepareOrder
+  },
+  "sslcontact": {
+    "list": sslContactList
+  }
 }
 
 /**
