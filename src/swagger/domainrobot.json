@@ -32221,6 +32221,29 @@
       "type" : "string",
       "enum" : [ "P", "AP", "NC", "C", "GI", "PI", "O" ]
     },
+    "SalesPrice" : {
+      "type" : "object",
+      "properties" : {
+        "amount" : {
+          "type" : "number",
+          "description" : "The amount"
+        },
+        "businessCase" : {
+          "description" : "The business case",
+          "originalRef" : "GenericLabelEntity",
+          "$ref" : "#/definitions/GenericLabelEntity"
+        },
+        "period" : {
+          "description" : "The period for the price calculation",
+          "originalRef" : "TimePeriod",
+          "$ref" : "#/definitions/TimePeriod"
+        },
+        "currency" : {
+          "type" : "string",
+          "description" : "Used currency"
+        }
+      }
+    },
     "SEPAMandate" : {
       "type" : "object",
       "required" : [ "confirmChecked", "confirmIp", "confirmSignature" ],

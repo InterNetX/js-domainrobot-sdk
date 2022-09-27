@@ -3617,6 +3617,8 @@ export namespace DomainRobotModels {
         relative?: RelativeConstants;
         amount?: number;
         rounding?: PriceRoundingConstants;
+        minimumSalesPrice?: SalesPrice[];
+        maximumSalesPrice?: SalesPrice[];
     }
 
     export class Product {
@@ -3823,6 +3825,15 @@ export namespace DomainRobotModels {
         code?: string;
         text?: string;
         typ?: string; //StatusType
+    }
+    export class SalesPrice {
+        constructor(config?: SalesPrice);
+    }
+    export interface SalesPrice {
+        amount?: number;
+        businessCase?: GenericLabelEntity;
+        period?: TimePeriod;
+        currency?: string;
     }
 
     export class SEPAMandate {

@@ -364,6 +364,7 @@ const MockModels = {
     ResponseObject: function (data) { },
     ResponseStatus: function (data) { },
     RoPersonTypeConstants: function (data) { },
+    SalesPrice: function(data) { },
     SanType: function (data) { },
     SEPAMandate: function (data) { },
     SepaStatus: function (data) { },
