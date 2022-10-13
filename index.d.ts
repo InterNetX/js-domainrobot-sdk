@@ -315,6 +315,7 @@ export type domainRobotConfig = {
     };
     isMockRequest?: boolean
     mockResponse?: undefined | MockResponse
+    headers?: { [key: string]: string}
 };
 
 export class DomainRobot {
