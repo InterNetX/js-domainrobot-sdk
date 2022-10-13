@@ -3695,8 +3695,8 @@ export namespace DomainRobotModels {
         relative?: RelativeConstants;
         amount?: number;
         rounding?: PriceRoundingConstants;
-        minimumSalesPrice?: SalesPrice[];
-        maximumSalesPrice?: SalesPrice[];
+        minimumSalesPrices?: SalesPrice[];
+        maximumSalesPrices?: SalesPrice[];
     }
 
     export class Product {
