@@ -174,6 +174,7 @@ export interface ResponseStatus {
     text: string;
     type: string;
     object?: ResponseObject
+    objects?: ResponseObject[]
 }
 
 export interface ResponseObject {
