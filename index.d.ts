@@ -173,6 +173,7 @@ export interface ResponseStatus {
     code: string;
     text: string;
     type: string;
+    object?: ResponseObject
 }
 
 export interface ResponseObject {
