@@ -14,9 +14,10 @@ const DomainRobotService = require("./src/services/DomainRobotService")
 
 //export default Domainrobot;
 module.exports = {
-	DomainRobot,
-    DomainRobotException,
-	DomainRobotHeaders,
-    DomainRobotModels,
-    DomainRobotService
+  DomainRobot,
+  DomainRobotException,
+  DomainRobotHeaders,
+  DomainRobotModels,
+  DomainRobotService,
+  ApiFactory
 };
