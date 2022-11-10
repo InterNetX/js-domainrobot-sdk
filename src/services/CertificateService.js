@@ -97,6 +97,7 @@ class CertificateService extends DomainRobotService {
     }
 
     async info(certificateId) {
+        this.virtualPath = ['certificate', 'info']
         return await this.sendGetRequest(
             this.domainRobotConfig.url + "/certificate/" + certificateId
         );
