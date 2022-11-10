@@ -22894,7 +22894,7 @@
           "description" : "Date of the last update."
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
@@ -22953,11 +22953,11 @@
           "description" : "Date of the last update."
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
-          "description" : "The updating user of the object.",
+          "description" : "User who performed the last update.",
           "$ref" : "#/definitions/BasicUser"
         },
         "language" : {
@@ -22996,7 +22996,7 @@
           "description" : "Date of the last update."
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
@@ -23474,11 +23474,11 @@
           "description" : "Date of the last update."
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
-          "description" : "The updating user of the object.",
+          "description" : "User who performed the last update.",
           "$ref" : "#/definitions/BasicUser"
         },
         "cancelation" : {
@@ -23676,6 +23676,17 @@
         "template" : {
           "description" : "The template for objects to process",
           "$ref" : "#/definitions/CustomerPriceList"
+        },
+        "query" : {
+          "description" : "The query to fetch the object instead of defined list",
+          "$ref" : "#/definitions/Query"
+        },
+        "options" : {
+          "type" : "array",
+          "description" : "The objects to process",
+          "items" : {
+            "$ref" : "#/definitions/CustomerPriceList"
+          }
         }
       }
     },
@@ -24334,7 +24345,7 @@
         },
         "dns" : {
           "type" : "string",
-          "description" : "The dns entry for dns based authentication."
+          "description" : "The dns entry for dns based authentication. A zone record as string."
         },
         "fileName" : {
           "type" : "string",
@@ -24353,7 +24364,8 @@
         },
         "provisioning" : {
           "type" : "boolean",
-          "description" : "Activates automatic provisioning of the zone for dns based authentication."
+          "example" : false,
+          "description" : "Automatic zone provisioning for DNS validation."
         },
         "domains" : {
           "type" : "array",
@@ -24405,11 +24417,11 @@
           "description" : "Date of the last update."
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
-          "description" : "The updating user of the object.",
+          "description" : "User who performed the last update.",
           "$ref" : "#/definitions/BasicUser"
         },
         "id" : {
@@ -24560,6 +24572,10 @@
         "hasCsr" : {
           "type" : "boolean",
           "description" : "States if a self created CSR is to be used for S/MIME. Default is false. Only for S/MIME!"
+        },
+        "fortify" : {
+          "type" : "boolean",
+          "description" : "States the certificate should be issued via the Fortify app. Default is false. Only for GlobalSign code and document signing products!"
         },
         "idn" : {
           "type" : "string",
@@ -24949,11 +24965,11 @@
           "description" : "The unique identifier of the contact"
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
-          "description" : "The updating user of the object.",
+          "description" : "User who performed the last update.",
           "$ref" : "#/definitions/BasicUser"
         },
         "alias" : {
@@ -25718,7 +25734,7 @@
           "description" : "Date of the last update."
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
@@ -26011,6 +26027,14 @@
           "description" : "The name of the manager.",
           "$ref" : "#/definitions/accountManager"
         },
+        "classification" : {
+          "type" : "string",
+          "description" : "The classification."
+        },
+        "invoiceNotice" : {
+          "type" : "string",
+          "description" : "The invoiceNotice."
+        },
         "notice" : {
           "type" : "string",
           "description" : "The notices."
@@ -26176,7 +26200,7 @@
           "description" : "Date of the last update."
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
@@ -26439,7 +26463,7 @@
           "description" : "Date of the last update."
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
@@ -26673,11 +26697,11 @@
           "description" : "Date of the last update."
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
-          "description" : "The updating user of the object.",
+          "description" : "User who performed the last update.",
           "$ref" : "#/definitions/BasicUser"
         },
         "name" : {
@@ -26800,11 +26824,11 @@
           "description" : "Date of the last update."
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
-          "description" : "The updating user of the object.",
+          "description" : "User who performed the last update.",
           "$ref" : "#/definitions/BasicUser"
         },
         "name" : {
@@ -26868,7 +26892,7 @@
           "description" : "Date of the last update."
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
@@ -26893,33 +26917,33 @@
         },
         "name" : {
           "type" : "string",
-          "description" : "The name of the domain."
+          "description" : "Name of the domain to be pre-registered."
         },
         "authinfo" : {
           "type" : "string",
-          "description" : "The authinfo."
+          "description" : "AuthInfo for the domain."
         },
         "nameServers" : {
           "type" : "array",
-          "description" : "The nameservers.",
+          "description" : "The nameserver hostnames used for the domain which contains the DNS information.",
           "items" : {
             "$ref" : "#/definitions/NameServer"
           }
         },
         "nameServerEntries" : {
           "type" : "array",
-          "description" : "The nameserver entries.",
+          "description" : "The nameserver hostnames used for connecting the domain in the DNS. \nIs only used for .de domains.",
           "items" : {
             "type" : "string"
           }
         },
         "status" : {
-          "description" : "The preregistration status of the domain.",
+          "description" : "Preregistration status.",
           "$ref" : "#/definitions/DomainPreregStatusConstants"
         },
         "phase" : {
           "type" : "string",
-          "description" : "The preregistration phase."
+          "description" : "The name of the preregistration phase whose name depends on the TLD."
         },
         "extension" : {
           "description" : "The preregistration extensions.",
@@ -26927,10 +26951,10 @@
         },
         "orderReference" : {
           "type" : "string",
-          "description" : "The unique order reference."
+          "description" : "The unique reference value of the domain preregistration order."
         },
         "tmchMark" : {
-          "description" : "The tmchmark.",
+          "description" : "TMCH mark reference number.",
           "$ref" : "#/definitions/TmchMark"
         },
         "preregConfig" : {
@@ -26939,34 +26963,34 @@
         },
         "idn" : {
           "type" : "string",
-          "description" : "The idn version of the name."
+          "description" : "The domain written in IDN form (Punycode syntax)."
         },
         "confirmed" : {
           "type" : "string",
           "format" : "date-time",
-          "description" : "The confirmation date."
+          "description" : "The date on which the preregistration was confirmed by the user."
         },
         "trustee" : {
           "type" : "boolean",
-          "description" : "Trustee active or not."
+          "description" : "Is a trustee used or not?\nfalse = No trustee is used\ntrue = A trustee is used\nDefault value = false\nFor XML, 0 (false) and 1 (true) can also be used.."
         },
         "domainCreated" : {
           "type" : "string",
           "format" : "date-time",
-          "description" : "The domain created date."
+          "description" : "Date on which the domain was registered at the registry."
         },
         "domainExpire" : {
           "type" : "string",
           "format" : "date-time",
-          "description" : "The domain expire date."
+          "description" : "Date on which the domain expires at the registry."
         },
         "registryStatus" : {
-          "description" : "The registry status.",
+          "description" : "Status of the domain at the registry.",
           "$ref" : "#/definitions/RegistryStatusConstants"
         },
         "recommended" : {
           "type" : "boolean",
-          "description" : "Recommended"
+          "description" : "\"Setting for visibility in list view. Recommended preregistrations \nare visible for power users only.\nfalse = Not recommended\ntrue = Recommended\nDefault value = false\nFor XML, 0 (false) and 1 (true) can also be used.\""
         }
       }
     },
@@ -27054,7 +27078,7 @@
           "description" : "Date of the last update."
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
@@ -27291,11 +27315,11 @@
           "description" : "Date of the last update."
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
-          "description" : "The updating user of the object.",
+          "description" : "User who performed the last update.",
           "$ref" : "#/definitions/BasicUser"
         },
         "name" : {
@@ -28195,10 +28219,6 @@
           "description" : "The configuration for the suggestion source",
           "$ref" : "#/definitions/DomainStudioSourceSuggestion"
         },
-        "semantic" : {
-          "description" : "The configuration for the suggestion2 source",
-          "$ref" : "#/definitions/DomainStudioSourceSuggestion2"
-        },
         "premium" : {
           "description" : "The configuration for the premium source",
           "$ref" : "#/definitions/DomainStudioSourcePremium"
@@ -28242,6 +28262,10 @@
         "prefixSuffix" : {
           "description" : "The configuration for the prefix suffix source",
           "$ref" : "#/definitions/DomainStudioSourcePrefixSuffix"
+        },
+        "semantic" : {
+          "description" : "The configuration for the suggestion2 source",
+          "$ref" : "#/definitions/DomainStudioSourceSuggestion2"
         }
       }
     },
@@ -28345,11 +28369,11 @@
           "description" : "The unique identifier of the price"
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
-          "description" : "The updating user of the object.",
+          "description" : "User who performed the last update.",
           "$ref" : "#/definitions/BasicUser"
         },
         "amount" : {
@@ -28462,22 +28486,22 @@
       "properties" : {
         "joiCountryName" : {
           "type" : "string",
-          "description" : "Country of judicial formation"
+          "description" : "Country of judicial formation."
         },
         "joiLocality" : {
           "type" : "string",
-          "description" : "Locality or city of judicial formation"
+          "description" : "Locality or city of judicial formation."
         },
         "joiStateOrProvince" : {
           "type" : "string",
-          "description" : "State or province of judicial formation"
+          "description" : "State or province of judicial formation."
         },
         "companyNumber" : {
           "type" : "string",
-          "description" : "The company number"
+          "description" : "The company number."
         },
         "businessCategory" : {
-          "description" : "Additional validation data required for certain Comodo products.",
+          "description" : "Type of business.",
           "$ref" : "#/definitions/BusinessCategory"
         }
       }
@@ -28496,11 +28520,11 @@
           "description" : "Date of the last update."
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
-          "description" : "The updating user of the object.",
+          "description" : "User who performed the last update.",
           "$ref" : "#/definitions/BasicUser"
         },
         "provider" : {
@@ -28531,6 +28555,10 @@
         "priceRounding" : {
           "description" : "The type of rounding",
           "$ref" : "#/definitions/PriceRoundingConstants"
+        },
+        "enablePromoPrice" : {
+          "type" : "boolean",
+          "description" : "Enables promo prices syncronization"
         },
         "currency" : {
           "type" : "string",
@@ -28723,7 +28751,7 @@
           "description" : "Date of the last update."
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
@@ -28862,7 +28890,9 @@
           "description" : "A list of ip restrictions",
           "items" : {
             "$ref" : "#/definitions/IpRestriction"
-          }
+          },
+          "maxItems" : 20,
+          "minItems" : 0
         }
       }
     },
@@ -28884,7 +28914,7 @@
           "description" : "Date of the last update."
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
@@ -31844,6 +31874,10 @@
         }
       }
     },
+    "NameServerMode" : {
+      "type" : "string",
+      "enum" : [ "MASTER", "SLAVE", "MASTER_SLAVE", "COMPLETE", "ANYCAST" ]
+    },
     "NameserverActionConstants" : {
       "type" : "string",
       "enum" : [ "PRIMARY", "SECONDARY", "COMPLETE", "HIDDEN", "NONE", "AUTO" ]
@@ -31962,10 +31996,11 @@
         "type" : {
           "type" : "string",
           "example" : "domain_away",
-          "description" : "The specific message type."
+          "description" : "Type of connected operation."
         },
         "object" : {
-          "description" : "The additional data object, e.g. transfer or certificate authorization data",
+          "example" : "domain",
+          "description" : "The ResponseObject object contains information about the object. The object is dependent on the order.",
           "$ref" : "#/definitions/ResponseObject"
         }
       }
@@ -31985,11 +32020,11 @@
           "description" : "Date of the last update."
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
-          "description" : "The updating user of the object.",
+          "description" : "User who performed the last update.",
           "$ref" : "#/definitions/BasicUser"
         },
         "protocolType" : {
@@ -32115,6 +32150,26 @@
       "type" : "string",
       "enum" : [ "EQUAL", "NOT_EQUAL", "NOT_LIKE", "LIKE", "ILIKE", "GREATER", "GREATER_EQUAL", "LESS", "LESS_EQUAL", "IS_NULL", "IS_NOT_NULL", "NOT_LESS", "NOT_GREATER", "NOT_LESS_EQUAL", "NOT_GREATER_EQUAL", "IN" ]
     },
+    "Order" : {
+      "type" : "object",
+      "properties" : {
+        "key" : {
+          "type" : "string",
+          "description" : "Keyword to be sorted by."
+        },
+        "ins" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "type" : {
+          "example" : "ASC (Ascending)\n DESC (Descending)",
+          "description" : "Sort order. Default = ASC",
+          "$ref" : "#/definitions/OrderType"
+        }
+      }
+    },
     "OrderType" : {
       "type" : "string",
       "enum" : [ "DESC", "ASC" ]
@@ -32133,11 +32188,11 @@
           "description" : "Date of the last update."
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
-          "description" : "The updating user of the object.",
+          "description" : "User who performed the last update.",
           "$ref" : "#/definitions/BasicUser"
         },
         "type" : {
@@ -32169,7 +32224,7 @@
     },
     "ParkingAccountType" : {
       "type" : "string",
-      "enum" : [ "SEDO" ]
+      "enum" : [ "SEDO", "PARKING_CREW" ]
     },
     "ParkingDomain" : {
       "type" : "object",
@@ -32185,11 +32240,11 @@
           "description" : "Date of the last update."
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
-          "description" : "The updating user of the object.",
+          "description" : "User who performed the last update.",
           "$ref" : "#/definitions/BasicUser"
         },
         "parkingAccount" : {
@@ -32242,7 +32297,7 @@
         },
         "registrantAccountId" : {
           "type" : "string",
-          "description" : "The registrant account id"
+          "description" : "Unique identifier of the registrants account in your systems."
         },
         "status" : {
           "type" : "string",
@@ -32283,20 +32338,20 @@
           "description" : "The unique identifier of the periodic"
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
-          "description" : "The updating user of the object.",
+          "description" : "User who performed the last update.",
           "$ref" : "#/definitions/BasicUser"
         },
         "status" : {
-          "description" : "The actual status of the entry, active means ok.",
+          "description" : "Billing status of the subscription.",
           "$ref" : "#/definitions/BillingStatus"
         },
         "object" : {
           "type" : "string",
-          "description" : "The name of the subscription, e.g. the contract number"
+          "description" : "Name of the subscription or the contract number."
         },
         "description" : {
           "type" : "string",
@@ -32329,19 +32384,19 @@
         "expire" : {
           "type" : "string",
           "format" : "date-time",
-          "description" : "The expire date."
+          "description" : "The expiration date of the subscription."
         },
         "cancelation" : {
           "type" : "string",
           "format" : "date-time",
-          "description" : "The cancelation date."
+          "description" : "The cancelation date of the subscription."
         },
         "businessCase" : {
           "type" : "string",
           "description" : "The businessCase of the subscription, e.g. create"
         },
         "extensions" : {
-          "description" : "The additional data",
+          "description" : "Additional information, such as rights and limits.",
           "$ref" : "#/definitions/BillingEventExtensions"
         }
       }
@@ -32370,6 +32425,10 @@
           "type" : "string",
           "description" : "The article label of the name server group, will be used for each created zone using these group"
         },
+        "supported" : {
+          "description" : "If the group supported",
+          "$ref" : "#/definitions/NameServerMode"
+        },
         "dnssec" : {
           "type" : "boolean",
           "description" : "If the group supports dnssec"
@@ -32390,10 +32449,10 @@
         "id" : {
           "type" : "integer",
           "format" : "int64",
-          "description" : "The message id."
+          "description" : "Message ID. Required for confirming with Poll Confirm."
         },
         "owner" : {
-          "description" : "The owner of the message.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "job" : {
@@ -32406,15 +32465,15 @@
         },
         "stid" : {
           "type" : "string",
-          "description" : "The server transaction id."
+          "description" : "The server transaction ID."
         },
         "ctid" : {
           "type" : "string",
-          "description" : "the custom transaction id."
+          "description" : "The custom transaction ID."
         },
         "messages" : {
           "type" : "array",
-          "description" : "The general localized messages.",
+          "description" : "System messages.",
           "items" : {
             "$ref" : "#/definitions/Message"
           }
@@ -32430,10 +32489,10 @@
         "created" : {
           "type" : "string",
           "format" : "date-time",
-          "description" : "The created date."
+          "description" : "Date of creation."
         },
         "object" : {
-          "description" : "The object of the job or notify.",
+          "description" : "\"Response\" object like \"domain\". Object type depends on the request.",
           "$ref" : "#/definitions/ResponseObject"
         }
       }
@@ -32563,11 +32622,11 @@
           "description" : "The unique identifier of the price"
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
-          "description" : "The updating user of the object.",
+          "description" : "User who performed the last update.",
           "$ref" : "#/definitions/BasicUser"
         },
         "amount" : {
@@ -32681,7 +32740,7 @@
           "description" : "Date of the last update."
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
@@ -32830,11 +32889,11 @@
           "description" : "Date of the last update."
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
-          "description" : "The updating user of the object.",
+          "description" : "User who performed the last update.",
           "$ref" : "#/definitions/BasicUser"
         },
         "article" : {
@@ -32886,11 +32945,11 @@
           "description" : "Date of the last update."
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
-          "description" : "The updating user of the object.",
+          "description" : "User who performed the last update.",
           "$ref" : "#/definitions/BasicUser"
         },
         "name" : {
@@ -32926,7 +32985,7 @@
         "orders" : {
           "type" : "array",
           "items" : {
-            "$ref" : "#/definitions/QueryOrder"
+            "$ref" : "#/definitions/Order"
           }
         }
       }
@@ -32963,44 +33022,35 @@
         }
       }
     },
-    "QueryOrder" : {
-      "type" : "object",
-      "properties" : {
-        "key" : {
-          "type" : "string"
-        },
-        "ins" : {
-          "type" : "array",
-          "items" : {
-            "type" : "string"
-          }
-        },
-        "type" : {
-          "$ref" : "#/definitions/OrderType"
-        }
-      }
-    },
     "QueryView" : {
       "type" : "object",
       "properties" : {
         "limit" : {
           "type" : "integer",
-          "format" : "int32"
+          "format" : "int32",
+          "description" : "Maximum number of objects to be displayed."
         },
         "offset" : {
           "type" : "integer",
-          "format" : "int32"
+          "format" : "int32",
+          "description" : "Defines the starting position of the returned result."
         },
         "children" : {
-          "type" : "boolean"
+          "type" : "boolean",
+          "example" : false,
+          "description" : "Query subusers. Default value=false"
         },
         "from" : {
           "type" : "string",
-          "format" : "date-time"
+          "format" : "date-time",
+          "example" : "2021-01-01 00:00:00",
+          "description" : "End Date - Required for Historical Task"
         },
         "to" : {
           "type" : "string",
-          "format" : "date-time"
+          "format" : "date-time",
+          "example" : "2022-01-01 00:00:00",
+          "description" : "Start Date - Required for Historical Task."
         }
       }
     },
@@ -33104,7 +33154,7 @@
           "description" : "Date of the last update."
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
@@ -33251,14 +33301,14 @@
       "properties" : {
         "code" : {
           "type" : "string",
-          "description" : "The result code of the response"
+          "description" : "The result code of the response."
         },
         "text" : {
           "type" : "string",
           "description" : "The text representation of the result code."
         },
         "type" : {
-          "description" : "The status of the response.",
+          "description" : "Type of response according to the status of the order.",
           "$ref" : "#/definitions/StatusType"
         }
       }
@@ -33395,11 +33445,11 @@
           "description" : "Date of the last update."
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
-          "description" : "The updating user of the object.",
+          "description" : "User who performed the last update.",
           "$ref" : "#/definitions/BasicUser"
         },
         "key" : {
@@ -33500,25 +33550,27 @@
         "refresh" : {
           "type" : "integer",
           "format" : "int64",
-          "description" : "The seconds after the secondary should refresh the zone data"
+          "description" : "Number of seconds after which secondary name servers should query the master for the SOA record, to detect zone changes"
         },
         "retry" : {
           "type" : "integer",
           "format" : "int64",
-          "description" : "The seconds after the secondary should retry the zone data after the refresh has been timeouts"
+          "description" : "Number of seconds after which secondary name servers should retry to request the serial number from the master \r\nif the master does not respond. It must be less than Refresh."
         },
         "expire" : {
           "type" : "integer",
           "format" : "int64",
-          "description" : "The seconds after the zone data will not be delievered, if the zone could not be reached on the master."
+          "description" : "Number of seconds after which secondary name servers \r\nshould stop answering request for this zone if the master does not respond. \r\nThis value must be bigger than the sum of Refresh and Retry."
         },
         "ttl" : {
           "type" : "integer",
-          "format" : "int64"
+          "format" : "int64",
+          "example" : "false = Check is performed\n false",
+          "description" : "Time-to-live default value of the Resource Record of a zone"
         },
         "email" : {
           "type" : "string",
-          "description" : "The email address of the responsible of the zone"
+          "description" : "The email address of the Zone Contact"
         }
       }
     },
@@ -33533,29 +33585,34 @@
           "$ref" : "#/definitions/PolicyMode"
         },
         "modifySubject" : {
-          "type" : "boolean"
+          "type" : "boolean",
+          "description" : "Setting for the flag in the subject:\r\nfalse = The emails should not be marked in the subject\r\ntrue = The emails should receive the label in the subject.\r\nDefault= false\r\nFor XML, 0 (false) and 1 (true) can also be used."
         },
         "tagHeader" : {
           "type" : "number",
           "format" : "double",
+          "description" : "Enter a score. If an incoming email reaches this value, the email will \r\nbe marked as spam in the header. (Header X-Spam Status \r\nand X-Spam Level).\r\nRecommendation:\r\nValue between -999 and 1\r\nMinimum: -999.9\r\nMaximum: 999.9",
           "minimum" : -999.9,
           "maximum" : 999.9
         },
         "spam" : {
           "type" : "number",
           "format" : "double",
+          "description" : "Enter a score from which an email should be classified as spam. \r\nThe header X-Spam-Flag will be added to emails that reach this score.\r\nMinimum: -999.9\r\nMaximum: 999.9",
           "minimum" : -999.9,
           "maximum" : 999.9
         },
         "kill" : {
           "type" : "number",
           "format" : "double",
+          "description" : "At what value an email should be quarantined for the selected task\r\nMinimum: -999.9\r\nMaximum: 999.9",
           "minimum" : -999.9,
           "maximum" : 999.9
         },
         "quarantineDigestInterval" : {
           "type" : "integer",
           "format" : "int32",
+          "description" : "\"Specify how long an email should be kept in quarantine.\r\nTime unit: minutes\r\nDefault: 1440 min\r\nMinimum: 1440 min\"",
           "minimum" : 1440
         }
       }
@@ -33610,7 +33667,7 @@
         "email" : {
           "type" : "string",
           "example" : "john.doe@domain.com",
-          "description" : "The email of the contact",
+          "description" : "The email address of the contact.",
           "x-custom-type" : "email"
         },
         "title" : {
@@ -33621,7 +33678,7 @@
         "organization" : {
           "type" : "string",
           "example" : "Company",
-          "description" : "The name of the organization",
+          "description" : "The name of organisation of the contact.",
           "minLength" : 0,
           "maxLength" : 64
         },
@@ -33635,7 +33692,7 @@
         "pcode" : {
           "type" : "string",
           "example" : "12345",
-          "description" : "The pcode of the contact",
+          "description" : "The postal code of the contact.",
           "x-custom-type" : "pcode"
         },
         "city" : {
@@ -33761,11 +33818,14 @@
           "description" : "Date of the last update."
         },
         "type" : {
+          "example" : "FQDN\nSUBDOMAIN\nWILDCARD",
+          "description" : "Type of SAN certificate.",
           "$ref" : "#/definitions/SanType"
         },
         "sslCertificateId" : {
           "type" : "integer",
-          "format" : "int32"
+          "format" : "int32",
+          "description" : "Id of the certificate this SAN belongs to."
         },
         "name" : {
           "type" : "string",
@@ -33800,7 +33860,7 @@
           "description" : "Date of the last update."
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
@@ -33923,20 +33983,20 @@
           "description" : "The unique identifier of the periodic"
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
-          "description" : "The updating user of the object.",
+          "description" : "User who performed the last update.",
           "$ref" : "#/definitions/BasicUser"
         },
         "status" : {
-          "description" : "The actual status of the entry, active means ok.",
+          "description" : "Billing status of the subscription.",
           "$ref" : "#/definitions/BillingStatus"
         },
         "object" : {
           "type" : "string",
-          "description" : "The name of the subscription, e.g. the contract number"
+          "description" : "Name of the subscription or the contract number."
         },
         "description" : {
           "type" : "string",
@@ -33969,12 +34029,12 @@
         "expire" : {
           "type" : "string",
           "format" : "date-time",
-          "description" : "The expire date."
+          "description" : "The expiration date of the subscription."
         },
         "cancelation" : {
           "type" : "string",
           "format" : "date-time",
-          "description" : "The cancelation date."
+          "description" : "The cancelation date of the subscription."
         },
         "limits" : {
           "type" : "array",
@@ -34011,7 +34071,7 @@
           "description" : "The businessCase of the subscription, e.g. create"
         },
         "extensions" : {
-          "description" : "The additional data",
+          "description" : "Additional information, such as rights and limits.",
           "$ref" : "#/definitions/BillingEventExtensions"
         }
       }
@@ -34124,14 +34184,14 @@
       "properties" : {
         "unit" : {
           "example" : "YEAR",
-          "description" : "The unit of the period",
+          "description" : "Time unit",
           "$ref" : "#/definitions/TimeUnitConstants"
         },
         "period" : {
           "type" : "integer",
           "format" : "int64",
           "example" : 1,
-          "description" : "The period value"
+          "description" : "Number of time units"
         }
       }
     },
@@ -34620,11 +34680,11 @@
           "description" : "Date of the last update."
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
-          "description" : "The updating user of the object.",
+          "description" : "User who performed the last update.",
           "$ref" : "#/definitions/BasicUser"
         },
         "reference" : {
@@ -34743,7 +34803,7 @@
           "description" : "Date of the last update."
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
@@ -34941,11 +35001,11 @@
           "description" : "Date of the last update."
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
-          "description" : "The updating user of the object.",
+          "description" : "User who performed the last update.",
           "$ref" : "#/definitions/BasicUser"
         },
         "domain" : {
@@ -34963,51 +35023,38 @@
         "start" : {
           "type" : "string",
           "format" : "date-time",
-          "description" : "The start date."
+          "description" : "Date on which the transfer started."
         },
         "reminder" : {
           "type" : "string",
           "format" : "date-time",
-          "description" : "The reminder date."
+          "description" : "Date on which the transfer reminder mail is sent."
         },
         "autoAck" : {
           "type" : "string",
           "format" : "date-time",
-          "description" : "The auto ack date."
+          "description" : "Date of the automatic ACK on which the transfer is confirmed."
         },
         "autoNack" : {
           "type" : "string",
           "format" : "date-time",
-          "description" : "The auto nack date."
+          "description" : "Date of the automatic NACK on which the transfer is rejected."
         },
         "end" : {
           "type" : "string",
           "format" : "date-time",
-          "description" : "The end date."
+          "description" : "Date on which the transfer process ends."
         },
         "autoAnswer" : {
           "type" : "boolean",
-          "description" : "Autoanswer active."
+          "description" : "Automatic response to the transfer request.\r\nfalse = not active\r\ntrue = active\r\nDefault value = false\r\nFor XML, 0 (false) and 1 (true) can also be used."
         },
         "recipient" : {
           "type" : "string",
-          "description" : "The recipient."
-        },
-        "mailserver" : {
-          "type" : "string",
-          "description" : "The mailserver."
-        },
-        "deliveredMailserver" : {
-          "type" : "string",
-          "description" : "The delivered mailserver."
-        },
-        "delivered" : {
-          "type" : "string",
-          "format" : "date-time",
-          "description" : "The delivered date."
+          "description" : "Receiver of the reminder email."
         },
         "status" : {
-          "description" : "The transfer status.",
+          "description" : "Status of a running transfer.",
           "$ref" : "#/definitions/TransferStatusConstants"
         }
       }
@@ -35031,11 +35078,11 @@
           "description" : "Date of the last update."
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
-          "description" : "The updating user of the object.",
+          "description" : "User who performed the last update.",
           "$ref" : "#/definitions/BasicUser"
         },
         "domain" : {
@@ -35053,48 +35100,35 @@
         "start" : {
           "type" : "string",
           "format" : "date-time",
-          "description" : "The start date."
+          "description" : "Date on which the transfer started."
         },
         "reminder" : {
           "type" : "string",
           "format" : "date-time",
-          "description" : "The reminder date."
+          "description" : "Date on which the transfer reminder mail is sent."
         },
         "autoAck" : {
           "type" : "string",
           "format" : "date-time",
-          "description" : "The auto ack date."
+          "description" : "Date of the automatic ACK on which the transfer is confirmed."
         },
         "autoNack" : {
           "type" : "string",
           "format" : "date-time",
-          "description" : "The auto nack date."
+          "description" : "Date of the automatic NACK on which the transfer is rejected."
         },
         "end" : {
           "type" : "string",
           "format" : "date-time",
-          "description" : "The end date."
+          "description" : "Date on which the transfer process ends."
         },
         "autoAnswer" : {
           "type" : "boolean",
-          "description" : "Autoanswer active."
+          "description" : "Automatic response to the transfer request.\r\nfalse = not active\r\ntrue = active\r\nDefault value = false\r\nFor XML, 0 (false) and 1 (true) can also be used."
         },
         "recipient" : {
           "type" : "string",
-          "description" : "The recipient."
-        },
-        "mailserver" : {
-          "type" : "string",
-          "description" : "The mailserver."
-        },
-        "deliveredMailserver" : {
-          "type" : "string",
-          "description" : "The delivered mailserver."
-        },
-        "delivered" : {
-          "type" : "string",
-          "format" : "date-time",
-          "description" : "The delivered date."
+          "description" : "Receiver of the reminder email."
         },
         "transaction" : {
           "type" : "string",
@@ -35107,7 +35141,7 @@
         "nackReason" : {
           "type" : "integer",
           "format" : "int32",
-          "description" : "The reason. Possible values are : 1 = Evidence of fraud / 2 = Current UDRP action / 3 = Court order / 4 = Identity dispute / 5 = No payment for previous registration period / 6 = Express written objection to the transfer from the transfer contact. "
+          "description" : "Reason for rejection. Only for type \"nack\", mandatory here."
         }
       }
     },
@@ -35130,11 +35164,11 @@
           "description" : "Date of the last update."
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
-          "description" : "The updating user of the object.",
+          "description" : "User who performed the last update.",
           "$ref" : "#/definitions/BasicUser"
         },
         "user" : {
@@ -35232,7 +35266,7 @@
         },
         "password" : {
           "type" : "string",
-          "description" : "The password."
+          "description" : "User password."
         },
         "defaultEmail" : {
           "type" : "string",
@@ -35241,15 +35275,15 @@
         "status" : {
           "type" : "integer",
           "format" : "int32",
-          "description" : "The status."
+          "description" : "User status."
         },
         "substatus" : {
           "type" : "integer",
           "format" : "int32",
-          "description" : "The substatus."
+          "description" : "User substatus of the User."
         },
         "authType" : {
-          "description" : "The users authorization method.",
+          "description" : "Authentication type, e.g. password or TOTP.",
           "$ref" : "#/definitions/AuthType"
         },
         "details" : {
@@ -35257,7 +35291,7 @@
           "$ref" : "#/definitions/UserDetails"
         },
         "lock" : {
-          "description" : "The lock status of the user.",
+          "description" : "Defines the type of user lock.",
           "$ref" : "#/definitions/UserLock"
         },
         "oldPassword" : {
@@ -35265,11 +35299,11 @@
           "description" : "The old password."
         },
         "acls" : {
-          "description" : "Wrapper for the user acls.",
+          "description" : "User privileges.",
           "$ref" : "#/definitions/UserAcls"
         },
         "profiles" : {
-          "description" : "Wrapper for the user profiles.",
+          "description" : "User profile.",
           "$ref" : "#/definitions/UserProfileViews"
         },
         "serviceProfiles" : {
@@ -35284,7 +35318,7 @@
           }
         },
         "customer" : {
-          "description" : "The customer belonging to the user.",
+          "description" : "Customer to which this user belongs.",
           "$ref" : "#/definitions/BasicCustomer"
         },
         "nameServerGroups" : {
@@ -35296,20 +35330,20 @@
         },
         "subscriptions" : {
           "type" : "array",
-          "description" : "Wrapper for the subscriptions.",
+          "description" : "Different subscriptions of the users.",
           "items" : {
             "$ref" : "#/definitions/Subscription"
           }
         },
         "applications" : {
           "type" : "array",
-          "description" : "Holds the used applications.",
+          "description" : "Trusted applications of the user.",
           "items" : {
             "$ref" : "#/definitions/TrustedApplication"
           }
         },
         "restrictions" : {
-          "description" : "The wrapper of the ip restrictions for the user.",
+          "description" : "Grouping object for specifying the user's IP networks.",
           "$ref" : "#/definitions/IpRestrictions"
         },
         "customerLevel" : {
@@ -35324,14 +35358,15 @@
         },
         "language" : {
           "type" : "string",
-          "description" : "The language."
+          "description" : "The language for the user. The setting affects \nthe user interface language and system messages.\nPossible values:\nde\nen\nes."
         },
         "parent" : {
-          "description" : "The parent.",
+          "description" : "Parent user.",
           "$ref" : "#/definitions/User"
         },
         "directCustomer" : {
-          "type" : "boolean"
+          "type" : "boolean",
+          "description" : "Specifies whether the user is a direct customer of the user.\nfalse = No direct customer\ntrue = direct customer\nDefault value = false\nFor XML, 0 (false) and 1 (true) can also be used."
         },
         "clientAccounts" : {
           "type" : "array",
@@ -35361,7 +35396,7 @@
       "properties" : {
         "functionCode" : {
           "type" : "string",
-          "description" : "The function code to restrict"
+          "description" : "The function code to be restricted"
         },
         "children" : {
           "type" : "array",
@@ -35373,15 +35408,15 @@
         },
         "childrenLocked" : {
           "type" : "boolean",
-          "description" : "The children lock"
+          "description" : "Should all the subordinate users be locked.\nfalse = Locked for all sub users\ntrue = Release for all sub users\nDefault value = true\nFor XML, 0 (false) and 1 (true) can also be used."
         },
         "userLocked" : {
           "type" : "boolean",
-          "description" : "The user lock"
+          "description" : "Should the ACL be locked or unlocked for this user. Valid values are: false, true \nFor XML, 0 (false) and 1 (true) may also be used.\nDefault value is true"
         },
         "effective" : {
           "type" : "boolean",
-          "description" : "The current active lock for the user"
+          "description" : "The current effective rights."
         },
         "childrenRem" : {
           "type" : "array",
@@ -35398,7 +35433,7 @@
           }
         },
         "restriction" : {
-          "description" : "The human readable restriction mode",
+          "description" : "Describes the restriction as a result of the authorisation check. The object defines the different types of restrictions.",
           "$ref" : "#/definitions/ACLRestriction"
         }
       }
@@ -35427,34 +35462,34 @@
       "properties" : {
         "organization" : {
           "type" : "string",
-          "description" : "The organization."
+          "description" : "The company name of the user."
         },
         "passwordResetMobile" : {
           "type" : "string",
           "example" : "+49-123-12345",
-          "description" : "The mobile phone number.",
+          "description" : "Mobile phone number to which the TAN is sent.",
           "x-custom-type" : "phone"
         },
         "passwordResetVerifyEmail" : {
           "type" : "string",
-          "description" : "The email address for the verification of the password reset process."
+          "description" : "Email address used for verification when resetting the password."
         },
         "passwordResetEmail" : {
           "type" : "string",
-          "description" : "The email address for the password reset tan."
+          "description" : "Email address to which the TAN is sent."
         },
         "fname" : {
           "type" : "string",
-          "description" : "The first name."
+          "description" : "The first name of the user."
         },
         "lname" : {
           "type" : "string",
-          "description" : "The last name."
+          "description" : "The last name of the user."
         },
         "phone" : {
           "type" : "string",
           "example" : "+49-123-12345",
-          "description" : "The phone number of the guest user",
+          "description" : "The phone number of the user.",
           "x-custom-type" : "phone"
         }
       }
@@ -35478,11 +35513,11 @@
           "description" : "Date of the last update."
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
-          "description" : "The updating user of the object.",
+          "description" : "User who performed the last update.",
           "$ref" : "#/definitions/BasicUser"
         },
         "key" : {
@@ -35521,11 +35556,11 @@
           "description" : "Date of the last update."
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
-          "description" : "The updating user of the object.",
+          "description" : "User who performed the last update.",
           "$ref" : "#/definitions/BasicUser"
         },
         "key" : {
@@ -35578,11 +35613,11 @@
           "description" : "Date of the last update."
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
-          "description" : "The updating user of the object.",
+          "description" : "User who performed the last update.",
           "$ref" : "#/definitions/BasicUser"
         },
         "date" : {
@@ -35631,7 +35666,7 @@
           "description" : "Date of the last update."
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
@@ -35640,19 +35675,20 @@
         },
         "active" : {
           "type" : "boolean",
-          "description" : "Flag to show if the nameserver is active"
+          "example" : false,
+          "description" : "Indicates whether the name server is in active use"
         },
         "name" : {
           "description" : "Host name of the nameserver.",
           "$ref" : "#/definitions/Name"
         },
         "mainAddress" : {
-          "description" : "The mainAddress",
+          "description" : "Primary IP address of the name server.",
           "$ref" : "#/definitions/InetAddress"
         },
         "ipAddresses" : {
           "type" : "array",
-          "description" : "The ip addresses.",
+          "description" : "IP addresses of the secondary name servers. Does not contain the primary IP address.",
           "items" : {
             "type" : "string"
           }
@@ -35674,25 +35710,26 @@
           "description" : "Date of the last update."
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
-          "description" : "The updating user of the object.",
+          "description" : "User who performed the last update.",
           "$ref" : "#/definitions/BasicUser"
         },
         "name" : {
           "type" : "string",
-          "description" : "The custom label for the group",
+          "description" : "Custom name of the name server group.",
           "pattern" : "(?i)\\b(?!default\\b)\\w+"
         },
         "useDefaultIps" : {
           "type" : "boolean",
-          "description" : "The useDefaultIps"
+          "example" : false,
+          "description" : "Use default ip addresses. Default value = false"
         },
         "nameServers" : {
           "type" : "array",
-          "description" : "The name servers of the group.",
+          "description" : "The nameservers that belong to the group.",
           "items" : {
             "$ref" : "#/definitions/VirtualNameServer"
           }
@@ -35703,7 +35740,7 @@
           "description" : "The unique id of the nsVirtualGroup"
         },
         "systemNameServerGroup" : {
-          "description" : "The custom label for the group",
+          "description" : "The group of physical name servers responsible for this virtual name server group.",
           "$ref" : "#/definitions/PhysicalNameServerGroup"
         }
       }
@@ -35940,7 +35977,7 @@
         },
         "idn" : {
           "type" : "string",
-          "description" : "The idn version of the origin."
+          "description" : "Punycode version of the origin."
         },
         "soa" : {
           "description" : "Only for ns_action: \"primary\"  and \"complete\"",
@@ -35948,22 +35985,22 @@
         },
         "dnssec" : {
           "type" : "boolean",
-          "description" : "Enables dnssec"
+          "description" : "If true dnssec signing for the zone is active."
         },
         "nameServerGroup" : {
           "type" : "string",
-          "description" : "The name of the name server group, if the zone is managed by"
+          "description" : "Name of the nameserver group."
         },
         "allowTransfer" : {
           "type" : "boolean",
-          "description" : "Allow AXFR"
+          "description" : "Allow zone transfer for the defined zone grants"
         },
         "owner" : {
-          "description" : "The owner of the object",
+          "description" : "Owner of the zone object",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
-          "description" : "The updating user of the object",
+          "description" : "User who last updated the zone.",
           "$ref" : "#/definitions/BasicUser"
         },
         "logId" : {
@@ -35977,34 +36014,39 @@
         },
         "domainsafe" : {
           "type" : "boolean",
-          "description" : "true if the domain is represented in the domain safe"
+          "description" : "Denotes of the zone is present in the DomainSafe service."
         },
         "source" : {
           "type" : "string",
-          "description" : "Nameserver, the zone is copied from via AXFR (for zone_import)"
+          "description" : "Name server from which a zone is copied via AXFR (with zone_import)."
         },
         "sourceVirtualHostname" : {
           "type" : "string",
           "description" : "System name server to look up the zone to copy"
         },
+        "purgeDate" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "Date on which the zone is purged (removed) from the system."
+        },
         "purgeType" : {
-          "description" : "The Purge Type. Default value is AUTO",
+          "description" : "Setting for automatic zone deletion.",
           "$ref" : "#/definitions/PurgeTypes"
         },
         "nameServers" : {
           "type" : "array",
-          "description" : "List of name servers",
+          "description" : "List of hostnames to be used as name severs.",
           "items" : {
             "$ref" : "#/definitions/NameServer"
           }
         },
         "main" : {
-          "description" : "IP address of the zone (A record)",
+          "description" : "Main IP address of the zone. Required for ns_action \"primary\" and \"complete\".",
           "$ref" : "#/definitions/MainIp"
         },
         "wwwInclude" : {
           "type" : "boolean",
-          "description" : "Automatic generation of resource records \"www\""
+          "description" : "Create a www A-record automatically?\n\nfalse = no\ntrue = yes\n\n\nDefault = true\n\n\nFor XML, 0 (false) and 1 (true) can also be used."
         },
         "virtualNameServer" : {
           "type" : "string",
@@ -36012,18 +36054,18 @@
         },
         "freeText" : {
           "type" : "array",
-          "description" : "The free text records.",
+          "description" : "Freely definable resource records to be entered in BIND Syntax.",
           "items" : {
             "type" : "string"
           }
         },
         "action" : {
-          "description" : "Additional nameserver check is proceeded",
+          "description" : "Additional nameserver check is proceeded.",
           "$ref" : "#/definitions/NameserverActionConstants"
         },
         "grants" : {
           "type" : "array",
-          "description" : "The grants where transfer (axfr) can be done from.",
+          "description" : "A list of IP addresses from which a zone transfer (AXFR) by be started from for this zone.",
           "items" : {
             "type" : "string"
           }
@@ -36041,7 +36083,7 @@
           "type" : "integer",
           "format" : "int32",
           "example" : 1,
-          "description" : "The resource object identifier of the zone"
+          "description" : "The resource object identifier of the zone."
         }
       }
     },
@@ -36065,7 +36107,7 @@
         },
         "idn" : {
           "type" : "string",
-          "description" : "The idn version of the origin."
+          "description" : "Punycode version of the origin."
         },
         "soa" : {
           "description" : "Only for ns_action: \"primary\"  and \"complete\"",
@@ -36073,22 +36115,22 @@
         },
         "dnssec" : {
           "type" : "boolean",
-          "description" : "Enables dnssec"
+          "description" : "If true dnssec signing for the zone is active."
         },
         "nameServerGroup" : {
           "type" : "string",
-          "description" : "The name of the name server group, if the zone is managed by"
+          "description" : "Name of the nameserver group."
         },
         "allowTransfer" : {
           "type" : "boolean",
-          "description" : "Allow AXFR"
+          "description" : "Allow zone transfer for the defined zone grants"
         },
         "owner" : {
-          "description" : "The owner of the object",
+          "description" : "Owner of the zone object",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
-          "description" : "The updating user of the object",
+          "description" : "User who last updated the zone.",
           "$ref" : "#/definitions/BasicUser"
         },
         "logId" : {
@@ -36102,18 +36144,23 @@
         },
         "domainsafe" : {
           "type" : "boolean",
-          "description" : "true if the domain is represented in the domain safe"
+          "description" : "Denotes of the zone is present in the DomainSafe service."
         },
         "source" : {
           "type" : "string",
-          "description" : "Nameserver, the zone is copied from via AXFR (for zone_import)"
+          "description" : "Name server from which a zone is copied via AXFR (with zone_import)."
         },
         "sourceVirtualHostname" : {
           "type" : "string",
           "description" : "System name server to look up the zone to copy"
         },
+        "purgeDate" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "Date on which the zone is purged (removed) from the system."
+        },
         "purgeType" : {
-          "description" : "The Purge Type. Default value is AUTO",
+          "description" : "Setting for automatic zone deletion.",
           "$ref" : "#/definitions/PurgeTypes"
         },
         "zoneGrantsAdd" : {
@@ -36139,18 +36186,18 @@
         },
         "nameServers" : {
           "type" : "array",
-          "description" : "List of name servers",
+          "description" : "List of hostnames to be used as name severs.",
           "items" : {
             "$ref" : "#/definitions/NameServer"
           }
         },
         "main" : {
-          "description" : "IP address of the zone (A record)",
+          "description" : "Main IP address of the zone. Required for ns_action \"primary\" and \"complete\".",
           "$ref" : "#/definitions/MainIp"
         },
         "wwwInclude" : {
           "type" : "boolean",
-          "description" : "Automatic generation of resource records \"www\""
+          "description" : "Create a www A-record automatically?\n\nfalse = no\ntrue = yes\n\n\nDefault = true\n\n\nFor XML, 0 (false) and 1 (true) can also be used."
         },
         "virtualNameServer" : {
           "type" : "string",
@@ -36158,18 +36205,18 @@
         },
         "freeText" : {
           "type" : "array",
-          "description" : "The free text records.",
+          "description" : "Freely definable resource records to be entered in BIND Syntax.",
           "items" : {
             "type" : "string"
           }
         },
         "action" : {
-          "description" : "Additional nameserver check is proceeded",
+          "description" : "Additional nameserver check is proceeded.",
           "$ref" : "#/definitions/NameserverActionConstants"
         },
         "grants" : {
           "type" : "array",
-          "description" : "The grants where transfer (axfr) can be done from.",
+          "description" : "A list of IP addresses from which a zone transfer (AXFR) by be started from for this zone.",
           "items" : {
             "type" : "string"
           }
@@ -36187,7 +36234,7 @@
           "type" : "integer",
           "format" : "int32",
           "example" : 1,
-          "description" : "The resource object identifier of the zone"
+          "description" : "The resource object identifier of the zone."
         },
         "resourceRecordsAdd" : {
           "type" : "array",
@@ -36279,7 +36326,7 @@
           "description" : "Date of the last update."
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {
@@ -36316,7 +36363,7 @@
           "description" : "Date of the last update."
         },
         "owner" : {
-          "description" : "The owner of the object.",
+          "description" : "The object owner.",
           "$ref" : "#/definitions/BasicUser"
         },
         "updater" : {

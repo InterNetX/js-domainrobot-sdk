@@ -432,6 +432,7 @@ export type JobStatusConstants = "RUNNING" | "SUCCESS" | "FAILED" | "CANCELED" |
 export type MessageTypeConstants = "INITIAL" | "FIRST_REMINDER" | "SECOND_REMINDER" | "LAST_REMINDER";
 export type ModifierConstants = "TTL" | "MX" | "A" | "AAAA" | "SOA_EMAIL" | "NSERVER" | "CNAME" | "TXT" | "ALL" | "MAIN_IP" | "OWNERC" | "ADMINC" | "TECHC" | "ZONEC" | "BILLINGC" | "ALIAS";
 export type NameserverActionConstants = "PRIMARY" | "SECONDARY" | "COMPLETE" | "HIDDEN" | "NONE" | "AUTO";
+export type NameServermode = "MASTER" | "SLAVE" | "MASTER_SLAVE" | "COMPLETE" | "ANYCAST"
 export type NiccomSourceConstants = "NIC_REQUEST" | "NIC_RESPONSE" | "NIC_NOTIFY" | "A3_REQUEST" | "A3_RESPONSE";
 export type ObjectAssignmentMode = "ASSIGN" | "DELETE";
 export type ObjectStatus = "SPOOL" | "REQUEST" | "PENDING_NOTIFY" | "PENDING" | "FAILED" | "SUCCESS" | "PENDING_DOMAIN" | "CONNECT";
@@ -1210,6 +1211,7 @@ export namespace DomainRobotModels {
         certificateTransparencyPrivacy?: CertificateTransparencyPrivacyConstants;
         domain?: string;
         hasCsr?: Boolean;
+        fortify?: Boolean;
         idn?: string;
         serialNumber?: string;
         codeSigningProvisioningMethod?: CodeSigningProvisioningMethod;
@@ -1796,6 +1798,8 @@ export namespace DomainRobotModels {
         notice?: string;
         ticketNumber?: string;
         accountManager?: AccountManager;
+        classification?: string;
+        invoiceNotice?: string;
     }
     export class CustomerDocument {
         constructor(config?: CustomerDocument);
@@ -2571,6 +2575,7 @@ export namespace DomainRobotModels {
         priceMarkupType?: PriceMarkupType;
         priceMarkup?: number;
         priceRounding?: PriceRoundingConstants;
+        enablePromoPrice?: boolean;
         currency?: number;
         country?: string;
         creditorIdentifier?: string;
@@ -3529,6 +3534,7 @@ export namespace DomainRobotModels {
         updated?: string;
         name?: string;
         articleLabel?: string;
+        supported?: NameServerMode;
         dnssec?: boolean;
         statistic?: string;
     }
@@ -4728,6 +4734,7 @@ export namespace DomainRobotModels {
         resourceRecords?: ResourceRecord[];
         roid?: number;
         purgeType?: PurgeTypes;
+        purgeDate?: string;
     }
 
     export class ZoneBasePatchRequest {
@@ -4764,6 +4771,7 @@ export namespace DomainRobotModels {
         resourceRecordsAdd?: ResourceRecord[];
         resourceRecordsRem?: ResourceRecord[];
         purgeType?: PurgeTypes;
+        purgeDate?: string;
     }
 
     export class ZoneStream {
