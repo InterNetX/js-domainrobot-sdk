@@ -9,6 +9,7 @@ export declare class DomainRobotService<T> {
 export declare class CertificateService extends DomainRobotService<CertificateService>{
     create(model: DomainRobotModels.Certificate): Promise<DomainRobotResult<JsonResponseDataObjectJob, number>>;
     createDocumentSigning(model: DomainRobotModels.Certificate): Promise<DomainRobotResult<JsonResponseDataObjectJob, number>>;
+    createCodeSigning(model: DomainRobotModels.Certificate): Promise<DomainRobotResult<JsonResponseDataObjectJob, number>>;
     createVMC(model: DomainRobotModels.Certificate): Promise<DomainRobotResult<JsonResponseDataObjectJob, number>>;
     createRealtime(model: DomainRobotModels.Certificate): Promise<DomainRobotResult<JsonResponseDataCertificate, number>>;
     prepareOrder(model: DomainRobotModels.CertificateData): Promise<DomainRobotResult<JsonResponseDataCertificateData, number>>;
@@ -16,10 +17,12 @@ export declare class CertificateService extends DomainRobotService<CertificateSe
     info(id: number): Promise<DomainRobotResult<JsonResponseDataCertificate, number>>;
     reissue(model: DomainRobotModels.Certificate): Promise<DomainRobotResult<JsonResponseDataObjectJob, number>>;
     reissueDocumentSigning(model: DomainRobotModels.Certificate): Promise<DomainRobotResult<JsonResponseDataObjectJob, number>>;
+    reissueCodeSigning(model: DomainRobotModels.Certificate): Promise<DomainRobotResult<JsonResponseDataObjectJob, number>>;
     reissueVMC(model: DomainRobotModels.Certificate): Promise<DomainRobotResult<JsonResponseDataObjectJob, number>>;
     delete(id: number): Promise<DomainRobotResult<JsonResponseDataObjectJob, number>>;
     renew(model: DomainRobotModels.Certificate): Promise<DomainRobotResult<JsonResponseDataObjectJob, number>>;
     renewDocumentSigning(model: DomainRobotModels.Certificate): Promise<DomainRobotResult<JsonResponseDataObjectJob, number>>;
+    renewCodeSigning(model: DomainRobotModels.Certificate): Promise<DomainRobotResult<JsonResponseDataObjectJob, number>>;
     renewVMC(model: DomainRobotModels.Certificate): Promise<DomainRobotResult<JsonResponseDataObjectJob, number>>;
     comment(model: DomainRobotModels.Certificate): Promise<DomainRobotResult<JsonResponseDataVoid, number>>;
     convertCertificateToCertificateData(model: DomainRobotModels.Certificate): DomainRobotModels.CertificateData;

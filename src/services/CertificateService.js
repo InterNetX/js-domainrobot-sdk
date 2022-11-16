@@ -32,15 +32,23 @@ class CertificateService extends DomainRobotService {
     }
 
     async createDocumentSigning(model) {
-
       return await this.sendPostRequest(
         this.domainRobotConfig.url + "/certificate",
         model
       );
     }
 
-    async createVMC(model) {
+  async createCodeSigning(model) {
+    if(model.csr !== undefined){
+      model = this.prepareCsr(model);
+    }
+    return await this.sendPostRequest(
+      this.domainRobotConfig.url + "/certificate",
+      model
+    );
+  }
 
+    async createVMC(model) {
       return await this.sendPostRequest(
         this.domainRobotConfig.url + "/certificate",
         model
@@ -113,7 +121,16 @@ class CertificateService extends DomainRobotService {
     }
 
     async reissueDocumentSigning(model) {
+      return await this.sendPutRequest(
+        this.domainRobotConfig.url + "/certificate/" + model.id,
+        model
+      );
+    }
 
+    async reissueCodeSigning(model) {
+      if (model.csr !== undefined) {
+        model = this.prepareCsr(model);
+      }
       return await this.sendPutRequest(
         this.domainRobotConfig.url + "/certificate/" + model.id,
         model
@@ -145,6 +162,16 @@ class CertificateService extends DomainRobotService {
 
     async renewDocumentSigning(model) {
 
+      return await this.sendPutRequest(
+        this.domainRobotConfig.url + "/certificate/" + model.id + "/_renew",
+        model
+      );
+    }
+
+    async renewCodeSigning(model) {
+      if (model.csr !== undefined) {
+        model = this.prepareCsr(model);
+      }
       return await this.sendPutRequest(
         this.domainRobotConfig.url + "/certificate/" + model.id + "/_renew",
         model
