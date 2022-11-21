@@ -1044,6 +1044,30 @@ export namespace DomainRobotModels {
         template?: Price;
         query?: Query;
     }
+    export class BulkPriceClassTemplatePostRequest {
+        constructor(config?: BulkPriceClasTemplatePostRequest);
+    }
+    export interface BulkPriceClassTemplatePostRequest {
+        objects?: PriceClassTemplate[];
+        template?: PriceClassTemplate;
+        query?: Query;
+        priceRounding?: PriceTemplateBuilderOptions;
+    }
+    export class BulkPriceClassTemplateDeleteRequest {
+        constructor(config?: BulkPriceClassTemplateDeleteRequest);
+    }
+    export interface BulkPriceClassTemplateDeleteRequest {
+        objects?: PriceClassTemplate[];
+        query?: Query;
+    }
+    export class BulkPriceClassTemplatePatchRequest {
+        constructor(config?: BulkPriceClassTemplatePatchRequest);
+    }
+    export interface BulkPriceClassTemplatePatchRequest {
+        objects?: PriceClassTemplate[];
+        template?: PriceClassTemplate;
+        query?: Query;
+    }
     export class BulkProductPriceTemplatePostRequest {
         constructor(config?: BulkProductPriceTemplatePostRequest);
     }
