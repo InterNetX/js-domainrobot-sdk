@@ -3626,6 +3626,7 @@ export namespace DomainRobotModels {
         type?: PriceChangeTypeConstants;
         status?: PriceChangeStatusConstants;
         customer?: GenericCustomer;
+        customerData?: BasicCustomer;
         article?: Article;
         primary?: object;
         validFrom?: string;
@@ -3633,11 +3634,14 @@ export namespace DomainRobotModels {
         confirmed?: string;
         messageSend?: string;
         priceTemplates?: ProductPriceTemplate[];
+        priceClassTemplates?: PriceClassTemplate[];
         priceChangeExcludes?: PriceChangeExclude[];
         priceChangeExcludesAdd?: PriceChangeExclude[];
         priceChangeExcludesRem?: PriceChangeExclude[];
         worker?: string;
         ticketNumber?: string;
+        priceClassPrefix?: string;
+        priceClassType?: string;
     }
 
     export class PriceChangeExclude {
