@@ -435,7 +435,7 @@ export type JobStatusConstants = "RUNNING" | "SUCCESS" | "FAILED" | "CANCELED" |
 export type MessageTypeConstants = "INITIAL" | "FIRST_REMINDER" | "SECOND_REMINDER" | "LAST_REMINDER";
 export type ModifierConstants = "TTL" | "MX" | "A" | "AAAA" | "SOA_EMAIL" | "NSERVER" | "CNAME" | "TXT" | "ALL" | "MAIN_IP" | "OWNERC" | "ADMINC" | "TECHC" | "ZONEC" | "BILLINGC" | "ALIAS";
 export type NameserverActionConstants = "PRIMARY" | "SECONDARY" | "COMPLETE" | "HIDDEN" | "NONE" | "AUTO";
-export type NameServermode = "MASTER" | "SLAVE" | "MASTER_SLAVE" | "COMPLETE" | "ANYCAST"
+export type NameServerMode = "MASTER" | "SLAVE" | "MASTER_SLAVE" | "COMPLETE" | "ANYCAST"
 export type NiccomSourceConstants = "NIC_REQUEST" | "NIC_RESPONSE" | "NIC_NOTIFY" | "A3_REQUEST" | "A3_RESPONSE";
 export type ObjectAssignmentMode = "ASSIGN" | "DELETE";
 export type ObjectStatus = "SPOOL" | "REQUEST" | "PENDING_NOTIFY" | "PENDING" | "FAILED" | "SUCCESS" | "PENDING_DOMAIN" | "CONNECT";
@@ -1042,6 +1042,30 @@ export namespace DomainRobotModels {
     export interface BulkPricePatchRequest {
         objects?: Price[];
         template?: Price;
+        query?: Query;
+    }
+    export class BulkPriceClassTemplatePostRequest {
+        constructor(config?: BulkPriceClasTemplatePostRequest);
+    }
+    export interface BulkPriceClassTemplatePostRequest {
+        objects?: PriceClassTemplate[];
+        template?: PriceClassTemplate;
+        query?: Query;
+        priceRounding?: PriceTemplateBuilderOptions;
+    }
+    export class BulkPriceClassTemplateDeleteRequest {
+        constructor(config?: BulkPriceClassTemplateDeleteRequest);
+    }
+    export interface BulkPriceClassTemplateDeleteRequest {
+        objects?: PriceClassTemplate[];
+        query?: Query;
+    }
+    export class BulkPriceClassTemplatePatchRequest {
+        constructor(config?: BulkPriceClassTemplatePatchRequest);
+    }
+    export interface BulkPriceClassTemplatePatchRequest {
+        objects?: PriceClassTemplate[];
+        template?: PriceClassTemplate;
         query?: Query;
     }
     export class BulkProductPriceTemplatePostRequest {
@@ -3602,6 +3626,7 @@ export namespace DomainRobotModels {
         type?: PriceChangeTypeConstants;
         status?: PriceChangeStatusConstants;
         customer?: GenericCustomer;
+        customerData?: BasicCustomer;
         article?: Article;
         primary?: object;
         validFrom?: string;
@@ -3609,11 +3634,14 @@ export namespace DomainRobotModels {
         confirmed?: string;
         messageSend?: string;
         priceTemplates?: ProductPriceTemplate[];
+        priceClassTemplates?: PriceClassTemplate[];
         priceChangeExcludes?: PriceChangeExclude[];
         priceChangeExcludesAdd?: PriceChangeExclude[];
         priceChangeExcludesRem?: PriceChangeExclude[];
         worker?: string;
         ticketNumber?: string;
+        priceClassPrefix?: string;
+        priceClassType?: string;
     }
 
     export class PriceChangeExclude {
