@@ -69,7 +69,6 @@ class CertificateService extends DomainRobotService {
      */
     async prepareOrder(model) {
         this.virtualPath = ['certificate', 'prepareOrder']
-
         model.csr = model.plain
         model = this.prepareCsr(model);
         model.plain = model.csr;
