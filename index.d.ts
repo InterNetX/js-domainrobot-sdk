@@ -1044,8 +1044,31 @@ export namespace DomainRobotModels {
         template?: Price;
         query?: Query;
     }
+
+    export class PriceClassTemplate {
+      constructor(config?: PriceClassTemplate)
+    }
+    export interface PriceClassTemplate {
+      created?: string
+      updated?: string
+      id?: number
+      name?: string
+      businessCase?: GenericLabelEntity
+      priceChange?: PriceChange
+      discountable?: boolean
+      currency?: string
+      period?: TimePeriod
+      relative?: RelativeConstants
+      amount?: number
+      actualAmount?: number
+      purchaseAmount?: number
+      margin?: number
+      priceConditions?: PriceServiceEntity
+      type?: string
+    }
+
     export class BulkPriceClassTemplatePostRequest {
-        constructor(config?: BulkPriceClasTemplatePostRequest);
+        constructor(config?: BulkPriceClassTemplatePostRequest);
     }
     export interface BulkPriceClassTemplatePostRequest {
         objects?: PriceClassTemplate[];
