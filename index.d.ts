@@ -446,7 +446,7 @@ export type PaymentConstants = "PRE" | "POST" | "LIVE";
 export type PolicyMode = "DISABLED" | "QUARANTINE" | "DISCARD" | "ACCEPT";
 export type PriceMarkupType = "PERCENT" | "ABSOLUTE";
 export type PriceTypeConstants = "GROSS" | "NET";
-export type PriceChangeStatusConstants = "PENDING" | "SUCCESS" | "FAILED" | "NOT_SET" | "CONFIRMED";
+export type PriceChangeStatusConstants = "FINISHED" | "PENDING" | "SUCCESS" | "FAILED" | "NOT_SET" | "CONFIRMED";
 export type PriceChangeTypeConstants = "CUSTOMER" | "GENERAL" | "GENERAL_DISCOUNT" | "GENERAL_NEW_ARTICLE" | "PROMO" | "PRIMARY";
 export type PriceRoundingConstants = "NONE" | "ROUND_X0" | "ROUND_00" | "ROUND_X9" | "ROUND_99" | "ROUND_COMMERCIAL";
 export type PriorityConstants = "DEFAULT" | "OFFER" | "PROTECTED" | "PROMO";
@@ -3651,7 +3651,7 @@ export namespace DomainRobotModels {
         customer?: GenericCustomer;
         customerData?: BasicCustomer;
         article?: Article;
-        primary?: object;
+        primary?: PriceChange;
         validFrom?: string;
         validUntil?: string;
         confirmed?: string;
