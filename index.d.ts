@@ -3973,7 +3973,7 @@ export namespace DomainRobotModels {
     }
     export interface SalesPrice {
         amount?: number;
-        businessCase?: GenericLabelEntity;
+        businessCase?: string;
         period?: TimePeriod;
         currency?: string;
     }
