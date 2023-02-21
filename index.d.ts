@@ -3820,6 +3820,8 @@ export namespace DomainRobotModels {
         product?: Product;
         amountEur?: number;
         amountUsd?: number;
+        amountMinSalesEur?: number
+        amountMinSalesUsd?: number
         purchasePriceConditions?: PurchasePriceServiceEntity;
     }
     export class PurchasePriceServiceEntity {
