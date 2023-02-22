@@ -3570,6 +3570,7 @@ export namespace DomainRobotModels {
         businessCase?: string;
         extensions?: BillingEventExtensions;
         payable?: string;
+        customer?: GenericCustomer;
     }
 
     export class Phone {
