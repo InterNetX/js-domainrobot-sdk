@@ -420,6 +420,7 @@ export type DomainPreregStatusConstants = "PENDING" | "PENDING_SENT" | "PENDING_
 export type DomainStudioDomainSource = "INITIAL" | "SUGGESTION" | "PREMIUM" | "GEO" | "SIMILAR" | "RECOMMENDED" | "CUSTOM" | "ONLINE_PRESENCE" | "SPIN_WORD" | "PERSONAL_NAMES" | "UPCOMING";
 export type DomainStudioDomainStatus = "FREE" | "ASSIGNED" | "MARKET" | "PREMIUM" | "INVALID" | "ERROR" | "TIMEOUT" | "RESERVED" | "PREMIUM_CLAIM" | "CLAIM";
 export type DomainStudioServiceStatus = "RUNNING" | "SUCCESS" | "FAILED" | "TIMEOUT";
+export type ExchangeCurrency = 'EUR' | 'USD' | 'GBP' | 'CNY' | 'JPY' | 'CHF';
 export type ExecutionTypeConstants = "DATE" | "EXPIRE" | "NOW";
 export type GenderConstants = "RUNNING" | "SUCCESS" | "FAILED" | "TIMEOUT";
 export type GenericStatusConstants = "PENDING" | "SUCCESS" | "FAILED" | "NOT_SET";
