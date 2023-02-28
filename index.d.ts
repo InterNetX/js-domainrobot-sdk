@@ -838,6 +838,7 @@ export namespace DomainRobotModels {
         articleLabel?: string;
         businessCase?: string;
         extensions?: BillingEventExtensions;
+        customer?: GenericCustomer;
     }
 
     export class BillingEventExtensions {
