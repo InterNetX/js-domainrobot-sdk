@@ -1,3 +1,5 @@
+export type TestType = 'blub'
+
 export declare class DomainRobotService<T> {
     constructor(domainRobotConfig: domainRobotConfig);
     logRequest(callback: Function): T;
