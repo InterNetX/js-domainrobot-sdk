@@ -848,6 +848,7 @@ export namespace DomainRobotModels {
     }
     export interface BillingEventExtensions {
         externalReference?: string;
+        error?: string;
     }
 
     export class BillingLimit {
