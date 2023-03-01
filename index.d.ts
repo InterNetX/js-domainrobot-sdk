@@ -838,6 +838,7 @@ export namespace DomainRobotModels {
         articleLabel?: string;
         businessCase?: string;
         extensions?: BillingEventExtensions;
+        customer?: GenericCustomer;
     }
 
     export class BillingEventExtensions {
@@ -845,6 +846,7 @@ export namespace DomainRobotModels {
     }
     export interface BillingEventExtensions {
         externalReference?: string;
+        error?: string;
     }
 
     export class BillingLimit {
