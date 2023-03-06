@@ -192,7 +192,7 @@ export interface Result {
     status: ResponseStatus;
     object?: ResponseObject;
     ctid?: string;
-    data: Array<object>;
+    data: Array<object | string>;
 }
 
 // Service Response Definitions
