@@ -1792,6 +1792,7 @@ export namespace DomainRobotModels {
     }
     export interface Custom {
         key?: string;
+        value?: string;
     }
 
     export class Customer {
@@ -4138,7 +4139,7 @@ export namespace DomainRobotModels {
     export interface Subject {
         name?: string;
         object?: string;
-        customs?: Custom;
+        customs?: Custom[];
     }
 
     export class SubjectAlternativeName {
