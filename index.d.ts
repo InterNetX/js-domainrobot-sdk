@@ -2796,7 +2796,18 @@ export namespace DomainRobotModels {
         comment?: string;
         extension?: Configuration;
         messages?: string[];
+        addon?: InvoiceAddon;
     }
+
+    export class InvoiceAddon {
+        constructor(config?: InvoiceAddon);
+    }
+    export interface InvoiceAddon {
+        documentstore_csv_id?: string // could/should be a number, but in the adns api response it is an string
+        neo_rechnungs_id?: string // could/should be a number, but in the adns api response it is an string
+        documentstore_txt_id?: string // could/should be a number, but in the adns api response it is an string
+    }
+    
     export class IpRestriction {
         constructor(config?: IpRestriction);
     }
