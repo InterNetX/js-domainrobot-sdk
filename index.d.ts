@@ -825,6 +825,7 @@ export namespace DomainRobotModels {
         constructor(config?: BillingEvent)
     }
     export interface BillingEvent {
+        id?: number;
         created?: string;
         updated?: string;
         owner?: BasicUser;
