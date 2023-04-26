@@ -1,3 +1,5 @@
+export type TestType = 'blub'
+
 export declare class DomainRobotService<T> {
     constructor(domainRobotConfig: domainRobotConfig);
     logRequest(callback: Function): T;
@@ -192,7 +194,7 @@ export interface Result {
     status: ResponseStatus;
     object?: ResponseObject;
     ctid?: string;
-    data: Array<object>;
+    data: Array<object | string>;
 }
 
 // Service Response Definitions
@@ -420,6 +422,7 @@ export type DomainPreregStatusConstants = "PENDING" | "PENDING_SENT" | "PENDING_
 export type DomainStudioDomainSource = "INITIAL" | "SUGGESTION" | "PREMIUM" | "GEO" | "SIMILAR" | "RECOMMENDED" | "CUSTOM" | "ONLINE_PRESENCE" | "SPIN_WORD" | "PERSONAL_NAMES" | "UPCOMING";
 export type DomainStudioDomainStatus = "FREE" | "ASSIGNED" | "MARKET" | "PREMIUM" | "INVALID" | "ERROR" | "TIMEOUT" | "RESERVED" | "PREMIUM_CLAIM" | "CLAIM";
 export type DomainStudioServiceStatus = "RUNNING" | "SUCCESS" | "FAILED" | "TIMEOUT";
+export type ExchangeCurrency = 'EUR' | 'USD' | 'GBP' | 'CNY' | 'JPY' | 'CHF';
 export type ExecutionTypeConstants = "DATE" | "EXPIRE" | "NOW";
 export type GenderConstants = "RUNNING" | "SUCCESS" | "FAILED" | "TIMEOUT";
 export type GenericStatusConstants = "PENDING" | "SUCCESS" | "FAILED" | "NOT_SET";
@@ -690,6 +693,7 @@ export namespace DomainRobotModels {
         pcode?: string;
         technical?: TechnicalCustomer;
         sepa?: SEPAMandate;
+        created?: string; 
     }
     export class basicCustomerContact {
         constructor(config?: basicCustomerContact);
@@ -824,6 +828,7 @@ export namespace DomainRobotModels {
         constructor(config?: BillingEvent)
     }
     export interface BillingEvent {
+        id?: number;
         created?: string;
         updated?: string;
         owner?: BasicUser;
@@ -837,6 +842,7 @@ export namespace DomainRobotModels {
         articleLabel?: string;
         businessCase?: string;
         extensions?: BillingEventExtensions;
+        customer?: GenericCustomer;
     }
 
     export class BillingEventExtensions {
@@ -844,6 +850,7 @@ export namespace DomainRobotModels {
     }
     export interface BillingEventExtensions {
         externalReference?: string;
+        error?: string;
     }
 
     export class BillingLimit {
@@ -1791,6 +1798,7 @@ export namespace DomainRobotModels {
     }
     export interface Custom {
         key?: string;
+        value?: string;
     }
 
     export class Customer {
@@ -1870,6 +1878,7 @@ export namespace DomainRobotModels {
         owner?: BasicUser;
         updater?: BasicUser;
         date?: string;
+        addon?: { ticket?: string }
     }
     export class CustomerGroup {
         constructor(config?: CustomerGroup);
@@ -2794,7 +2803,18 @@ export namespace DomainRobotModels {
         comment?: string;
         extension?: Configuration;
         messages?: string[];
+        addon?: InvoiceAddon;
     }
+
+    export class InvoiceAddon {
+        constructor(config?: InvoiceAddon);
+    }
+    export interface InvoiceAddon {
+        documentstore_csv_id?: string // could/should be a number, but in the adns api response it is an string
+        neo_rechnungs_id?: string // could/should be a number, but in the adns api response it is an string
+        documentstore_txt_id?: string // could/should be a number, but in the adns api response it is an string
+    }
+    
     export class IpRestriction {
         constructor(config?: IpRestriction);
     }
@@ -4137,7 +4157,7 @@ export namespace DomainRobotModels {
     export interface Subject {
         name?: string;
         object?: string;
-        customs?: Custom;
+        customs?: Custom[];
     }
 
     export class SubjectAlternativeName {
