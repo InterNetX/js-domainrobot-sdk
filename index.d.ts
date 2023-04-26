@@ -1876,6 +1876,7 @@ export namespace DomainRobotModels {
         owner?: BasicUser;
         updater?: BasicUser;
         date?: string;
+        addon?: { ticket?: string }
     }
     export class CustomerGroup {
         constructor(config?: CustomerGroup);
