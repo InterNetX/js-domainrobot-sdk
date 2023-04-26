@@ -1055,6 +1055,8 @@ export namespace DomainRobotModels {
       name?: string
       businessCase?: GenericLabelEntity
       priceChange?: PriceChange
+      customer?: DomainRobotModels.GenericCustomer
+      priority?: PriorityConstants
       discountable?: boolean
       currency?: string
       period?: TimePeriod
