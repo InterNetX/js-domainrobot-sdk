@@ -693,7 +693,11 @@ export namespace DomainRobotModels {
         pcode?: string;
         technical?: TechnicalCustomer;
         sepa?: SEPAMandate;
-        created?: string; 
+        created?: string;
+        locked?: boolean;
+        canceled?: string;
+        billable?: boolean;
+        verified?: boolean;
     }
     export class basicCustomerContact {
         constructor(config?: basicCustomerContact);
