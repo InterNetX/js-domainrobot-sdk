@@ -698,7 +698,23 @@ export namespace DomainRobotModels {
         canceled?: string;
         billable?: boolean;
         verified?: boolean;
+        invoiceDays?: { days: number[] };
+        invoicePaperbill?: boolean;
+        invoiceFee: boolean;
+        pricelists: PriceLists;
     }
+
+    export class PriceLists {
+        constructor(config?: PriceLists)
+    }
+    export interface PriceLists {
+        pricelist: {
+            articleTypeLabel: string
+            priceListLabel: string
+            type: string
+        }[]
+    }
+
     export class basicCustomerContact {
         constructor(config?: basicCustomerContact);
     }
@@ -724,6 +740,7 @@ export namespace DomainRobotModels {
         faxes?: Phone[];
         email?: string;
         address?: string[];
+        notice?: string;
     }
 
     export class BasicCustomerSpoolVerification {
