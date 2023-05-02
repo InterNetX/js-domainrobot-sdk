@@ -700,8 +700,8 @@ export namespace DomainRobotModels {
         verified?: boolean;
         invoiceDays?: { days: number[] };
         invoicePaperbill?: boolean;
-        invoiceFee: boolean;
-        pricelists: PriceLists;
+        invoiceFee?: boolean;
+        pricelists?: PriceLists;
     }
 
     export class PriceLists {
