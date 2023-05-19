@@ -3610,6 +3610,7 @@ export namespace DomainRobotModels {
         item?: PeriodicBilling[];
         expire?: string;
         cancelation?: string;
+        cancelationTerm?: TimePeriod;
         businessCase?: string;
         extensions?: BillingEventExtensions;
         payable?: string;
