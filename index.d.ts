@@ -1104,7 +1104,7 @@ export namespace DomainRobotModels {
         objects?: PriceClassTemplate[];
         template?: PriceClassTemplate;
         query?: Query;
-        priceRounding?: PriceTemplateBuilderOptions;
+        options?: PriceTemplateBuilderOptions;
     }
     export class BulkPriceClassTemplateDeleteRequest {
         constructor(config?: BulkPriceClassTemplateDeleteRequest);
@@ -1128,7 +1128,7 @@ export namespace DomainRobotModels {
         objects?: ProductPriceTemplate[];
         template?: ProductPriceTemplate;
         query?: Query;
-        priceRounding?: PriceTemplateBuilderOptions;
+        options?: PriceTemplateBuilderOptions;
     }
     export class BulkProductPriceTemplateDeleteRequest {
         constructor(config?: BulkProductPriceTemplateDeleteRequest);
