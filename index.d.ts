@@ -3804,6 +3804,8 @@ export namespace DomainRobotModels {
         rounding?: PriceRoundingConstants;
         minimumSalesPrices?: SalesPrice[];
         maximumSalesPrices?: SalesPrice[];
+        name?: string
+        replace?: boolean
     }
 
     export class Product {
