@@ -1117,7 +1117,7 @@ export namespace DomainRobotModels {
         objects?: PriceClassTemplate[];
         template?: PriceClassTemplate;
         query?: Query;
-        priceRounding?: PriceTemplateBuilderOptions;
+        options?: PriceTemplateBuilderOptions;
     }
     export class BulkPriceClassTemplateDeleteRequest {
         constructor(config?: BulkPriceClassTemplateDeleteRequest);
@@ -1141,7 +1141,7 @@ export namespace DomainRobotModels {
         objects?: ProductPriceTemplate[];
         template?: ProductPriceTemplate;
         query?: Query;
-        priceRounding?: PriceTemplateBuilderOptions;
+        options?: PriceTemplateBuilderOptions;
     }
     export class BulkProductPriceTemplateDeleteRequest {
         constructor(config?: BulkProductPriceTemplateDeleteRequest);
@@ -3626,6 +3626,7 @@ export namespace DomainRobotModels {
         item?: PeriodicBilling[];
         expire?: string;
         cancelation?: string;
+        cancelationTerm?: TimePeriod;
         businessCase?: string;
         extensions?: BillingEventExtensions;
         payable?: string;
@@ -3819,6 +3820,8 @@ export namespace DomainRobotModels {
         rounding?: PriceRoundingConstants;
         minimumSalesPrices?: SalesPrice[];
         maximumSalesPrices?: SalesPrice[];
+        name?: string
+        replace?: boolean
     }
 
     export class Product {
