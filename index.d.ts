@@ -702,6 +702,14 @@ export namespace DomainRobotModels {
         invoicePaperbill?: boolean;
         invoiceFee?: boolean;
         pricelists?: PriceLists;
+        supplierNumber?: string
+        currentAccountBalance?: number
+        reserved?: number
+        autoDeleteTlds?: string;
+        billingTerm?: BillingTerm;
+        adoptExpiration?: AdoptExpiration;
+        accountManager?: AccountManager;
+        faxes?: Phone;
     }
 
     export class PriceLists {
@@ -781,6 +789,11 @@ export namespace DomainRobotModels {
     export interface BasicUser {
         context?: number;
         user?: string;
+        language?: string
+        parent?: number
+        status?: number
+        subStatus?: number
+        defaultMail?: string
     }
 
     export class BillingCustomerXML {
@@ -1881,6 +1894,9 @@ export namespace DomainRobotModels {
         accountManager?: AccountManager;
         classification?: string;
         invoiceNotice?: string;
+        fname?: string
+        lname?: string
+        type?: ContactType
     }
     export class CustomerDocument {
         constructor(config?: CustomerDocument);
