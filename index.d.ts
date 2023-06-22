@@ -3970,7 +3970,7 @@ export namespace DomainRobotModels {
     export interface QueryOrder {
         key?: string;
         ins?: string[];
-        type?: string; //OrderType
+        type?: OrderType;
     }
 
     export class QueryView {
