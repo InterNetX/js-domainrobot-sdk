@@ -1819,6 +1819,17 @@ export namespace DomainRobotModels {
         constructor();
     }
 
+    export class CurrencyAccountingRate{
+        constructor(config?: CurrencyAccountingRate);
+    }
+    export interface CurrencyAccountingRate {
+        currency?: string;
+        amount?: number;
+        rate?: number;
+        target?: string;
+        date?: string;
+        accountingRate?: number;
+    }
     export class CurrencyRate {
         constructor(config?: CurrencyRate);
     }
