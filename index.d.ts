@@ -705,6 +705,7 @@ export namespace DomainRobotModels {
         supplierNumber?: string
         currentAccountBalance?: number
         reserved?: number
+        accountInfo?: { creditLimit: string }
         autoDeleteTlds?: string;
         billingTerm?: BillingTerm;
         adoptExpiration?: AdoptExpiration;
