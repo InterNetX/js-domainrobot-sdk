@@ -74,7 +74,7 @@ describe("Type Definitions", () => {
 
                         expect(matches[1]).to.match(new RegExp(property));                      
                         }catch(Ex){
-                            throw new Error(`Type mismatch in ${model} for ${property}`)
+                          throw new Error(`Type mismatch in ${model} for ${property} ${matches}`)
                         }
                     }
                 }  
