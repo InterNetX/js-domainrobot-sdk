@@ -650,7 +650,7 @@ export namespace DomainRobotModels {
         constructor(config?: BasicCustomer);
     }
     export interface BasicCustomer {
-        number?: number | string;
+        number?: number;
         client?: string;
         group?: number;
         name?: string;
@@ -1874,7 +1874,7 @@ export namespace DomainRobotModels {
         constructor(config?: Customer);
     }
     export interface Customer {
-        number?: number | string;
+        number?: number;
         client?: string;
         group?: number;
         name?: string;
@@ -2726,7 +2726,7 @@ export namespace DomainRobotModels {
         constructor(config?: GenericCustomer);
     }
     export interface GenericCustomer {
-        number?: number | string;
+        number?: number;
         client?: string;
         group?: number;
         adoptExpiration?: AdoptExpiration;
