@@ -406,7 +406,7 @@ export type CodeSigningType = "JAVASOFT" | "MS_AUTHENTICODE" | "VBA" | "ADOBE_AI
 export type ConditionType = "AND" | "OR";
 export type ContactProtectionConstants = "SHOW_ALL" | "SHOW_NONE";
 export type ContactReferenceType = "ALL" | "OWNERC" | "ADMINC" | "TECHC" | "ZONEC" | "BILLINGC";
-export type ContactType = "BILLING" | "TECH" | "LEGAL" | "DOMAIN" | "SSL" | "SERVER";
+export type ContactType = "PRIMARY" | "BILLING" | "TECH" | "LEGAL" | "DOMAIN" | "SSL" | "SERVER";
 export type ContactTypeConstants = "PERSON" | "ORG" | "ROLE";
 export type CreditCardVendor = "MC" | "VISA" | "AMEX" | "DIC" | "DISC" | "CB";
 export type CryptoFormatConstants = "SHA1" | "SHA256" | "SHA512";
@@ -722,6 +722,11 @@ export namespace DomainRobotModels {
         adoptExpiration?: AdoptExpiration;
         accountManager?: AccountManager;
         faxes?: Phone;
+        reference?: string;
+        confirmSignature?: string;
+        document?: number;
+        confirmCity?: string;
+        confirmIp?: string;
     }
 
     export class PriceLists {
@@ -4463,6 +4468,9 @@ export namespace DomainRobotModels {
         adoptExpiration?: AdoptExpiration;
         billingTerm?: BillingTerm;
         autoDeleteTlds?: string;
+        tldTerm?: {
+            unit?: number
+        }
     }
     export class Tld {
         constructor(config?: Tld)
