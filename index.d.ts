@@ -654,7 +654,7 @@ export namespace DomainRobotModels {
         constructor(config?: BasicCustomer);
     }
     export interface BasicCustomer {
-        number?: number | string | null;
+        number?: number;
         client?: string;
         group?: number;
         name?: string;
