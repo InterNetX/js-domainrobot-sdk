@@ -135,6 +135,7 @@ class DomainRobotService {
 
             return domainRobotResult;
         } catch (error) {
+            console.log("SDK ERROR", error)
             throw new DomainRobotException(
                 error.response.data,
                 error.response.status
