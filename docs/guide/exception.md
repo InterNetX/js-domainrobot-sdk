@@ -129,4 +129,24 @@ return a 'standard' JS Error.
 
 In these cases the __error.response__ is UNDEFINED, therefore the SDK can not verify the response and also can't return a valid DomainRobotException.
 
+If you specifically wan't to handle those errors you have to take a slightly different approach compared to the above example of working with a DomainRobotException.
+
+See an example here:
+
+```javascript
+try {
+    // if the request is successful the returned object
+    // will be of the Type DomainRobotResult
+    let domainRobotResult = await domainRobot.domain().create(domainModel);
+
+    Logger.transport("file").error("Request success", domainRobotResult);
+
+    return domainRobotResult;
+} catch (Exception) {
+   if(Exception.type !== undefined && Exception.type === 'DomainRobotException'){
+    // proceed with handling a DomainRobotException
+   }else{
+    // all other exceptions go in here
+   }
+}
 ```
