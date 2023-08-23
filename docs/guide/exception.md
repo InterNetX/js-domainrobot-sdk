@@ -4,6 +4,12 @@
 If there is any error response from the API, the services will throw a DomainRobotException, which contains information about the error.
 :::
 
+::: tip Connection Errors
+If there are any connection errors and/or timeouts the SDK will throw corresponding error that does NOT MATCh the standard DomainRobotException.
+
+See "Connection error handling" below for an example and more information.
+:::
+
 Due to the nature of the tasks all being asynchronous you should call all SDK tasks inside a try/catch block anyway.
 
 ## Try/catch example
@@ -73,4 +79,54 @@ DomainRobotException {
   },
   status: 400
 }
+```
+
+## Connection error handling
+
+In case of timeouts or other connection errors (wrong address etc.) the SDK won't return a DomainRobotException error. Instead it will
+return a 'standard' JS Error.
+
+```json
+{
+  errno: -3001,
+  code: 'EAI_AGAIN',
+  syscall: 'getaddrinfo',
+  hostname: 'invalid.autodns.com',
+  config: {
+    url: 'http://invalid.autodns.com/domain/_search',
+    method: 'post',
+    data: '{"filters":[],"view":{"limit":10000,"offset":0},"orders":[{"key":"name","type":"ASC"}]}',
+    headers: {
+      'X-Domainrobot-Context': 1,
+      'Content-Type': 'application/json',
+      'User-Agent': 'JSDomainrobotSdk/2.1.12',
+      'X-Domainrobot-Ctid': '2023-08-23-lnbi210llnf441s-dev',
+      'Content-Length': 135
+    },
+    auth: { username: 'user', password: '****' },
+    transformRequest: [ [Function: transformRequest] ],
+    transformResponse: [ [Function: transformResponse] ],
+    timeout: 0,
+    adapter: [Function: httpAdapter],
+    xsrfCookieName: 'XSRF-TOKEN',
+    xsrfHeaderName: 'X-XSRF-TOKEN',
+    maxContentLength: -1,
+    maxBodyLength: -1,
+    validateStatus: [Function: validateStatus],
+    transitional: {
+      silentJSONParsing: true,
+      forcedJSONParsing: true,
+      clarifyTimeoutError: false
+    }
+  },
+  request: <ref *1> Writable {},
+  ...
+  response: undefined,
+  isAxiosError: true,
+  toJSON: [Function: toJSON]
+}
+```
+
+In these cases the __error.response__ is UNDEFINED, therefore the SDK can not verify the response and also can't return a valid DomainRobotException.
+
 ```
