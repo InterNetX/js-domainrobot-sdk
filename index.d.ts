@@ -155,6 +155,7 @@ export interface ResultHeaders {
 }
 
 export interface DomainRobotException {
+    type: string
     error: {
         stid: string;
         // messages can vary depending on the task, so this is the closest
