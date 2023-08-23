@@ -155,6 +155,7 @@ export interface ResultHeaders {
 }
 
 export interface DomainRobotException {
+    type: string
     error: {
         stid: string;
         // messages can vary depending on the task, so this is the closest
@@ -304,7 +305,9 @@ export interface JsonResponseDataContactVerification extends Result {
 export interface JsonResponseDataContactTmchMark extends Result {
     data: DomainRobotModels.TmchMark[];
 }
-
+export interface JsonResponseDataTld extends Result {
+    data: DomainRobotModels.Tld[];
+}
 export interface MockResponse {
     data: Result,
     status: number
@@ -404,7 +407,7 @@ export type CodeSigningType = "JAVASOFT" | "MS_AUTHENTICODE" | "VBA" | "ADOBE_AI
 export type ConditionType = "AND" | "OR";
 export type ContactProtectionConstants = "SHOW_ALL" | "SHOW_NONE";
 export type ContactReferenceType = "ALL" | "OWNERC" | "ADMINC" | "TECHC" | "ZONEC" | "BILLINGC";
-export type ContactType = "BILLING" | "TECH" | "LEGAL" | "DOMAIN" | "SSL" | "SERVER";
+export type ContactType = "PRIMARY" | "BILLING" | "TECH" | "LEGAL" | "DOMAIN" | "SSL" | "SERVER";
 export type ContactTypeConstants = "PERSON" | "ORG" | "ROLE";
 export type CreditCardVendor = "MC" | "VISA" | "AMEX" | "DIC" | "DISC" | "CB";
 export type CryptoFormatConstants = "SHA1" | "SHA256" | "SHA512";
@@ -482,6 +485,8 @@ export type SepaStatus = "ACTIVE" | "UPDATE" | "CANCELED" | "EXPIRED" | "LOCKED"
 export type TanMethods = "METHOD_EMAIL" | "METHOD_MOBILE" | "METHOD_2FA";
 export type TaskGroup = "DOMAIN_CREATE" | "DOMAIN_DELETE" | "DOMAIN_STATUS_UPDATE" | "DOMAIN_TRANSFER_IN" | "DOMAIN_TRANSFER_OUT" | "DOMAINSAFE" | "AUTHINFO_CREATE" | "AUTHINFO_SEND" | "ZONE_CREATE" | "WHOIS" | "DOMAIN_UPDATE" | "DOMAINSTUDIO" | "ZONE_UPDATE" | "ZONE_DELETE" | "ZONE_AXFR";
 export type TimeUnitConstants = "MILLISECOND" | "SECOND" | "MINUTE" | "HOUR" | "DAY" | "WEEK" | "MONTH" | "QUARTER" | "YEAR";
+export type TldType = "GTLD" | "CCTLD" | "NGTLD";
+export type TldContinent = "ASIA" | "AFRICA" | "NORTH_AMERICA" | "SOUTH_AMERICA" | "ANTARCTICA" | "EUROPE" | "OCEANIA" | "GLOBAL";
 export type TmchMarkHolderConstants = "OWNER" | "LICENSEE" | "ASSIGNEE";
 export type TmchMarkStatusConstants = "OPEN" | "PAYMENT" | "PENDING" | "INCORRECT" | "VERIFIED" | "SENT" | "ACTIVE" | "DEACTIVATED" | "CANCELED" | "RENEW" | "FAILED" | "EXTERNAL" | "PENDING_TRANSFER" | "PENDING_RENEW" | "PENDING_DELETE" | "PENDING_PAYMENT" | "PENDING_TRANSFER_PAYMENT" | "PENDING_RENEW_PAYMENT";
 export type TmchMarkTypeConstants = "TRADEMARK" | "TREATY_OR_STATUTE" | "COURT" | "DNL_ABUSED";
@@ -718,6 +723,11 @@ export namespace DomainRobotModels {
         adoptExpiration?: AdoptExpiration;
         accountManager?: AccountManager;
         faxes?: Phone;
+        reference?: string;
+        confirmSignature?: string;
+        document?: number;
+        confirmCity?: string;
+        confirmIp?: string;
     }
 
     export class PriceLists {
@@ -4459,6 +4469,39 @@ export namespace DomainRobotModels {
         adoptExpiration?: AdoptExpiration;
         billingTerm?: BillingTerm;
         autoDeleteTlds?: string;
+        tldTerm?: {
+            unit?: number
+        }
+    }
+    export class Tld {
+        constructor(config?: Tld)
+    }
+    export interface Tld {
+        created?: string;
+        updated?: string;
+        tld?: string; // Tld name
+        subtld?: string; // Subtld name
+        type?: TldType;
+        comment?: string;
+        adoptExpiration?: string;
+        adoptExpirationGroup?: string;
+        domainsafe?: boolean;
+        autodelete?: boolean;
+        trinity?: boolean;
+        claimsEnd?: string;
+        brand?: boolean; // Indicates whether the Tld is a brand name (e.g. .adac)
+        categories?: string[];
+        premiumBusinessCaseLabels?: string[];
+        countryIso?: string; // Country codes according to ISO3166. Indicates the country to which the Tld belongs. (for ccTLD's)
+        officialLanguage?: string;
+        geoPol?: string; // Indicates the country to which the Tld belongs.
+        blockingServices?: string[]; // Indication of the availability of BlockingService for the specified TLD.
+        sldMin?: number; // Minimum number of possible second-level domains.
+        sldMax?: number; // Maximum number of possible second-level domains.
+        numeric?: boolean; // Specifies whether SLD may consist exclusively of numeric characters.
+        tldContinent?: TldContinent;
+        rankingLevel?: number; // Rank Level in the Domain Studio.
+
     }
     export class TmchClaimsNotice {
         constructor(config?: TmchClaimsNotice)
@@ -4869,7 +4912,7 @@ export namespace DomainRobotModels {
       constructor(config?: VmcCheckData);
     }
     export interface VmcCheckData {
-      name?: sring[];
+      name?: string[];
       subjectAlternativeNames?: SubjectAlternativeName[];
       vmcLogo?: string;
       product?: string;
@@ -4905,7 +4948,6 @@ export namespace DomainRobotModels {
         type?: string;
         ctid?: string;
         object?: string;
-        type?: string;
         subtype?: string;
         jobId?: number;
     }
