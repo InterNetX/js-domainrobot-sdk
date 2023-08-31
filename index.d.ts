@@ -307,6 +307,9 @@ export interface JsonResponseDataContactTmchMark extends Result {
 export interface JsonResponseDataTld extends Result {
     data: DomainRobotModels.Tld[];
 }
+export interface JsonResponseDataTldGrouped extends Result {
+    data: DomainRobotModels.TldGrouped[];
+}
 export interface MockResponse {
     data: Result,
     status: number
@@ -4493,6 +4496,13 @@ export namespace DomainRobotModels {
         tldContinent?: TldContinent;
         rankingLevel?: number; // Rank Level in the Domain Studio.
 
+    }
+    export class TldGrouped {
+        constructor(config?: TldGrouped)
+    }
+    export interface TldGrouped{
+        adoptExpirationGroup: string
+        tlds: Tld[]
     }
     export class TmchClaimsNotice {
         constructor(config?: TmchClaimsNotice)
