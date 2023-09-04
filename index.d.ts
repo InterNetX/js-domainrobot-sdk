@@ -721,9 +721,6 @@ export namespace DomainRobotModels {
         currentAccountBalance?: number
         reserved?: number
         accountInfo?: { creditLimit: string }
-        autoDeleteTlds?: string;
-        billingTerm?: BillingTerm;
-        adoptExpiration?: AdoptExpiration;
         accountManager?: AccountManager;
         faxes?: Phone;
         reference?: string;
@@ -969,7 +966,10 @@ export namespace DomainRobotModels {
     export class BillingTldTerm {
         constructor(config?: BillingTldTerm);
     }
-
+    export interface BillingTldTerm{
+        name: string
+        unit: string
+    }
     export class BulkBackupMxDeleteRequest {
         constructor(config?: BulkBackupMxDeleteRequest);
     }
@@ -4472,9 +4472,6 @@ export namespace DomainRobotModels {
         adoptExpiration?: AdoptExpiration;
         billingTerm?: BillingTerm;
         autoDeleteTlds?: string;
-        tldTerm?: {
-            unit?: number
-        }
     }
     export class Tld {
         constructor(config?: Tld)
