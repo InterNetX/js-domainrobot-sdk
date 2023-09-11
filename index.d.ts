@@ -210,6 +210,9 @@ export interface JsonResponseDataCustomer extends Result {
 export interface JsonResponseDataBasicCustomer extends Result {
     data: DomainRobotModels.BasicCustomer[];
 }
+export interface JsonResponseDataCustomerStatistics extends Result {
+    data: DomainRobotModels.CustomerStatistics;
+}
 export interface JsonResponseDataCustomerGroup extends Result {
     data: DomainRobotModels.CustomerGroup[];
 }
@@ -728,6 +731,18 @@ export namespace DomainRobotModels {
         confirmCity?: string;
         confirmIp?: string;
     }
+
+    export type CustomerStatistics = {
+        article: {
+            type: string
+            labe: string
+        }
+        count: number
+        created: string
+        customer: { number: number; client: string }
+        id: number
+        updated: string
+    }[] | undefined
 
     export class PriceLists {
         constructor(config?: PriceLists)
