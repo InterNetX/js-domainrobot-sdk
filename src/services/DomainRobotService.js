@@ -135,6 +135,10 @@ class DomainRobotService {
 
             return domainRobotResult;
         } catch (error) {
+            // a connection error (e.g. timeout, wrong address etc.) or some error that didn't return a response occured
+            if (error.response === undefined){
+              throw error
+            }
             throw new DomainRobotException(
                 error.response.data,
                 error.response.status

@@ -155,6 +155,7 @@ export interface ResultHeaders {
 }
 
 export interface DomainRobotException {
+    type: string
     error: {
         stid: string;
         // messages can vary depending on the task, so this is the closest
@@ -309,6 +310,9 @@ export interface JsonResponseDataContactTmchMark extends Result {
 }
 export interface JsonResponseDataTld extends Result {
     data: DomainRobotModels.Tld[];
+}
+export interface JsonResponseDataTldGrouped extends Result {
+    data: DomainRobotModels.TldGrouped[];
 }
 export interface MockResponse {
     data: Result,
@@ -720,9 +724,6 @@ export namespace DomainRobotModels {
         currentAccountBalance?: number
         reserved?: number
         accountInfo?: { creditLimit: string }
-        autoDeleteTlds?: string;
-        billingTerm?: BillingTerm;
-        adoptExpiration?: AdoptExpiration;
         accountManager?: AccountManager;
         faxes?: Phone;
         reference?: string;
@@ -980,7 +981,10 @@ export namespace DomainRobotModels {
     export class BillingTldTerm {
         constructor(config?: BillingTldTerm);
     }
-
+    export interface BillingTldTerm{
+        name: string
+        unit: string
+    }
     export class BulkBackupMxDeleteRequest {
         constructor(config?: BulkBackupMxDeleteRequest);
     }
@@ -4483,9 +4487,6 @@ export namespace DomainRobotModels {
         adoptExpiration?: AdoptExpiration;
         billingTerm?: BillingTerm;
         autoDeleteTlds?: string;
-        tldTerm?: {
-            unit?: number
-        }
     }
     export class Tld {
         constructor(config?: Tld)
@@ -4516,6 +4517,13 @@ export namespace DomainRobotModels {
         tldContinent?: TldContinent;
         rankingLevel?: number; // Rank Level in the Domain Studio.
 
+    }
+    export class TldGrouped {
+        constructor(config?: TldGrouped)
+    }
+    export interface TldGrouped{
+        adoptExpirationGroup: string
+        tlds: Tld[]
     }
     export class TmchClaimsNotice {
         constructor(config?: TmchClaimsNotice)
