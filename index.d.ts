@@ -1144,7 +1144,7 @@ export namespace DomainRobotModels {
       actualAmount?: number;
       purchaseAmount?: number;
       margin?: number;
-      priceConditions?: PriceServiceEntity;
+      priceConditions?: PriceServiceEntity[];
       type?: string;
     }
 
