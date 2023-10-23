@@ -595,7 +595,7 @@ export namespace DomainRobotModels {
         owner?: BasicUser;
         updater?: BasicUser;
         type?: string;
-        category?: string;
+        category?: {label?: string};
         label?: string;
     }
 
@@ -3859,6 +3859,7 @@ export namespace DomainRobotModels {
         priceList?: PriceList;
         from?: string;
         until?: string;
+        relative?: string;
     }
 
     export class PriceChange {
