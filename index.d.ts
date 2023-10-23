@@ -595,7 +595,14 @@ export namespace DomainRobotModels {
         owner?: BasicUser;
         updater?: BasicUser;
         type?: string;
-        category?: {label?: string};
+        category?: ArticleCategory;
+        label?: string;
+    }
+
+    export class ArticleCategory {
+        constructor(config?: ArticleCategory);
+    }
+    export interface ArticleCategory {
         label?: string;
     }
 
