@@ -3996,6 +3996,7 @@ export namespace DomainRobotModels {
         maximumSalesPrices?: SalesPrice[];
         name?: string
         replace?: boolean
+        sourceName?: string
     }
 
     export class Product {
