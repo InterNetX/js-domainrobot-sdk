@@ -198,6 +198,19 @@ export interface Result {
     data: Array<object | string>;
 }
 
+export interface BulkResponse<T>{
+    status: string
+    uniqEventId: string
+    data: {
+        response: T
+        isFinished?: boolean
+    }
+}
+
+export interface BulkError extends BulkResponse<DomainRobotException>{}
+
+export interface BulkResult<T> extends BulkResponse<DomainRobotResult<T, number>>{}
+
 // Service Response Definitions
 export interface JsonResponseDataAccountingDocument extends Result {
     data: DomainRobotModels.AccountingDocument[];
@@ -304,7 +317,6 @@ export interface JsonResponseDataSubjectProduct extends Result {
 export interface JsonResponseDataContactVerification extends Result {
     data: DomainRobotModels.ContactVerification[];
 }
-
 export interface JsonResponseDataContactTmchMark extends Result {
     data: DomainRobotModels.TmchMark[];
 }
