@@ -196,6 +196,7 @@ export interface Result {
     object?: ResponseObject;
     ctid?: string;
     data: Array<object | string>;
+    messages?: DomainRobotModels.Message[];
 }
 
 export interface BulkResponse<T>{
