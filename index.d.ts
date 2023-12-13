@@ -3803,6 +3803,7 @@ export namespace DomainRobotModels {
         object?: string;
         description?: string;
         period?: TimePeriod;
+        renewPeriod?: TimePeriod;
         articleTypeLabel?: string;
         articleLabel?: string;
         item?: PeriodicBilling[];
