@@ -844,16 +844,12 @@ export namespace DomainRobotModels {
         context?: number
         user?: string
         language?: string
-        parent?: { [key: string]: string | number }
+        parent?: number
         status?: number
         subStatus?: number
-        defaultEmail?: string
         defaultMail?: string
         passwordExpired?: boolean
         passwordChanged?: string
-        toggle?: boolean
-        details?: { [key: string]: string }
-        lock?: string
     }
 
     export class BillingCustomerXML {
