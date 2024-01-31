@@ -703,6 +703,7 @@ export namespace DomainRobotModels {
         paymentMode?: string;
         paymentCurrency?: Currency;
         paymentCurrencyExchangeFee?: number;
+        dataIncorrect?: boolean
         discount?: number;
         discountNgtld?: number;
         discountCertificate?: number;
@@ -854,6 +855,7 @@ export namespace DomainRobotModels {
         details?: { [key: string]: string }
         lock?: string
     }
+
     export class BillingCustomerXML {
         constructor(config?: BillingCustomerXML)
     }
