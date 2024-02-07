@@ -3949,6 +3949,7 @@ export namespace DomainRobotModels {
         name?: string;
         articleType?: GenericLabelEntity;
         businessCase?: GenericLabelEntity;
+        priceChange?: PriceChange;
     }
 
     export class PriceData {
