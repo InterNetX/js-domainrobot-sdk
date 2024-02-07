@@ -3950,6 +3950,8 @@ export namespace DomainRobotModels {
         articleType?: GenericLabelEntity;
         businessCase?: GenericLabelEntity;
         priceChange?: PriceChange;
+        taskComment?: string
+        relative?: string;
     }
 
     export class PriceData {
