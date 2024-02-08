@@ -3878,7 +3878,6 @@ export namespace DomainRobotModels {
         priceList?: PriceList;
         from?: string;
         until?: string;
-        relative?: string;
     }
 
     export class PriceChange {
@@ -3951,7 +3950,6 @@ export namespace DomainRobotModels {
         businessCase?: GenericLabelEntity;
         priceChange?: PriceChange;
         taskComment?: string
-        relative?: string;
     }
 
     export class PriceData {
