@@ -707,6 +707,7 @@ export namespace DomainRobotModels {
         discountNgtld?: number;
         discountCertificate?: number;
         discountValid?: string;
+        dataIncorrect?: boolean
         invoiceLanguage?: string;
         taxable?: boolean;
         card?: Card;
