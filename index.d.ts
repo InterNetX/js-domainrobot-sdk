@@ -1981,6 +1981,7 @@ export namespace DomainRobotModels {
         fname?: string
         lname?: string
         type?: ContactType
+        noSap?: boolean
     }
     export class CustomerDocument {
         constructor(config?: CustomerDocument);
