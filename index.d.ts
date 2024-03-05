@@ -315,6 +315,9 @@ export interface JsonResponseDataServiceUsersProfile extends Result {
 export interface JsonResponseDataSubjectProduct extends Result {
     data: DomainRobotModels.SubjectProduct[];
 }
+export interface JsonResponseDataSubjectProductBulk extends Result {
+    data: DomainRobotModels.SubjectProduct[][];
+}
 export interface JsonResponseDataContactVerification extends Result {
     data: DomainRobotModels.ContactVerification[];
 }
