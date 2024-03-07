@@ -240,6 +240,9 @@ export interface JsonResponseDataBasicUser extends Result {
 export interface JsonResponseDataBillingEvent extends Result {
     data: DomainRobotModels.BillingEvent[];
 }
+export interface JsonResponseDataBillingEventBulk extends Result {
+    data: DomainRobotModels.BillingEvent[][];
+}
 export interface JsonResponseDataBillingLimit extends Result {
     data: DomainRobotModels.BillingLimit[];
 }
