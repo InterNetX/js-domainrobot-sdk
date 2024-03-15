@@ -240,6 +240,9 @@ export interface JsonResponseDataBasicUser extends Result {
 export interface JsonResponseDataBillingEvent extends Result {
     data: DomainRobotModels.BillingEvent[];
 }
+export interface JsonResponseDataBillingEventBulk extends Result {
+    data: DomainRobotModels.BillingEvent[][];
+}
 export interface JsonResponseDataBillingLimit extends Result {
     data: DomainRobotModels.BillingLimit[];
 }
@@ -314,6 +317,9 @@ export interface JsonResponseDataServiceUsersProfile extends Result {
 }
 export interface JsonResponseDataSubjectProduct extends Result {
     data: DomainRobotModels.SubjectProduct[];
+}
+export interface JsonResponseDataSubjectProductBulk extends Result {
+    data: DomainRobotModels.SubjectProduct[][];
 }
 export interface JsonResponseDataContactVerification extends Result {
     data: DomainRobotModels.ContactVerification[];
@@ -707,6 +713,7 @@ export namespace DomainRobotModels {
         discountNgtld?: number;
         discountCertificate?: number;
         discountValid?: string;
+        dataIncorrect?: boolean
         invoiceLanguage?: string;
         taxable?: boolean;
         card?: Card;
@@ -1981,6 +1988,7 @@ export namespace DomainRobotModels {
         fname?: string
         lname?: string
         type?: ContactType
+        noSap?: boolean
     }
     export class CustomerDocument {
         constructor(config?: CustomerDocument);
@@ -3881,7 +3889,6 @@ export namespace DomainRobotModels {
         priceList?: PriceList;
         from?: string;
         until?: string;
-        relative?: string;
     }
 
     export class PriceChange {
@@ -3954,7 +3961,6 @@ export namespace DomainRobotModels {
         businessCase?: GenericLabelEntity;
         priceChange?: PriceChange;
         taskComment?: string
-        relative?: string;
     }
 
     export class PriceData {
