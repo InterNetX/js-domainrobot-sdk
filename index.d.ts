@@ -1169,6 +1169,7 @@ export namespace DomainRobotModels {
       relative?: RelativeConstants;
       amount?: number;
       actualAmount?: number;
+      actualCurrency?: string;
       purchaseAmount?: number;
       margin?: number;
       priceConditions?: PriceServiceEntity[];
@@ -4055,6 +4056,7 @@ export namespace DomainRobotModels {
         priceConditions?: PriceServiceEntity[];
         includeCustomer?: boolean;
         actualAmount?: number;
+        actualCurrency?: string;
         purchaseAmount?: number;
         margin?: number;
     }
