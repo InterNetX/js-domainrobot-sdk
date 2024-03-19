@@ -4250,6 +4250,7 @@ export namespace DomainRobotModels {
         constructor(config?: SEPAMandate);
     }
     export interface SEPAMandate {
+        bankName?: string;
         created?: string;
         updated?: string;
         document?: Document;
