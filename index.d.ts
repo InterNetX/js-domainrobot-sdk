@@ -4255,6 +4255,7 @@ export namespace DomainRobotModels {
         document?: Document;
         reference?: string;
         confirmSignature?: string;
+        confirmSignatureCity?: string;
         confirmIp?: InetAddress;
         confirmUseragent?: string;
         confirmChecked?: Boolean;
