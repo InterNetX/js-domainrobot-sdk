@@ -4266,6 +4266,9 @@ export namespace DomainRobotModels {
         accountHolder?: string;
         iban?: string;
         bic?: string;
+        owner?: string;
+        externalReference?: string;
+        fee?: boolean;
     }
 
     export class ServiceProfiles {
