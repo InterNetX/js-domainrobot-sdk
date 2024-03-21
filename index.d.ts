@@ -1313,6 +1313,9 @@ export namespace DomainRobotModels {
         status?: CardStatus;
         validFrom?: string;
         validTo?: string;
+        owner?: string;
+        externalReference?: string;
+        fee?: boolean;
     }
 
     export class CertAuthentication {
@@ -4250,11 +4253,13 @@ export namespace DomainRobotModels {
         constructor(config?: SEPAMandate);
     }
     export interface SEPAMandate {
+        bankName?: string;
         created?: string;
         updated?: string;
         document?: Document;
         reference?: string;
         confirmSignature?: string;
+        confirmSignatureCity?: string;
         confirmIp?: InetAddress;
         confirmUseragent?: string;
         confirmChecked?: Boolean;
