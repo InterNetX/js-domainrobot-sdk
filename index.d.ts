@@ -758,6 +758,8 @@ export namespace DomainRobotModels {
         document?: number;
         confirmCity?: string;
         confirmIp?: string;
+        securityDepositDomain?: number
+        securityDepositServer?: number
     }
 
     export type CustomerStatistics = {
