@@ -38,6 +38,9 @@ class User extends DomainRobotService {
           this.domainRobotConfig.url + "/user/" + user + "/" + context + queryString
         )
 
+        console.log('sdk')
+        console.log(blub.result.data[0])
+
         return blub
     }
 
