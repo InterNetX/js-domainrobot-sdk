@@ -34,6 +34,9 @@ class User extends DomainRobotService {
             queryString = "?" + queries.join("&")
         }
 
+        console.log('queryString')
+        console.log(queryString)
+
         const blub = await this.sendGetRequest(
           this.domainRobotConfig.url + "/user/" + user + "/" + context + queryString
         )
