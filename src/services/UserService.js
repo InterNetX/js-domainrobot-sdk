@@ -29,6 +29,7 @@ class User extends DomainRobotService {
      */
     async info(user, context, queries = []) {
 
+        console.log('blub')
         console.log(user)
         console.log(context)
 
