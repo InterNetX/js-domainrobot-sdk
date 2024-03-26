@@ -29,18 +29,16 @@ class User extends DomainRobotService {
      */
     async info(user, context, queries = []) {
 
-        console.log('blub')
-        console.log(user)
-        console.log(context)
-
         let queryString = "";
         if (queries.length > 0) {
             queryString = "?" + queries.join("&")
         }
 
-        return await this.sendGetRequest(
-            this.domainRobotConfig.url + "/user/" + user + "/" + context + queryString
-        );
+        const blub = await this.sendGetRequest(
+          this.domainRobotConfig.url + "/user/" + user + "/" + context + queryString
+        )
+
+        return blub
     }
 
     /**
