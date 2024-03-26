@@ -29,6 +29,9 @@ class User extends DomainRobotService {
      */
     async info(user, context, queries = []) {
 
+        console.log(user)
+        console.log(context)
+
         let queryString = "";
         if (queries.length > 0) {
             queryString = "?" + queries.join("&")
