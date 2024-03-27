@@ -42,8 +42,7 @@ class User extends DomainRobotService {
         console.log(this.domainRobotConfig.url + "/user/" + user + "/" + context + "?subscription=true")
 
         const blub = await this.sendGetRequest(
-          // this.domainRobotConfig.url + "/user/" + user + "/" + context + "?subscription=true"
-          'https://api.dev-a4.intern.autodns-lab.com/api/v1/user/fluttershy/797095?subscription=true'
+          this.domainRobotConfig.url + "/user/" + user + "/" + context + "?subscription=true"
         )
 
         console.log('sdk')
