@@ -38,6 +38,9 @@ class User extends DomainRobotService {
         console.log('queryString')
         console.log(queryString)
 
+        console.log('path')
+        console.log(this.domainRobotConfig.url + "/user/" + user + "/" + context + "?subscription=true")
+
         const blub = await this.sendGetRequest(
           this.domainRobotConfig.url + "/user/" + user + "/" + context + "?subscription=true"
         )
