@@ -858,6 +858,7 @@ export namespace DomainRobotModels {
         defaultMail?: string;
         passwordExpired?: boolean;
         passwordChanged?: string;
+        subscriptions?: Subscription[];
     }
 
     export class BillingCustomerXML {
