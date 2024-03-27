@@ -196,7 +196,21 @@ export interface Result {
     object?: ResponseObject;
     ctid?: string;
     data: Array<object | string>;
+    messages?: DomainRobotModels.Message[];
 }
+
+export interface BulkResponse<T>{
+    status: string
+    uniqEventId: string
+    data: {
+        response: T
+        isFinished?: boolean
+    }
+}
+
+export interface BulkError extends BulkResponse<DomainRobotException>{}
+
+export interface BulkResult<T> extends BulkResponse<DomainRobotResult<T, number>>{}
 
 // Service Response Definitions
 export interface JsonResponseDataAccountingDocument extends Result {
@@ -211,6 +225,9 @@ export interface JsonResponseDataCustomer extends Result {
 export interface JsonResponseDataBasicCustomer extends Result {
     data: DomainRobotModels.BasicCustomer[];
 }
+export interface JsonResponseDataCustomerStatistics extends Result {
+    data: DomainRobotModels.CustomerStatistics;
+}
 export interface JsonResponseDataCustomerGroup extends Result {
     data: DomainRobotModels.CustomerGroup[];
 }
@@ -222,6 +239,9 @@ export interface JsonResponseDataBasicUser extends Result {
 }
 export interface JsonResponseDataBillingEvent extends Result {
     data: DomainRobotModels.BillingEvent[];
+}
+export interface JsonResponseDataBillingEventBulk extends Result {
+    data: DomainRobotModels.BillingEvent[][];
 }
 export interface JsonResponseDataBillingLimit extends Result {
     data: DomainRobotModels.BillingLimit[];
@@ -298,15 +318,20 @@ export interface JsonResponseDataServiceUsersProfile extends Result {
 export interface JsonResponseDataSubjectProduct extends Result {
     data: DomainRobotModels.SubjectProduct[];
 }
+export interface JsonResponseDataSubjectProductBulk extends Result {
+    data: DomainRobotModels.SubjectProduct[][];
+}
 export interface JsonResponseDataContactVerification extends Result {
     data: DomainRobotModels.ContactVerification[];
 }
-
 export interface JsonResponseDataContactTmchMark extends Result {
     data: DomainRobotModels.TmchMark[];
 }
 export interface JsonResponseDataTld extends Result {
     data: DomainRobotModels.Tld[];
+}
+export interface JsonResponseDataTldGrouped extends Result {
+    data: DomainRobotModels.TldGrouped[];
 }
 export interface MockResponse {
     data: Result,
@@ -404,10 +429,11 @@ export type CiraCprConstants = "CCT" | "RES" | "CCO" | "ABO" | "TDM" | "MAJ" | "
 export type CnAuditDocumentType = "ID_CARD" | "PASSPORT" | "CN_MAINLAND_TRAVEL_PERMIT_HK_MO" | "CN_MAINLAND_TRAVEL_PERMIT_TW" | "PERMANENT_RESIDENCE_PERMIT_FOREIGNERS" | "CN_RESIDENCE_PERMIT_HK_MO" | "CN_RESIDENCE_PERMIT_TW" | "MILITARY_ID_CARD" | "OTHER_ID_CARD" | "CN_ORG_ID" | "CN_BUSINESS_ID" | "CN_SOCIAL_CREDIT_LICENCE" | "MILITARY_UNIT_CODE" | "MILITARY_UNIT_EXTERNAL_PERMIT" | "INSTITUION_LEGAL_PERSON" | "CN_FOREIGN_ENTERPRISE_REGISTRATION" | "SOCIAL_ORG_LEGAL_PERSON" | "RELIGIOS_ACTIVITY" | "PRIVATE_NON_ENTERPRISE_REGISTRATION" | "FOUNDATION_LEGAL_PERSON" | "LAW_FIRM_LICENCE" | "CN_FOREIGN_CULTURAL_CENTER" | "CN_FOREIGN_TOURISM_DEPARTMENT_REGISTRATION" | "FORENSIC_EXPERTISE_LICENCE" | "SOCIAL_AGENCY_CERTIFICATE" | "PRIVATE_SCHOOL_PERMIT" | "MEDICAL_INSTITUION_LICENCE" | "NOTARY_ORG_LICENCE" | "CN_FOREIGN_EMBASSY_CHILDREN_PERMIT_BEIJING" | "OTHER_ORG_DOC" | "ORG_CERTIFICATE";
 export type ClearAccountPeriod = "DAY" | "MONTH" | "BILL" | "WEEK" | "NONE";
 export type CodeSigningType = "JAVASOFT" | "MS_AUTHENTICODE" | "VBA" | "ADOBE_AIR" | "APPLE";
+export type CommonLogSource = "SMTP" | "HTTP" | "EPP" | "DAEMON" | "AUTODNS2" | "IRTP" | "JOB" | "WHOIS" | "AXFR" | "VIGO" | "SWEB" | "SCHLUND_TECH" | "ISAC" | "PHOENIX" | "DOMAINROBOT" | "OTHER";
 export type ConditionType = "AND" | "OR";
 export type ContactProtectionConstants = "SHOW_ALL" | "SHOW_NONE";
 export type ContactReferenceType = "ALL" | "OWNERC" | "ADMINC" | "TECHC" | "ZONEC" | "BILLINGC";
-export type ContactType = "PRIMARY" | "BILLING" | "TECH" | "LEGAL" | "DOMAIN" | "SSL" | "SERVER";
+export type ContactType = "PRIMARY" | "BILLING" | "TECH" | "LEGAL" | "DOMAIN" | "SSL" | "SERVER" | "ABUSE";
 export type ContactTypeConstants = "PERSON" | "ORG" | "ROLE";
 export type CreditCardVendor = "MC" | "VISA" | "AMEX" | "DIC" | "DISC" | "CB";
 export type CryptoFormatConstants = "SHA1" | "SHA256" | "SHA512";
@@ -533,6 +559,7 @@ export namespace DomainRobotModels {
         status?: AccountStatusConstants;
         invoice?: Invoice;
         payment?: PaymentConstants;
+        parent?: AccountingDocument;
     }
 
     export class AccountEntry {
@@ -589,7 +616,14 @@ export namespace DomainRobotModels {
         owner?: BasicUser;
         updater?: BasicUser;
         type?: string;
-        category?: string;
+        category?: ArticleCategory;
+        label?: string;
+    }
+
+    export class ArticleCategory {
+        constructor(config?: ArticleCategory);
+    }
+    export interface ArticleCategory {
         label?: string;
     }
 
@@ -681,6 +715,7 @@ export namespace DomainRobotModels {
         discountNgtld?: number;
         discountCertificate?: number;
         discountValid?: string;
+        dataIncorrect?: boolean
         invoiceLanguage?: string;
         taxable?: boolean;
         card?: Card;
@@ -718,9 +753,6 @@ export namespace DomainRobotModels {
         currentAccountBalance?: number
         reserved?: number
         accountInfo?: { creditLimit: string }
-        autoDeleteTlds?: string;
-        billingTerm?: BillingTerm;
-        adoptExpiration?: AdoptExpiration;
         accountManager?: AccountManager;
         faxes?: Phone;
         reference?: string;
@@ -728,7 +760,21 @@ export namespace DomainRobotModels {
         document?: number;
         confirmCity?: string;
         confirmIp?: string;
+        securityDepositDomain?: number
+        securityDepositServer?: number
     }
+
+    export type CustomerStatistics = {
+        article: {
+            type: string
+            labe: string
+        }
+        count: number
+        created: string
+        customer: { number: number; client: string }
+        id: number
+        updated: string
+    }[] | undefined
 
     export class PriceLists {
         constructor(config?: PriceLists)
@@ -889,7 +935,7 @@ export namespace DomainRobotModels {
         updater?: BasicUser;
         status?: BillingStatus;
         object?: string;
-        description?: string,
+        description?: string;
         period?: TimePeriod;
         articleTypeLabel?: string;
         payable?: string;
@@ -966,7 +1012,10 @@ export namespace DomainRobotModels {
     export class BillingTldTerm {
         constructor(config?: BillingTldTerm);
     }
-
+    export interface BillingTldTerm{
+        name: string
+        unit: string
+    }
     export class BulkBackupMxDeleteRequest {
         constructor(config?: BulkBackupMxDeleteRequest);
     }
@@ -1124,9 +1173,10 @@ export namespace DomainRobotModels {
       relative?: RelativeConstants;
       amount?: number;
       actualAmount?: number;
+      actualCurrency?: string;
       purchaseAmount?: number;
       margin?: number;
-      priceConditions?: PriceServiceEntity;
+      priceConditions?: PriceServiceEntity[];
       type?: string;
     }
 
@@ -1267,6 +1317,9 @@ export namespace DomainRobotModels {
         status?: CardStatus;
         validFrom?: string;
         validTo?: string;
+        owner?: string;
+        externalReference?: string;
+        fee?: boolean;
     }
 
     export class CertAuthentication {
@@ -1439,7 +1492,7 @@ export namespace DomainRobotModels {
         revoked?: string;
         orderId?: string;
     }
-
+  
     export class Configuration {
         constructor();
     }
@@ -1942,6 +1995,7 @@ export namespace DomainRobotModels {
         fname?: string
         lname?: string
         type?: ContactType
+        noSap?: boolean
     }
     export class CustomerDocument {
         constructor(config?: CustomerDocument);
@@ -2157,6 +2211,7 @@ export namespace DomainRobotModels {
         autoRenewStatus?: AutoRenewStatusConstants;
         dnssecData?: DNSSec[];
         zone?: Zone;
+        authinfoExpire?: string;
     }
     export class DomainCancelation {
         constructor(config?: DomainCancelation);
@@ -2209,6 +2264,7 @@ export namespace DomainRobotModels {
         onlyAvailable?: boolean;
         isPrereg?: boolean;
         whoisTimeout?: number;
+        notification?: Notification;
     }
 
     export class DomainEnvelopeSearchRequest {
@@ -2227,6 +2283,9 @@ export namespace DomainRobotModels {
         whoisTimeout?: number;
         ignorePremium?: boolean;
         ignoreMarket?: boolean;
+        agent?: string;
+        stid?: string;
+        ctid?: string;
     }
 
     export class DomainAutodeleteExtensions {
@@ -2256,6 +2315,7 @@ export namespace DomainRobotModels {
         tmchClaimsNoticeExtensions?: DomainTmchClaimNoticeExtensions;
         verificationExtensions?: ContactVerificationDomain;
         cancelationExtensions?: DomainCancelationExtensions;
+        sellExtensions?: DomainSellExtensions;
     }
 
     export class DomainMonitoring {
@@ -2359,6 +2419,7 @@ export namespace DomainRobotModels {
         autoRenewStatus?: AutoRenewStatusConstants;
         dnssecData?: DNSSec[];
         zone?: Zone;
+        authinfoExpire?: string;
     }
 
     export class DomainSafeUser {
@@ -2621,6 +2682,8 @@ export namespace DomainRobotModels {
         upcoming?: DomainStudioSourceUpcoming;
         prefixSuffix?: DomainStudioSourcePrefixSuffix;
         semantic?: DomainStudioSourceSuggestion2;
+        placementPlus?: DomainStudioSourcePlacementPlus;
+        domainsbot?: DomainStudioSourceDomainsbot;
     }
 
     export class DomainTmchClaimNoticeExtensions {
@@ -3640,6 +3703,29 @@ export namespace DomainRobotModels {
         object?: ResponseObject;
     }
 
+  export class Notification {
+    constructor(config?: Notification);
+  }
+  export interface Notification {
+    status?: StatusType;
+    job?: Job;
+    notices?: string[];
+    messages?: Message[];
+    owner?: User;
+    updater?: User;
+    action?: string;
+    object?: ResponseObject;
+    created?: string;
+    stid?: string;
+    ctid?: string;
+    agent?: CommonLogSource;
+    uuid?: string;
+    impersonate?: string;
+    userAgent?: string;
+    transferType?: string;
+    subStatus?: string;
+  }
+
     export class OTPAuth {
         constructor(config?: OTPAuth);
     }
@@ -3765,6 +3851,7 @@ export namespace DomainRobotModels {
         object?: string;
         description?: string;
         period?: TimePeriod;
+        renewPeriod?: TimePeriod;
         articleTypeLabel?: string;
         articleLabel?: string;
         item?: PeriodicBilling[];
@@ -3907,10 +3994,17 @@ export namespace DomainRobotModels {
         priceConditions?: PriceServiceEntity[];
         comment?: string;
         normalPrice?: ExchangedPrice;
+        newPrice?: ExchangedPrice;
         valid?: string;
+        from?: string;
+        until?: string;
         name?: string;
         articleType?: GenericLabelEntity;
         businessCase?: GenericLabelEntity;
+        priceChange?: PriceChange;
+        taskComment?: string;
+        priceList?: PriceList;
+        taskComment?: string;
     }
 
     export class PriceData {
@@ -3939,6 +4033,7 @@ export namespace DomainRobotModels {
         hasCustomerPriceList?: boolean;
         customerPriceListsAdd?: Array<object>;
         customerPriceListsRem?: Array<object>;
+        excludeFromPricechange?: boolean;
     }
     export class PriceServiceData {
         constructor(config?: PriceServiceData);
@@ -3970,6 +4065,7 @@ export namespace DomainRobotModels {
         maximumSalesPrices?: SalesPrice[];
         name?: string
         replace?: boolean
+        sourceName?: string
     }
 
     export class Product {
@@ -4005,6 +4101,7 @@ export namespace DomainRobotModels {
         priceConditions?: PriceServiceEntity[];
         includeCustomer?: boolean;
         actualAmount?: number;
+        actualCurrency?: string;
         purchaseAmount?: number;
         margin?: number;
     }
@@ -4198,11 +4295,13 @@ export namespace DomainRobotModels {
         constructor(config?: SEPAMandate);
     }
     export interface SEPAMandate {
+        bankName?: string;
         created?: string;
         updated?: string;
         document?: Document;
         reference?: string;
         confirmSignature?: string;
+        confirmSignatureCity?: string;
         confirmIp?: InetAddress;
         confirmUseragent?: string;
         confirmChecked?: Boolean;
@@ -4332,6 +4431,7 @@ export namespace DomainRobotModels {
         joiStateOrProvince?: string;
         companyNumber?: string;
         businessCategory?: BusinessCategory;
+        organisationalIdentifier?: string;
     }
 
     export class SslContactReference {
@@ -4469,9 +4569,6 @@ export namespace DomainRobotModels {
         adoptExpiration?: AdoptExpiration;
         billingTerm?: BillingTerm;
         autoDeleteTlds?: string;
-        tldTerm?: {
-            unit?: number
-        }
     }
     export class Tld {
         constructor(config?: Tld)
@@ -4501,7 +4598,15 @@ export namespace DomainRobotModels {
         numeric?: boolean; // Specifies whether SLD may consist exclusively of numeric characters.
         tldContinent?: TldContinent;
         rankingLevel?: number; // Rank Level in the Domain Studio.
+        tlds?: Tld[];
 
+    }
+    export class TldGrouped {
+        constructor(config?: TldGrouped)
+    }
+    export interface TldGrouped{
+        adoptExpirationGroup: string
+        tlds: Tld[]
     }
     export class TmchClaimsNotice {
         constructor(config?: TmchClaimsNotice)
@@ -4960,7 +5065,7 @@ export namespace DomainRobotModels {
         updated?: string;
         owner?: BasicUser;
         updater?: BasicUser;
-        statu?: JobStatusConstants;
+        status?: JobStatusConstants;
         subStatus?: string;
         execution?: string;
         id?: number;
