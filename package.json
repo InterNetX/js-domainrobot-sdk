@@ -18,6 +18,7 @@
 	},
 	"nyc": {
 		"exclude": [
+			"docs",
 			"examples/",
 			"node_modules",
 			".github",
