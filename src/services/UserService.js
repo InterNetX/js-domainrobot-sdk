@@ -27,14 +27,14 @@ class User extends DomainRobotService {
      * @param queries string[] {Available values: acl, profiles, customer, subscription, nameServerGroup}
      * @returns Promise<DomainRobotResult<JsonResponseDataBasicUser, number>>
      */
-    async info(user, context, queries = []) {
+    async info(user, context, queries = ["subscription=true"]) {
 
+        console.log(queries)
         let queryString = "";
         if (queries.length > 0) {
             queryString = "?" + queries.join("&")
         }
 
-        console.log(queries)
         console.log('queryString')
         console.log(queryString)
 
