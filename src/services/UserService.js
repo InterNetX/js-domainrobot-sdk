@@ -27,7 +27,7 @@ class User extends DomainRobotService {
      * @param queries string[] {Available values: acl, profiles, customer, subscription, nameServerGroup}
      * @returns Promise<DomainRobotResult<JsonResponseDataBasicUser, number>>
      */
-    async info(user, context, queries = []) {
+    async info(user, context, queries = ['subscription']) {
 
         console.log(queries)
         let queryString = "";
@@ -39,10 +39,10 @@ class User extends DomainRobotService {
         console.log(queryString)
 
         console.log('path')
-        console.log(this.domainRobotConfig.url + "/user/" + user + "/" + context + "?subscription=true")
+        console.log(this.domainRobotConfig.url + "/user/" + user + "/" + context + queryString)
 
         const blub = await this.sendGetRequest(
-          this.domainRobotConfig.url + "/user/" + user + "/" + context + "?subscription=true"
+          this.domainRobotConfig.url + "/user/" + user + "/" + context + queryString
         )
 
         console.log('sdk')
