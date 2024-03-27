@@ -34,6 +34,7 @@ class User extends DomainRobotService {
             queryString = "?" + queries.join("&")
         }
 
+        console.log(queries)
         console.log('queryString')
         console.log(queryString)
 
