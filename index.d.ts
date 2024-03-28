@@ -856,7 +856,7 @@ export namespace DomainRobotModels {
         language?: string;
         parent?: {
             user?: string
-            context?: string
+            context?: number
         };
         status?: number;
         subStatus?: number;
