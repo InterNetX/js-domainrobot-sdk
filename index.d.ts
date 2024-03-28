@@ -854,12 +854,22 @@ export namespace DomainRobotModels {
         context?: number;
         user?: string;
         language?: string;
-        parent?: number;
+        parent?: {
+            user?: string
+            context?: number
+        };
         status?: number;
         subStatus?: number;
-        defaultMail?: string;
+        defaultEmail?: string;
         passwordExpired?: boolean;
         passwordChanged?: string;
+        subscriptions?: Subscription[];
+        toggle?: boolean
+        details?: {
+            fname?: string
+            lname?: string
+        }
+        lock?: string
     }
 
     export class BillingCustomerXML {

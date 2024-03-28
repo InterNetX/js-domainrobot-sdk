@@ -35,8 +35,9 @@ class User extends DomainRobotService {
         }
 
         return await this.sendGetRequest(
-            this.domainRobotConfig.url + "/user/" + user + "/" + context + queryString
-        );
+          this.domainRobotConfig.url + "/user/" + user + "/" + context + queryString
+        )
+
     }
 
     /**
