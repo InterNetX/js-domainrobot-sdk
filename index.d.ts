@@ -860,7 +860,7 @@ export namespace DomainRobotModels {
         };
         status?: number;
         subStatus?: number;
-        defaultMail?: string;
+        defaultEmail?: string;
         passwordExpired?: boolean;
         passwordChanged?: string;
         subscriptions?: Subscription[];
