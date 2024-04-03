@@ -762,6 +762,10 @@ export namespace DomainRobotModels {
         confirmIp?: string;
         securityDepositDomain?: number
         securityDepositServer?: number
+        owner?: {
+            user?: string
+            context?: string
+        }
     }
 
     export type CustomerStatistics = {
