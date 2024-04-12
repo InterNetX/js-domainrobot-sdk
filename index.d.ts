@@ -226,7 +226,7 @@ export interface JsonResponseDataBasicCustomer extends Result {
     data: DomainRobotModels.BasicCustomer[];
 }
 export interface JsonResponseDataCustomerStatistics extends Result {
-    data: DomainRobotModels.CustomerStatistics;
+    data: DomainRobotModels.CustomerStatistics[];
 }
 export interface JsonResponseDataCustomerGroup extends Result {
     data: DomainRobotModels.CustomerGroup[];
@@ -553,7 +553,7 @@ export namespace DomainRobotModels {
         entry?: AccountEntry;
         type?: AccountingDocumentTypeConstants;
         account?: Account;
-        subjectProducts?: SubjectProduct;
+        subjectProducts?: SubjectProduct[];
         view?: CurrencyRate;
         synchronized?: boolean;
         status?: AccountStatusConstants;
@@ -769,16 +769,16 @@ export namespace DomainRobotModels {
     }
 
     export type CustomerStatistics = {
-        article: {
-            type: string
-            labe: string
+        article?: {
+            type?: string
+            labe?: string
         }
-        count: number
-        created: string
-        customer: { number: number; client: string }
-        id: number
-        updated: string
-    }[] | undefined
+        count?: number
+        created?: string
+        customer?: { number?: number; client?: string }
+        id?: number
+        updated?: string
+    }
 
     export class PriceLists {
         constructor(config?: PriceLists)
@@ -3717,28 +3717,28 @@ export namespace DomainRobotModels {
         object?: ResponseObject;
     }
 
-  export class Notification {
-    constructor(config?: Notification);
-  }
-  export interface Notification {
-    status?: StatusType;
-    job?: Job;
-    notices?: string[];
-    messages?: Message[];
-    owner?: User;
-    updater?: User;
-    action?: string;
-    object?: ResponseObject;
-    created?: string;
-    stid?: string;
-    ctid?: string;
-    agent?: CommonLogSource;
-    uuid?: string;
-    impersonate?: string;
-    userAgent?: string;
-    transferType?: string;
-    subStatus?: string;
-  }
+    export class Notification {
+        constructor(config?: Notification);
+    }
+    export interface Notification {
+        status?: StatusType;
+        job?: Job;
+        notices?: string[];
+        messages?: Message[];
+        owner?: User;
+        updater?: User;
+        action?: string;
+        object?: ResponseObject;
+        created?: string;
+        stid?: string;
+        ctid?: string;
+        agent?: CommonLogSource;
+        uuid?: string;
+        impersonate?: string;
+        userAgent?: string;
+        transferType?: string;
+        subStatus?: string;
+    }
 
     export class OTPAuth {
         constructor(config?: OTPAuth);
@@ -3769,45 +3769,45 @@ export namespace DomainRobotModels {
         notices?: Array<string>;
     }
 
-  export class ParkingAccount {
-    constructor(config?: ParkingAccount);
-  }
-  export interface ParkingAccount {
-    created?: string;
-    updated?: string;
-    owner?: BasicUser;
-    updater?: BasicUser;
-    type?: ParkingAccountType;
-    login?: string;
-    apiKey?: string;
-    status?: ParkingAccountStatus;
-    master?: boolean;
-    lastSynchronized?: string;
-  }
+    export class ParkingAccount {
+        constructor(config?: ParkingAccount);
+    }
+    export interface ParkingAccount {
+        created?: string;
+        updated?: string;
+        owner?: BasicUser;
+        updater?: BasicUser;
+        type?: ParkingAccountType;
+        login?: string;
+        apiKey?: string;
+        status?: ParkingAccountStatus;
+        master?: boolean;
+        lastSynchronized?: string;
+    }
 
-  export class ParkingDomain {
-    constructor(config?: ParkingDomain);
-  }
-  export interface ParkingDomain {
-    created?: string;
-    updated?: string;
-    owner?: BasicUser;
-    updater?: BasicUser;
-    parkingAccount?: ParkingAccount;
-    name?: string;
-    currency?: string;
-    fixedPrice?: boolean;
-    forSale?: boolean;
-    keywords?: string[];
-    price?: number;
-    minPrice?: number;
-    externalReference?: string;
-    lastSynchronized?: string;
-    registrandAccountId?: string;
-    status?: ParkingDomainStatus;
-    message?: string;
-    registrantAccountId?: string;
-  }
+    export class ParkingDomain {
+        constructor(config?: ParkingDomain);
+    }
+    export interface ParkingDomain {
+        created?: string;
+        updated?: string;
+        owner?: BasicUser;
+        updater?: BasicUser;
+        parkingAccount?: ParkingAccount;
+        name?: string;
+        currency?: string;
+        fixedPrice?: boolean;
+        forSale?: boolean;
+        keywords?: string[];
+        price?: number;
+        minPrice?: number;
+        externalReference?: string;
+        lastSynchronized?: string;
+        registrandAccountId?: string;
+        status?: ParkingDomainStatus;
+        message?: string;
+        registrantAccountId?: string;
+    }
 
     export class PriceChange {
       constructor(config?: PriceChange);
@@ -3944,49 +3944,6 @@ export namespace DomainRobotModels {
         until?: string;
     }
 
-    export class PriceChange {
-        constructor(config?: PriceChange);
-    }
-    export interface PriceChange {
-        created?: string;
-        updated?: string;
-        id?: number;
-        owner?: BasicUser;
-        updater?: BasicUser;
-        name?: string;
-        comment?: string;
-        type?: PriceChangeTypeConstants;
-        status?: PriceChangeStatusConstants;
-        customer?: GenericCustomer;
-        customerData?: BasicCustomer;
-        article?: Article;
-        primary?: PriceChange;
-        validFrom?: string;
-        validUntil?: string;
-        confirmed?: string;
-        messageSend?: string;
-        priceTemplates?: ProductPriceTemplate[];
-        priceClassTemplates?: PriceClassTemplate[];
-        priceChangeExcludes?: PriceChangeExclude[];
-        priceChangeExcludesAdd?: PriceChangeExclude[];
-        priceChangeExcludesRem?: PriceChangeExclude[];
-        worker?: string;
-        ticketNumber?: string;
-        priceClassPrefix?: string;
-        priceClassType?: string;
-    }
-
-    export class PriceChangeExclude {
-        constructor(config?: PriceChangeExclude);
-    }
-    export interface PriceChangeExclude {
-        created?: string;
-        updated?: string;
-        id?: number;
-        customer?: GenericCustomer;
-        priceChange?: PriceChange;
-    }
-
     export class PriceClass {
         constructor(config?: PriceClass);
     }
@@ -4018,7 +3975,6 @@ export namespace DomainRobotModels {
         priceChange?: PriceChange;
         taskComment?: string;
         priceList?: PriceList;
-        taskComment?: string;
     }
 
     export class PriceData {
