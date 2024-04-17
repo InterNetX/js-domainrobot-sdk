@@ -857,7 +857,7 @@ export namespace DomainRobotModels {
             context?: number
         };
         status?: number;
-        subStatus?: number;
+        substatus?: number;
         defaultEmail?: string;
         passwordExpired?: boolean;
         passwordChanged?: string;
