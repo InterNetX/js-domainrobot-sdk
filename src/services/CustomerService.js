@@ -1,6 +1,6 @@
 let DomainRobotService = require("./DomainRobotService");
 
-class Customer extends DomainRobotService {
+class CustomerService extends DomainRobotService {
 
   constructor(domainRobotConfig) {
     super(domainRobotConfig);
@@ -20,4 +20,4 @@ class Customer extends DomainRobotService {
   }
 }
 
-module.exports = Customer;
+module.exports = CustomerService;
