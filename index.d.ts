@@ -363,6 +363,8 @@ export class DomainRobot {
 
     contact(contactModel?: DomainRobotModels.Contact): ContactService;
 
+    customer(): CustomerService;
+
     domain(): DomainService;
 
     domainStudio(domainStudioEnvelopeSearchRequest: DomainRobotModels.DomainEnvelopeSearchRequest): DomainStudio;
