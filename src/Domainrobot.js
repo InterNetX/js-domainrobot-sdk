@@ -3,7 +3,6 @@
 
 const ContactService = require("./services/ContactService")
 const CertificateService = require("./services/CertificateService")
-const CustomerService = require("./services/CustomerService")
 const DomainStudio = require("./services/DomainStudio")
 const DomainService = require("./services/DomainService")
 const SslContactService = require("./services/SslContactService")
@@ -37,10 +36,6 @@ class DomainRobot {
     // certificate stuff
     certificate() {
         return new CertificateService(this.domainRobotConfig)
-    }
-
-    customer() {
-        return new CustomerService(this.domainRobotConfig)
     }
 
     domain() {
