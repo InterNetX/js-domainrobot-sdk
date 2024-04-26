@@ -29,9 +29,6 @@ export declare class CertificateService extends DomainRobotService<CertificateSe
     comment(model: DomainRobotModels.Certificate): Promise<DomainRobotResult<JsonResponseDataVoid, number>>;
     convertCertificateToCertificateData(model: DomainRobotModels.Certificate): DomainRobotModels.CertificateData;
 }
-export declare class CustomerService extends DomainRobotService<CustomerService> {
-    update(model: DomainRobotModels.BasicCustomer): Promise<DomainRobotResult<JsonResponseDataBasicCustomer, number>>;
-}
 export declare class ContactService extends DomainRobotService<ContactService> {
     create(model: DomainRobotModels.Contact): Promise<DomainRobotResult<JsonResponseDataContact, number>>;
     update(model: DomainRobotModels.Contact): Promise<DomainRobotResult<JsonResponseDataContact, number>>;
@@ -362,8 +359,6 @@ export class DomainRobot {
     certificate(certificateModel?: DomainRobotModels.Certificate): CertificateService;
 
     contact(contactModel?: DomainRobotModels.Contact): ContactService;
-
-    customer(): CustomerService;
 
     domain(): DomainService;
 
