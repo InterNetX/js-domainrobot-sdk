@@ -3833,6 +3833,9 @@ export namespace DomainRobotModels {
       ticketNumber?: string;
       priceClassPrefix?: string;
       priceClassType?: string;
+      errorProductPriceTemplate?: ProductPriceTemplate;
+      errorPriceClassTemplate?: PriceClassTemplate;
+      errorMessage?: string;
     }
 
     export class PriceChangeExclude {
