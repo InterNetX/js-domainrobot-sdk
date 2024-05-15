@@ -3921,7 +3921,7 @@ export namespace DomainRobotModels {
         updater?: BasicUser;
         amount?: number;
         type?: PriceTypeConstants;
-        currency?: Currency;
+        currency?: string;
         priority?: PriorityConstants;
         customer?: GenericCustomer;
         period?: TimePeriod;
@@ -3952,7 +3952,7 @@ export namespace DomainRobotModels {
         updater?: BasicUser;
         amount?: number;
         type?: PriceTypeConstants;
-        currency?: Currency;
+        currency?: string;
         priority?: PriorityConstants;
         customer?: GenericCustomer;
         period?: TimePeriod;
