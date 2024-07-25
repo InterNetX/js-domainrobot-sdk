@@ -1305,6 +1305,14 @@ export namespace DomainRobotModels {
       label?: string;
     }
 
+    export class BusinessCasePrices<T extends Price | PriceClass | PurchasePrice | PurchasePriceClass | ProductPriceTemplate | PriceClassTemplate> {
+        constructor(config?: BusinessCasePrices<T>)
+    }
+    export interface BusinessCasePrices<T extends Price | PriceClass | PurchasePrice | PurchasePriceClass | ProductPriceTemplate | PriceClassTemplate> {
+        businessCase?: string
+        prices?: T[]
+    }
+
     export class CaCertificate {
         constructor(config?: CaCertificate);
     }
@@ -4018,6 +4026,17 @@ export namespace DomainRobotModels {
     export interface PriceServiceEntity {
         configuration?: any;
         condition?: ServiceEntity;
+    }
+
+    export class PriceTableRow<T extends Price | PriceClass | PurchasePrice | PurchasePriceClass | ProductPriceTemplate | PriceClassTemplate> {
+        constructor(config?: PriceTableRow<T>)
+    }
+    export interface PriceTableRow<T extends Price | PriceClass | PurchasePrice | PurchasePriceClass | ProductPriceTemplate | PriceClassTemplate> {
+        rowConditions?: PriceServiceEntity[]
+        article?: Article
+        customer?: BasicCustomer
+        prices?: BusinessCasePrices<T>[]
+        businessCases?: string[]
     }
 
     export class PriceTemplateBuilderOptions {
