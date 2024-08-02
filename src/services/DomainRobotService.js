@@ -50,16 +50,16 @@ class DomainRobotService {
             }
         }
 
+        this.axiosconfig = {}
         // decide which authentcation method we should use
         // its either 'basic auth' or via 'session_id'
         if (this.domainRobotConfig.auth !== undefined) {
             // set basic axios config
-            this.axiosconfig = {
-                auth: {
-                    username: this.domainRobotConfig.auth.user,
-                    password: this.domainRobotConfig.auth.password
-                }
-            };
+            this.axiosconfig.auth = {
+                username: this.domainRobotConfig.auth.user,
+                password: this.domainRobotConfig.auth.password
+            }
+                ;
         } else if (this.domainRobotConfig.session_id !== null && this.domainRobotConfig.session_id !== undefined) {
             // set the session_id header for authentication
             axios.defaults.headers.common[Headers.DOMAINROBOT_HEADER_SESSION_ID] = this.domainRobotConfig.session_id;
@@ -113,9 +113,9 @@ class DomainRobotService {
             }
 
             let result;
-            if (this.domainRobotConfig.isMockRequest === true){
-                result = this.domainRobotConfig.mockResponse;              
-            }else{
+            if (this.domainRobotConfig.isMockRequest === true) {
+                result = this.domainRobotConfig.mockResponse;
+            } else {
                 result = await this.axios(requestOptions);
             }
 
@@ -136,8 +136,8 @@ class DomainRobotService {
             return domainRobotResult;
         } catch (error) {
             // a connection error (e.g. timeout, wrong address etc.) or some error that didn't return a response occured
-            if (error.response === undefined){
-              throw error
+            if (error.response === undefined) {
+                throw error
             }
             throw new DomainRobotException(
                 error.response.data,
