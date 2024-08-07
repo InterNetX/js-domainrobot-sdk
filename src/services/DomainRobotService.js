@@ -59,7 +59,6 @@ class DomainRobotService {
                 username: this.domainRobotConfig.auth.user,
                 password: this.domainRobotConfig.auth.password
             }
-                ;
         } else if (this.domainRobotConfig.session_id !== null && this.domainRobotConfig.session_id !== undefined) {
             // set the session_id header for authentication
             axios.defaults.headers.common[Headers.DOMAINROBOT_HEADER_SESSION_ID] = this.domainRobotConfig.session_id;
