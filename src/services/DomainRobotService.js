@@ -73,6 +73,9 @@ class DomainRobotService {
      * @param {object} headers
      */
     headers(headers) {
+        if(!this.axiosconfig.headers) {
+            this.axiosconfig.headers = {};
+        }
         this.axiosconfig.headers = headers;
         return this;
     }
