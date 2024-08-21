@@ -4034,7 +4034,7 @@ export namespace DomainRobotModels {
         rowConditions?: PriceServiceEntity[]
         article?: Article
         customer?: BasicCustomer
-        prices?: BusinessCasePrices<T>[]
+        prices?: BusinessCasePrices<T>
         businessCases?: string[]
     }
 
