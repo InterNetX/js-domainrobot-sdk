@@ -741,6 +741,7 @@ export namespace DomainRobotModels {
         technical?: TechnicalCustomer;
         sepa?: SEPAMandate;
         created?: string;
+        updated?: string;
         locked?: boolean;
         canceled?: string;
         billable?: boolean;
@@ -1309,7 +1310,7 @@ export namespace DomainRobotModels {
         constructor(config?: BusinessCasePrices<T>)
     }
     export interface BusinessCasePrices<T extends Price | PriceClass | PurchasePrice | PurchasePriceClass | ProductPriceTemplate | PriceClassTemplate> {
-        [businessCase: string]: T[]
+        [businessCase: string]: T[] | undefined
     }
 
     export class CaCertificate {
