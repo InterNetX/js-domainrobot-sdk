@@ -764,6 +764,7 @@ export namespace DomainRobotModels {
         securityDepositDomain?: number
         securityDepositServer?: number
         owner?: BasicUser
+        worker?: string
     }
 
     export type CustomerStatistics = {
