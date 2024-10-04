@@ -2001,6 +2001,7 @@ export namespace DomainRobotModels {
         constructor(config?: CustomerContract);
     }
     export interface CustomerContract {
+        id?: number;
         created?: string;
         updated?: string;
         contract?: GenericLabelEntity;
