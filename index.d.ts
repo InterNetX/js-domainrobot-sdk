@@ -333,6 +333,9 @@ export interface JsonResponseDataTld extends Result {
 export interface JsonResponseDataTldGrouped extends Result {
     data: DomainRobotModels.TldGrouped[];
 }
+export interface JsonResponseDataBasicCustomerSpool extends Result {
+    data: DomainRobotModels.BasicCustomerSpool[];
+}
 export interface MockResponse {
     data: Result,
     status: number
@@ -484,7 +487,7 @@ export type PaymentConstants = "PRE" | "POST" | "LIVE";
 export type PolicyMode = "DISABLED" | "QUARANTINE" | "DISCARD" | "ACCEPT";
 export type PriceMarkupType = "PERCENT" | "ABSOLUTE";
 export type PriceTypeConstants = "GROSS" | "NET";
-export type PriceChangeStatusConstants = "FINISHED" | "PENDING" | "SUCCESS" | "FAILED" | "NOT_SET" | "CONFIRMED";
+export type PriceChangeStatusConstants = "FINISHED" | "PENDING" | "SUCCESS" | "FAILED" | "NOT_SET" | "CONFIRMED";
 export type PriceChangeTypeConstants = "CUSTOMER" | "GENERAL" | "GENERAL_DISCOUNT" | "GENERAL_NEW_ARTICLE" | "PROMO" | "PRIMARY";
 export type PriceRoundingConstants = "NONE" | "ROUND_X0" | "ROUND_00" | "ROUND_X9" | "ROUND_99" | "ROUND_COMMERCIAL";
 export type PriorityConstants = "DEFAULT" | "OFFER" | "PROTECTED" | "PROMO";
@@ -722,7 +725,7 @@ export namespace DomainRobotModels {
         contracts?: CustomerContract[];
         billingUsers?: BasicUser[];
         comments?: Comment[];
-        contacts?: basicCustomerContact[];
+        contacts?: BasicCustomerContact[];
         account?: Account;
         priceListEntities?: CustomerPriceList[];
         addPriceListEntities?: CustomerPriceList[];
@@ -787,10 +790,10 @@ export namespace DomainRobotModels {
         }[]
     }
 
-    export class basicCustomerContact {
-        constructor(config?: basicCustomerContact);
+    export class BasicCustomerContact {
+        constructor(config?: BasicCustomerContact);
     }
-    export interface basicCustomerContact {
+    export interface BasicCustomerContact {
         created?: string;
         updated?: string;
         owner?: BasicUser;
@@ -813,6 +816,24 @@ export namespace DomainRobotModels {
         email?: string;
         address?: string[];
         notice?: string;
+    }
+
+    export class BasicCustomerSpool {
+        constructor(config?: BasicCustomerSpool)
+    }
+    export interface BasicCustomerSpool {
+        created?: string;
+        updated?: string;
+        id?: number;
+        owner?: User;
+        updater?: User;
+        customer?: GenericCustomer;
+        data?: BasicCustomer;
+        comment?: string;
+        name?: string;
+        organization?: string;
+        verifications?: BasicCustomerSpoolVerification[];
+        execution?: string;
     }
 
     export class BasicCustomerSpoolVerification {
@@ -3575,6 +3596,18 @@ export namespace DomainRobotModels {
         status?: ResponseStatus;
         object?: ResponseObject;
         data?: Zone[];
+        ctid?: string;
+    }
+
+    export class JsonResponseDataBasicCustomerSpool {
+        constructor(config?: JsonResponseDataBasicCustomerSpool);
+    }
+    export interface JsonResponseDataBasicCustomerSpool {
+        stid?: string;
+        messages?: Message[];
+        status?: ResponseStatus;
+        object?: ResponseObject;
+        data?: BasicCustomerSpool[];
         ctid?: string;
     }
 
