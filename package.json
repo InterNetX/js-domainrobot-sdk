@@ -42,10 +42,10 @@
 		"cross-env": "^6.0.3",
 		"mocha": "^9.1.0",
 		"nyc": "^15.1.0",
-		"webpack": "^4.41.4"
+		"webpack": "^5.94.0"
 	},
 	"dependencies": {
-		"axios": "^0.21.1",
+		"axios": "^0.28.0",
 		"chai": "^4.3.4",
 		"yarn.lock": "^0.0.1-security"
 	}
