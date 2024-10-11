@@ -333,6 +333,9 @@ export interface JsonResponseDataTld extends Result {
 export interface JsonResponseDataTldGrouped extends Result {
     data: DomainRobotModels.TldGrouped[];
 }
+export interface JsonResponseDataBasicCustomerSpool extends Result {
+    data: DomainRobotModels.BasicCustomerSpool[];
+}
 export interface MockResponse {
     data: Result,
     status: number
@@ -722,7 +725,7 @@ export namespace DomainRobotModels {
         contracts?: CustomerContract[];
         billingUsers?: BasicUser[];
         comments?: Comment[];
-        contacts?: basicCustomerContact[];
+        contacts?: BasicCustomerContact[];
         account?: Account;
         priceListEntities?: CustomerPriceList[];
         addPriceListEntities?: CustomerPriceList[];
@@ -787,10 +790,10 @@ export namespace DomainRobotModels {
         }[]
     }
 
-    export class basicCustomerContact {
-        constructor(config?: basicCustomerContact);
+    export class BasicCustomerContact {
+        constructor(config?: BasicCustomerContact);
     }
-    export interface basicCustomerContact {
+    export interface BasicCustomerContact {
         created?: string;
         updated?: string;
         owner?: BasicUser;
@@ -813,6 +816,24 @@ export namespace DomainRobotModels {
         email?: string;
         address?: string[];
         notice?: string;
+    }
+
+    export class BasicCustomerSpool {
+        constructor(config?: BasicCustomerSpool)
+    }
+    export interface BasicCustomerSpool {
+        created?: string;
+        updated?: string;
+        id?: number;
+        owner?: User;
+        updater?: User;
+        customer?: GenericCustomer;
+        data?: BasicCustomer;
+        comment?: string;
+        name?: string;
+        organization?: string;
+        verifications?: BasicCustomerSpoolVerification[];
+        execution?: string;
     }
 
     export class BasicCustomerSpoolVerification {
@@ -3575,6 +3596,18 @@ export namespace DomainRobotModels {
         status?: ResponseStatus;
         object?: ResponseObject;
         data?: Zone[];
+        ctid?: string;
+    }
+
+    export class JsonResponseDataBasicCustomerSpool {
+        constructor(config?: JsonResponseDataBasicCustomerSpool);
+    }
+    export interface JsonResponseDataBasicCustomerSpool {
+        stid?: string;
+        messages?: Message[];
+        status?: ResponseStatus;
+        object?: ResponseObject;
+        data?: BasicCustomerSpool[];
         ctid?: string;
     }
 
