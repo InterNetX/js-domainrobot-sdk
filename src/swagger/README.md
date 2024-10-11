@@ -3,7 +3,7 @@
 ```bash
 yarn
 
-#after installation is complete
+# after installation is complete
 yarn update:specs
 ```
 
@@ -12,7 +12,7 @@ or with npm
 ```bash
 npm run install
 
-#after installation is complete
+# after installation is complete
 npm run update:specs
 ```
 
