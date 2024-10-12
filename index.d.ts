@@ -725,7 +725,7 @@ export namespace DomainRobotModels {
         contracts?: CustomerContract[];
         billingUsers?: BasicUser[];
         comments?: Comment[];
-        contacts?: BasicCustomerContact[];
+        contacts?: basicCustomerContact[];
         account?: Account;
         priceListEntities?: CustomerPriceList[];
         addPriceListEntities?: CustomerPriceList[];
@@ -790,10 +790,10 @@ export namespace DomainRobotModels {
         }[]
     }
 
-    export class BasicCustomerContact {
-        constructor(config?: BasicCustomerContact);
+    export class basicCustomerContact {
+        constructor(config?: basicCustomerContact);
     }
-    export interface BasicCustomerContact {
+    export interface basicCustomerContact {
         created?: string;
         updated?: string;
         owner?: BasicUser;
