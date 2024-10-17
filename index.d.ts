@@ -703,8 +703,8 @@ export namespace DomainRobotModels {
         city?: string;
         state?: string;
         country?: string;
-        phone?: Phone;
-        fax?: Phone;
+        phone?: string;
+        fax?: string;
         emails?: string[];
         billingEmails?: string[];
         payment?: string;
