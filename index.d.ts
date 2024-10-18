@@ -1912,6 +1912,7 @@ export namespace DomainRobotModels {
         customer?: GenericCustomer;
         text?: string;
         user?: BasicUser;
+        worker?: string;
     }
 
     export class ContextHost {
