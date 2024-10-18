@@ -524,6 +524,7 @@ export type TransferStatusConstants = "NOT_SET" | "START" | "FAILED" | "NACK" | 
 export type UkTypeConstants = "LTD" | "PLC" | "PTNR" | "STRA" | "LLP" | "IP" | "IND" | "SCH" | "RCHAR" | "GOV" | "CRC" | "STAT" | "OTHER" | "FIND" | "FCORP" | "FOTHER";
 export type UserLock = "NONE" | "CUSTOMER" | "EXPIRED" | "USER";
 export type UserProfileFlag = "OPTIONAL" | "FIX" | "RECURSE" | "HIDDEN" | "PARENT_FIX";
+export type VatNumberStatus = "PENDING" | "FAILED" | "SUCCESS" | "NOT_SET"
 export type VmcTrademarkCountryOrRegion = "US" | "CA" | "EM" | "GB" | "DE" | "JP" | "AU" | "ES" | "IN" | "KR" | "BR";
 
 export namespace DomainRobotModels {
@@ -707,6 +708,7 @@ export namespace DomainRobotModels {
         organization?: string;
         organization2?: string;
         vatNumber?: string;
+        vatNumberStatus?: VatNumberStatus
         gender?: string;
         title?: string;
         addressLines?: string[];
