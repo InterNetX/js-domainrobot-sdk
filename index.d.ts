@@ -587,7 +587,7 @@ export namespace DomainRobotModels {
         updater?: BasicUser;
         id?: number;
         name?: string;
-        phone?: Phone;
+        phone?: string;
         email?: string;
     }
 
@@ -706,8 +706,8 @@ export namespace DomainRobotModels {
         city?: string;
         state?: string;
         country?: string;
-        phone?: Phone;
-        fax?: Phone;
+        phone?: string;
+        fax?: string;
         emails?: string[];
         billingEmails?: string[];
         payment?: string;
@@ -758,7 +758,6 @@ export namespace DomainRobotModels {
         reserved?: number
         accountInfo?: { creditLimit: string }
         accountManager?: AccountManager;
-        faxes?: Phone;
         reference?: string;
         confirmSignature?: string;
         document?: number;
@@ -811,8 +810,8 @@ export namespace DomainRobotModels {
         city?: string;
         country?: string;
         state?: string;
-        phones?: Phone[];
-        faxes?: Phone[];
+        phones?: string[];
+        faxes?: string[];
         email?: string;
         address?: string[];
         notice?: string;
@@ -1986,8 +1985,8 @@ export namespace DomainRobotModels {
         city?: string;
         state?: string;
         country?: string;
-        phone?: Phone;
-        fax?: Phone;
+        phone?: string;
+        fax?: string;
         emails?: string[];
         billingEmails?: string[];
         payment?: PaymentConstants;
@@ -2367,7 +2366,7 @@ export namespace DomainRobotModels {
         updater?: BasicUser;
         name?: string;
         idn?: string;
-        notificationMobiles?: Phone[];
+        notificationMobiles?: string[];
         ocval?: boolean;
         cancelation?: boolean;
         removed?: boolean;
@@ -2466,7 +2465,7 @@ export namespace DomainRobotModels {
     }
     export interface DomainSafeUser {
         context?: number;
-        mobile?: Phone;
+        mobile?: string;
         user?: string;
         pin?: number;
     }
@@ -5266,7 +5265,7 @@ export namespace DomainRobotModels {
         birthdate?: string;
         zoneinfo?: string;
         locale?: string;
-        phonenumber?: Phone;
+        phonenumber?: string;
         phonenumberVerified?: Boolean;
         address?: AddressClaim;
         organization?: string;
