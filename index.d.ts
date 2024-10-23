@@ -545,6 +545,13 @@ export namespace DomainRobotModels {
         reserved?: number;
     }
 
+    export class AccountInfo{
+        constructor(config?: AccountInfo);
+    }
+    export interface AccountInfo{
+        creditLimit?: string
+    }
+
     export class AccountingDocument {
         constructor(config?: AccountingDocument);
     }
@@ -751,14 +758,14 @@ export namespace DomainRobotModels {
         canceled?: string;
         billable?: boolean;
         verified?: boolean;
-        invoiceDays?: { days: number[] };
+        invoiceDays?: InvoiceDays;
         invoicePaperbill?: boolean;
         invoiceFee?: boolean;
         pricelists?: PriceLists;
         supplierNumber?: string
         currentAccountBalance?: number
         reserved?: number
-        accountInfo?: { creditLimit: string }
+        accountInfo?: AccountInfo
         accountManager?: AccountManager;
         reference?: string;
         confirmSignature?: string;
@@ -3001,6 +3008,13 @@ export namespace DomainRobotModels {
         documentstore_csv_id?: string // could/should be a number, but in the adns api response it is an string
         neo_rechnungs_id?: string // could/should be a number, but in the adns api response it is an string
         documentstore_txt_id?: string // could/should be a number, but in the adns api response it is an string
+    }
+
+    export class InvoiceDays {
+        constructor(config?: InvoiceDays)
+    }
+    export interface InvoiceDays {
+        days?: number[]
     }
     
     export class IpRestriction {
