@@ -767,11 +767,7 @@ export namespace DomainRobotModels {
         reserved?: number
         accountInfo?: AccountInfo
         accountManager?: AccountManager;
-        reference?: string;
-        confirmSignature?: string;
         document?: number;
-        confirmCity?: string;
-        confirmIp?: string;
         securityDepositDomain?: number
         securityDepositServer?: number
         owner?: BasicUser
@@ -2966,10 +2962,6 @@ export namespace DomainRobotModels {
     export interface Id4MeIdentityAddons {
     }
 
-    export class InetAddress {
-        constructor();
-    }
-
     export class Invoice {
         constructor(config?: Invoice);
     }
@@ -4352,7 +4344,7 @@ export namespace DomainRobotModels {
         reference?: string;
         confirmSignature?: string;
         confirmSignatureCity?: string;
-        confirmIp?: InetAddress;
+        confirmIp?: string;
         confirmUseragent?: string;
         confirmChecked?: Boolean;
         expire?: string;
