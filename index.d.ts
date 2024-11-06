@@ -425,6 +425,7 @@ export type BillingStatus = "ADD" | "REMOVE" | "UPDATE" | "IGNORE" | "CUSTOMER_C
 export type BusinessCategory = "PRIVATE_ORGANIZATION" | "GOVERNMENT_ENTITY" | "BUSINESS_ENTITY";
 export type CancelationStatusConstants = "DELETE" | "DELETE_EXPIRE" | "TRANSIT" | "TRANSIT_EXPIRE" | "PREACK" | "PREACK_EXPIRE";
 export type CancelationTypeConstants = "DELETE" | "TRANSIT" | "PREACK";
+export type Canceled = "NONE" | "CUSTOMER" | "CLIENT"
 export type CardStatus = "LOST" | "EXPIRED" | "ACTIVE";
 export type CertificateTransparencyPrivacyConstants = "PUBLIC" | "REDACTED";
 export type CertificateType = "FQDN" | "MAIL" | "CODE";
@@ -755,7 +756,7 @@ export namespace DomainRobotModels {
         created?: string;
         updated?: string;
         locked?: boolean;
-        canceled?: string;
+        canceled?: Canceled;
         billable?: boolean;
         verified?: boolean;
         invoiceDays?: InvoiceDays;
