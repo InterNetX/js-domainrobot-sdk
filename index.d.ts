@@ -756,7 +756,7 @@ export namespace DomainRobotModels {
         created?: string;
         updated?: string;
         locked?: boolean;
-        canceled?: Canceled;
+        canceled?: string;
         billable?: boolean;
         verified?: boolean;
         invoiceDays?: InvoiceDays;
