@@ -4537,6 +4537,7 @@ export namespace DomainRobotModels {
         netAmount?: number;
         externalAccountingStatus?: string;
         view?: CurrencyRate;
+        forcedPrice?: SimplePrice
     }
 
     export class Subscription {
