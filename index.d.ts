@@ -2038,9 +2038,6 @@ export namespace DomainRobotModels {
         accountManager?: AccountManager;
         classification?: string;
         invoiceNotice?: string;
-        fname?: string
-        lname?: string
-        type?: ContactType
         noSap?: boolean
     }
     export class CustomerDocument {
