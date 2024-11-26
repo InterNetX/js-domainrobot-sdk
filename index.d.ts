@@ -721,7 +721,7 @@ export namespace DomainRobotModels {
         emails?: string[];
         billingEmails?: string[];
         payment?: string;
-        paymentMode?: string;
+        paymentMode?: PaymentConstants;
         paymentCurrency?: Currency;
         paymentCurrencyExchangeFee?: number;
         discount?: number;
