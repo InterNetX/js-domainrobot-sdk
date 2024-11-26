@@ -720,8 +720,8 @@ export namespace DomainRobotModels {
         fax?: string;
         emails?: string[];
         billingEmails?: string[];
-        payment?: string;
-        paymentMode?: PaymentConstants;
+        payment?: PaymentConstants;
+        paymentMode?: string;
         paymentCurrency?: Currency;
         paymentCurrencyExchangeFee?: number;
         discount?: number;
