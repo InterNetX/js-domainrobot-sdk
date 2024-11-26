@@ -459,7 +459,7 @@ export type DomainStudioDomainStatus = "FREE" | "ASSIGNED" | "MARKET" | "PREMIUM
 export type DomainStudioServiceStatus = "RUNNING" | "SUCCESS" | "FAILED" | "TIMEOUT";
 export type ExchangeCurrency = 'EUR' | 'USD' | 'GBP' | 'CNY' | 'JPY' | 'CHF';
 export type ExecutionTypeConstants = "DATE" | "EXPIRE" | "NOW";
-export type GenderConstants = "RUNNING" | "SUCCESS" | "FAILED" | "TIMEOUT";
+export type GenderConstants = 'MALE' | 'FEMALE';
 export type GenericStatusConstants = "PENDING" | "SUCCESS" | "FAILED" | "NOT_SET";
 export type GlobalSignPickupMethod = "EDGE_IE_COMPATIBILITY_MODE" | "FORTIFY";
 export type HkDocumentTypeConstants = "HKID" | "OTHID" | "PASSNO" | "BIRTHCERT" | "OTHIDV" | "BR" | "CI" | "CRS" | "HKSARG" | "HKORDINANCE" | "OTHORG";
@@ -735,7 +735,7 @@ export namespace DomainRobotModels {
         contracts?: CustomerContract[];
         billingUsers?: BasicUser[];
         comments?: Comment[];
-        contacts?: basicCustomerContact[];
+        contacts?: BasicCustomerContact[];
         account?: Account;
         priceListEntities?: CustomerPriceList[];
         addPriceListEntities?: CustomerPriceList[];
@@ -796,14 +796,10 @@ export namespace DomainRobotModels {
         }[]
     }
 
-    export class basicCustomerContact {
-        constructor(config?: basicCustomerContact);
+    export class BasicCustomerContact {
+        constructor(config?: BasicCustomerContact);
     }
-    export interface basicCustomerContact {
-        created?: string;
-        updated?: string;
-        owner?: BasicUser;
-        updater?: BasicUser;
+    export interface BasicCustomerContact {
         id?: number;
         customer?: GenericCustomer;
         type?: ContactType;
@@ -813,6 +809,7 @@ export namespace DomainRobotModels {
         label?: string;
         language?: string;
         gender?: GenderConstants;
+        address?: string[];
         postalCode?: string;
         city?: string;
         country?: string;
@@ -820,8 +817,10 @@ export namespace DomainRobotModels {
         phones?: string[];
         faxes?: string[];
         email?: string;
-        address?: string[];
-        notice?: string;
+        owner?: BasicUser;
+        updater?: BasicUser;
+        created?: string;
+        updated?: string;
     }
 
     export class BasicCustomerSpool {
