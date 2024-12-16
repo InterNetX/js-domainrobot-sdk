@@ -2852,6 +2852,7 @@ export namespace DomainRobotModels {
         constructor(config?: GenericLabelEntity);
     }
     export interface GenericLabelEntity {
+        id?: number;
         created?: string;
         updated?: string;
         label?: string;
