@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.1.17] - 2025-03-10
+
+* updated openapi definition files
+* updated tests
+* updated yarn packages
+
 ## [2.0.20] - 2021-08-25
 
 * type definition tests

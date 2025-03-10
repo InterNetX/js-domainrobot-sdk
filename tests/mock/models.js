@@ -28,6 +28,7 @@ const MockModels = {
     BasicCertificate: function (data) { },
     BasicCustomer: function (data) { },
     BasicCustomerContact: function (data) { },
+    basicCustomerContact: function (data) { },
     BasicCustomerSpoolVerification: function (data) { },
     BasicDocument: function (data) { },
     BasicUser: function (data) { },
