@@ -42,7 +42,7 @@
 		"cross-env": "^6.0.3",
 		"mocha": "^9.1.0",
 		"nyc": "^15.1.0",
-		"webpack": "^4.41.4"
+		"webpack": "^5.99.5"
 	},
 	"dependencies": {
 		"axios": "^0.30.0",
