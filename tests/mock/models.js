@@ -163,6 +163,7 @@ const MockModels = {
     ContactVerificationMessage: function (data) { },
     ContactXxxExtensions: function (data) { },
     ContactZuerichExtensions: function (data) { },
+    ContactEsExtensions: function (data) { },
     ContextConfiguration: function (data) { },
     ContextHost: function (data) { },
     ContextHostZone: function (data) { },

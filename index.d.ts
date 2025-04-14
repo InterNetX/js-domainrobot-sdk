@@ -814,8 +814,8 @@ export namespace DomainRobotModels {
         city?: string;
         country?: string;
         state?: string;
-        phones?: string[];
-        faxes?: string[];
+        phone?: string;
+        fax?: string;
         email?: string;
         owner?: BasicUser;
         updater?: BasicUser;
@@ -895,7 +895,8 @@ export namespace DomainRobotModels {
             fname?: string
             lname?: string
         }
-        lock?: string
+        lock?: string,
+        passwordExpires?: string
     }
 
     export class BillingCustomerXML {
@@ -1679,6 +1680,7 @@ export namespace DomainRobotModels {
         scot?: ContactScotExtensions;
         ie?: ContactIeExtensions;
         zuerich?: ContactZuerichExtensions;
+        es?: ContactZuerichExtensions;
     }
 
     export class ContactGeneralExtensions {
@@ -1846,6 +1848,13 @@ export namespace DomainRobotModels {
     }
     export interface ContactUkExtensions {
         entityType?: string;
+    }
+
+    export class ContactEsExtensions {
+        constructor(config?: ContactEsExtensions);
+    }
+    export interface ContactEsExtensions {
+        identificacion?: string;
     }
 
     export class ContactVerification {
@@ -3641,6 +3650,7 @@ export namespace DomainRobotModels {
         token?: string;
         user?: string;
         passwordChanged?: string;
+        passwordExpires?: string;
         passwordExpired?: boolean;
     }
 
@@ -4627,6 +4637,8 @@ export namespace DomainRobotModels {
         domainsafe?: boolean;
         autodelete?: boolean;
         trinity?: boolean;
+        sedo_mls?: boolean;
+        manual_dc?: boolean;
         claimsEnd?: string;
         brand?: boolean; // Indicates whether the Tld is a brand name (e.g. .adac)
         categories?: string[];
@@ -4641,6 +4653,7 @@ export namespace DomainRobotModels {
         tldContinent?: TldContinent;
         rankingLevel?: number; // Rank Level in the Domain Studio.
         tlds?: Tld[];
+        manual_dc?: boolean;
 
     }
     export class TldGrouped {
@@ -4906,7 +4919,7 @@ export namespace DomainRobotModels {
         lock?: UserLock;
         oldPassword?: string;
         passwordChanged?: string;
-        passwordExpired?: boolean;
+        passwordExpires?: string;
         acls?: UserAcls;
         profiles?: UserProfileViews;
         serviceProfiles?: ServiceProfiles;
@@ -4924,6 +4937,7 @@ export namespace DomainRobotModels {
         clientAccounts?: Array<ExternalAccounting>;
         tasklimits?: Array<TaskLimit>;
         trusteeContacts?: Array<TrusteeContact>;
+        passwordExpired?: boolean;
     }
 
     export class UserAcl {
@@ -4956,6 +4970,7 @@ export namespace DomainRobotModels {
         passwordResetMobile?: string;
         passwordResetVerifyEmail?: string;
         passwordResetEmail?: string;
+        lastPasswordReminderEmail?: string;
         fname?: string;
         lname?: string;
         phone?: string;
@@ -5204,6 +5219,7 @@ export namespace DomainRobotModels {
         roid?: number;
         purgeType?: PurgeTypes;
         purgeDate?: string;
+        date?: string;
     }
 
     export class ZoneBasePatchRequest {
@@ -5241,6 +5257,7 @@ export namespace DomainRobotModels {
         resourceRecordsRem?: ResourceRecord[];
         purgeType?: PurgeTypes;
         purgeDate?: string;
+        date?: string;
     }
 
     export class ZoneStream {
