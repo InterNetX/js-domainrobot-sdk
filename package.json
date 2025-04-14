@@ -40,7 +40,7 @@
 		"@internetx/internetx-swagger-files": "https://github.com/InterNetX/domainrobot-api.git",
 		"axios-mock-adapter": "^1.17.0",
 		"cross-env": "^6.0.3",
-		"mocha": "^9.1.0",
+		"mocha": "^11.1.0",
 		"nyc": "^15.1.0",
 		"webpack": "^5.99.5"
 	},
