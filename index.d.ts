@@ -4086,7 +4086,7 @@ export namespace DomainRobotModels {
     export interface PriceTableRow<T extends Price | PriceClass | PurchasePrice | PurchasePriceClass | ProductPriceTemplate | PriceClassTemplate> {
         rowConditions?: PriceServiceEntity[]
         article?: Article
-        priceClassName?: string
+        priceClass?: PriceClass
         customer?: BasicCustomer
         prices?: BusinessCasePrices<T>
         businessCases?: string[]
