@@ -45,7 +45,7 @@
 		"webpack": "^5.99.5"
 	},
 	"dependencies": {
-		"axios": "^0.30.0",
+		"axios": "^1.12.0",
 		"chai": "^4.3.4",
 		"yarn.lock": "^0.0.1-security"
 	},
