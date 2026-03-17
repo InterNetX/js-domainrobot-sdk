@@ -4062,6 +4062,16 @@ export namespace DomainRobotModels {
         customerPriceListsRem?: Array<object>;
         excludeFromPricechange?: boolean;
     }
+    export class PriceOption {
+        constructor(config?: PriceOption);
+    }
+    export interface PriceOption {
+        amount?: number;
+        businessCase?: string;
+        period?: TimePeriod;
+        minimumSalesPrice?: number;
+        maximumSalesPrice?: number;
+    }
     export class PriceServiceData {
         constructor(config?: PriceServiceData);
     }
@@ -4098,13 +4108,11 @@ export namespace DomainRobotModels {
 
     export interface PriceTemplateBuilderOptions {
         relative?: RelativeConstants;
-        amount?: number;
         rounding?: PriceRoundingConstants;
-        minimumSalesPrices?: SalesPrice[];
-        maximumSalesPrices?: SalesPrice[];
-        name?: string
-        replace?: boolean
-        sourceName?: string
+        prices?: PriceOption[];
+        name?: string;
+        replace?: boolean;
+        sourceName?: string;
     }
 
     export class Product {
@@ -4332,15 +4340,6 @@ export namespace DomainRobotModels {
         code?: string;
         text?: string;
         typ?: string; //StatusType
-    }
-    export class SalesPrice {
-        constructor(config?: SalesPrice);
-    }
-    export interface SalesPrice {
-        amount?: number;
-        businessCase?: string;
-        period?: TimePeriod;
-        currency?: string;
     }
 
     export class SEPAMandate {
