@@ -774,6 +774,7 @@ export namespace DomainRobotModels {
         owner?: BasicUser
         worker?: string
         tenant?: boolean
+        segmentation?: string
     }
 
     export type CustomerStatistics = {
