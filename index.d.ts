@@ -441,6 +441,7 @@ export type ContactType = "PRIMARY" | "BILLING" | "TECH" | "LEGAL" | "DOMAIN" | 
 export type ContactTypeConstants = "PERSON" | "ORG" | "ROLE";
 export type CreditCardVendor = "MC" | "VISA" | "AMEX" | "DIC" | "DISC" | "CB";
 export type CryptoFormatConstants = "SHA1" | "SHA256" | "SHA512";
+export type CustomerSegmentation = "A" | "B" | "C";
 export type CustomerType = "PERSON" | "ORGANIZATION";
 export type CodeSigningProvisioningMethod = "EMAIL" | "SOFTWARE" | "SHIPPING";
 export type CodeSigningHardwarePlatform = "AEP_KEYPER" | "ARX_PRIVATE_SERVER" | "BULL_TRUSTWAY_CRYPTO_PCI" | "E_PASS_3003" | "SAFE_NET_E_TOKEN_5100" | "SAFE_NET_E_TOKEN_5105" | "SAFE_NET_E_TOKEN_5110" | "SAFE_NET_E_TOKEN_5110_FIPS" | "SAFE_NET_E_TOKEN_5200" | "SAFE_NET_E_TOKEN_5205" | "SAFE_NET_E_TOKEN_PRO_72K" | "SAFE_NET_E_TOKEN_PRO_ANYWHERE" | "SAFE_NET_I_KEY_4000" | "SAFE_NET_LUNA" | "THALES_N_SHIELD" | "ULTIMACO_CRYPTO_SERVER" | "OTHER";
@@ -774,7 +775,7 @@ export namespace DomainRobotModels {
         owner?: BasicUser
         worker?: string
         tenant?: boolean
-        segmentation?: string
+        segmentation?: CustomerSegmentation
     }
 
     export type CustomerStatistics = {
