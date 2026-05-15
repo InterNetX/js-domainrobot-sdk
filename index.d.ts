@@ -492,6 +492,7 @@ export type PriceTypeConstants = "GROSS" | "NET";
 export type PriceChangeStatusConstants = "FINISHED" | "PENDING" | "SUCCESS" | "FAILED" | "NOT_SET" | "CONFIRMED";
 export type PriceChangeTypeConstants = "CUSTOMER" | "GENERAL" | "GENERAL_DISCOUNT" | "GENERAL_NEW_ARTICLE" | "PROMO" | "PRIMARY";
 export type PriceRoundingConstants = "NONE" | "ROUND_X0" | "ROUND_00" | "ROUND_X9" | "ROUND_99" | "ROUND_COMMERCIAL";
+export type PriceListType = "INDIVIDUAL" | "DISCOUNT";
 export type PriorityConstants = "DEFAULT" | "OFFER" | "PROTECTED" | "PROMO";
 export type ProtectionConstants = "HIGH" | "MEDIUM" | "LOW" | "OFF" | "CUSTOM";
 export type ProtocolTypeConstants = "TOTP" | "HOTP";
@@ -4054,14 +4055,14 @@ export namespace DomainRobotModels {
         label?: string;
         client?: string;
         group?: string;
-        type?: string;
+        type?: PriceListType;
         from?: string;
         to?: string;
         inactive?: boolean;
         comment?: string;
         hasCustomerPriceList?: boolean;
-        customerPriceListsAdd?: Array<object>;
-        customerPriceListsRem?: Array<object>;
+        customerPriceListsAdd?: CustomerPriceList[];
+        customerPriceListsRem?: CustomerPriceList[];
         excludeFromPricechange?: boolean;
     }
     export class PriceOption {
