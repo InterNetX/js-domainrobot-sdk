@@ -9,6 +9,9 @@
 const http = require("http");
 const Domainrobot = require("../../src/Domainrobot");
 const expect = require("chai").expect;
+// Use the `form-data` package instead of the global FormData so the test also
+// runs on the CI Node version (Node 14 has no global FormData/Blob).
+const FormData = require("form-data");
 
 describe("ContactDocumentService upload (integration)", () => {
     let server;
@@ -52,7 +55,7 @@ describe("ContactDocumentService upload (integration)", () => {
         const formData = new FormData();
         formData.append(
             "file",
-            new Blob(["dummy-id-document-content"]),
+            Buffer.from("dummy-id-document-content"),
             "idcard.pdf"
         );
 

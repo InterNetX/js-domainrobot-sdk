@@ -4,6 +4,9 @@ const Domainrobot = require("../../../src/Domainrobot");
 const ValidResponse = require("../../mock/ValidResponse.json");
 const expect = require('chai').expect;
 const axiosMock = require('../../axios-mock');
+// Use the `form-data` package instead of the global FormData so the tests also
+// run on the CI Node version (Node 14 has no global FormData/Blob).
+const FormData = require('form-data');
 
 describe("ContactDocumentServiceTest", () => {
     let domainRobot;
@@ -21,7 +24,7 @@ describe("ContactDocumentServiceTest", () => {
 
     it("upload", async () => {
         const formData = new FormData();
-        formData.append("file", new Blob(["dummy"]), "idcard.pdf");
+        formData.append("file", Buffer.from("dummy"), "idcard.pdf");
 
         axiosMock().onPost().reply(200, ValidResponse);
 
@@ -57,7 +60,7 @@ describe("ContactDocumentServiceTest", () => {
 
     it("upload with keys", async () => {
         const formData = new FormData();
-        formData.append("file", new Blob(["dummy"]), "idcard.pdf");
+        formData.append("file", Buffer.from("dummy"), "idcard.pdf");
         const keys = ['force'];
 
         axiosMock().onPost().reply(200, ValidResponse);
