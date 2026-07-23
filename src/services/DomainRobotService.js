@@ -94,7 +94,13 @@ class DomainRobotService {
                 {
                     method,
                     url: encodeURI(url),
-                    data
+                    // Only attach `data` when the caller actually provided a body.
+                    // Leaving `data` as its `null` default still makes axios
+                    // serialize it into a literal "null" body (given the forced
+                    // Content-Type: application/json default below), which breaks
+                    // GET requests against APIs that reject a body on GET or that
+                    // strictly parse the JSON body as an object/array.
+                    ...(data !== null ? { data } : {})
                 },
                 this.axiosconfig
             );
@@ -148,8 +154,8 @@ class DomainRobotService {
         }
     }
 
-    async sendGetRequest(url) {
-        return this.sendRequest("GET", url);
+    async sendGetRequest(url, data = null) {
+        return this.sendRequest("GET", url, data);
     }
 
     async sendPostRequest(url, data) {
