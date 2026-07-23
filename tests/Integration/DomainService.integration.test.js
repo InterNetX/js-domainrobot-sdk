@@ -122,11 +122,10 @@ describe("DomainService HTTP (integration)", () => {
 
         expect(lastRequest.method).to.be.equal("POST");
         expect(lastRequest.url).to.be.equal("/domain/example.com/_authinfo1");
-        // No payload is passed, so sendRequest falls back to its `data = null`
-        // default. With the global application/json Content-Type axios
-        // serializes that to the JSON literal "null" (same behaviour in 0.x and
-        // 1.x - not an upgrade regression).
-        expect(lastRequest.body).to.be.equal("null");
+        // No payload is passed, so `data` stays at its `null` default and
+        // sendRequest omits the `data` field from the axios request options
+        // entirely, instead of sending a literal "null" JSON body.
+        expect(lastRequest.body).to.be.equal("");
 
         expect(result.status).to.be.equal(200);
     });
