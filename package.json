@@ -14,7 +14,8 @@
 		"update:pcdomainsapi": "cp node_modules/@internetx/internetx-swagger-files/src/pcdomains.json src/swagger",
 		"docs:dev": "vuepress dev docs",
 		"docs:build": "vuepress build docs",
-		"test:mocha": "nyc mocha \"tests/Specs/**/*.js\""
+		"test:mocha": "nyc mocha \"tests/Specs/**/*.js\"",
+		"test:integration": "nyc mocha \"tests/Integration/**/*.js\""
 	},
 	"nyc": {
 		"exclude": [
@@ -38,14 +39,14 @@
 	},
 	"devDependencies": {
 		"@internetx/internetx-swagger-files": "https://github.com/InterNetX/domainrobot-api.git",
-		"axios-mock-adapter": "^1.17.0",
+		"axios-mock-adapter": "^1.22.0",
 		"cross-env": "^6.0.3",
 		"mocha": "^9.2.2",
 		"nyc": "^15.1.0",
 		"webpack": "^5.99.5"
 	},
 	"dependencies": {
-		"axios": "^0.30.0",
+		"axios": "^1.18.1",
 		"chai": "^4.3.4",
 		"yarn.lock": "^0.0.1-security"
 	},
