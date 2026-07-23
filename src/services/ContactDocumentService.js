@@ -10,9 +10,16 @@ class ContactDocumentService extends DomainRobotService {
         if (keys.length > 0) {
             keysString = "?keys[]=" + keys.join("&keys[]=");
         }
-        axios.defaults.headers.common['Content-Type'] =
-            "multipart/form-data";
-            
+        // The base service sets a global default Content-Type of
+        // "application/json" (axios.defaults.headers.common). For a FormData
+        // upload that default would win and break the multipart request, so we
+        // clear it per-request. axios 1.x then auto-detects the FormData
+        // payload and sets "multipart/form-data" incl. the boundary itself.
+        this.axiosconfig.headers = {
+            ...(this.axiosconfig.headers || {}),
+            "Content-Type": null,
+        };
+
         return await this.sendPostRequest(
             this.domainRobotConfig.url + "/contact/" + contactId + "/document/" + type + keysString,
             formData
@@ -77,4 +84,4 @@ class ContactDocumentService extends DomainRobotService {
     }
 }
 
-module.exports = Contact;
+module.exports = ContactDocumentService;

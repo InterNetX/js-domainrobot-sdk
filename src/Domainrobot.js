@@ -2,6 +2,7 @@
 // services
 
 const ContactService = require("./services/ContactService")
+const ContactDocumentService = require("./services/ContactDocumentService")
 const CertificateService = require("./services/CertificateService")
 const DomainStudio = require("./services/DomainStudio")
 const DomainService = require("./services/DomainService")
@@ -31,6 +32,11 @@ class DomainRobot {
     // contact stuff
     contact() {
         return new ContactService(this.domainRobotConfig)
+    }
+
+    // contact document stuff
+    contactDocument() {
+        return new ContactDocumentService(this.domainRobotConfig)
     }
 
     // certificate stuff
