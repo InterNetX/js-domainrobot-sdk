@@ -3011,6 +3011,9 @@ export namespace DomainRobotModels {
         documentstore_csv_id?: string // could/should be a number, but in the adns api response it is an string
         neo_rechnungs_id?: string // could/should be a number, but in the adns api response it is an string
         documentstore_txt_id?: string // could/should be a number, but in the adns api response it is an string
+        edocumentstore_xml_id?: string // could/should be a number, but in the adns api response it is an string
+        eInvoiceChannel?: string
+        ccEInvoiceEmail?: string
     }
 
     export class InvoiceDays {
