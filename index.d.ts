@@ -103,7 +103,7 @@ export declare class LoginService extends DomainRobotService<LoginService> {
         timeout?: number;
     }): Promise<DomainRobotResult<JsonResponseDataUser, number>>;
 }
-export declare class UserService extends DomainRobotService<LoginService> {
+export declare class UserService extends DomainRobotService<UserService> {
     create(model: DomainRobotModels.User): Promise<DomainRobotResult<JsonResponseDataBasicUser, number>>;
     update(model: DomainRobotModels.User): Promise<DomainRobotResult<JsonResponseDataBasicUser, number>>;
     delete(user: string, context: number): Promise<DomainRobotResult<JsonResponseDataBasicUser, number>>;
