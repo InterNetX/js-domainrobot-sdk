@@ -68,14 +68,15 @@ class DomainRobotService {
     }
 
     /**
+     * Sets the headers of the next request. Headers with the value undefined
+     * are left out, so that the default headers apply.
      *
      * @param {object} headers
      */
     headers(headers) {
-        if(!this.axiosconfig.headers) {
-            this.axiosconfig.headers = {};
-        }
-        this.axiosconfig.headers = headers;
+        this.axiosconfig.headers = Object.fromEntries(
+            Object.entries(headers).filter(([, value]) => value !== undefined)
+        );
         return this;
     }
     /**

@@ -4,7 +4,8 @@ export declare class DomainRobotService<T> {
     constructor(domainRobotConfig: domainRobotConfig);
     logRequest(callback: Function): T;
     logResponse(callback: Function): T;
-    headers(headers: { [key: string]: string | number }): T;
+    // headers with the value undefined are left out
+    headers(headers: { [key: string]: string | number | undefined }): T;
     mockResponse(response: Result): T;
 }
 
