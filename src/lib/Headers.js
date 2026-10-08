@@ -39,6 +39,17 @@ const DOMAINROBOT_CONTENT_TYPE = "Content-Type";
 
 const DOMAINROBOT_HEADER_DEMO = "X-Domainrobot-Demo";
 
+// address of the client a proxy sends the request for; AutoDNS takes the
+// first address as client ip if the request comes from a trusted proxy or
+// carries an agent token
+const DOMAINROBOT_HEADER_FORWARDED_FOR = "X-Forwarded-For";
+
+// client ip that AutoDNS uses if X-Forwarded-For is not set
+const DOMAINROBOT_HEADER_AUTODNS_REAL_IP = "X-AutoDNS-Real-Ip";
+
+// encrypted name of the application (agent) that sends the request
+const DOMAINROBOT_HEADER_AUTODNS_AGENT_TOKEN = "X-AutoDNS-Agent-Token";
+
 module.exports = {
     DOMAINROBOT_HEADER_DOMAINROBOT_STID,
     DOMAINROBOT_HEADER_SESSION_ID,
@@ -59,5 +70,8 @@ module.exports = {
     DOMAINROBOT_HEADER_PROFILE,
     DOMAINROBOT_USER_AGENT,
     DOMAINROBOT_CONTENT_TYPE,
-    DOMAINROBOT_HEADER_DEMO
+    DOMAINROBOT_HEADER_DEMO,
+    DOMAINROBOT_HEADER_FORWARDED_FOR,
+    DOMAINROBOT_HEADER_AUTODNS_REAL_IP,
+    DOMAINROBOT_HEADER_AUTODNS_AGENT_TOKEN
 };
