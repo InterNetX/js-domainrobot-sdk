@@ -445,6 +445,7 @@ export type ContactType = "PRIMARY" | "BILLING" | "TECH" | "LEGAL" | "DOMAIN" | 
 export type ContactTypeConstants = "PERSON" | "ORG" | "ROLE";
 export type CreditCardVendor = "MC" | "VISA" | "AMEX" | "DIC" | "DISC" | "CB";
 export type CryptoFormatConstants = "SHA1" | "SHA256" | "SHA512";
+export type CustomerPriceListType = "MANUAL" | "AUTO";
 export type CustomerSegmentation = "A" | "B" | "C";
 export type CustomerType = "PERSON" | "ORGANIZATION";
 export type CodeSigningProvisioningMethod = "EMAIL" | "SOFTWARE" | "SHIPPING";
@@ -2163,6 +2164,7 @@ export namespace DomainRobotModels {
         id?: number;
         customer?: GenericCustomer;
         priceList?: PriceList;
+        type?: CustomerPriceListType;
     }
 
     export class CustomerPriceLists {
