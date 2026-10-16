@@ -769,7 +769,6 @@ export namespace DomainRobotModels {
         invoiceDays?: InvoiceDays;
         invoicePaperbill?: boolean;
         invoiceFee?: boolean;
-        pricelists?: PriceLists;
         supplierNumber?: string
         currentAccountBalance?: number
         reserved?: number
@@ -791,17 +790,6 @@ export namespace DomainRobotModels {
         customer?: GenericCustomer
         id?: number
         updated?: string
-    }
-
-    export class PriceLists {
-        constructor(config?: PriceLists)
-    }
-    export interface PriceLists {
-        pricelist: {
-            articleTypeLabel: string
-            priceListLabel: string
-            type: string
-        }[]
     }
 
     export class BasicCustomerContact {
@@ -2030,7 +2018,6 @@ export namespace DomainRobotModels {
         pcode?: string;
         technical?: TechnicalCustomer;
         sepa?: SEPAMandate;
-        pricelists?: CustomerPriceLists;
         type?: string;
         vatNumber?: string;
         discountValid?: string;
@@ -2166,12 +2153,6 @@ export namespace DomainRobotModels {
         priceList?: PriceList;
         type?: CustomerPriceListType;
     }
-
-    export class CustomerPriceLists {
-        constructor();
-        // constructor(config?: CustomerPriceLists);
-    }
-    // export interface CustomerPriceLists {}
 
     export class CustomerTag {
         constructor(config?: CustomerTag);
