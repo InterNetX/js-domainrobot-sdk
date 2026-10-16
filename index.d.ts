@@ -445,6 +445,7 @@ export type ContactType = "PRIMARY" | "BILLING" | "TECH" | "LEGAL" | "DOMAIN" | 
 export type ContactTypeConstants = "PERSON" | "ORG" | "ROLE";
 export type CreditCardVendor = "MC" | "VISA" | "AMEX" | "DIC" | "DISC" | "CB";
 export type CryptoFormatConstants = "SHA1" | "SHA256" | "SHA512";
+export type CustomerPriceListType = "MANUAL" | "AUTO";
 export type CustomerSegmentation = "A" | "B" | "C";
 export type CustomerType = "PERSON" | "ORGANIZATION";
 export type CodeSigningProvisioningMethod = "EMAIL" | "SOFTWARE" | "SHIPPING";
@@ -768,7 +769,6 @@ export namespace DomainRobotModels {
         invoiceDays?: InvoiceDays;
         invoicePaperbill?: boolean;
         invoiceFee?: boolean;
-        pricelists?: PriceLists;
         supplierNumber?: string
         currentAccountBalance?: number
         reserved?: number
@@ -790,17 +790,6 @@ export namespace DomainRobotModels {
         customer?: GenericCustomer
         id?: number
         updated?: string
-    }
-
-    export class PriceLists {
-        constructor(config?: PriceLists)
-    }
-    export interface PriceLists {
-        pricelist: {
-            articleTypeLabel: string
-            priceListLabel: string
-            type: string
-        }[]
     }
 
     export class BasicCustomerContact {
@@ -1196,6 +1185,22 @@ export namespace DomainRobotModels {
     export interface BulkPricePatchRequest {
         objects?: Price[];
         template?: Price;
+        query?: Query;
+    }
+    export class BulkCustomerPriceListPostRequest {
+        constructor(config?: BulkCustomerPriceListPostRequest);
+    }
+    export interface BulkCustomerPriceListPostRequest {
+        objects?: CustomerPriceList[];
+        template?: CustomerPriceList;
+        query?: Query;
+        options?: CustomerPriceList[];
+    }
+    export class BulkCustomerPriceListDeleteRequest {
+        constructor(config?: BulkCustomerPriceListDeleteRequest);
+    }
+    export interface BulkCustomerPriceListDeleteRequest {
+        objects?: CustomerPriceList[];
         query?: Query;
     }
 
@@ -2029,7 +2034,6 @@ export namespace DomainRobotModels {
         pcode?: string;
         technical?: TechnicalCustomer;
         sepa?: SEPAMandate;
-        pricelists?: CustomerPriceLists;
         type?: string;
         vatNumber?: string;
         discountValid?: string;
@@ -2163,13 +2167,8 @@ export namespace DomainRobotModels {
         id?: number;
         customer?: GenericCustomer;
         priceList?: PriceList;
+        type?: CustomerPriceListType;
     }
-
-    export class CustomerPriceLists {
-        constructor();
-        // constructor(config?: CustomerPriceLists);
-    }
-    // export interface CustomerPriceLists {}
 
     export class CustomerTag {
         constructor(config?: CustomerTag);
@@ -2192,6 +2191,41 @@ export namespace DomainRobotModels {
 
     export class DNSSecJob {
         constructor();
+    }
+
+    export class Discount {
+        constructor(config?: Discount);
+    }
+    export interface Discount {
+        created?: string;
+        updated?: string;
+        owner?: BasicUser;
+        updater?: BasicUser;
+        id?: number;
+        priceList?: PriceList;
+        percent?: number;
+        priceMarkup?: boolean;
+        priceRounding?: PriceRoundingConstants;
+        discountArticles?: DiscountArticle[];
+        discountArticleCategories?: DiscountArticleCategory[];
+    }
+    export class DiscountArticle {
+        constructor(config?: DiscountArticle);
+    }
+    export interface DiscountArticle {
+        created?: string;
+        updated?: string;
+        id?: number;
+        article?: Article;
+    }
+    export class DiscountArticleCategory {
+        constructor(config?: DiscountArticleCategory);
+    }
+    export interface DiscountArticleCategory {
+        created?: string;
+        updated?: string;
+        id?: number;
+        articleCategory?: GenericLabelEntity;
     }
 
     export class Document {
@@ -4081,6 +4115,23 @@ export namespace DomainRobotModels {
         period?: TimePeriod;
         minimumSalesPrice?: number;
         maximumSalesPrice?: number;
+    }
+    export class PriceRequestView {
+        constructor(config?: PriceRequestView);
+    }
+    export interface PriceRequestView extends QueryView {
+        currency?: string;
+    }
+    export class PricesRequest {
+        constructor(config?: PricesRequest);
+    }
+    export interface PricesRequest {
+        filters?: QueryFilter[];
+        view?: PriceRequestView;
+        orders?: QueryOrder[];
+        customer?: GenericCustomer;
+        priceList?: PriceList;
+        preview?: BasicCustomer;
     }
     export class PriceServiceData {
         constructor(config?: PriceServiceData);
