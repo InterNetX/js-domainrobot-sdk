@@ -427,6 +427,7 @@ export type AutoDeleteStatus = "CONFIRMED" | "DELETED" | "NOTIFY" | "NOTIFY_5" |
 export type AutoRenewStatusConstants = "TRUE" | "FALSE" | "ONCE";
 export type BillingStatus = "ADD" | "REMOVE" | "UPDATE" | "IGNORE" | "CUSTOMER_CHANGED" | "USER_CHANGED" | "UPGRADE" | "ACTIVE" | "CANCELED" | "CANCELED_EXPIRE" | "RESTORE" | "AUTODELETE" | "REMOVED" | "DROP";
 export type BusinessCategory = "PRIVATE_ORGANIZATION" | "GOVERNMENT_ENTITY" | "BUSINESS_ENTITY";
+export type BusinessType = "B2G" | "B2B";
 export type CancelationStatusConstants = "DELETE" | "DELETE_EXPIRE" | "TRANSIT" | "TRANSIT_EXPIRE" | "PREACK" | "PREACK_EXPIRE";
 export type CancelationTypeConstants = "DELETE" | "TRANSIT" | "PREACK";
 export type Canceled = "NONE" | "CUSTOMER" | "CLIENT"
@@ -781,6 +782,8 @@ export namespace DomainRobotModels {
         worker?: string
         tenant?: boolean
         segmentation?: CustomerSegmentation
+        businessType?: BusinessType
+        buyerReference?: string
     }
 
     export type CustomerStatistics = {
